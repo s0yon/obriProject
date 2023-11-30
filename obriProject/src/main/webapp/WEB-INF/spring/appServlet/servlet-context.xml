@@ -36,17 +36,21 @@
 	<context:component-scan base-package="music" />
 	
 	<!-- 인터셉터 설정 -->	
-	<beans:bean id="sessionChk" class="music.controller.SessionCheckInter"/>	
-	 <interceptors>
+	<beans:bean id="sessionChk"
+		class="music.controller.SessionCheckInter" />
+	<interceptors>
 		<interceptor>
-			<mapping path="/memberEdit.do"/>
-			<mapping path="/memberEditOk.do"/>			
-			<mapping path="/memberDel.do"/>
-			<mapping path="/memberDelOk.do"/>
-			<mapping path="/memberLogout.do"/>
-			<beans:ref bean="sessionChk"/>
+			<mapping path="/goEdit.do" />
+			<mapping path="/goEditPw.do" />
+			<mapping path="/goDelete.do" />
+			<mapping path="/editMemCheck.do" />
+			<mapping path="/editMember.do" />
+			<mapping path="/editMemberOk.do" />
+			<mapping path="/editPwOk.do" />
+			<mapping path="/delMemCheck.do" />
+			<beans:ref bean="sessionChk" />
 		</interceptor>
-	</interceptors>	
+	</interceptors>
 	
 	<!-- 파일 업로드  설정 --> <!-- 이 빈객체가 있어야 업로드가 가능하다 -->
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
