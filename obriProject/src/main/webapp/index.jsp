@@ -7,6 +7,7 @@
 </head>
 <body>
 	<script>
+	/* developer brench */
 	 location.href="home.do"
 	</script>
 </body>
