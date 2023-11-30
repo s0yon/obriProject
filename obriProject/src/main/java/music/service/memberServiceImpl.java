@@ -2,6 +2,7 @@ package music.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
@@ -21,9 +22,13 @@ public class memberServiceImpl implements memberService{
 	@Autowired
 	JavaMailSender mailSender;
 	
+	// BCryptPasswordEncoder 주입
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;	
+	
 	// 아이디 존재 여부 확인
 	@Override
-	public memberVO checkId(String userId){
+	public memberVO checkId(String userId) throws Exception {
 		return md.checkId(userId);
 	}
 	
@@ -50,7 +55,7 @@ public class memberServiceImpl implements memberService{
 				"<h1>오브리 메일 인증</h1>" +
 				"<br>오브리에 오신 것을 환영합니다." +
 				"<br>아래 [이메일 인증 확인]을 눌러주세요." +
-				"<br><a href='http://localhost/obriProject/registerEmail.do?userEmail=" +
+				"<br><a href='http://localhost/musicProject/registerEmail.do?userEmail=" +
 				mb.getUserEmail() + "&mailKey=" + mailKey +
 				"' target='_blank'>이메일 인증 확인</a>");
 		sendMail.setFrom("info0obri@gmail.com", "오브리");
@@ -61,41 +66,45 @@ public class memberServiceImpl implements memberService{
 
 	// 아이디 중복확인
 	@Override
-	public int checkMemberId(String userId) {
+	public int checkMemberId(String userId) throws Exception {
 		return md.checkMemberId(userId);
 	}
 	
 	// 이메일 인증 키 저장
 	@Override
-	public int updateMailKey(memberVO mb) throws Exception{
+	public int updateMailKey(memberVO mb) throws Exception {
 		return md.updateMailKey(mb);
 	}
 	
 	// 이메일 인증 시 권한 변경
 	@Override
-	public int updateMailAuth(memberVO mb) throws Exception{
+	public int updateMailAuth(memberVO mb) throws Exception {
 		return md.updateMailAuth(mb);
 	}
 
 	// 아이디 찾기
 	@Override
-	public memberVO findId(memberVO m) {
+	public memberVO findId(memberVO m) throws Exception {
 		return md.findId(m);
 	}
 	
 	// 비밀번호 찾기
 	@Override
-	public memberVO findPw(memberVO m) {
+	public memberVO findPw(memberVO m) throws Exception {
 		return md.findPw(m);
 	}
 
 	// 비밀번호 초기화
 	@Override
-	public void updatePw(memberVO mb) throws Exception{
+	public void updatePw(memberVO mb) throws Exception {
 		
 		// 1. 랜덤 문자열을 생성해 임시 비밀번호 저장
-		String tempPw = new tempKey().getKey(8, false);	// 랜덤키 길이 설정
-		mb.setUserPw(tempPw);
+		String tempPw = new tempKey().getKey(6, false);	// 랜덤키 길이 설정
+		
+		// 비밀번호 암호화
+		String encpw = passwordEncoder.encode(tempPw);
+		mb.setUserPw(encpw);
+//		mb.setUserPw(tempPw);
 		
 		// 2. 초기화 메일 발송
 		mailHandler sendMail = new mailHandler(mailSender);
@@ -112,5 +121,20 @@ public class memberServiceImpl implements memberService{
 		md.updatePw(mb);
 		
 	}
+
+	// 회원정보 수정
+	@Override
+	public void updateMember(memberVO member) throws Exception {
+		md.updateMember(member);
+	}
 	
+	// 비밀번호 변경
+	public void updateMemPw(memberVO mb) throws Exception {
+		md.updateMemPw(mb);
+	}
+
+	// 회원탈퇴
+	public void deleteMember(memberVO m) throws Exception {
+		md.deleteMember(m);
+	}
 }
