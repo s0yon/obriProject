@@ -1,14 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="path" value="${pageContext.request.contextPath}" />
-
 <c:set var="loginOutLink"
 	value="${sessionScope.userId==null ? 'loginMember.do' : 'logoutMember.do'}" />
 <c:set var="loginOut"
 	value="${sessionScope.userId==null ? '로그인' : '로그아웃'}" />
 <c:set var="myPageLink"
-	value="${sessionScope.userId==null ? 'joinMember.do' : 'editMember.do'}" />
+	value="${sessionScope.userId==null ? 'joinMember.do' : 'goEdit.do'}" />
 <c:set var="myPage"
 	value="${sessionScope.userId==null ? '회원가입' : '마이페이지'}" />
 
@@ -64,7 +62,7 @@
 			</a>
 		</div>
 		<div class="menu_left">
-			<a href="boardListShow.do">구인</a> <a href="prCardList.do">홍보</a> <a
+			<a href="boardListShow.do">구인</a> <a href="board_list.do">홍보</a> <a
 				href="board_list.do">커뮤니티</a> <a href="board_list.do">공지</a>
 		</div>
 		<div class="menu_right">
