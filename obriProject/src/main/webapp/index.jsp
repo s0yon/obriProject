@@ -7,7 +7,7 @@
 </head>
 <body>
 	<script>
-	/* developer brench */
+	/* re developer brench */
 	 location.href="home.do"
 	</script>
 </body>
