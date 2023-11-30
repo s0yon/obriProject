@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+.intro{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.intro .container {
+	margin-top: 50px;
+	margin-bottom: 10px;
+	display: grid;
+	align-items: stretch;
+	place-items: center;
+}

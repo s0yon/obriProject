@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+body {
+	height: 100%;
+}
+
+.form-joinin {
+	max-width: 1000px;
+	padding: 1rem;
+	line-height: 150%;
+	text-align: center;
+}
+
+.form-joinin input[type="text"] {
+	margin-bottom: 1px;
+}
+
+.form-joinin input[type="password"] {
+	margin-bottom: 1px;
+}
+
+.form-joinin button {
+	background-color: rgb(169, 142, 218);
+}
+
+.form-joinin img {
+	display: block;
+	margin: 0px auto;
+	filter: drop-shadow(1px 1px 1px #000);
+}

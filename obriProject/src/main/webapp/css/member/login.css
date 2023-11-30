@@ -1,0 +1,33 @@
+@charset "UTF-8";
+body {
+  	height: 100%;
+}
+
+.form-signin {
+  	max-width: 500px;
+  	padding: 1rem;
+ 	line-height: 150%;
+  	text-align: center;
+}
+
+.form-signin .form-floating:focus-within {
+  	z-index: 2;
+}
+
+.form-signin input[type="text"] {
+  	margin-bottom: 10px;
+}
+
+.form-signin input[type="password"] {
+ 	margin-bottom: 10px;
+}
+
+.form-signin button{
+	background-color: rgb(169,142,218);
+}
+
+.form-signin img{
+	display: block;
+	margin: 0px auto;
+	filter: drop-shadow(1px 1px 1px #000);
+}

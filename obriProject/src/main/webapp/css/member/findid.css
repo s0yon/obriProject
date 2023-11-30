@@ -1,0 +1,33 @@
+@charset "UTF-8";
+body {
+  height: 100%;
+}
+
+.form-findid {
+  max-width: 500px;
+  padding: 1rem;
+  line-height: 150%;
+  text-align: center;
+}
+
+.form-findid .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-findid input[type="text"] {
+  margin-bottom: 10px;
+}
+
+.form-findid input[type="password"] {
+  margin-bottom: 10px;
+}
+
+.form-findid button{
+background-color: rgb(169,142,218);
+}
+
+.form-findid img{
+display: block;
+margin: 0px auto;
+filter: drop-shadow(1px 1px 1px #000);
+}

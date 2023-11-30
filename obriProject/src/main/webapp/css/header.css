@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+.header{
+	background: url('../images/violin.jpg');
+	background-position: center;
+	background-size: cover;
+	height: 220px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+	left: 0;
+	right: 0;
+	width: 100%;
+}
+
+.header .title{
+	text-align: center;
+}
+
+.header .title h1{
+	font-size: 36px;
+	color: white;
+	letter-spacing: 0.2em;
+	margin-top: 0;
+	margin-bottom: 0;
+}

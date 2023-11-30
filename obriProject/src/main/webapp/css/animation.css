@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+.animation .num_container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-left: 350px;
+	margin-right: 350px;
+	padding-top: 10px;
+}
+
+.animation .num_container .num_item {
+	text-align: center;
+}
+
+.animation .num_container .num_item .title {
+	font-size: 24px;
+	color: #808080;
+	margin-bottom: 12px;
+}
+
+.animation .num_container .num_item .unit {
+	font-size: 18px;
+	color: gray;
+}
+

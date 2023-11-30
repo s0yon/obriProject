@@ -1,0 +1,99 @@
+@charset "UTF-8";
+
+body{
+	margin-left: 0;
+	margin-right: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.nav_head{
+	height: 80px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: auto;
+	font-weight: bold;
+	position: fixed;
+  	top: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	background: white;
+}
+
+.nav_head .logo img{
+	margin-left: 100px;
+	width: 60px;
+}
+
+.nav_head .menu_left{
+	margin-left: -100px;
+	margin-right: 100px;
+}
+
+.nav_head .menu_left a{
+	text-decoration: none;
+	padding-left: 20px;
+	padding-right: 20px;
+	color: #444;
+}
+
+.nav_head .menu_right{
+	margin-left: 100px;
+	margin-right: 100px;
+}
+
+.nav_head .menu_right a{
+	text-decoration: none;
+	padding-left: 20px;
+	padding-right: 20px;
+	color: #444;
+}
+
+footer .nav_foot{
+	height: 80px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: auto;
+	position: fixed;
+  	bottom: 0;
+  	left: 0;
+	right: 0;
+	width: 100%;
+  	color: #400080;
+  	background: white;
+}
+
+footer .nav_foot .container{
+	margin-left: 100px;
+	margin-right: 100px;
+	line-height: 0.4;
+}
+
+footer .nav_foot .container p{
+	font-size: 14px;
+	font-weight: bold;
+	color: #c0c0c0;
+}
+
+footer .nav_foot .menu{
+	margin-right: 450px;
+	font-size: 14px;
+}
+
+footer .nav_foot .menu a{
+	text-decoration: none;
+	padding-left: 20px;
+	padding-right: 20px;
+	color: #444;
+}
+
+footer .btn_up{
+	position: fixed;
+	right: 100px;
+  	bottom: 80px;
+  	cursor: pointer;
+  	color: #400080;
+}
