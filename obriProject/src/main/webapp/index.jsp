@@ -7,8 +7,8 @@
 </head>
 <body>
 	<script>
-		   location.href="home.do"
-		   // 주소
+	/* re developer brench */
+	 location.href="home.do"
 	</script>
 </body>
 </html>
