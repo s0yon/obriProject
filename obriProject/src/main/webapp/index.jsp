@@ -7,7 +7,8 @@
 </head>
 <body>
 	<script>
-		 location.href="home.do"
+		   location.href="home.do"
+		   // 주소
 	</script>
 </body>
 </html>
