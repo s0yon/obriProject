@@ -48,9 +48,10 @@
 	/*     	position: absolute; */
 	width: 100%;
 	height: 100%;
-	object-fit: cover; /* 이미지 비율 유지 및 부모 요소에 꽉 차게 표시 */
+	object-fit: contain; /* 이미지를 비율 유지하면서 전체 영역에 맞춥니다. */
+/* 	object-fit: cover; /* 이미지 비율 유지 및 부모 요소에 꽉 차게 표시 */ */
 	border-radius: 8px; /* 이미지 모서리 둥글게 만들기 */
-	padding-right: 20px; /* 오른쪽에만 20px의 패딩 추가 */
+/* 	padding-right: 20px; /* 오른쪽에만 20px의 패딩 추가 */ */
 }
 
 .prDetailSub {

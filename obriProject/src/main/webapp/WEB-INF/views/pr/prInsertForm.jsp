@@ -88,6 +88,7 @@
 		    	console.log(match[2]);
 		    	$("#prVideo").val(match[2]);		        
 		    } else {
+		    	alert("유튜브링크가 올바르지 않습니다. 다시확인해주세요.");
 		    	$("#prVideo").focus();
 		        return false;
 		    }
@@ -169,9 +170,6 @@
             <div class="col-sm-6">
               <label for="pr_locLabel" class="form-label">지역</label>
               <input type="text" class="form-control" id="prLoc" name="prLoc">
-              <div class="invalid-feedback">
-                Valid last name is required.
-              </div>
             </div>
             
             <div class="col-12"> <!-- mb-3 -->
@@ -198,9 +196,9 @@
             <div class="col-12">
               <label for="youtube" class="form-label">유튜브링크</label>
               <input type="text" class="form-control" id="prVideo" name="prVideo" placeholder="ex) https://www.youtube.com/watch?v=7ou0pne7EfY 링크를 넣습니다.">
-              <div class="invalid-feedback">
-                Please enter a valid email address for shipping updates.
-              </div>
+<!--               <div class="invalid-feedback"> -->
+<!--                 Please enter a valid email address for shipping updates. -->
+<!--               </div> -->
             </div>
 
           <button class="w-100 btn btn-primary btn-lg" type="submit">등록하기</button>

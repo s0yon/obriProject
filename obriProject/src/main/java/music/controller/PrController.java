@@ -188,11 +188,11 @@ public class PrController {
 
 			System.out.println("newFileName" + newFileName);
 
-			if (size > 100000) { // 100KB
+			if (size > 1000000) { // 100KB
 				result = 1;
 				model.addAttribute("result", result);
 
-				return "uploadPrErrorResult";
+				return "pr/uploadPrErrorResult";
 
 			} else if (!extension.equals(".jpg") && !extension.equals(".jpeg") && !extension.equals(".gif")
 					&& !extension.equals(".png")) {
@@ -200,7 +200,7 @@ public class PrController {
 				result = 2;
 				model.addAttribute("result", result);
 
-				return "uploadPrErrorResult";
+				return "pr/uploadPrErrorResult";
 			}
 		}
 
@@ -278,7 +278,7 @@ public class PrController {
 
 			System.out.println("newFileName" + newFileName);
 
-			if (size > 100000) { // 100KB
+			if (size > 1000000) { // 100KB
 				result = 1;
 				model.addAttribute("result", result);
 
