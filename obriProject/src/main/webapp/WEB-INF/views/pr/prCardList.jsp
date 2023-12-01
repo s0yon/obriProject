@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <c:set var="path" value="${pageContext.request.contextPath}"></c:set>
 <!DOCTYPE html>
 <html>
@@ -12,7 +13,9 @@
     <title>홍보 카드 리스트</title>
 </head>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
 <script>
+
 
 var sessionId = '<%=(String)session.getAttribute("userId")%>';
 console.log("세션ID "+sessionId);
@@ -50,11 +53,9 @@ function sortOrderChange() {
 }
 /* 이미지 크기 조절 */
 .card-img {
-	width: 140px;
-	height: 140px;
-	/*         width: 100%; */
-	/*         height: 100%; */
-	object-fit: cover;
+	width: 100%; 
+	height: 100%;
+	object-fit: contain; /* 이미지를 비율 유지하면서 전체 영역에 맞춥니다. */
 }
 
 /* 조회수, 좋아요 필터 */
@@ -69,10 +70,10 @@ function sortOrderChange() {
 }
 
 .hashtag-container {
-  display: flex;
+/*   display: flex; */
   justify-content: space-around; /* 해시태그들을 균등하게 분포 */
   padding: 10px;
-  background-color: #fafafa; /* 배경색 설정 */
+/*   background-color: #fafafa; /* 배경색 설정 */ */
 }
 
 .hashtag {
@@ -136,13 +137,14 @@ function sortOrderChange() {
                     <div class="col-md-8 mb-4">
                         <div class="card-body">
                             <h5 class="card-title">${pr.prSub}</h5>
-<%--                             <p class="card-text">${pr.prHash}</p> --%>
                         </div>
+                        	
                         <div class="hashtag-container">
-  							<span class="hashtag">#해시태그1</span>
-  							<span class="hashtag">#해시태그2</span>
-  							<span class="hashtag">#해시태그3</span>
+                        	<c:if test="${!empty pr.prHash}">
+  								<span class="hashtag"> ${pr.prHash}</span>
+  							</c:if>  							
 						</div>
+						
                     </div>
                 </div>
             </div>
