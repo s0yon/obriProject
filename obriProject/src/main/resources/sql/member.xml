@@ -49,23 +49,23 @@
      update member set userPw=#{userPw} where userId=#{userId} and userEmail=#{userEmail}
     </update>
     
- <!--    
-    회원 수정
-    <update id="member_edit" parameterType="member">
-     update join_member set join_pwd=#{join_pwd},join_name=#{join_name},
-     join_zip=#{join_zip},join_addr1=#{join_addr1},
-     join_addr2=#{join_addr2},join_tel=#{join_tel},join_phone=#{join_phone},
-     join_email=#{join_email},join_profile=#{join_profile,jdbcType=VARCHAR} 
-     where join_id=#{join_id}
-    </update>    
-    
-    회원 삭제
-    <update id="member_delete" parameterType="member">
-      update join_member set join_delcont=#{join_delcont}, join_state=2,
-      join_deldate=sysdate where join_id=#{join_id}
+	<!-- 회원정보 수정 -->
+	<update id="updateMember" parameterType="mb" >
+	 update member set userName=#{userName},userPhone=#{userPhone},
+	 userEmail=#{userEmail},userMajor=#{userMajor,jdbcType=VARCHAR},userGru=#{userGru},
+	 userUpdate=sysdate where userId=#{userId}
+	</update>
+	
+	<!-- 비밀번호 변경 -->
+	<update id="updateMemPw" parameterType="mb" >
+	 update member set userPw=#{userPw} where userId=#{userId}
+	</update>
+	
+	<!-- 회원탈퇴 -->
+    <update id="deleteMember" parameterType="mb">
+      update member set userDelYn='Y',userUpdate=sysdate where userId=#{userId}
     </update>
-    
-     -->
+
 </mapper>
 
 

@@ -17,16 +17,47 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="./css/member/join.css" type="text/css">
 
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="./js/member/member.js"></script>
-</head>
+<script>
+	function editCheck() {
+		$("#nameGuide").hide();
+		$("#phoneGuide").hide();
+		$("#emailGuide").hide();
 
+		if ($.trim($("#userName").val()) == "") {
+			var newtext = '<font color="red">이름을 입력해주세요.</font>';
+			$("#nameGuide").text('');
+			$("#nameGuide").show();
+			$("#nameGuide").append(newtext);
+			$("#userName").val("").focus();
+			return false;
+		}
+		if ($.trim($("#userPhone").val()) == "") {
+			var newtext = '<font color="red">휴대폰번호를 입력해주세요.</font>';
+			$("#phoneGuide").text('');
+			$("#phoneGuide").show();
+			$("#phoneGuide").append(newtext);
+			$("#userPhone").val("").focus();
+			return false;
+		}
+		if ($.trim($("#userEmail").val()) == "") {
+			var newtext = '<font color="red">이메일을 입력해주세요.</font>';
+			$("#emailGuide").text('');
+			$("#emailGuide").show();
+			$("#emailGuide").append(newtext);
+			$("#userEmail").val("").focus();
+			return false;
+		}
+	}
+</script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
 <body class="d-flex align-items-center py-4 bg-body-tertiary">
 	<main class="form-joinin w-1000 m-auto">
-		<form name="f" method="post" action="editMember.do"
-			onsubmit="return check()">
-			<br> <img src="images/184.png" alt="" width="100"
-				height="100"><br><br>
+
+		<form name="e" method="post" action="editMemberOk.do"
+			onsubmit="return editCheck()">
+			<br> <img src="images/184.png" alt="" width="100" height="100"><br>
+			<br>
 			<h1 class="h4 mb-3" align="center">
 				연주자를 위한 커뮤니티,<br> <b>오브리</b>에 오신 것을 환영합니다.
 			</h1>
@@ -35,42 +66,43 @@
 			<h2 class="h6 fw-bold" align="center">필수 입력 항목</h2>
 			<hr>
 
-			<div class="row mb-3">
+			<div class="row mb-3" hidden>
 				<label for="userId" class="form-label mb-0" align="left">아이디</label>
 				<div class="row mb-0 g-1 align-items-center">
 					<div class="col-9 mb-1">
-						<input type="text" class="form-control" id="userId" name="userId" value="${userId}" readonly>
+						<input type="text" class="form-control" id="userId" name="userId"
+							value="${userId}" readonly>
 					</div>
 				</div>
 			</div>
 
 			<div class="row mb-3">
-				<label for="userPw" class="form-label" align="left">비밀번호</label> <input
-					type="password" class="form-control" id="userPw" name="userPw"
-					placeholder="6~12자 영대소문자, 숫자 이용" maxlength="12"
-					oninput="numberMaxLength(this);">
+				<button class="btn w-100 pr-100 fw-bold" type="button"
+					onclick="location.href='goEditPw.do';">비밀번호 변경하기</button>
 			</div>
-			<div class="form-text mb-2" id="pwGuide" align="left"></div>
 
 			<div class="row mb-3">
 				<label for="userName" class="form-label" align="left">성명</label> <input
 					type="text" class="form-control" id="userName" name="userName"
 					value="${editm.userName}">
 			</div>
+			<div class="form-text mb-2" id="nameGuide" align="left"></div>
 
 			<div class="row mb-3">
-				<label for="userPhone" class="form-label" align="left">휴대폰번호</label> <input
-					type="text" maxlength="11"
+				<label for="userPhone" class="form-label" align="left">휴대폰번호</label>
+				<input type="text" maxlength="11"
 					oninput="this.value=this.value.replace(/[^0-9.]/g, '');"
 					class="form-control" id="userPhone" name="userPhone"
 					value="${editm.userPhone}">
 			</div>
+			<div class="form-text mb-2" id="phoneGuide" align="left"></div>
 
 			<div class="row mb-3">
 				<label for="userEmail" class="form-label" align="left">이메일</label> <input
 					type="text" class="form-control" id="userEmail" name="userEmail"
 					value="${editm.userEmail}">
 			</div>
+			<div class="form-text mb-2" id="emailGuide" align="left"></div>
 			<br>
 			<h2 class="h6 fw-bold" align="center">선택 입력 항목</h2>
 			<hr>
@@ -85,9 +117,11 @@
 				<label for="userGru" class="form-label" align="left">졸업유무</label> <select
 					class="form-select" name="userGru" id="userGru">
 					<option value="N">선택</option>
-					<option value="Y" <c:if test="${userGru == 'Y'}">${'selected'}
+					<option value="Y"
+						<c:if test="${userGru == 'Y'}">${'selected'}
             </c:if>>네</option>
-					<option value="N" <c:if test="${userGru == 'N'}">${'selected'}
+					<option value="N"
+						<c:if test="${userGru == 'N'}">${'selected'}
             </c:if>>아니요</option>
 				</select>
 			</div>
@@ -95,12 +129,12 @@
 			<br>
 			<button class="btn w-100 pr-100 fw-bold" type="submit">수정</button>
 
-			<p class="mt-4 mb-3 text-body-secondary" align="center"
+			<p class="mt-5 mb-3 text-body-secondary" align="center"
 				style="font-size: 90%">
-				이미 회원이신가요?&nbsp;<a href="loginMember.do" style="color: gray">로그인</a>
+				계정 삭제를 원하시나요?&nbsp;<a href="goDelete.do" style="color: gray">회원탈퇴</a>
 			</p>
 
-			<p class="mt-5 mb-3 text-body-secondary" align="center"
+			<p class="mt-2 mb-3 text-body-secondary" align="center"
 				style="font-size: 80%">&copy; 2023. 1조</p>
 		</form>
 	</main>

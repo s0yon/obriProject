@@ -14,7 +14,7 @@ public class memberDaoImpl implements memberDao {
 	
 	// 아이디 존재 여부 확인
 	@Override
-	public memberVO checkId(String userId) {
+	public memberVO checkId(String userId) throws Exception{
 		return sqlSession.selectOne("checkLogin", userId);
 	}
 	
@@ -32,7 +32,7 @@ public class memberDaoImpl implements memberDao {
 	
 	// 아이디 중복확인
 	@Override
-	public int checkMemberId(String userId) {
+	public int checkMemberId(String userId) throws Exception{
 		int re;
 		memberVO mb = sqlSession.selectOne("checkMemberId", userId);
 		
@@ -58,13 +58,13 @@ public class memberDaoImpl implements memberDao {
 
 	// 아이디 찾기
 	@Override
-	public memberVO findId(memberVO fm) {
+	public memberVO findId(memberVO fm) throws Exception{
 		return sqlSession.selectOne("findIdCheck", fm);
 	}
 	
 	// 비밀번호 찾기
 	@Override
-	public memberVO findPw(memberVO pm) {
+	public memberVO findPw(memberVO pm) throws Exception{
 		return sqlSession.selectOne("findPwCheck", pm);
 	}
 	
@@ -75,5 +75,20 @@ public class memberDaoImpl implements memberDao {
 		System.out.println("아이디"+mb.getUserId());
 		System.out.println("패스워드"+mb.getUserPw());
 		sqlSession.update("updatePw", mb);
+	}
+	
+	// 회원정보 수정
+	public void updateMember(memberVO mb) throws Exception{
+		sqlSession.update("updateMember", mb);
+	}
+
+	// 비밀번호 변경
+	public void updateMemPw(memberVO mb) throws Exception{
+		sqlSession.update("updateMemPw", mb);
+	}
+	
+	// 회원탈퇴
+	public void deleteMember(memberVO mb) throws Exception{
+		sqlSession.update("deleteMember", mb);
 	}
 }

@@ -52,7 +52,6 @@ function check(){
 		$("#userEmail").val("").focus();
 		return false;
 	 }
-	
 	if($.trim($("#userPw").val()).length < 6){
 		var newtext='<font color="red">비밀번호는 6~12자의 값이어야 합니다.</font>';
 		$("#pwGuide").text('');
@@ -60,8 +59,7 @@ function check(){
 		$("#pwGuide").append(newtext);
 		$("#userPw").focus();
 		return false;
-	};
-	
+	}
 	if(!(validateUserPw(mempw))){
 		var newtext='<font color="red">비밀번호는 영대소문자, 숫자만 가능합니다.</font>';
 		$("#pwGuide").text('');
@@ -69,8 +67,7 @@ function check(){
 		$("#pwGuide").append(newtext);
 		$("#userPw").focus();
 		return false;
-	};
-	
+	}
 	if(checkid == 'n'){
 		var newtext='<font color="red">아이디 중복확인을 해주세요.</font>';
 		$("#idGuide").text('');
@@ -78,7 +75,7 @@ function check(){
 		$("#idGuide").append(newtext);
 		$("#userId").focus();
 		return false;
-	};
+	}
 };
 
 // 입력 비밀번호 유효성 검사 : 영대소문자, 숫자
@@ -100,8 +97,8 @@ function checkId(){
 		$("#idGuide").append(newtext);
 		$("#userId").focus();
 		return false;
-	};
-
+	}
+	
 	// 2. 유효성 검사
 	if(!(validateUserId(memid))){
 		var newtext='<font color="red">아이디는 영소문자, 숫자만 가능합니다.</font>';
@@ -110,7 +107,7 @@ function checkId(){
 		$("#idGuide").append(newtext);
 		$("#userId").focus();
 		return false;
-	};
+	}
 	
 	// 3. 중복 검사
     $.ajax({

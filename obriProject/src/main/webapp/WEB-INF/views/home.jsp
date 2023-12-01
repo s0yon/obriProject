@@ -106,32 +106,44 @@
 			</div>
 		</section>
 
+<!-- git test by yon -->
+
 		<!-- Intro -->
 		<section class="intro">
 			<div class="container">
-				<div class="item">
-					<br> <i class="fa-solid fa-magnifying-glass fa-2xl"></i>
-					<span style="font-size:20px; font-weight:bold; color:#808080;">&nbsp;최신 구인글</span><br><br>
+				<div class="banner">
+					<div class="ban_img">
+						<img src="./images/banner.png" alt="">
+					</div>
+					<div class="ban_text">
+						<p>최신 구인글</p>
+					</div>
 				</div>
 				<div class="item">
 					<iframe src="boardListShow.do" frameborder="0" scrolling="no"
 						style="min-width: 480px; min-height: 270px;"></iframe>
 				</div>
-				<div class="item" onclick="board_list.do">
-					<i class="fa-solid fa-plus fa-2xl"></i>
+				<div class="btn_plus" onclick="location.href='board_list.do'"
+					style="cursor: pointer;">
+					<span class="fa-solid fa-plus fa-2xl"></span>
 				</div>
 			</div>
 			<div class="container">
-				<div class="item">
-					<br> <i class="fa-regular fa-comment fa-2xl"></i>
-					<span style="font-size:20px; font-weight:bold; color:#808080;">&nbsp;최신 커뮤니티글</span><br><br>
+				<div class="banner">
+					<div class="ban_img">
+						<img src="./images/banner.png" alt="">
+					</div>
+					<div class="ban_text">
+						<p>최신 커뮤니티글</p>
+					</div>
 				</div>
 				<div class="item">
 					<iframe src="boardListShow.do" frameborder="0" scrolling="no"
 						style="min-width: 480px; min-height: 270px;"></iframe>
 				</div>
-				<div class="item" onclick="board_list.do">
-					<i class="fa-solid fa-plus fa-2xl"></i>
+				<div class="btn_plus" onclick="location.href='board_list.do'"
+					style="cursor: pointer;">
+					<span class="fa-solid fa-plus fa-2xl"></span>
 				</div>
 			</div>
 
