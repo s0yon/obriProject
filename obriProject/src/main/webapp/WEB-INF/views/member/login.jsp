@@ -57,7 +57,7 @@
 
 			<p class="mt-4 mb-3 text-body-secondary" align="center" style="font-size:90%">
 				<a href="findId.do" style="color: gray">아이디 찾기</a>&nbsp;|&nbsp;<a
-					href="findPw.do" style="color: gray">비밀번호 찾기</a><br>아직 회원이 아니신가요?&nbsp;<a href="joinMember.do" style="color: gray">회원가입</a>
+					href="findPw.do" style="color: gray">비밀번호 찾기</a><br>아직 회원이 아니신가요?&nbsp;<a href="join.do" style="color: gray">회원가입</a>
 			</p>
 
 			<p class="mt-5 mb-3 text-body-secondary" align="center" style="font-size:80%">&copy;

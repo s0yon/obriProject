@@ -66,7 +66,7 @@
 			</tr>
 			<br><br>
 			<button class="btn w-100 pr-100 fw-bold" type="button"
-				onclick="location.href='loginMember.do'">확인</button>
+				onclick="location.href='login.do'">확인</button>
 		</c:if>
 
 			<p class="mt-5 mb-3 text-body-secondary" align="center"

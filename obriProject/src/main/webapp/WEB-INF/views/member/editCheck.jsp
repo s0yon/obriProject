@@ -31,7 +31,7 @@
 </head>
 <body class="d-flex align-items-center py-4 bg-body-tertiary">
 	<main class="form-findid w-500 m-auto">
-		<form method="post" action="editMemCheck.do" onsubmit="return check()">
+		<form method="post" action="editCheckOk.do" onsubmit="return check()">
 			<br> <img src="images/184.png" alt="" width="100" height="100">
 			<br> <br>
 			<h1 class="h4 mb-3">

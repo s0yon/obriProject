@@ -2,11 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="loginOutLink"
-	value="${sessionScope.userId==null ? 'loginMember.do' : 'logoutMember.do'}" />
+	value="${sessionScope.userId==null ? 'login.do' : 'logout.do'}" />
 <c:set var="loginOut"
 	value="${sessionScope.userId==null ? '로그인' : '로그아웃'}" />
 <c:set var="myPageLink"
-	value="${sessionScope.userId==null ? 'joinMember.do' : 'goEdit.do'}" />
+	value="${sessionScope.userId==null ? 'join.do' : 'editCheck.do'}" />
 <c:set var="myPage"
 	value="${sessionScope.userId==null ? '회원가입' : '마이페이지'}" />
 
@@ -105,15 +105,6 @@
 				</div>
 			</div>
 		</section>
-
-<!-- yon -->
-<!-- git test by yon -->
-<<<<<<< .merge_file_bhVBY9
-<!-- please -->
-=======
-<!-- yon -->
->>>>>>> .merge_file_o2cSKa
-<!-- git test by yon -->
 
 		<!-- Intro -->
 		<section class="intro">
