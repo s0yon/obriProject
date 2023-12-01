@@ -61,6 +61,7 @@
 				alt="">
 			</a>
 		</div>
+		<!-- 테스트 만들기 입니다. -->
 		<div class="menu_left">
 			<a href="boardListShow.do">구인</a> <a href="prCardList.do">홍보</a> <a
 				href="board_list.do">커뮤니티</a> <a href="board_list.do">공지</a>
