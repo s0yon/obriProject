@@ -40,7 +40,7 @@
 			<form method="post" action="findPwCheck.do" onsubmit="return check()">
 				<br>
 				<img src="images/184.png" alt="" width="100"
-					height="100">
+					height="100" onclick="location.href='home.do'" style="cursor: pointer;">
 				<br><br>
 				<h1 class="h4 mb-3"><b>오브리</b>&nbsp; 비밀번호 찾기</h1>
 				<br>
