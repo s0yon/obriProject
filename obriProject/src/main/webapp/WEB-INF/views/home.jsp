@@ -61,7 +61,6 @@
 				alt="">
 			</a>
 		</div>
-		<!-- 테스트 만들기 입니다. -->
 		<div class="menu_left">
 			<a href="boardListShow.do">구인</a> <a href="prCardList.do">홍보</a> <a
 				href="board_list.do">커뮤니티</a> <a href="board_list.do">공지</a>
@@ -159,9 +158,6 @@
 				<a href="">공지사항</a> <a href="">문의하기</a> <a href="">개인정보 처리방침</a> <a
 					href="">서비스 이용약관</a>
 			</div>
-		</div>
-		<div class="copyright">
-			<p>&copy; 2023. 1조</p>
 		</div>
 		<div class="btn_up" onclick="window.scrollTo(0,0)">
 			<span class="fa-solid fa-circle-up fa-2xl"></span>
