@@ -5,7 +5,7 @@
         
     <!-- 자기 홍보 추가 -->
     <insert id="insertPr" parameterType="pr">
-     insert into prBoard values(pr_no_seq.nextval, 'test01', #{prSub}, #{prText}, 0, #{prMajor, jdbcType=VARCHAR} ,#{prLoc},#{prCareer},#{prVideo, jdbcType=VARCHAR},#{prFile}, #{prHash, jdbcType=VARCHAR}, 
+     insert into prBoard values(pr_no_seq.nextval, #{userId}, #{prSub}, #{prText}, 0, #{prMajor, jdbcType=VARCHAR} ,#{prLoc},#{prCareer},#{prVideo, jdbcType=VARCHAR},#{prFile}, #{prHash, jdbcType=VARCHAR}, 
       							SYSDATE, SYSDATE,'N')
     </insert> 
     
