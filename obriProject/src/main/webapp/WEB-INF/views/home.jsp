@@ -2,11 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="loginOutLink"
-	value="${sessionScope.userId==null ? 'loginMember.do' : 'logoutMember.do'}" />
+	value="${sessionScope.userId==null ? 'login.do' : 'logout.do'}" />
 <c:set var="loginOut"
 	value="${sessionScope.userId==null ? '로그인' : '로그아웃'}" />
 <c:set var="myPageLink"
-	value="${sessionScope.userId==null ? 'joinMember.do' : 'goEdit.do'}" />
+	value="${sessionScope.userId==null ? 'join.do' : 'editCheck.do'}" />
 <c:set var="myPage"
 	value="${sessionScope.userId==null ? '회원가입' : '마이페이지'}" />
 
@@ -61,7 +61,6 @@
 				alt="">
 			</a>
 		</div>
-		<!-- 테스트 만들기 입니다. -->
 		<div class="menu_left">
 			<a href="boardListShow.do">구인</a> <a href="prCardList.do">홍보</a> 
 			<a href="board_list.do">커뮤니티</a> <a href="board_list.do">공지</a>
@@ -107,14 +106,6 @@
 				</div>
 			</div>
 		</section>
-
-<!-- git test by yon -->
-<<<<<<< .merge_file_bhVBY9
-<!-- please -->
-=======
-<!-- yon -->
->>>>>>> .merge_file_o2cSKa
-<!-- git test by yon -->
 
 		<!-- Intro -->
 		<section class="intro">
@@ -169,9 +160,6 @@
 				<a href="">공지사항</a> <a href="">문의하기</a> <a href="">개인정보 처리방침</a> <a
 					href="">서비스 이용약관</a>
 			</div>
-		</div>
-		<div class="copyright">
-			<p>&copy; 2023. 1조</p>
 		</div>
 		<div class="btn_up" onclick="window.scrollTo(0,0)">
 			<span class="fa-solid fa-circle-up fa-2xl"></span>

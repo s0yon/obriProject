@@ -112,10 +112,10 @@ function checkId(){
 	// 3. 중복 검사
     $.ajax({
         type: "POST", 
-        url: "checkMemberId.do",
+        url: "checkMemId.do",
         data: {"memid":memid}, 
         success: function(data) {
-      	  if(data==1){	// 중복
+      	  if(data == 1){	// 중복
       		var newtext='<font color="red">사용 중인 아이디입니다.</font>';
       		$("#idGuide").text('');
         	$("#idGuide").show();

@@ -17,36 +17,34 @@ public class memberServiceImpl implements memberService{
 	// DAO 주입
 	@Autowired
 	private memberDaoImpl md;
-	
 	// JavaMailSender 주입
 	@Autowired
 	JavaMailSender mailSender;
-	
 	// BCryptPasswordEncoder 주입
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;	
 	
-	// 아이디 존재 여부 확인
+	// 아이디 정보 확인
 	@Override
 	public memberVO checkId(String userId) throws Exception {
 		return md.checkId(userId);
 	}
 	
-	// 로그인 인증(메일)
+	// 아이디 중복확인(Ajax)
 	@Override
-	public int emailAuthFail(String userId) throws Exception {
-		return md.emailAuthFail(userId);
+	public int checkMemId(String userId) throws Exception {
+		return md.checkMemId(userId);
 	}
 	
-	// 회원 가입 + 인증 메일 발송
+	// 회원 가입(저장) + 인증 메일 발송
 	@Override
-	public void insertMember(memberVO mb) throws Exception {
+	public void insertMem(memberVO mb) throws Exception {
 		// 1. 랜덤 문자열을 생성해 mailKey에 저장
 		String mailKey = new tempKey().getKey(30, false);	// 랜덤키 길이 설정
 		mb.setMailKey(mailKey);
 		
 		// 2. 회원 가입
-		md.insertMember(mb);
+		md.insertMem(mb);
 		
 		// 3. 회원 가입 시 인증 메일 발송
 		mailHandler sendMail = new mailHandler(mailSender);
@@ -55,28 +53,21 @@ public class memberServiceImpl implements memberService{
 				"<h1>오브리 메일 인증</h1>" +
 				"<br>오브리에 오신 것을 환영합니다." +
 				"<br>아래 [이메일 인증 확인]을 눌러주세요." +
-				"<br><a href='http://localhost/musicProject/registerEmail.do?userEmail=" +
+				"<br><a href='http://localhost/obriProject/registerMail.do?userEmail=" +
 				mb.getUserEmail() + "&mailKey=" + mailKey +
 				"' target='_blank'>이메일 인증 확인</a>");
 		sendMail.setFrom("info0obri@gmail.com", "오브리");
 		sendMail.setTo(mb.getUserEmail());
 		sendMail.send();
-		
 	}
 
-	// 아이디 중복확인
-	@Override
-	public int checkMemberId(String userId) throws Exception {
-		return md.checkMemberId(userId);
-	}
-	
-	// 이메일 인증 키 저장
+	// 메일 인증키 저장
 	@Override
 	public int updateMailKey(memberVO mb) throws Exception {
 		return md.updateMailKey(mb);
 	}
 	
-	// 이메일 인증 시 권한 변경
+	// 메일 인증 시 권한 변경
 	@Override
 	public int updateMailAuth(memberVO mb) throws Exception {
 		return md.updateMailAuth(mb);
@@ -84,14 +75,14 @@ public class memberServiceImpl implements memberService{
 
 	// 아이디 찾기
 	@Override
-	public memberVO findId(memberVO m) throws Exception {
-		return md.findId(m);
+	public memberVO findIdCheck(memberVO m) throws Exception {
+		return md.findIdCheck(m);
 	}
 	
 	// 비밀번호 찾기
 	@Override
-	public memberVO findPw(memberVO m) throws Exception {
-		return md.findPw(m);
+	public memberVO findPwCheck(memberVO m) throws Exception {
+		return md.findPwCheck(m);
 	}
 
 	// 비밀번호 초기화
@@ -124,8 +115,8 @@ public class memberServiceImpl implements memberService{
 
 	// 회원정보 수정
 	@Override
-	public void updateMember(memberVO member) throws Exception {
-		md.updateMember(member);
+	public void updateMem(memberVO member) throws Exception {
+		md.updateMem(member);
 	}
 	
 	// 비밀번호 변경
@@ -134,7 +125,8 @@ public class memberServiceImpl implements memberService{
 	}
 
 	// 회원탈퇴
-	public void deleteMember(memberVO m) throws Exception {
-		md.deleteMember(m);
+	public void deleteMem(memberVO m) throws Exception {
+		md.deleteMem(m);
 	}
+
 }
