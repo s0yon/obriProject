@@ -17,6 +17,46 @@
 	href="./css/member/login.css"
 	type="text/css">
 
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script>
+Kakao.init('80e50a1a132a21459441878c6e8527b2');
+console.log(Kakao.isInitialized());
+// 카카오 로그인
+function kakaoLogin() {
+    Kakao.Auth.login({
+      success: function (response) {
+        Kakao.API.request({
+          url: '/v2/user/me',
+          success: function (response) {
+        	  console.log(response)
+          },
+          fail: function (error) {
+            console.log(error)
+          },
+        })
+      },
+      fail: function (error) {
+        console.log(error)
+      },
+    })
+  }
+// 카카오 로그아웃  
+function kakaoLogout() {
+    if (Kakao.Auth.getAccessToken()) {
+      Kakao.API.request({
+        url: '/v1/user/unlink',
+        success: function (response) {
+        	console.log(response)
+        },
+        fail: function (error) {
+          console.log(error)
+        },
+      })
+      Kakao.Auth.setAccessToken(undefined)
+    }
+  }  
+</script>
+
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
 	function check() {
@@ -53,6 +93,19 @@
 				<input type="password" class="form-control" id="userPw" name="userPw" placeholder="pw">
 				<label for="userPw">비밀번호</label>
 			</div>
+	
+	<ul>
+	<li onclick="kakaoLogin();">
+      <a href="javascript:void(0)">
+          <span>카카오 로그인</span>
+      </a>
+	</li>
+	<li onclick="kakaoLogout();">
+      <a href="javascript:void(0)">
+          <span>카카오 로그아웃</span>
+      </a>
+	</li>
+</ul>
 	
 			<button class="btn w-100 pr-100 fw-bold" type="submit">로그인</button>
 
