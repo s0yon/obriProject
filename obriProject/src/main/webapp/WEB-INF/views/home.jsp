@@ -109,19 +109,19 @@
 				<div class="num_item">
 					<h2 class="title">누적 회원 수</h2>
 					<lable class="numCount"
-						style="font-size:24px; font-weight:bold; color:#400080;">111</lable>
+						style="font-size:24px; font-weight:bold; color:#444;">111</lable>
 					<span class="unit">명</span><br>
 				</div>
 				<div class="num_item">
 					<h2 class="title">누적 구인건 수</h2>
 					<lable class="numCount"
-						style="font-size:24px; font-weight:bold; color:#400080;">222</lable>
+						style="font-size:24px; font-weight:bold; color:#444;">222</lable>
 					<span class="unit">건</span><br>
 				</div>
 				<div class="num_item">
 					<h2 class="title">누적 좋아요 수</h2>
 					<lable class="numCount"
-						style="font-size:24px; font-weight:bold; color:#400080;">333</lable>
+						style="font-size:24px; font-weight:bold; color:#444;">333</lable>
 					<span class="unit">개</span><br>
 				</div>
 			</div>
@@ -139,9 +139,8 @@
 						<p>최신 구인글</p>
 					</div>
 				</div>
-				<div class="itpx">
-					<iframe src="boardListShow.do" frameborder="0" scrolling="no"
-						style="min-width: 480px; min-height: 270px;"></iframe>
+				<div class="item">
+					<iframe src="boardListShow.do" frameborder="0" scrolling="no"></iframe>
 				</div>
 				<div class="btn_plus" onclick="location.href='board_list.do'"
 					style="cursor: pointer;">
@@ -157,9 +156,8 @@
 						<p>최신 커뮤니티글</p>
 					</div>
 				</div>
-				<div class="itpx">
-					<iframe src="boardListShow.do" frameborder="0" scrolling="no"
-						style="min-width: 480px; min-height: 270px;"></iframe>
+				<div class="item">
+					<iframe src="boardListShow.do" frameborder="0" scrolling="no"></iframe>
 				</div>
 				<div class="btn_plus" onclick="location.href='board_list.do'"
 					style="cursor: pointer;">
