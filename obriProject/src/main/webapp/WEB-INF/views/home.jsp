@@ -106,19 +106,19 @@
 		<!-- animation start -->
 		<section class="animation">
 			<div class="num_container">
-				<div class="num_itpx">
+				<div class="num_item">
 					<h2 class="title">누적 회원 수</h2>
 					<lable class="numCount"
 						style="font-size:24px; font-weight:bold; color:#400080;">111</lable>
 					<span class="unit">명</span><br>
 				</div>
-				<div class="num_itpx">
+				<div class="num_item">
 					<h2 class="title">누적 구인건 수</h2>
 					<lable class="numCount"
 						style="font-size:24px; font-weight:bold; color:#400080;">222</lable>
 					<span class="unit">건</span><br>
 				</div>
-				<div class="num_itpx">
+				<div class="num_item">
 					<h2 class="title">누적 좋아요 수</h2>
 					<lable class="numCount"
 						style="font-size:24px; font-weight:bold; color:#400080;">333</lable>

@@ -154,6 +154,7 @@
     <div class="row g-5">
       <div class="col-md-7 col-lg-8">
         <form action ="pr_insert_ok.do" method="post" onsubmit="return pr_check()" enctype="multipart/form-data">
+        <input type="hidden" name ="userId" value='<%=request.getAttribute("userId")%>' />
           <div class="row g-3">
           	<div class="container-md">
           		<label for="pr_subLabel" class="form-label">글제목</label>	<span id="prSub_span">글제목을 입력하세요.</span>
