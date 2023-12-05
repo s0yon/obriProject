@@ -191,7 +191,7 @@ public class PrController {
 			if (size > 1000000) { // 100KB
 				result = 1;
 				model.addAttribute("result", result);
-
+				System.out.println("파일이 커서 에러가 나옴");
 				return "pr/uploadPrErrorResult";
 
 			} else if (!extension.equals(".jpg") && !extension.equals(".jpeg") && !extension.equals(".gif")
@@ -199,7 +199,7 @@ public class PrController {
 
 				result = 2;
 				model.addAttribute("result", result);
-
+				System.out.println("형식이 안맞아서 에러가 나옴");
 				return "pr/uploadPrErrorResult";
 			}
 		}
