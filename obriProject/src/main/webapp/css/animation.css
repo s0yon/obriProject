@@ -1,4 +1,8 @@
-@charset "UTF-8";
+:root{
+	--text-color: #444;
+	--background-color: #F8F9FA;
+	--accent-color: #A490D5;
+}
 
 .animation .num_container {
 	display: flex;
@@ -15,13 +19,13 @@
 
 .animation .num_container .num_item .title {
 	font-size: 24px;
-	color: #ccc;
+	color: var(--text-color);
 	margin-bottom: 12px;
 }
 
 .animation .num_container .num_item .unit {
 	font-size: 18px;
-	color: #ccc;
+	color: var(--text-color);
 }
 
 @media screen and (max-width: 768px){
@@ -39,7 +43,7 @@
 	
 	.animation .num_container .num_item .title {
 		font-size: 18px;
-		color: #ccc;
+		color: var(--text-color);
 		margin-bottom: 12px;
 }
 	

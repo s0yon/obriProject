@@ -132,10 +132,10 @@
 		<section class="intro">
 			<div class="container">
 				<div class="banner">
-					<div class="ban_img">
-						<img src="./images/banner.png" alt="">
+					<div class="bann_icon">
+						<i class="fa-solid fa-magnifying-glass"></i>
 					</div>
-					<div class="ban_text">
+					<div class="bann_text">
 						<p>최신 구인글</p>
 					</div>
 				</div>
@@ -149,10 +149,10 @@
 			</div>
 			<div class="container">
 				<div class="banner">
-					<div class="ban_img">
-						<img src="./images/banner.png" alt="">
+					<div class="bann_icon">
+						<i class="fa-regular fa-comments"></i>
 					</div>
-					<div class="ban_text">
+					<div class="bann_text">
 						<p>최신 커뮤니티글</p>
 					</div>
 				</div>

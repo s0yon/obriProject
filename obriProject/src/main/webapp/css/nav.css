@@ -1,11 +1,12 @@
 :root{
 	--text-color: #444;
-	--background-color: white;
-	--accent-color: #ccc;
+	--background-color: #F8F9FA;
+	--accent-color: #A490D5;
 }
 
 body{
 	margin: 0;
+	background-color: var(--background-color);
 }
 
 .navbar{
@@ -175,7 +176,7 @@ body{
 	right: 32px;
   	bottom: 80px;
   	cursor: pointer;
-  	color: #400080;
+  	color: var(--accent-color);
 }
 
 @media screen and (max-width: 768px){
