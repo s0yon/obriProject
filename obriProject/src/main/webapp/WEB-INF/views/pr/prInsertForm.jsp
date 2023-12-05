@@ -1,7 +1,13 @@
+<%@page import="org.springframework.web.context.annotation.SessionScope"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="path" value="${pageContext.request.contextPath}" />
+
+<%
+// 세션에서 userId 속성 가져오기
+String userId = (String)session.getAttribute("userId");
+%>
 
 <!DOCTYPE html>
 <html>
@@ -154,7 +160,7 @@
     <div class="row g-5">
       <div class="col-md-7 col-lg-8">
         <form action ="pr_insert_ok.do" method="post" onsubmit="return pr_check()" enctype="multipart/form-data">
-        <input type="hidden" name ="userId" value='<%=request.getAttribute("userId")%>' />
+        <input type="hidden" name ="userId" value="<%= userId %>" />
           <div class="row g-3">
           	<div class="container-md">
           		<label for="pr_subLabel" class="form-label">글제목</label>	<span id="prSub_span">글제목을 입력하세요.</span>
