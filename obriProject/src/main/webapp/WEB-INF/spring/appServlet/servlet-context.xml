@@ -48,7 +48,33 @@
 			<mapping path="/editMemberOk.do" />
 			<mapping path="/editPwOk.do" />
 			<mapping path="/delMemCheck.do" />
+			<mapping path="/qna_form.do" />
 			<beans:ref bean="sessionChk" />
+		</interceptor>
+	</interceptors>
+	
+		<!-- 인터셉터 설정 -->	
+	<beans:bean id="adminSessionChk"
+		class="music.controller.AdminSessionCheckInter" />
+	<interceptors>
+		<interceptor>
+			<mapping path="/admin_notice.do" />
+			<mapping path="/notice_write.do" />
+			<mapping path="/notice_delete_selected.do" />
+			<mapping path="/admin_notice_read.do" />
+			<mapping path="/notice_list.do" />
+			<mapping path="/notice_edit.do" />
+			<mapping path="/admin_qna.do" />
+			<mapping path="/qna_read.do" />
+			<mapping path="/admin_memberlist.do" />
+			<mapping path="/admin_user_view.do" />
+			<mapping path="/admin_job.do" />
+			<mapping path="/admin_job_read.do" />
+			<mapping path="/admin_pr.do" />
+			<mapping path="/admin_pr_read.do" />
+			<mapping path="/admin_comm.do" />
+			<mapping path="/admin_comm_read.do" />
+			<beans:ref bean="adminSessionChk" />
 		</interceptor>
 	</interceptors>
 	

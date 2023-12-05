@@ -63,7 +63,7 @@
 		</div>
 		<div class="menu_left">
 			<a href="boardListShow.do">구인</a> <a href="prCardList.do">홍보</a> <a
-				href="board_list.do">커뮤니티</a> <a href="board_list.do">공지</a>
+				href="board_list.do">커뮤니티</a> <a href="notice_list.do">공지</a>
 		</div>
 		<div class="menu_right">
 			<a href="<c:url value='${loginOutLink}'/>">${loginOut}</a> <a
@@ -155,7 +155,7 @@
 				<p>O&nbsp;B&nbsp;R&nbsp;I&nbsp;&nbsp;&copy;2023.1조</p>
 			</div>
 			<div class="menu">
-				<a href="">공지사항</a> <a href="">문의하기</a> <a href="">개인정보 처리방침</a> <a
+				<a href="notice_list.do">공지사항</a> <a href="qna_form.do">문의하기</a> <a href="">개인정보 처리방침</a> <a
 					href="">서비스 이용약관</a>
 			</div>
 		</div>
