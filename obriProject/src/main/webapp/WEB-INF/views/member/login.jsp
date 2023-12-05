@@ -17,6 +17,46 @@
 	href="./css/member/login.css"
 	type="text/css">
 
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script>
+Kakao.init('80e50a1a132a21459441878c6e8527b2');
+console.log(Kakao.isInitialized());
+// 카카오 로그인
+function kakaoLogin() {
+    Kakao.Auth.login({
+      success: function (response) {
+        Kakao.API.request({
+          url: '/v2/user/me',
+          success: function (response) {
+        	  console.log(response)
+          },
+          fail: function (error) {
+            console.log(error)
+          },
+        })
+      },
+      fail: function (error) {
+        console.log(error)
+      },
+    })
+  }
+// 카카오 로그아웃  
+function kakaoLogout() {
+    if (Kakao.Auth.getAccessToken()) {
+      Kakao.API.request({
+        url: '/v1/user/unlink',
+        success: function (response) {
+        	console.log(response)
+        },
+        fail: function (error) {
+          console.log(error)
+        },
+      })
+      Kakao.Auth.setAccessToken(undefined)
+    }
+  }  
+</script>
+
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
 	function check() {
@@ -39,7 +79,8 @@
 	<main class="form-signin w-500 m-auto">
 		<form method="post" action="checkLogin.do" onsubmit="return check()">
 			<br>
-			<img src="images/184.png" alt="" width="100" height="100">
+			<img src="images/184.png" alt="" width="100" height="100" 
+			onclick="location.href='home.do'" style="cursor: pointer;">
 			<br><br>
 			<h1 class="h4 mb-3" align="center">
 			연주자를 위한 커뮤니티,<br><b>오브리</b>에 오신 것을 환영합니다.</h1>
@@ -53,11 +94,24 @@
 				<label for="userPw">비밀번호</label>
 			</div>
 	
+	<ul>
+	<li onclick="kakaoLogin();">
+      <a href="javascript:void(0)">
+          <span>카카오 로그인</span>
+      </a>
+	</li>
+	<li onclick="kakaoLogout();">
+      <a href="javascript:void(0)">
+          <span>카카오 로그아웃</span>
+      </a>
+	</li>
+</ul>
+	
 			<button class="btn w-100 pr-100 fw-bold" type="submit">로그인</button>
 
 			<p class="mt-4 mb-3 text-body-secondary" align="center" style="font-size:90%">
 				<a href="findId.do" style="color: gray">아이디 찾기</a>&nbsp;|&nbsp;<a
-					href="findPw.do" style="color: gray">비밀번호 찾기</a><br>아직 회원이 아니신가요?&nbsp;<a href="joinMember.do" style="color: gray">회원가입</a>
+					href="findPw.do" style="color: gray">비밀번호 찾기</a><br>아직 회원이 아니신가요?&nbsp;<a href="join.do" style="color: gray">회원가입</a>
 			</p>
 
 			<p class="mt-5 mb-3 text-body-secondary" align="center" style="font-size:80%">&copy;

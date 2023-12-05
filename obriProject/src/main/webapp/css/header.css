@@ -25,3 +25,12 @@
 	margin-top: 0;
 	margin-bottom: 0;
 }
+
+@media screen and (max-width: 768px){
+	.header .title h1{
+		font-size: 28px;
+		color: white;
+		letter-spacing: 0.2em;
+		margin-top: 0;
+		margin-bottom: 0;
+}

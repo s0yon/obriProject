@@ -18,10 +18,6 @@
 	
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
-<!-- 	<resources mapping="/css/**" location="/WEB-INF/css/" /> -->
-<!-- 	<resources mapping="/js/**" location="/WEB-INF/js/" /> -->
-<!-- 	<resources mapping="/fonts/**" location="/WEB-INF/fonts/" /> -->
-<!-- 	<resources mapping="/images/**" location="/WEB-INF/images/" /> -->
 	<resources mapping="/css/**" location="/css/" />
 	<resources mapping="/js/**" location="/js/" />
 	<resources mapping="/fonts/**" location="/fonts/" />
@@ -40,15 +36,19 @@
 		class="music.controller.SessionCheckInter" />
 	<interceptors>
 		<interceptor>
-			<mapping path="/goEdit.do" />
-			<mapping path="/goEditPw.do" />
-			<mapping path="/goDelete.do" />
-			<mapping path="/editMemCheck.do" />
-			<mapping path="/editMember.do" />
-			<mapping path="/editMemberOk.do" />
+			<mapping path="/editCheck.do" />
+			<mapping path="/editPw.do" />
+			<mapping path="/delMem.do" />
+			<mapping path="/editCheckOk.do" />
+			<mapping path="/editMem.do" />
+			<mapping path="/editMemOk.do" />
 			<mapping path="/editPwOk.do" />
+<<<<<<< HEAD
 			<mapping path="/delMemCheck.do" />
 			<mapping path="/qna_form.do" />
+=======
+			<mapping path="/delCheckOk.do" />
+>>>>>>> a30e1d22f522f5a9971d06aab6b4278e0a4b2ea4
 			<beans:ref bean="sessionChk" />
 		</interceptor>
 	</interceptors>

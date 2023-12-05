@@ -40,7 +40,7 @@
 			<form method="post" action="findIdCheck.do" onsubmit="return check()">
 				<br>
 				<img src="images/184.png" alt="" width="100"
-					height="100">
+					height="100" onclick="location.href='home.do'" style="cursor: pointer;">
 				<br><br>
 				<h1 class="h4 mb-3"><b>오브리</b>&nbsp; 아이디 찾기</h1>
 				<br>
@@ -66,7 +66,7 @@
 			</tr>
 			<br><br>
 			<button class="btn w-100 pr-100 fw-bold" type="button"
-				onclick="location.href='loginMember.do'">확인</button>
+				onclick="location.href='login.do'">확인</button>
 		</c:if>
 
 			<p class="mt-5 mb-3 text-body-secondary" align="center"

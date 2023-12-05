@@ -12,45 +12,39 @@ public class memberDaoImpl implements memberDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	// 아이디 존재 여부 확인
+	// 아이디 정보 확인
 	@Override
 	public memberVO checkId(String userId) throws Exception{
-		return sqlSession.selectOne("checkLogin", userId);
+		return sqlSession.selectOne("checkId", userId);
 	}
 	
-	// 로그인 실행(이메일 인증)
+	// 아이디 중복확인(Ajax)
 	@Override
-	public int emailAuthFail(String userId) throws Exception{
-		return sqlSession.selectOne("emailAuthFail", userId);
-	}
-
-	// 회원가입 실행
-	@Override
-	public void insertMember(memberVO m) throws Exception{
-		sqlSession.insert("insertMember", m);
-	}
-	
-	// 아이디 중복확인
-	@Override
-	public int checkMemberId(String userId) throws Exception{
+	public int checkMemId(String userId) throws Exception{
 		int re;
-		memberVO mb = sqlSession.selectOne("checkMemberId", userId);
+		memberVO mb = sqlSession.selectOne("checkId", userId);
 		
 		if(mb == null) {
-			re = -1;	// 사용 가능한 이메일
+			re = -1;	// 사용 가능한 아이디(없음)
 		}else {
-			re = 1;		// 사용 불가능한 이메일
+			re = 1;		// 사용 불가능한 아이디(존재)
 		}
 		return re;
 	}
 	
-	// 이메일 인증 키 저장
+	// 회원 가입(저장)
+	@Override
+	public void insertMem(memberVO mb) throws Exception{
+		sqlSession.insert("insertMem", mb);
+	}
+
+	// 메일 인증키 저장
 	@Override
 	public int updateMailKey(memberVO mb) throws Exception{
 		return sqlSession.update("updateMailKey", mb);
 	}
 	
-	// 이메일 인증 시 권한 변경
+	// 메일 인증 시 권한 변경
 	@Override
 	public int updateMailAuth(memberVO mb) throws Exception{
 		return sqlSession.update("updateMailAuth", mb);
@@ -58,14 +52,14 @@ public class memberDaoImpl implements memberDao {
 
 	// 아이디 찾기
 	@Override
-	public memberVO findId(memberVO fm) throws Exception{
-		return sqlSession.selectOne("findIdCheck", fm);
+	public memberVO findIdCheck(memberVO mb) throws Exception{
+		return sqlSession.selectOne("findIdCheck", mb);
 	}
 	
 	// 비밀번호 찾기
 	@Override
-	public memberVO findPw(memberVO pm) throws Exception{
-		return sqlSession.selectOne("findPwCheck", pm);
+	public memberVO findPwCheck(memberVO mb) throws Exception{
+		return sqlSession.selectOne("findPwCheck", mb);
 	}
 	
 	// 비밀번호 초기화
@@ -78,8 +72,8 @@ public class memberDaoImpl implements memberDao {
 	}
 	
 	// 회원정보 수정
-	public void updateMember(memberVO mb) throws Exception{
-		sqlSession.update("updateMember", mb);
+	public void updateMem(memberVO mb) throws Exception{
+		sqlSession.update("updateMem", mb);
 	}
 
 	// 비밀번호 변경
@@ -88,7 +82,7 @@ public class memberDaoImpl implements memberDao {
 	}
 	
 	// 회원탈퇴
-	public void deleteMember(memberVO mb) throws Exception{
-		sqlSession.update("deleteMember", mb);
+	public void deleteMem(memberVO mb) throws Exception{
+		sqlSession.update("deleteMem", mb);
 	}
 }
