@@ -38,17 +38,15 @@
 		<interceptor>
 			<mapping path="/editCheck.do" />
 			<mapping path="/editPw.do" />
-			<mapping path="/delMem.do" />
-			<mapping path="/editCheckOk.do" />
-			<mapping path="/editMem.do" />
 			<mapping path="/editMemOk.do" />
+			<mapping path="/editMem.do" />
 			<mapping path="/editPwOk.do" />
-<<<<<<< HEAD
-			<mapping path="/delMemCheck.do" />
-			<mapping path="/qna_form.do" />
-=======
 			<mapping path="/delCheckOk.do" />
->>>>>>> a30e1d22f522f5a9971d06aab6b4278e0a4b2ea4
+			<mapping path="/delMem.do" />
+
+			<mapping path="/qna_form.do" />
+
+
 			<beans:ref bean="sessionChk" />
 		</interceptor>
 	</interceptors>
@@ -62,7 +60,6 @@
 			<mapping path="/notice_write.do" />
 			<mapping path="/notice_delete_selected.do" />
 			<mapping path="/admin_notice_read.do" />
-			<mapping path="/notice_list.do" />
 			<mapping path="/notice_edit.do" />
 			<mapping path="/admin_qna.do" />
 			<mapping path="/qna_read.do" />

@@ -71,22 +71,11 @@
 		<div class="navbar_logo" id="navbar_logo">
 			<a href="<c:url value='/home.do'/>"><img src="./images/184.png"></a>
 		</div>
-<<<<<<< HEAD
-		<div class="menu_left">
-			<a href="boardListShow.do">구인</a> <a href="prCardList.do">홍보</a> <a
-				href="board_list.do">커뮤니티</a> <a href="notice_list.do">공지</a>
-		</div>
-		<div class="menu_right">
-			<a href="<c:url value='${loginOutLink}'/>">${loginOut}</a> <a
-				href="<c:url value='${myPageLink}'/>">${myPage}</a>
-		</div>
-	</div>
-=======
 		<ul class="navbar_menu" id="navbar_menu">
 			<li><a href="boardListShow.do">구인</a></li>
 			<li><a href="prCardList.do">홍보</a></li>
 			<li><a href="board_list.do">커뮤니티</a></li>
-			<li><a href="board_list.do">공지</a></li>
+			<li><a href="notice_list.do">공지</a></li>
 		</ul>
 		<ul class="navbar_icons" id="navbar_icons">
 			<li><a href="<c:url value='${loginOutLink}'/>"> <i
@@ -101,7 +90,6 @@
 		</a>
 	</nav>
 	<!-- navbar end -->
->>>>>>> a30e1d22f522f5a9971d06aab6b4278e0a4b2ea4
 
 	<main style="padding-top: 80px; padding-bottom: 80px">
 
@@ -181,32 +169,15 @@
 
 	</main>
 
-<<<<<<< HEAD
-	<!-- Footer -->
-	<footer>
-		<div class="nav_foot">
-			<div class="container">
-				<h2>오브리</h2>
-				<p>O&nbsp;B&nbsp;R&nbsp;I&nbsp;&nbsp;&copy;2023.1조</p>
-			</div>
-			<div class="menu">
-				<a href="notice_list.do">공지사항</a> <a href="qna_form.do">문의하기</a> <a href="">개인정보 처리방침</a> <a
-					href="">서비스 이용약관</a>
-			</div>
-		</div>
-		<div class="copyright">
-			<p>&copy; 2023. 1조</p>
-=======
 	<!-- footer start -->
 	<footer class="nav_foot">
 		<div class="nav_container">
 			<h2>오브리</h2>
 			<p>O&nbsp;B&nbsp;R&nbsp;I&nbsp;&nbsp;&copy;2023.1조</p>
->>>>>>> a30e1d22f522f5a9971d06aab6b4278e0a4b2ea4
 		</div>
 		<ul class="nav_menu">
-			<li><a href="">공지사항</a></li>
-			<li><a href="">문의하기</a></li>
+			<li><a href="notice_list.do">공지사항</a></li>
+			<li><a href="qna_form.do">문의하기</a></li>
 			<li><a href="">개인정보 처리방침</a></li>
 			<li><a href="">서비스 이용약관</a></li>
 		</ul>

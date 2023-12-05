@@ -67,7 +67,7 @@ public class AdminController {
 			return "admin/loginResult";
 		} else {
 			if (m.getAdminPw().equals(pw)) {
-				session.setAttribute("id", id);
+				session.setAttribute("adminId", id);
 				return "redirect:admin_notice.do";
 
 			} else { // 비밀번호가 틀릴때
@@ -89,7 +89,8 @@ public class AdminController {
 	@RequestMapping(value = "admin_notice.do")
 	public String admin_notice(String pageNum, noticeVO notvo, Model model) throws Exception {
 		System.out.println("현재경로:공지사항페이지");
-
+		
+		
 		List<Map<String, Object>> noticelist = new ArrayList<Map<String, Object>>();
 
 		int limit = 10; // 화면에 출력할 갯수

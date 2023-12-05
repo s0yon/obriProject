@@ -44,7 +44,7 @@
 			<li><a href="boardListShow.do">구인</a></li>
 			<li><a href="prCardList.do">홍보</a></li>
 			<li><a href="board_list.do">커뮤니티</a></li>
-			<li><a href="board_list.do">공지</a></li>
+			<li><a href="notice_list.do">공지</a></li>
 		</ul>
 		<ul class="navbar_icons" id="navbar_icons">
 			<li><a href="<c:url value='${loginOutLink}'/>"> <i
@@ -64,6 +64,8 @@
 
 	<!-- contents start -->
 	
+	
+	
 	<!-- contents end -->
 
 	</main>
@@ -75,8 +77,8 @@
 			<p>O&nbsp;B&nbsp;R&nbsp;I&nbsp;&nbsp;&copy;2023.1조</p>
 		</div>
 		<ul class="nav_menu">
-			<li><a href="">공지사항</a></li>
-			<li><a href="">문의하기</a></li>
+			<li><a href="notice_list.do">공지사항</a></li>
+			<li><a href="qna_form.do">문의하기</a></li>
 			<li><a href="">개인정보 처리방침</a></li>
 			<li><a href="">서비스 이용약관</a></li>
 		</ul>
