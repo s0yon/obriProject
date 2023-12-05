@@ -65,4 +65,16 @@ public class HomeController {
 	public String goDelete() {
 		return "member/delMem";
 	}
+	
+	// 신청 페이지
+	@RequestMapping("appHome.do")
+	public String goAppHome() {
+		return "apply/appHome";
+	}
+	
+	// 신청자 목록 페이지
+	@RequestMapping("appList.do")
+	public String goAppList() {
+		return "apply/appList";
+	}
 }
