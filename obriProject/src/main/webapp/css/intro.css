@@ -1,4 +1,8 @@
-@charset "UTF-8";
+:root{
+	--text-color: #444;
+	--background-color: #F8F9FA;
+	--accent-color: #A490D5;
+}
 
 .intro{
 	display: flex;
@@ -18,21 +22,22 @@
 	position: relative;
 	margin-bottom: 30px;
 }
-
+	
 .banner .bann_icon{
-	font-size: 24px;
+	font-size: 36px;
+	color: var(--accent-color);
 }
-
+	
 .banner .bann_text{
 	position: absolute;
-	top: 120%;
+	top: 125%;
 	left: 52%;
 	width: 200px;
 	transform: translate(-50%, -50%);
 	text-align: center;
 	font-size: 18px;
 	font-weight: bold;
-	color: #444;
+	color: var(--text-color);
 }
 
 .item iframe{
@@ -47,19 +52,20 @@
 	}
 	
 	.banner .bann_icon{
-		font-size: 24px;
+		font-size: 36px;
+		color: var(--accent-color);
 	}
 	
 	.banner .bann_text{
 		position: absolute;
-		top: 120%;
+		top: 125%;
 		left: 52%;
 		width: 200px;
 		transform: translate(-50%, -50%);
 		text-align: center;
 		font-size: 18px;
 		font-weight: bold;
-		color: #444;
+		color: var(--text-color);
 	}
 		
 	.intro{
