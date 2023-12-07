@@ -13,6 +13,8 @@ README.md
 obriProject/target/**
 **/target/**
 target/**
+*/target/*
+
 
 
 
