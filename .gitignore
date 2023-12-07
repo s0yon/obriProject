@@ -1,0 +1,21 @@
+## .gitignore
+
+
+## README 파일
+
+README.md
+
+
+
+
+## target 파일
+
+obriProject/target/**
+
+
+
+
+
+## root-context.xml
+
+obriProject/src/main/webapp/WEB-INF/spring/root-context.xml

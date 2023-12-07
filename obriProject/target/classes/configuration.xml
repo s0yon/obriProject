@@ -17,18 +17,11 @@
 		<typeAlias alias="adjobvo" type="music.model.adminJobVO" />
 		<typeAlias alias="adprvo" type="music.model.adminPrVO" />
 		<typeAlias alias="adcommvo" type="music.model.adminCommVO" />
-<<<<<<< HEAD
-=======
-	
-	<!--  커뮤니티 -->
-	<typeAlias alias="community"   type="music.model.communityVO" />
-	<typeAlias alias="commReply"  type="music.model.commReplyVO"/>
-	 <typeAlias alias="commlike"   type="music.model.commLikeVO"/> 
-	
-	</typeAliases>
-	
-</configuration>
->>>>>>> developer
+
+		<!-- 커뮤니티 -->
+		<typeAlias alias="community" type="music.model.communityVO" />
+		<typeAlias alias="commReply" type="music.model.commReplyVO" />
+		<typeAlias alias="commlike" type="music.model.commLikeVO" />
 
 		<!-- mypage관련 -->
 		<typeAlias alias="UserInfo" type="music.model.mypage.UserInfoVO" />
