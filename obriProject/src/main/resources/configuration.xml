@@ -9,6 +9,15 @@
 		<typeAlias alias="pr" type="music.model.prVO" />		
 		<typeAlias alias="prLike" type="music.model.prLikeVO" />
 		<typeAlias alias="msg" type="music.model.msgVO" />
+
+		<!-- 관리자관련 -->
+		<typeAlias alias="adminvo" type="music.model.adminVO" />
+		<typeAlias alias="adnotvo" type="music.model.noticeVO" />
+		<typeAlias alias="qnavo" type="music.model.qnaVO" />
+		<typeAlias alias="admemvo" type="music.model.adminMemberVO" />
+		<typeAlias alias="adjobvo" type="music.model.adminJobVO" />
+		<typeAlias alias="adprvo" type="music.model.adminPrVO" />
+		<typeAlias alias="adcommvo" type="music.model.adminCommVO" />
 	</typeAliases>
 	
 </configuration>

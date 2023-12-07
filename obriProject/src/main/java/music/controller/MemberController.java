@@ -9,13 +9,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import music.mail.mailHandler;
-import music.mail.tempKey;
 import music.model.memberVO;
 import music.service.memberServiceImpl;
 
@@ -25,37 +22,45 @@ public class MemberController {
 	// Service 주입
 	@Autowired
 	private memberServiceImpl ms;
-	
 	// JavaMailSender 주입
 	@Autowired
 	JavaMailSender mailSender;
-
 	// BCryptPasswordEncoder 주입
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;	
 
-	// 로그인 실행(인증)
+	// 로그인 시 계정, 인증 상태 검증
 	@RequestMapping("checkLogin.do")
-	public String lCheck(@RequestParam String userId, @RequestParam String userPw, String toURL, HttpSession session, Model model)
-			throws Exception {
+	public String logCheck(@RequestParam String userId, @RequestParam String userPw,
+						   String toURL, HttpSession session, Model model) throws Exception {
 		
-		int result = 0;
-		
-		// 존재하는 아이디의 객체를 얻어옴
 		memberVO m = ms.checkId(userId);
-
-		// 1. 등록되지 않은 회원일 때
-		if (m == null) {
+		int result;
+		
+		// 1. 존재하지 않는 아이디일 때
+		if(m == null) {
 			result = 1;
 			model.addAttribute("result", result);
 			return "member/loginResult";
-		// 2. 등록되었지만 이메일 인증을 하지 않은 회원일 때
-		}else if(ms.emailAuthFail(userId) != 1) {
-			return "member/emailAuthFail";
-		// 3. 아이디 비밀번호 일치 여부
+		// 2. 탈퇴한 회원일 때
+		}else if(m.getUserDelYn() == 'Y') {
+			result = 1;
+			model.addAttribute("result", result);
+			return "member/loginResult";
+		// 3. 관리자에 의해 정지된 회원일 때
+		}else if(m.getUserDelYn() == 'X') {
+			result = 2;
+			model.addAttribute("result", result);
+			return "member/loginResult";
+		// 4. 가입 후 메일 인증을 하지 않은 회원일 때
+		}else if(m.getMailAuth() != 'Y') {
+			result = 3;
+			model.addAttribute("result", result);
+			return "member/loginResult";
+		// 5. 1~4 해당 없고 아이디, 비밀번호 일치하면 로그인
 		}else {
-//			if(m.getUserPw().equals(userPw)) { // 비밀번호가 같을 때
-			// 	비밀번호 복호화
+			// 5-1. 비밀번호 일치
+			// 비밀번호 복호화
 			if(passwordEncoder.matches(userPw, m.getUserPw())) {
 				session.setAttribute("userId", userId);
 				String userName = m.getUserName();
@@ -63,8 +68,9 @@ public class MemberController {
 				// 홈으로 이동
 				toURL = toURL==null || toURL.equals("") ? "/" : toURL;
 				return "redirect:"+toURL;
-			} else { // 비밀번호가 다를 때
-				result = 2;
+			// 5-2. 비밀번호 불일치
+			}else {
+				result = 4;
 				model.addAttribute("result", result);
 				return "member/loginResult";
 			}
@@ -72,56 +78,62 @@ public class MemberController {
 	}
 
 	// 아이디 중복확인(Ajax)
-	@RequestMapping(value = "checkMemberId.do", method = RequestMethod.POST)
-	public String iCheck(@RequestParam("memid") String userId, Model model) throws Exception {
+	@RequestMapping(value = "checkMemId.do", method = RequestMethod.POST)
+	public String idCheck(@RequestParam("memid") String userId, Model model) throws Exception {
 
-		int result = ms.checkMemberId(userId);
+		int result = ms.checkMemId(userId);
+		
 		model.addAttribute("result", result);
-
 		return "member/checkIdResult";
 	}
 	
-	// 회원가입 실행
-	@RequestMapping(value = "insertMember.do", method = {RequestMethod.POST, RequestMethod.GET})
-	public String mInsert(@ModelAttribute memberVO member, Model model) throws Exception {
+	// 회원 가입(저장)
+	@RequestMapping("insertMem.do")
+	public String mInsert(memberVO member) throws Exception {
 		
 		// 비밀번호 암호화
 		String encpw = passwordEncoder.encode(member.getUserPw());
 		member.setUserPw(encpw);
 		
-		ms.insertMember(member);
-		return "member/joinMemResult";
+		ms.insertMem(member);
+		return "member/joinResult";
 	}
 
 	// 이메일 인증
-	@GetMapping("registerEmail.do")
-	public String emailConfirm(memberVO member) throws Exception {
+	@GetMapping("registerMail.do")
+	public String mailConfirm(memberVO member) throws Exception {
 		ms.updateMailAuth(member);
-		return "member/emailAuthOk";
+		return "member/mailAuthOk";
 	}
 	
-	// 아이디찾기 실행
+	// 아이디 찾기
 	@RequestMapping(value = "findIdCheck.do", method = RequestMethod.POST)
-	public String iFindCheck(@ModelAttribute memberVO mem, Model model) throws Exception {
-		memberVO member = ms.findId(mem);
+	public String fIdCheck(memberVO member, Model model) throws Exception {
+	
+		memberVO m = ms.findIdCheck(member);
 		
-		if(member == null) { // 회원이 존재하지 않을 때
+		// 1. 조회한 회원이 없을 때
+		if(m == null) {
 			return "member/findIdFail";
-		}else {	// 회원이 존재할 때
-			String result = member.getUserId();
+		// 2. 조회한 회원이 있을 때
+		}else {
+			String result = m.getUserId();
 			model.addAttribute("findid", result);
 			return "member/findId";
 		}
 	}
 
-	// 비밀번호찾기 실행
+	// 비밀번호 찾기
 	@RequestMapping(value = "findPwCheck.do", method = RequestMethod.POST)
-	public String pFindCheck(@ModelAttribute memberVO m, Model model) throws Exception {
-		memberVO member = ms.findPw(m);
+	public String pFindCheck(memberVO m, Model model) throws Exception {
 		
-		if(member == null) { // 회원이 존재하지 않을 때
-			return "member/findPwFail";
-		}else {	// 회원이 존재할 때
+		memberVO member = ms.findPwCheck(m);
+		
+		// 1. 조회한 회원이 없을 때
+		if(member == null) {
+			return "member/findFail";
+		// 2. 조회한 회원이 있을 때
+		}else {
 			ms.updatePw(member);
 			model.addAttribute("findpw", 1);
 			return "member/findPw";
@@ -129,42 +141,43 @@ public class MemberController {
 	}
 	
 	// 회원정보수정 전 비밀번호인증 실행
-	@RequestMapping("editMemCheck.do")
-	public String eMemCheckOk(@ModelAttribute memberVO m, HttpServletRequest request, Model model) throws Exception {
-		HttpSession session = request.getSession();
-		String userId = (String)session.getAttribute("userId");		
+	@RequestMapping("editCheckOk.do")
+	public String eCheckOk(memberVO member, HttpSession session, Model model) throws Exception {
+
+		String userId = (String)session.getAttribute("userId");
 
 		memberVO editm = ms.checkId(userId);	// 아이디로 객체를 얻어옴
 		String userPw = editm.getUserPw();		// 객체로부터 비밀번호를 얻어옴
 		
 		// 비밀번호 복호화
-		if(passwordEncoder.matches(m.getUserPw(),userPw)) {
-//		if(userPw.equals(m.getUserPw())) {		// 객체의 비밀번호와 입력값이 일치하는지 확인
-			return "redirect:/editMember.do";	// 맞으면 수정페이지 이동 요청
+		if(passwordEncoder.matches(member.getUserPw(),userPw)) {
+			return "redirect:/editMem.do";	// 맞으면 수정페이지 이동 요청
 		}else {
-			return "member/editMemCheckFail";	// 틀리면 실패 안내창 띄우기
+			return "member/memCheckFail";	// 틀리면 실패 안내창 띄우기
 		}
 	}
 	
-	// 회원정보 수정 페이지
-	@RequestMapping("editMember.do")
-	public String goEditMember(HttpServletRequest request, Model model) throws Exception{
+	// 회원정보수정 페이지
+	@RequestMapping("editMem.do")
+	public String goEditMem(HttpServletRequest request, Model model) throws Exception{
+
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute("userId");
 		
 		if(userId == null) {
-			return "redirect:/loginMember.do?toURL="+request.getRequestURL();
+			return "redirect:/login.do?toURL="+request.getRequestURL();
 		}
 		
 		memberVO editm = ms.checkId(userId);	// 아이디로 객체를 얻어옴
-		model.addAttribute("editm", editm);	// 수정양식에 기존 값 보여주기 위함
+		model.addAttribute("editm", editm);		// 수정양식에 기존 값 보여주기 위함
 		
-		return "member/editMember";
+		return "member/editMem";
 	}
 
-	// 회원정보 수정 실행
-	@RequestMapping(value = "editMemberOk.do", method= {RequestMethod.POST, RequestMethod.GET})
+	// 회원정보수정 실행
+	@RequestMapping("editMemOk.do")
 	public String mEditOk(memberVO member, Model model, HttpServletRequest request) throws Exception {
+
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute("userId");
 		
@@ -181,14 +194,15 @@ public class MemberController {
 		member.setUserMajor(userMajor);
 		member.setUserGru(userGru);
 		
-		ms.updateMember(member);
+		ms.updateMem(member);
 		
-		return "member/editMemberOk";
+		return "member/editMemOk";
 	}
 	
 	// 비밀번호 변경
 	@RequestMapping("editPwOk.do")
-	public String pEditOk(@ModelAttribute memberVO member, HttpServletRequest request, Model model) throws Exception {
+	public String pEditOk(memberVO member, HttpServletRequest request, Model model) throws Exception {
+	
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute("userId");		
 
@@ -197,7 +211,6 @@ public class MemberController {
 		// 비밀번호 암호화
 		String encpw = passwordEncoder.encode(userPw);
 		member.setUserPw(encpw);
-//		member.setUserPw(userPw);
 		
 		ms.updateMemPw(member);
 		
@@ -205,22 +218,20 @@ public class MemberController {
 	}
 	
 	// 회원탈퇴 전 비밀번호인증 실행
-	@RequestMapping("delMemCheck.do")
-	public String dMemCheckOk(@ModelAttribute memberVO m, HttpServletRequest request, Model model) throws Exception {
+	@RequestMapping("delCheckOk.do")
+	public String dCheckOk(memberVO member, HttpServletRequest request, Model model) throws Exception {
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute("userId");		
 
-		memberVO delm = ms.checkId(userId);	// 아이디로 객체를 얻어옴
+		memberVO delm = ms.checkId(userId);		// 아이디로 객체를 얻어옴
 		String userPw = delm.getUserPw();		// 객체로부터 비밀번호를 얻어옴
 		
 		// 비밀번호 복호화
 		if(passwordEncoder.matches(request.getParameter("userPw"),userPw)) {		
-//		if(userPw.equals(request.getParameter("userPw"))) {		// 객체의 비밀번호와 입력값이 일치하는지 확인
-			ms.deleteMember(m);	// 맞으면 탈퇴
-			return "member/delMemCheckOk";	// 성공 안내창 띄우기
+			ms.deleteMem(member);			// 맞으면 탈퇴
+			return "member/delCheckOk";	// 성공 안내창 띄우기
 		}else {
-			return "member/delMemCheckFail";	// 틀리면 실패 안내창 띄우기
+			return "member/memCheckFail";	// 틀리면 실패 안내창 띄우기
 		}
 	}
-	
 }
