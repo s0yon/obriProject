@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import music.model.mypage.AjaxRespVO;
 import music.model.mypage.CommReplysVO;
@@ -43,10 +44,7 @@ public class MypageController {
 // 마이페이지 메인(지원/구인)
 	// 지원 현황 마이페이지 메인으로 이동
 	@RequestMapping("mypage_Apply.do")
-	public String mypageApply(Model model) {
-		// 세션 id
-		String id = "test2";
-		
+	public String mypageApply(@SessionAttribute("userId") String id, Model model) {	    
 		InfoAllVO infoAllDto = myService.viewMyPage(id);
 		model.addAttribute("infoAllDto", infoAllDto);
 		return "mypage/mypage/mypage_Apply";
@@ -54,10 +52,7 @@ public class MypageController {
 	
 	// 구인 현황 마이페이지 메인으로 이동
 	@RequestMapping("mypage_JobBoard.do")
-	public String mypageJob(Model model, KeywordVO keywordVO) {
-		// 세션 id
-		String id = "test2";
-		
+	public String mypageJob(@SessionAttribute("userId") String id, Model model, KeywordVO keywordVO) {
 		// 구인 현황 데이터 가져오기 위함
 		InfoAllVO infoAllDto = myService.viewMyPage(id);
 		model.addAttribute("infoAllDto", infoAllDto);
@@ -79,10 +74,7 @@ public class MypageController {
 // 지원 페이지 관련
 	// 모든 진행상태
 	@RequestMapping("applyStatusAll.do")
-	public String appStatsAll(@RequestParam(required = false) String keyword, Model model) {
-		// 세션 id
-		String id = "test2";
-		
+	public String appStatsAll(@SessionAttribute("userId") String id, @RequestParam(required = false) String keyword, Model model) {
 		StatusAllVO statusAllVO = myService.viewAppAll(id, keyword);
 		model.addAttribute("statusAllVO", statusAllVO);
 		
@@ -96,10 +88,7 @@ public class MypageController {
 	
 	// 진행상태 = 대기중
 	@RequestMapping("applyStatus.do")
-	public String appStats(Model model, @RequestParam(required = false) String keyword) {
-		// 세션 id
-		String id = "test2";
-		
+	public String appStats(@SessionAttribute("userId") String id, Model model, @RequestParam(required = false) String keyword) {
 		StatusWaitingVO statusWaitingVO = myService.viewAppWait(id, keyword);
 		model.addAttribute("statusWaitingVO", statusWaitingVO);
 		
@@ -113,10 +102,7 @@ public class MypageController {
 	
 	// 진행상태 = 승인
 	@RequestMapping("applyStatusFin.do")
-	public String appStatsFin(Model model, @RequestParam(required = false) String keyword) {
-		// 세션 id
-		String id = "test2";
-		
+	public String appStatsFin(@SessionAttribute("userId") String id, Model model, @RequestParam(required = false) String keyword) {		
 		StatusFinalVO statusFinalVO = myService.viewAppFin(id, keyword);
 		model.addAttribute("statusFinalVO", statusFinalVO);
 		
@@ -132,10 +118,7 @@ public class MypageController {
 // 구인 현황 관련
 	// 모든 진행상태
 	@RequestMapping("writeJobStatusAll.do")
-	public String JobStatsAll(Model model, @RequestParam(required = false) String keyword) {
-		// 세션 id
-		String id = "test2";
-		
+	public String JobStatsAll(@SessionAttribute("userId") String id, Model model, @RequestParam(required = false) String keyword) {		
 		StatusAllVO jobstatusAllVO = myService.viewAppAll(id, keyword);
 		model.addAttribute("jobstatusAllVO", jobstatusAllVO);
 		
@@ -149,10 +132,7 @@ public class MypageController {
 	
 	// 진행상태 = 대기중
 	@RequestMapping("writeJobStatus.do")
-	public String JobappStats(Model model, @RequestParam(required = false) String keyword) {
-		// 세션 id
-		String id = "test2";
-		
+	public String JobappStats(@SessionAttribute("userId") String id, Model model, @RequestParam(required = false) String keyword) {		
 		StatusWaitingVO jobstatusWaitingVO = myService.viewAppWait(id, keyword);
 		model.addAttribute("jobstatusWaitingVO", jobstatusWaitingVO);
 		System.out.println("jobstatusWaitingVO_id : "+jobstatusWaitingVO.getUserId());
@@ -167,10 +147,7 @@ public class MypageController {
 	
 	// 진행상태 = 승인
 	@RequestMapping("writeJobStatusFin.do")
-	public String JobappStatsFin(Model model, @RequestParam(required = false) String keyword) {
-		// 세션 id
-		String id = "test2";
-		
+	public String JobappStatsFin(@SessionAttribute("userId") String id, Model model, @RequestParam(required = false) String keyword) {		
 		StatusFinalVO jobstatusFinalVO = myService.viewAppFin(id, keyword);
 		model.addAttribute("jobstatusFinalVO", jobstatusFinalVO);
 		
@@ -186,10 +163,7 @@ public class MypageController {
 //	좋아요 관련
 	// 커뮤니티 좋아요 한 글 리스트
 	@RequestMapping("likeListsComm.do")
-	public String likeListsComm(Model model) {
-		// 세션 id
-		String id = "test2";
-		
+	public String likeListsComm(@SessionAttribute("userId") String id, Model model) {
 		List<LikesListCommVO> likesListComm = myService.viewLikeListComm(id);
 		model.addAttribute("likesListComm", likesListComm);
 		
@@ -199,10 +173,7 @@ public class MypageController {
 	
 	// 좋아요 설정한 PR글 리스트
 	@RequestMapping("likeListsPR.do")
-	public String likeListsPR(Model model, KeywordVO keywordVO) {
-		// 세션 id
-		String id = "test2";
-		
+	public String likeListsPR(@SessionAttribute("userId") String id, Model model, KeywordVO keywordVO) {	
 		List<LikesListPRVO> likesListPR = myService.viewLikeListPR(id);
 		model.addAttribute("likesListPR", likesListPR);
 		
@@ -227,10 +198,7 @@ public class MypageController {
 // ajax데이터 처리
 	// parameter에 따라 재검색 후 데이터 반환
 	@RequestMapping("api_likeListsPR.do")
-	public @ResponseBody AjaxRespVO<?> likeListsPRApi(Model model, KeywordVO keywordVO) {
-		// 세션 id
-		String id = "test2";
-		
+	public @ResponseBody AjaxRespVO<?> likeListsPRApi(@SessionAttribute("userId") String id, Model model, KeywordVO keywordVO) {	
 		// 페이징 처리
 		PagingPrListVO pagingPrListVO = myService.pagingViewPrLike(keywordVO, id);
 		
@@ -241,10 +209,7 @@ public class MypageController {
 // 커뮤니티 글 관리
 	// 작성한 커뮤니티 글 리스트
 	@RequestMapping("commWroteAll.do")
-	public String commLists(Model model, @RequestParam(required = false) String keyword) {
-		// 세션 id
-		String id = "test2";
-		
+	public String commLists(@SessionAttribute("userId") String id, Model model, @RequestParam(required = false) String keyword) {
 		CommsVO commsVO = myService.viewCommLists(id, keyword);
 		model.addAttribute("commsVO", commsVO);
 		
@@ -258,10 +223,7 @@ public class MypageController {
 	
 	// 작성한 커뮤니티 댓글 리스트
 	@RequestMapping("commReplyWrote.do")
-	public String commReplyLists(Model model, @RequestParam(required = false) String keyword) {
-		// 세션 id
-		String id = "test2";
-		
+	public String commReplyLists(@SessionAttribute("userId") String id, Model model, @RequestParam(required = false) String keyword) {
 		CommReplysVO commReplysVO = myService.viewCommReplyLists(id, keyword);
 		model.addAttribute("commReplysVO", commReplysVO);
 		
@@ -277,10 +239,7 @@ public class MypageController {
 // 메시지 관리
 	// 받은 메시지 함
 	@RequestMapping("messagebox_rcv.do")
-	public String MessageboxRcv(Model model, KeywordVO keywordVO) {
-		// 세션 id
-		String id = "test2";
-		
+	public String MessageboxRcv(@SessionAttribute("userId") String id, Model model, KeywordVO keywordVO) {		
 		// 메시지 리스트 with 페이징 처리
 		PagingMsgListVO pagingMsgRcvListVO = myService.pagingViewRcvMsg(keywordVO, id);
 		model.addAttribute("pagingMsgRcvListVO", pagingMsgRcvListVO);
@@ -296,10 +255,7 @@ public class MypageController {
 	
 	// 보낸 메시지 함
 	@RequestMapping("messagebox_snd.do")
-	public String MessageboxSnd(Model model, KeywordVO keywordVO) {
-		// 세션 id
-		String id = "test2";
-		
+	public String MessageboxSnd(@SessionAttribute("userId") String id, Model model, KeywordVO keywordVO) {
 		// 메시지 리스트 with 페이징 처리
 		PagingMsgListVO pagingMsgSndListVO = myService.pagingViewSndMsg(keywordVO, id);
 		model.addAttribute("pagingMsgSndListVO", pagingMsgSndListVO);
@@ -316,10 +272,7 @@ public class MypageController {
 // 삭제 관련
 	// 작성한 커뮤니티 글 삭제
 	@RequestMapping("deleteComm.do")
-	public String deleteComm(String commNo, Model model) {
-		// 세션 id
-		String id = "test2";
-		
+	public String deleteComm(@SessionAttribute("userId") String id, String commNo, Model model) {
 		String[] delCommNoArr = commNo.split(",");
 		
 		int result = myService.deleteMyComms(delCommNoArr);
@@ -337,10 +290,7 @@ public class MypageController {
 	
 	// 작성한 커뮤니티 댓글 삭제
 	@RequestMapping("deleteReplyComm.do")
-	public String deleteReComm(String commReNo, Model model) {
-		// 세션 id
-		String id = "test2";
-		
+	public String deleteReComm(@SessionAttribute("userId") String id, String commReNo, Model model) {
 		String[] delCommReNoArr = commReNo.split(",");
 		
 		int result = myService.deleteMyComReplys(delCommReNoArr);
@@ -377,7 +327,7 @@ public class MypageController {
 	
 	// 선택 삭제
 	@RequestMapping("delete_RcvMsg_select.do")
-	public String deleteRcvMsg(@RequestParam(value = "msgNoArray") String[] msgNoArray) {
+	public String deleteRcvMsg(@SessionAttribute("userId") String id, @RequestParam(value = "msgNoArray") String[] msgNoArray) {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("msgNo_array", msgNoArray);

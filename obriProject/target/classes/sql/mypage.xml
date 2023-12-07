@@ -3,7 +3,7 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- DAO클래스를 alias설정해 뒀기에, music.mapper.mypageDao라고 작성할 필요X -->
-<mapper namespace="music.mapper.mypageDao">
+<mapper namespace="music.dao.mypageDao">
 	<!-- resultType 속성: 쿼리 결과를 매핑할 DTO 클래스의 경로 -->
 
 <!-- 회원 개인정보 -->
