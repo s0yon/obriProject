@@ -11,7 +11,7 @@
 		
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property> 
-		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe"></property>
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@43.202.67.70:1521:xe"></property>
 		<property name="username" value="music"></property>
 		<property name="password" value="music123"></property>
 	</bean>
