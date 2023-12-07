@@ -4,7 +4,7 @@
     <div class="footer_inner">
       <div class="top">
         <ul class="gnb">
-          <li class="logo">MusicInsite</li>
+          <li class="logo">Obri</li>
           <li><a href="#">기업소개</a></li>
           <li><a href="#">이용약관</a></li>
           <li><a href="#">개인정보 처리방침</a></li>
@@ -13,7 +13,7 @@
       </div>
       <div class="bottom">
         <p>
-          (주)MusicInsite (대표이사:한국인) | 서울특별시 강남구 어디로 5953
+          (주)Obri (대표이사:한국인) | 서울특별시 강남구 어디로 5953
           역삼동 삼거리빌딩 6층 | 통신판매번호 : 제 강남-8282호
         </p>
         <p>

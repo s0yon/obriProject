@@ -141,7 +141,7 @@
 						</c:choose>
 						
 						<button>
-							<a href="#">프로필 수정하기</a>
+							<a href="prUpdateForm.do?prNo=${userInfoVOs.prNo}">프로필 수정하기</a>
 						</button>
 					</c:forEach>
 				</div>

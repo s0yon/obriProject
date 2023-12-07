@@ -9,6 +9,10 @@ public class UserInfoVO {
     private String userName;
     private String userPhone;
     private String userEmail;
+    
+    // prBoard.prNo(프로필 수정을 위함)
+    private Integer prNo;
+    
     // prBoard.prFile(첨부파일) 업로드한 이미지
     private String prFile;
     // member.userMajor과 prBoard.prMajor의 값을 비교해서 userPosition값 설정

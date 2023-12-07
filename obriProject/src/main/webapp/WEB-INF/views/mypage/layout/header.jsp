@@ -9,7 +9,7 @@
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>MusicInsite</title>
+<title>Obri</title>
 
 <link rel="shortcut icon" href="${path}/favicon/mypage/music_icon.ico" type="image/x-icon" />
 
@@ -43,14 +43,14 @@
 			</div>
 
 			<h1 class="logo">
-				<a href="#">MusicInsite</a>
+				<a href="#">Obri</a>
 			</h1>
 
 			<ul class="gnb">
-				<li><a href="jobList.do">구인</a></li>
-				<li><a href="prList.do">PR</a></li>
-				<li><a href="communityList.do">커뮤니티</a></li>
-				<li><a href="notification.do">공지사항</a></li>
+				<li><a href="boardListShow.do">구인</a></li>
+				<li><a href="prCardList.do">PR</a></li>
+				<li><a href="board_list.do">커뮤니티</a></li>
+				<li><a href="notice_list.do">공지사항</a></li>
 			</ul>
 
 			<ul class="login">

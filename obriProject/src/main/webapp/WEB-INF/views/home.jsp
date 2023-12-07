@@ -6,7 +6,7 @@
 <c:set var="loginOut"
 	value="${sessionScope.userId==null ? '로그인' : '로그아웃'}" />
 <c:set var="myPageLink"
-	value="${sessionScope.userId==null ? 'join.do' : 'editCheck.do'}" />
+	value="${sessionScope.userId==null ? 'join.do' : 'mypage_Apply.do'}" />
 <c:set var="myPage"
 	value="${sessionScope.userId==null ? '회원가입' : '마이페이지'}" />
 
@@ -78,11 +78,11 @@
 			<li><a href="notice_list.do">공지</a></li>
 		</ul>
 		<ul class="navbar_icons" id="navbar_icons">
-			<li><a href="<c:url value='${loginOutLink}'/>"> <i
-					class="fa-solid fa-user"></i>&nbsp;&nbsp;${loginOut}
+			<li><a href="<c:url value='${myPageLink}'/>"> <i
+					class="fa-solid fa-user"></i>&nbsp;&nbsp;${myPage}
 			</a></li>
-			<li><a href="mypage_Apply.do"> <i
-					class="fa-solid fa-right-to-bracket"></i>&nbsp;&nbsp;${myPage}
+			<li><a href="<c:url value='${loginOutLink}'/>"> <i
+					class="fa-solid fa-right-to-bracket"></i>&nbsp;&nbsp;${loginOut}
 			</a></li>
 		</ul>
 		<a href="#" class="navbar_toggle_btn" id="navbar_toggle_btn"> <i

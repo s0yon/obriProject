@@ -50,7 +50,7 @@
 			<li><a href="<c:url value='${loginOutLink}'/>"> <i
 					class="fa-solid fa-user"></i>&nbsp;&nbsp;${loginOut}
 			</a></li>
-			<li><a href="mypage_Apply.do"> <i
+			<li><a href="<c:url value='${myPageLink}'/>"> <i
 					class="fa-solid fa-right-to-bracket"></i>&nbsp;&nbsp;${myPage}
 			</a></li>
 		</ul>
