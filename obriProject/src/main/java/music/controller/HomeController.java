@@ -20,7 +20,7 @@ public class HomeController {
 	public String goLogin() {
 		return "member/login";
 	}
-
+	
 	// 로그아웃
 	@GetMapping("logout.do")
 	public String goLogout(HttpSession session, String toURL) {

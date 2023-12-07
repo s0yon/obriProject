@@ -9,13 +9,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import music.mail.mailHandler;
-import music.mail.tempKey;
 import music.model.memberVO;
 import music.service.memberServiceImpl;
 
@@ -92,7 +89,7 @@ public class MemberController {
 	
 	// 회원 가입(저장)
 	@RequestMapping("insertMem.do")
-	public String mInsert(memberVO member, Model model) throws Exception {
+	public String mInsert(memberVO member) throws Exception {
 		
 		// 비밀번호 암호화
 		String encpw = passwordEncoder.encode(member.getUserPw());

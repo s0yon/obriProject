@@ -25,9 +25,3 @@ body {
 .form-signin button{
 	background-color: rgb(169,142,218);
 }
-
-.form-signin img{
-	display: block;
-	margin: 0px auto;
-	filter: drop-shadow(1px 1px 1px #000);
-}
