@@ -25,9 +25,3 @@ body {
 .form-findid button{
 background-color: rgb(169,142,218);
 }
-
-.form-findid img{
-display: block;
-margin: 0px auto;
-filter: drop-shadow(1px 1px 1px #000);
-}

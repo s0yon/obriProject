@@ -6,7 +6,7 @@
  	<!-- 아이디로 정보 확인 -->
     <select id="checkId" parameterType="String" resultType="mb">
      select * from member where userId=#{userId}
-    </select> 	
+    </select>
  	
     <!-- 회원 가입(저장) -->
     <insert id="insertMem" parameterType="mb">
