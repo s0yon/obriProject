@@ -6,3 +6,9 @@
 obriProject/target/**
 */target/**
 
+
+
+## env 파일(application.properties)
+obriProject/src/main/resources/config/application.properties
+
+
