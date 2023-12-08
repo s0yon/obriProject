@@ -463,34 +463,32 @@
 	
 	
 
-<!-- 삭제 설정 관련 -->
-	<!-- 커뮤니티 게시판 글 삭제 -->
-	<update id="deleteMyComms">
-		UPDATE comBoard SET commDelYn = 'Y'
-		WHERE userId = #{id} AND commNo IN
-		<foreach collection="delCommNoArr" item="item" index="index" separator="," open="(" close=")">
-			#{item}
-		</foreach>	
-	</update>
-	
-	<!-- 커뮤니티 댓글 삭제 -->
-	<update id="deleteMyComReplys">
-		UPDATE comReply SET commReDelYn = 'Y'
-		WHERE commReId = #{id} AND commReNo IN
-		<foreach collection="delCommReNoArr" item="item" index="index" separator="," open="(" close=")">
-			#{item}
-		</foreach>	
-	</update>
-	
-	<!-- 쪽지 선택 삭제 -->
-	<update id="deleteMsg" parameterType="java.util.Map">
+<!-- 삭제 설정 관련 -->	
+<!-- 	<update id="deleteMsg" parameterType="java.util.Map">
 		UPDATE msg SET msgDelYn = 'Y'
 		WHERE msgNo IN
 		<foreach collection="msgNoArray" item="value" index="index" separator="," open="(" close=")">
 			#{value}
 		</foreach>	
+	</update> -->
+		
+	<!-- 메시지 선택 삭제 -->
+	<update id="delMsgNo">
+		UPDATE msg SET msgDelYn = 'Y'
+		WHERE msgNo = #{msgNo}		
 	</update>
 
+	<!-- 커뮤니티 게시판 글 삭제 -->
+	<update id="delCommNo">
+		UPDATE comBoard SET commDelYn = 'Y'
+		WHERE commNo = #{commNo}
+	</update>
+	
+	<!-- 커뮤니티 댓글 삭제 -->
+	<update id="delCommReNo">
+		UPDATE comReply SET commReDelYn = 'Y'
+		WHERE commReNo = #{commReNo}
+	</update>
 
 
 

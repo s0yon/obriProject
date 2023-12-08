@@ -89,10 +89,15 @@ public interface mypageService {
 	
 	
 // 삭제 관련
-	// 작성한 커뮤니티 글 삭제
-	public int deleteMyComms(String[] delCommNoArr);
-	// 작성한 커뮤니티 댓글 삭제
-	public int deleteMyComReplys(String[] delCommReNoArr);
 	// 선택한 쪽지 삭제
-	public int deleteMsg(Map<String, Object> msgNo_array);
+	public int delMsgNo(int msgNo);
+	// 작성한 커뮤니티 글 삭제
+	public int delCommNo(int commNo);
+	// 작성한 커뮤니티 댓글 삭제
+	public int delCommReNo(int commReNo);
+	
+	
+	
+//	public int deleteMyComms(String[] delCommNoArr);
+//	public int deleteMsg(Map<String, Object> msgNo_array);
 }

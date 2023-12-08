@@ -349,36 +349,41 @@ public class mypageSerciveImpl implements mypageService {
 	
 // 삭제 관련
 	// 작성한 커뮤니티 글 삭제
-	@Override
-	public int deleteMyComms(String[] delCommNoArr) {
-		System.out.println(delCommNoArr[0]);
-		
-		HashMap<String, Object> commMap = new HashMap<String, Object>();
-		commMap.put("delCommNoArr", delCommNoArr);
-		
-		return myDao.deleteMyComms(commMap);
+	public int delCommNo(int commNo) {
+		System.out.println("커뮤니티 작성 글에서 선택한 항목 삭제 : "+commNo);
+		return myDao.delMsgNo(commNo);		
 	}
 	
 	// 작성한 커뮤니티 댓글 삭제
-	@Override
-	public int deleteMyComReplys(String[] delCommReNoArr) {
-		System.out.println(delCommReNoArr[0]);
-		
-		HashMap<String, Object> commReMap = new HashMap<String, Object>();
-		commReMap.put("commReMap", commReMap);
-		
-		return myDao.deleteMyComReplys(commReMap);
+	public int delCommReNo(int commReNo) {
+		System.out.println("커뮤니티 작성 댓글에서 선택한 항목 삭제 : "+commReNo);
+		return myDao.delMsgNo(commReNo);		
 	}
 	
-	
-	// 선택한 메시지 삭제
+	// 선택 메시지 삭제
 	@Override
-	public int deleteMsg(Map<String, Object> msgNo_array) {
-		System.out.println("쪽지함에서 선택한 항목 삭제");
-		int result = 0;
-		// mapper의 메소드 실행
-		result = myDao.deleteMsg(msgNo_array);
-		return result;
-	}
+	public int delMsgNo(int msgNo) {
+		System.out.println("쪽지함에서 선택한 항목 삭제 : "+msgNo);
+		return myDao.delMsgNo(msgNo);
+	}	
 	
+	
+	
+//	@Override
+//	public int deleteMyComReplys(String[] delCommReNoArr) {
+//		System.out.println(delCommReNoArr[0]);
+//		
+//		HashMap<String, Object> commReMap = new HashMap<String, Object>();
+//		commReMap.put("commReMap", commReMap);
+//		
+//		return myDao.deleteMyComReplys(commReMap);
+//	}
+//	@Override
+//	public int deleteMsg(Map<String, Object> msgNo_array) {
+//		System.out.println("쪽지함에서 선택한 항목 삭제");
+//		int result = 0;
+//		// mapper의 메소드 실행
+//		result = myDao.deleteMsg(msgNo_array);
+//		return result;
+//	}
 }
