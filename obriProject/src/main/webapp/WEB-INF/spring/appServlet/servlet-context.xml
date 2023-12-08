@@ -25,6 +25,8 @@
 	<resources mapping="/js/**" location="/js/" />
 	<resources mapping="/fonts/**" location="/fonts/" />
 	<resources mapping="/images/**" location="/images/" />
+	<!-- favicon파일 루트 설정 -->
+	<resources mapping="/favicon/**" location="/favicon/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
