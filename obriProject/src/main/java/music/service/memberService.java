@@ -4,6 +4,9 @@ import music.model.memberVO;
 
 public interface memberService {
 
+	// 네이버 로그인
+	public int insertScMem(memberVO mb) throws Exception;
+	
 	// 아이디 정보 확인
 	public memberVO checkId(String userId) throws Exception;
 
