@@ -10,7 +10,7 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
 	<!-- property-placeholder -->
-	<context:property-placeholder location="classpath:config/database.properties" />
+	<context:property-placeholder location="classpath:config/application.properties" />
 
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName" value="${hikariConfig.driverClassName}"></property>
