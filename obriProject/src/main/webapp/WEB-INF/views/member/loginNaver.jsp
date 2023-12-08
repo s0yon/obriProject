@@ -23,7 +23,7 @@
 
     $.ajax({
     	type: 'POST',
-    	url: 'joinScMem.do',
+    	url: 'joinNaverMem.do',
     	data: {'userId':id, 'userName':name, 'userEmail':email},
     	success: function(result){
     		if(result=="Y"){
