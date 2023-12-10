@@ -22,9 +22,10 @@
 		});
 
 		function buildWanted(likesWidget) {
-		  const pictureSrc = likesWidget.prFile
+		  const pictureSrc = "https://picsum.photos/seed/picsum/200/300";
+/* 		  const pictureSrc = likesWidget.prFile
 		    ? `${path}/upload/${likesWidget.prFile}`
-		    : "https://picsum.photos/seed/picsum/200/300";
+		    : "https://picsum.photos/seed/picsum/200/300"; */
 
 		  return `<div class="wanted">
 		  <a href="prDetail.do?prNo=${likesWidget.prNo}">
@@ -53,9 +54,7 @@
 
 		function StringTest() {
 		  let url = "?";
-		  url =
-		    url +
-		    "prmajorName=" +
+		  url = url + "prmajorName=" +
 		    data.prmajorCode +
 		    "&" +
 		    "prcareerName=" +
