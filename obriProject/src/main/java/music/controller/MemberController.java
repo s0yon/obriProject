@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import music.mail.tempKey;
 import music.model.memberVO;
 import music.service.memberServiceImpl;
 
@@ -28,7 +30,102 @@ public class MemberController {
 	// BCryptPasswordEncoder 주입
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;	
+	
+	// 카카오 소셜로그인
+	@RequestMapping("joinKakaoMem.do")
+	@ResponseBody
+	public String joinKakaoMem(@RequestParam("userId") String userId,
+							   @RequestParam("userName") String userName,
+							   HttpSession session, memberVO member) throws Exception{
+		
+		// 카카오로부터 제공받은 정보 입력
+		member.setUserId(userId);
+		member.setUserName(userName);
+		
+		// 임의 비밀번호 생성 후 입력
+		String userPw = new tempKey().getKey(10, false);
+		member.setUserPw(userPw);
+		
+		// 나머지 항목 널값 입력
+		member.setUserPhone(null);
+		member.setUserEmail(null);
+		
+		// 이용자식별자(네이버로부터 제공받은 고유ID)로 연동기록 확인
+		// 아이디로 조회해 객체를 불러옴
+		memberVO mb = ms.checkId(userId);
+				
+		// 1. 연동기록이 없을 경우 가입
+		if(mb == null) {
+			// 1-1. 가입 성공
+			if(ms.insertScMem(member) == 1) {
+				session.setAttribute("userId", userId);
+				return "Y";
+			// 1-2. 가입 실패
+			}else {
+				return "E";
+			}
+		// 2. 연동기록이 있을 경우 상태에 따라 로그인 처리
+		// 2-1. 탈퇴한 회원일 때
+		}else if(mb.getUserDelYn() == 'Y'){
+			return "N";
+		// 2-2. 관리자에 의해 정지된 회원일 때
+		}else if(mb.getUserDelYn() == 'X'){
+			return "X";
+		// 2-3. 해당 없으면 자동로그인
+		}else {
+			session.setAttribute("userId", userId);
+			return "Y";
+		}
+	}
+	
+	// 네이버 소셜로그인
+	@RequestMapping("joinNaverMem.do")
+	@ResponseBody
+	public String joinScMem(@RequestParam("userId") String userId,
+						 @RequestParam("userName") String userName, 
+						 @RequestParam("userEmail") String userEmail,
+						 HttpSession session, memberVO member) throws Exception{
+		
+		// 네이버로부터 제공받은 정보 입력
+		member.setUserId(userId);
+		member.setUserName(userName);
+		member.setUserEmail(userEmail);
 
+		// 임의 비밀번호 생성 후 입력
+		String userPw = new tempKey().getKey(10, false);
+		member.setUserPw(userPw);
+		
+		// 나머지 항목 널값 입력
+		member.setUserPhone(null);
+		
+		// 이용자식별자(네이버로부터 제공받은 고유ID)로 연동기록 확인
+		// 아이디로 조회해 객체를 불러옴
+		memberVO mb = ms.checkId(userId);
+		
+		// 1. 연동기록이 없을 경우 가입
+		if(mb == null) {
+			// 1-1. 가입 성공
+			if(ms.insertScMem(member) == 1) {
+				session.setAttribute("userId", userId);
+				return "Y";
+			// 1-2. 가입 실패
+			}else {
+				return "E";
+			}
+		// 2. 연동기록이 있을 경우 상태에 따라 로그인 처리
+		// 2-1. 탈퇴한 회원일 때
+		}else if(mb.getUserDelYn() == 'Y'){
+			return "N";
+		// 2-2. 관리자에 의해 정지된 회원일 때
+		}else if(mb.getUserDelYn() == 'X'){
+			return "X";
+		// 2-3. 해당 없으면 자동로그인
+		}else {
+			session.setAttribute("userId", userId);
+			return "Y";
+		}
+	}
+	
 	// 로그인 시 계정, 인증 상태 검증
 	@RequestMapping("checkLogin.do")
 	public String logCheck(@RequestParam String userId, @RequestParam String userPw,

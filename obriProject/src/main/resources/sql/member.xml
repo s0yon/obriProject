@@ -8,10 +8,16 @@
      select * from member where userId=#{userId}
     </select>
  	
+ 	<!-- 네이버 로그인 가입 -->
+ 	<insert id="insertScMem" parameterType="mb">
+ 	insert into member(userId,userPw,userName,userPhone,userEmail,userMajor,userGru,userDate,userUpdate,userDelYn,mailAuth,mailKey) 
+	values(#{userId},#{userPw},#{userName},#{userPhone,jdbcType=VARCHAR},#{userEmail,jdbcType=VARCHAR},'','N',sysdate,sysdate,'N','Y','')
+ 	</insert>
+ 	
     <!-- 회원 가입(저장) -->
     <insert id="insertMem" parameterType="mb">
      insert into member(userId,userPw,userName,userPhone,userEmail,userMajor,userGru,userDate,userUpdate,userDelYn,mailAuth,mailKey) 
-     values(#{userId},#{userPw},#{userName},#{userPhone},#{userEmail},#{userMajor,jdbcType=VARCHAR},#{userGru},sysdate,sysdate,'N','N',#{mailKey,jdbcType=VARCHAR})
+     values(#{userId},#{userPw},#{userName},#{userPhone,jdbcType=VARCHAR},#{userEmail,jdbcType=VARCHAR},#{userMajor,jdbcType=VARCHAR},#{userGru},sysdate,sysdate,'N','N',#{mailKey,jdbcType=VARCHAR})
     </insert>
  
     <!-- 이메일 인증 키값 저장 -->

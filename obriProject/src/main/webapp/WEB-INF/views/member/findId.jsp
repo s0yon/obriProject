@@ -61,8 +61,8 @@
 		<c:if test="${!empty findid}">
 			<h1 class="h4 mb-3 fw-bold" align="center">아이디 찾기 결과</h1>
 			<tr>
-				<th>조회한 아이디:</th>
-				<td>${findid}</td>
+				<th>회원님의 아이디는</th>
+				<td>${findid} 입니다.</td>
 			</tr>
 			<br><br>
 			<button class="btn w-100 pr-100 fw-bold" type="button"

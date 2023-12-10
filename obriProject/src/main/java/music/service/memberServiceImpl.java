@@ -24,6 +24,11 @@ public class memberServiceImpl implements memberService{
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;	
 	
+	// 네이버 로그인
+	public int insertScMem(memberVO mb) throws Exception {
+		return md.insertScMem(mb);
+	}
+
 	// 아이디 정보 확인
 	@Override
 	public memberVO checkId(String userId) throws Exception {

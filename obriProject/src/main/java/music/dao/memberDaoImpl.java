@@ -12,6 +12,11 @@ public class memberDaoImpl implements memberDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	// 네이버 로그인
+	public int insertScMem(memberVO mb) throws Exception{
+		return sqlSession.insert("insertScMem", mb);
+	}	
+	
 	// 아이디 정보 확인
 	@Override
 	public memberVO checkId(String userId) throws Exception{
