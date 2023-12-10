@@ -286,20 +286,22 @@
 		(SELECT COUNT(*) AS totalCount, CEIL(COUNT(*)/12) AS totalPage,
 		0 AS currentPage, 0 AS isFirst, 0 AS isLast
 		
-		FROM prLike prlik		
+		FROM prLike prlik
+		LEFT OUTER JOIN prBoard prB
+		ON prB.prNo = prlik.prNo		
 		WHERE prlik.userId = #{id}
 		<if test="keywordVO != null">
 			<if test="keywordVO.prcareerName != null and keywordVO.prcareerName != 'all'">
-				AND prlik.prCareer = #{keywordVO.prcareerName}
+				AND prB.prCareer = #{keywordVO.prcareerName}
 			</if>
 			<if test="keywordVO.prmajorName != null and keywordVO.prmajorName != 'all'">
-				AND prlik.prMajor = #{keywordVO.prmajorName}
+				AND prB.prMajor = #{keywordVO.prmajorName}
 			</if>
 			<if test="keywordVO.prlocName != null and keywordVO.prlocName != 'all'">
-				AND prlik.prLoc = #{keywordVO.prlocName}
+				AND prB.prLoc = #{keywordVO.prlocName}
 			</if>
 			<if test="keywordVO.prhashName != null and keywordVO.prhashName != 'all'">
-				AND prlik.prHash = #{keywordVO.prhashName}
+				AND prB.prHash = #{keywordVO.prhashName}
 			</if>
 		</if>
 		) result	
