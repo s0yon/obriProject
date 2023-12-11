@@ -5,6 +5,7 @@ body {
 	color: #444;
 	padding-top: 80px;
 	padding-bottom: 80px;
+	margin: 0;
 }
 
 .container-sm {
@@ -54,29 +55,24 @@ td {
 	color: #333;
 }
 
-/* 링크 스타일 */
-a {
-	color: #A490D5;
+td a {
 	text-decoration: none;
-	font-weight: bold;
+	color: #333;
 }
 
-a:hover {
-	color: #8246af;
-}
-
- .pagination {
+.pagination {
     display: flex;
     justify-content: center;
     list-style: none;
     padding: 0;
-  }
+}
 
-  .pagination li {
+
+.pagination li {
     margin: 0 5px;
-  }
+}
 
-  .pagination a {
+.pagination .page-link {
     display: block;
     padding: 8px 16px;
     text-decoration: none;
@@ -86,11 +82,11 @@ a:hover {
     border-radius: 4px;
   }
 
-  .pagination a:hover {
+.pagination .page-link:hover {
     background-color: #ddd;
   }
 
-  .pagination .active a {
+.pagination .active .page-link {
     background-color: #007bff;
     color: #fff;
     border: 1px solid #007bff;

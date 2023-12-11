@@ -13,9 +13,7 @@
 	<context:property-placeholder location="classpath:config/application.properties" />
 
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-
-		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property> 
-<!--  		<property name="jdbcUrl" value="jdbc:oracle:thin:@43.202.67.70:1521:xe"></property>  -->
+		<property name="driverClassName" value="${hikariConfig.driverClassName}"></property>
 		<property name="jdbcUrl" value="${hikariConfig.jdbcUrl}"></property>
 		<property name="username" value="${hikariConfig.username}"></property>
 		<property name="password" value="${hikariConfig.password}"></property>
