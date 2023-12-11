@@ -24,7 +24,7 @@
 </head>
 <body>
 	<!-- footer start -->
-	<footer class="nav_foot">
+	<div class="nav_foot">
 		<div class="nav_container">
 			<h2>오브리</h2>
 			<p>O&nbsp;B&nbsp;R&nbsp;I&nbsp;&nbsp;&copy;2023.1조</p>
@@ -38,7 +38,7 @@
 		<div class="btn_up" onclick="window.scrollTo(0,0)">
 			<span class="fa-solid fa-circle-up fa-2xl"></span>
 		</div>
-	</footer>
+	</div>
 	<!-- footer end -->
 </body>
 </html>
