@@ -16,7 +16,7 @@
 <body>
     <div class="container-sm">
         <div class="row">
-            <!-- 헤더부분 부분 -->
+            <!-- 헤더부분 -->
             <c:import url="/WEB-INF/views/navbar.jsp" />
             <main>
                 <div>
@@ -46,23 +46,23 @@
                         </tbody>
                     </table>
 
-					<nav aria-label="Page navigation">
+					<nav aria-label="center">
 						<ul class="pagination">
 							<c:if test="${not empty keyword}">
 								<c:if test="${pp.startPage > pp.pagePerBlk }">
-									<li class="page-item"><a class="page-link"
+									<li><a class="page-link"
 										href="notice_list.do?pageNum=${pp.startPage - 1}&search=${search}&keyword=${keyword}"
 										aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 									</a></li>
 								</c:if>
 								<c:forEach var="i" begin="${pp.startPage}" end="${pp.endPage}">
-									<li class="page-item" <c:if test="${pp.currentPage==i}"></c:if>>
+									<li <c:if test="${pp.currentPage==i}"></c:if>>
 										<a
 										href="notice_list.do?pageNum=${i}&search=${search}&keyword=${keyword}">${i}</a>
 									</li>
 								</c:forEach>
 								<c:if test="${pp.endPage < pp.pageCount}">
-									<li class="page-item"><a class="page-link"
+									<li><a class="page-link"
 										href="notice_list.do?pageNum=${pp.endPage + 1}&search=${search}&keyword=${keyword}"
 										aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 									</a></li>
@@ -72,16 +72,16 @@
 							<!-- 전체 목록의 페이징 처리 -->
 							<c:if test="${empty keyword}">
 								<c:if test="${pp.startPage > pp.pagePerBlk }">
-									<li class="page-item"><a class="page-link"
+									<li><a class="page-link"
 										href="notice_list.do?pageNum=${pp.startPage - 1}"
 										aria-label="Previous"> <span aria-hidden="true">&laquo;</span></a></li>
 								</c:if>
 								<c:forEach var="i" begin="${pp.startPage}" end="${pp.endPage}">
-									<li class="page-item" <c:if test="${pp.currentPage==i}"></c:if>><a
-										href="notice_list.do?pageNum=${i}">${i}</a></li>
+									<li <c:if test="${pp.currentPage==i}"></c:if>>
+									<a href="notice_list.do?pageNum=${i}">${i}</a></li>
 								</c:forEach>
 								<c:if test="${pp.endPage < pp.pageCount}">
-									<li class="page-item"><a class="page-link"
+									<li><a class="page-link"
 										href="notice_list.do?pageNum=${pp.endPage + 1}"
 										aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 									</a></li>
