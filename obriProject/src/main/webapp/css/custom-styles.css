@@ -65,6 +65,13 @@ a:hover {
 	color: #8246af;
 }
 
+ .pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+  }
+
   .pagination li {
     margin: 0 5px;
   }
