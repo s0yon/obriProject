@@ -25,10 +25,61 @@ function check_select() {
   return;
 }
 
+
+	// 선택 삭제
+/* 	function check_selectDel(formId) {
+		
+		var chkNoForm = document.getElementById(formId);
+		
+		if (!chkNoForm) {
+	        alert("폼을 찾을 수 없습니다.");
+	        return;
+	    }
+		
+		if($("input[name='check_msgno']:checked").length == 0 ){
+			alert("선택된 항목이 없습니다.");
+			return;
+		}
+		
+ 		var msgNoArray = [];
+ 		$("input[name='check_msgno']:checked").each(function() {
+		      // 선택된 체크박스 값(msgNo)을 배열에 추가
+		      msgNoArray.push($(this).val());
+ 		});
+ 		console.log("msgNoArray : " + msgNoArray);
+ 		
+		if(confirm("정말 삭제하시겠습니까?")==false) {
+			return;
+		}
+		
+		// msgNoArray를 폼에 추가
+		$("<input>").attr({
+        type: "get",
+        name: "msgNoArray",
+        value: msgNoArray.join(",")
+    	}).appendTo(chkNoForm);
+		
+		// 폼 제출
+		chkNoForm.action="delete_RcvMsg_select.do";
+		chkNoForm.submit();
+	} */
+	
+	
+		// 체크박스 하나 삭제
+/* 	function selOneDel(msgNo) {
+		if (confirm("선택한 쪽지를 삭제하시겠습니까?")== true) {
+			location.href = "deleteRcvMsg.do?msgNo=" + msgNo;
+		}
+		return;		
+	} */
+
+
 // deleteBtnMsg" ID를 가진 요소를 클릭하면 check_select() 함수가 호출
 $("#deleteBtnMsg").click(() => {
   check_select();
 });
+
+
 
 /* 	function check_selectDel() {
 		// 'msgNo'라는 이름을 가진 모든 체크박스 가져오기

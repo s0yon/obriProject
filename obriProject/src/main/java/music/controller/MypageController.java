@@ -7,9 +7,12 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -198,7 +201,7 @@ public class MypageController {
 // ajax데이터 처리
 	// parameter에 따라 재검색 후 데이터 반환
 	@RequestMapping("api_likeListsPR.do")
-	public @ResponseBody AjaxRespVO<?> likeListsPRApi(@SessionAttribute("userId") String id, Model model, KeywordVO keywordVO) {	
+	public @ResponseBody AjaxRespVO<PagingPrListVO> likeListsPRApi(@SessionAttribute("userId") String id, Model model, KeywordVO keywordVO) {	
 		// 페이징 처리
 		PagingPrListVO pagingPrListVO = myService.pagingViewPrLike(keywordVO, id);
 		
@@ -270,41 +273,67 @@ public class MypageController {
 	
 	
 // 삭제 관련
-	// 작성한 커뮤니티 글 삭제
-	@RequestMapping("deleteComm.do")
-	public String deleteComm(@SessionAttribute("userId") String id, String commNo, Model model) {
-		String[] delCommNoArr = commNo.split(",");
+	// 메시지 선택 삭제
+	@RequestMapping(value="deleteSelectMsg.do", method=RequestMethod.DELETE)
+	public AjaxRespVO<Integer> delSelectMsg(@RequestParam int msgNo) {
+		int result = myService.delMsgNo(msgNo);
 		
-		int result = myService.deleteMyComms(delCommNoArr);
-		
-		String msg = "";
-		if(result > 0) {
-			msg = commNo + " 커뮤니티 글을 삭제하였습니다.";
-			model.addAttribute("msg", msg);
+		if(result==1) {
+			System.out.println("result :" + result);
+			return new AjaxRespVO<Integer>(1, "success", result);
 		} else {
-			msg = "삭제할 항목을 선택해주세요.";
-			model.addAttribute("msg", msg);
+			System.out.println("result :" + result);
+			return new AjaxRespVO<Integer>(-1, "failure", result);
 		}
-		return "mypage/comm/commWroteAll";
+	}
+	
+	// 작성한 커뮤니티 글 삭제
+	@RequestMapping(value="deleteSelectComm.do", method=RequestMethod.DELETE)
+	public AjaxRespVO<Integer> delSelectComm(@RequestParam int commNo) {
+		int result = myService.delCommNo(commNo);
+		
+		if(result==1) {
+			System.out.println("result :" + commNo + " 커뮤니티 글을 삭제하였습니다.");
+			return new AjaxRespVO<Integer>(1, "success", result);
+		} else {
+			System.out.println("result :" + result);
+			return new AjaxRespVO<Integer>(-1, "failure", result);
+		}
 	}
 	
 	// 작성한 커뮤니티 댓글 삭제
-	@RequestMapping("deleteReplyComm.do")
-	public String deleteReComm(@SessionAttribute("userId") String id, String commReNo, Model model) {
-		String[] delCommReNoArr = commReNo.split(",");
+	@RequestMapping(value="deleteSelectReComm.do", method=RequestMethod.DELETE)
+	public AjaxRespVO<Integer> delSelectReComm(@RequestParam int commReNo) {
+		int result = myService.delCommReNo(commReNo);
 		
-		int result = myService.deleteMyComReplys(delCommReNoArr);
-		
-		String msg = "";
-		if(result > 0) {
-			msg = commReNo + " 커뮤니티 댓글을 삭제하였습니다.";
-			model.addAttribute("msg", msg);
+		if(result==1) {
+			System.out.println("result :" + commReNo + " 커뮤니티 댓글을 삭제하였습니다.");
+			return new AjaxRespVO<Integer>(1, "success", result);
 		} else {
-			msg = "삭제할 항목을 선택해주세요.";
-			model.addAttribute("msg", msg);
+			System.out.println("result :" + result);
+			return new AjaxRespVO<Integer>(-1, "failure", result);
 		}
-		return "mypage/comm/commReplyWrote";
 	}
+	
+
+	
+//	// 작성한 커뮤니티 댓글 삭제
+//	@RequestMapping("deleteReplyComm.do")
+//	public String deleteReComm(@SessionAttribute("userId") String id, String commReNo, Model model) {
+//		String[] delCommReNoArr = commReNo.split(",");
+//		
+//		int result = myService.deleteMyComReplys(delCommReNoArr);
+//		
+//		String msg = "";
+//		if(result > 0) {
+//			msg = commReNo + " 커뮤니티 댓글을 삭제하였습니다.";
+//			model.addAttribute("msg", msg);
+//		} else {
+//			msg = "삭제할 항목을 선택해주세요.";
+//			model.addAttribute("msg", msg);
+//		}
+//		return "mypage/comm/commReplyWrote";
+//	}
 	
 	// 메시지 삭제
 //	@RequestMapping("deleteRcvMsg.do")
@@ -325,18 +354,16 @@ public class MypageController {
 //		return "redirect:messagebox_rcv.do";
 //	}
 	
-	// 선택 삭제
-	@RequestMapping("delete_RcvMsg_select.do")
-	public String deleteRcvMsg(@SessionAttribute("userId") String id, @RequestParam(value = "msgNoArray") String[] msgNoArray) {
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("msgNo_array", msgNoArray);
-		
-		// 삭제 메소드 실행
-		int result = myService.deleteMsg(map);
-		
-		return "redirect:messagebox_rcv.do";
-	}
-	
-	
+//	// 선택 삭제
+//	@RequestMapping("delete_RcvMsg_select.do")
+//	public String deleteRcvMsg(@SessionAttribute("userId") String id, @RequestParam(value = "msgNoArray") String[] msgNoArray) {
+//		
+//		Map<String, Object> map = new HashMap<String, Object>();
+//		map.put("msgNo_array", msgNoArray);
+//		
+//		// 삭제 메소드 실행
+//		int result = myService.deleteMsg(map);
+//		
+//		return "redirect:messagebox_rcv.do";
+//	}
 }

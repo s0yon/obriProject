@@ -113,11 +113,15 @@ public interface mypageDao {
 	
 	
 // 체크박스 선택 시, 삭제
+	// 선택한 메시지 삭제
+	public int delMsgNo(@Param("msgNo") int msgNo); 
 	// 체크박스 여러개 선택 시, 커뮤니티 게시판 글 삭제
-	public int deleteMyComms(HashMap<String, Object> delCommNoArr);
+	public int delCommNo(@Param("commNo") int commNo); 
 	// 체크박스 여러개 선택 시, 커뮤니티 댓글 삭제
-	public int deleteMyComReplys(HashMap<String, Object> delCommReNoArr);
+	public int delCommReNo(@Param("commReNo") int commReNo); 
 
-	// 체크박스 선택한 쪽지 삭제
-	public int deleteMsg(@Param("msgNoArray") Map<String, Object> msgNoArray);
+	
+	
+//	public int deleteMyComReplys(HashMap<String, Object> delCommReNoArr);
+//	public int deleteMsg(@Param("msgNoArray") Map<String, Object> msgNoArray);
 }

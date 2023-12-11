@@ -4,136 +4,33 @@
 <head>
 <%-- <script src="${path}/js/mypage/like.js"></script> --%>
 
-<script>
-	var path = "${pageContext.request.contextPath}";
-</script>
-
-<script>
-		let data = {
-		  prcareerCode: "all",
-		  prmajorCode: "all",
-		  prlocCode: "all",
-		  prhashCode: "all",
-		  stage: 0,
-		};
-
-		$("#btnSearch").click(() => {
-		  StringTest();
-		});
-
-		function buildWanted(likesWidget) {
-		  const pictureSrc = likesWidget.prFile
-		    ? `${path}/upload/${likesWidget.prFile}`
-		    : "https://picsum.photos/seed/picsum/200/300";
-
-		  return `<div class="wanted">
-		  <a href="prDetail.do?prNo=${likesWidget.prNo}">
-		        <div class="picture">
-		          <img src="${pictureSrc}">
-		        </div>
-		      <div class="wanted_text">
-		          <div class="text">
-		              <ul>
-		                  <li class="title">
-		                      <h2>${likesWidget.prSub}</h2>
-		                  </li>
-		                  <li class="content">
-		                      <p>${likesWidget.prText}</p>
-		                  </li>
-		              </ul>
-		          </div>
-		          <div class="company_intro">
-		              <p class="company_region">${likesWidget.prCareer}</p>
-		              <p class="company_name">${likesWidget.prMajor}</p>
-		          </div>
-		      </div>
-		  </a>
-		</div>`;
-		}
-
-		function StringTest() {
-		  let url = "?";
-		  url =
-		    url +
-		    "prmajorName=" +
-		    data.prmajorCode +
-		    "&" +
-		    "prcareerName=" +
-		    data.prcareerCode +
-		    "&" +
-		    "prlocName=" +
-		    data.prlocCode +
-		    "&" +
-		    "prhashName=" +
-		    data.prhashCode;
-		  // url 확인 차
-		  console.log(1, url);
-
-		  // ajax로 데이터 받음
-		  $.ajax("api_likeListsPR.do" + url, {
-		    type: "GET",
-		    dataType: "json",
-		    async: true,
-		  }).done((res) => {
-		    if (res.code == 1) {
-		      console.log(2, res);
-
-		      let likesWidgetList = res.data.likesListPRVOs;
-		      $("#wanteds").empty();
-		      likesWidgetList.forEach((likesWidget) => {
-		        console.log("likesWidgetList for each문 실행");
-		        $("#wanteds").prepend(buildWanted(likesWidget));
-		      });
-		      alert("데이터 검색 성공");
-		      //location.href = "/api/wanteds" + queryString;
-		    } else {
-		      alert("데이터 검색 실패");
-		    }
-		  });
-		}
-
-		function ChangeValue(id) {
-		  let element = document.getElementById(id);
-		  if (id == "prcareerCode") {
-		    data.prcareerCode = element.options[element.selectedIndex].value;
-		  }
-		  if (id == "prmajorCode") {
-		    data.prmajorCode = element.options[element.selectedIndex].value;
-		  }
-		  if (id == "prlocCode") {
-		    data.prlocCode = element.options[element.selectedIndex].value;
-		  }
-		  if (id == "prhashCode") {
-		    data.prhashCode = element.options[element.selectedIndex].value;
-		  }
-		}
-</script>
 </head>
 
 <div class="wanteds_page">
 	<div class="search_wanted">
+		<form name="selectOption" action="likeListsPR.do">
 		<div class="all_position">
 			<div class="select_head">포지션 선택</div>
 			<div class="select_all">
 				<select class="all" id="positionCode" name="prmajorName" onchange="ChangeValue('positionCode')">
-					<option selected >전체 포지션(전공)</option>
+					<option value="all" ${empty param.prmajorName ? 'selected' : ''}>전체 포지션(전공)</option>
 					<c:forEach var="PrMajors" items="${PrMajors}">
-						<option>${PrMajors.prMajor}</option>
+						<option value="${PrMajors.prMajor}" ${param.prmajorName eq PrMajors.prMajor ? 'selected' : ''}>${PrMajors.prMajor}</option>
 					</c:forEach>
 				</select>
 			</div>
-			<div class="select_position" type="button" id="btnSearch">
+			<button class="select_position" type="submit" id="btnSearch">
 				<a><i class="fa fa-search"></i></a>
-			</div>
+			</button>
 		</div>
 
 		<div class="selects">
 			<div class="select_career">
 				<select class="career" id="careerCode" name="prcareerName"
 						onchange="ChangeValue('careerCode')">
-					<option selected>신입/경력</option>
+					<option value="all" ${empty param.prcareerName ? 'selected' : ''}>신입/경력</option>
 					<c:forEach var="PrCareers" items="${PrCareers}">
-						<option>${PrCareers.prCareer}</option>
+						<option value="${PrCareers.prCareer}" ${param.prcareerName eq PrCareers.prCareer ? 'selected' : ''}>${PrCareers.prCareer}</option>
 					</c:forEach>
 				</select>
 			</div>
@@ -141,9 +38,9 @@
 			<div class="select_region">
 				<select class="region" id="regionCode" name="prlocName"
 						onchange="ChangeValue('regionCode')">
-					<option selected>지역 선택</option>
+					<option value="all" ${empty param.prlocName ? 'selected' : ''}>지역 선택</option>
 					<c:forEach var="PrLocs" items="${PrLocs}">
-						<option>${PrLocs.prLoc}</option>
+						<option value="${PrLocs.prLoc}" ${param.prlocName eq PrLocs.prLoc ? 'selected' : ''}>${PrLocs.prLoc}</option>
 					</c:forEach>
 				</select>
 			</div>
@@ -151,9 +48,9 @@
 			<div class="select_skill">
 				<select class="skill" id="skillsCode" name="prhashName"
 						onchange="ChangeValue('skillsCode')">
-					<option selected>해시태그</option>
+					<option value="all" ${empty param.prhashName ? 'selected' : ''}>해시태그</option>
 					<c:forEach var="PrHashes" items="${PrHashes}">
-						<option>#${PrHashes.prHash}</option>
+						<option value="${PrHashes.prHash}" ${param.prhashName eq PrHashes.prHash ? 'selected' : ''}>#${PrHashes.prHash}</option>
 					</c:forEach>
 				</select>
 			</div>
@@ -182,6 +79,7 @@
 				</select>
 			</div>
 		</div>
+		</form>
 	</div>
 
 	<div class="overBox">

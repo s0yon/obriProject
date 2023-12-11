@@ -1,25 +1,14 @@
 ## .gitignore
 
 
-## README 파일
-
-README.md
-
-
-
-
 ## target 파일
 
 obriProject/target/**
-**/target/**
-target/**
-*/target/*
+*/target/**
 
 
 
+## env 파일(application.properties)
+obriProject/src/main/resources/config/application.properties
 
 
-
-## root-context.xml
-
-obriProject/src/main/webapp/WEB-INF/spring/root-context.xml

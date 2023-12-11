@@ -286,20 +286,22 @@
 		(SELECT COUNT(*) AS totalCount, CEIL(COUNT(*)/12) AS totalPage,
 		0 AS currentPage, 0 AS isFirst, 0 AS isLast
 		
-		FROM prLike prlik		
+		FROM prLike prlik
+		LEFT OUTER JOIN prBoard prB
+		ON prB.prNo = prlik.prNo		
 		WHERE prlik.userId = #{id}
 		<if test="keywordVO != null">
 			<if test="keywordVO.prcareerName != null and keywordVO.prcareerName != 'all'">
-				AND prlik.prCareer = #{keywordVO.prcareerName}
+				AND prB.prCareer = #{keywordVO.prcareerName}
 			</if>
 			<if test="keywordVO.prmajorName != null and keywordVO.prmajorName != 'all'">
-				AND prlik.prMajor = #{keywordVO.prmajorName}
+				AND prB.prMajor = #{keywordVO.prmajorName}
 			</if>
 			<if test="keywordVO.prlocName != null and keywordVO.prlocName != 'all'">
-				AND prlik.prLoc = #{keywordVO.prlocName}
+				AND prB.prLoc = #{keywordVO.prlocName}
 			</if>
 			<if test="keywordVO.prhashName != null and keywordVO.prhashName != 'all'">
-				AND prlik.prHash = #{keywordVO.prhashName}
+				AND prB.prHash = #{keywordVO.prhashName}
 			</if>
 		</if>
 		) result	
@@ -463,34 +465,32 @@
 	
 	
 
-<!-- 삭제 설정 관련 -->
-	<!-- 커뮤니티 게시판 글 삭제 -->
-	<update id="deleteMyComms">
-		UPDATE comBoard SET commDelYn = 'Y'
-		WHERE userId = #{id} AND commNo IN
-		<foreach collection="delCommNoArr" item="item" index="index" separator="," open="(" close=")">
-			#{item}
-		</foreach>	
-	</update>
-	
-	<!-- 커뮤니티 댓글 삭제 -->
-	<update id="deleteMyComReplys">
-		UPDATE comReply SET commReDelYn = 'Y'
-		WHERE commReId = #{id} AND commReNo IN
-		<foreach collection="delCommReNoArr" item="item" index="index" separator="," open="(" close=")">
-			#{item}
-		</foreach>	
-	</update>
-	
-	<!-- 쪽지 선택 삭제 -->
-	<update id="deleteMsg" parameterType="java.util.Map">
+<!-- 삭제 설정 관련 -->	
+<!-- 	<update id="deleteMsg" parameterType="java.util.Map">
 		UPDATE msg SET msgDelYn = 'Y'
 		WHERE msgNo IN
 		<foreach collection="msgNoArray" item="value" index="index" separator="," open="(" close=")">
 			#{value}
 		</foreach>	
+	</update> -->
+		
+	<!-- 메시지 선택 삭제 -->
+	<update id="delMsgNo">
+		UPDATE msg SET msgDelYn = 'Y'
+		WHERE msgNo = #{msgNo}		
 	</update>
 
+	<!-- 커뮤니티 게시판 글 삭제 -->
+	<update id="delCommNo">
+		UPDATE comBoard SET commDelYn = 'Y'
+		WHERE commNo = #{commNo}
+	</update>
+	
+	<!-- 커뮤니티 댓글 삭제 -->
+	<update id="delCommReNo">
+		UPDATE comReply SET commReDelYn = 'Y'
+		WHERE commReNo = #{commReNo}
+	</update>
 
 
 
