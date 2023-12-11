@@ -124,4 +124,10 @@ public interface mypageDao {
 	
 //	public int deleteMyComReplys(HashMap<String, Object> delCommReNoArr);
 //	public int deleteMsg(@Param("msgNoArray") Map<String, Object> msgNoArray);
+	
+	
+	
+// 쪽지 알림
+	// 읽지 않은 받은 메시지 수 
+	public String cntMgsAlert(@Param("id") String id);
 }

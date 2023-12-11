@@ -10,7 +10,7 @@
 	<!-- profile : 회원정보 게시판(member) + PR게시판 Join -->
 	<select id="findUser" resultType="UserInfo">
 		SELECT us.userId, us.userPw, us.userName, us.userPhone, us.userEmail,
-		pr.prNo AS prNo,pr.prFile,
+		pr.prNo AS prNo, pr.prFile,
         CASE WHEN pr.prMajor != us.userMajor
         THEN pr.prMajor || ', ' || us.userMajor
         ELSE pr.prMajor END AS userPosition
@@ -492,6 +492,13 @@
 		WHERE commReNo = #{commReNo}
 	</update>
 
+
+<!-- 쪽지 알림 -->
+	<!-- 읽지 않은 받은메시지 수 출력 -->
+	<select id="cntMgsAlert" resultType="String">
+		SELECT count(*) FROM msg
+		WHERE recvId = #{id} AND msgDelYn != 'Y' AND msgCheck = 0
+	</select>
 
 
 

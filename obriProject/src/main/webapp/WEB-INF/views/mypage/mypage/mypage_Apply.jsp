@@ -19,6 +19,24 @@
 		}
 	}
 </script>
+
+<!-- 쪽지 알림 -->
+<script type="text/javascript">
+	var socket = null;
+	var sock = new SockJS("/our-websocket");
+	
+	function connect() {
+		socket = sock;
+		
+		sock.onopen = function() {
+			console.log("connection opened.");
+		};
+		
+		sock.onmessage = function(e) {
+			var split
+		}
+	}
+</script>
 			
 </head>
 
@@ -39,7 +57,7 @@
 						</div>
 						<div class="mp_acc_setting">
 							<button>
-								<a href="accountSetting.do">계정 설정하기</a>
+								<a href="edit.do">계정 설정하기</a>
 							</button>
 						</div>
 					</c:forEach>
@@ -58,6 +76,7 @@
 							<li>
 								<a href="applyStatusAll.do">
 									<div class="mp_status_li1">지원 현황</div>
+									<p class="application_notifications"></p>
 									<div>${infoCountVOs.applystatusAll}</div>
 								</a>
 							</li>
