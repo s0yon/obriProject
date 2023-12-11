@@ -15,6 +15,12 @@ public class HomeController {
 		return "home";
 	}
 	
+	// 네이버 로그인
+	@RequestMapping("loginNaver.do")
+	public String logNaver() {
+		return "member/loginNaver";
+	}
+	
 	// 로그인 페이지
 	@RequestMapping("login.do")
 	public String goLogin() {

@@ -17,32 +17,9 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/admin/adminNav.css"
 	type="text/css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/admin/adminForm.css"
+	type="text/css">
 <style>
-.center {
-	text-align: center;
-}
-
-.pagination {
-	display: inline-block;
-}
-
-.pagination a {
-	color: black;
-	float: left;
-	padding: 4px 8px;
-	text-decoration: none;
-	transition: background-color .3s;
-	border: 1px solid #ddd;
-}
-
-.pagination a:hover:not(.active) {
-	background-color: #ddd;
-}
-
-.sh {
-	text-align: right;
-	margin-top: 20px;
-}
 .btg{
 	text-align: right;
 }

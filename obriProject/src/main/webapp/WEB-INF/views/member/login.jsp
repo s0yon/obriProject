@@ -14,7 +14,15 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="./css/member/login.css" type="text/css">
+
 <script src="http://code.jquery.com/jquery-latest.js"></script>
+<!-- 네이버 로그인 -->
+<script type="text/javascript"
+	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
+	charset="utf-8"></script>
+<!-- 카카오 로그인 -->
+<script type="text/javascript"
+	src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script>
 	function check() {
 		if ($.trim($("#userId").val()) == "") {
@@ -29,25 +37,15 @@
 		}
 	}
 </script>
-<script type="text/javascript"
-	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
-	charset="utf-8"></script>
-
-<!-- <script type="text/javascript">
-	window.addEventListener("message", function(event) {
-		if (event.data === "naverLoginSuccess") {
-			window.location.href = "list.board";
-		}
-	});
-</script> -->
 </head>
 
 <body class="d-flex align-items-center py-4 bg-body-tertiary">
 	<main class="form-signin w-500 m-auto">
 		<form method="post" action="checkLogin.do" onsubmit="return check()">
+			<input type="hidden" name="login_ok" value="1" />
 			<div id="logo">
 				<img src="images/184.png" alt="" width="100" height="100"
-				onclick="location.href='home.do'" style="cursor: pointer;">
+					onclick="location.href='home.do'" style="cursor: pointer;">
 			</div>
 			<br>
 			<h1 class="h4 mb-3" align="center">
@@ -65,6 +63,108 @@
 
 			<button class="btn w-100 pr-100 fw-bold" type="submit">로그인</button>
 			<br> <br>
+
+			<h2 class="h6 fw-bold" align="center">SNS 계정으로 로그인</h2>
+			<hr>
+
+			<div class="d-flex justify-content-center column-gap-3">
+				<!-- 네이버 로그인-->
+				<div id="naver_id_login"></div>
+				<script type="text/javascript">
+					var naver_id_login = new naver_id_login(
+							"",
+							"http://localhost/obriProject/loginNaver.do");
+					var state = naver_id_login.getUniqState();
+					naver_id_login.setButton("green", 1, 40);
+					naver_id_login
+							.setDomain("http://localhost/obriProject/login.do");
+					naver_id_login.setState(state);
+					//	naver_id_login.setPopup();		// 팝업 방식 해제
+					naver_id_login.init_naver_id_login();
+				</script>
+
+				<!-- 카카오 로그인 -->
+				<div id="kakao_id_login">
+					<a href="javascript:loginWithKakao()"> <img
+						src="./images/kakao_logo.png" style="width: 40px; height: 40px;" />
+					</a>
+				</div>
+			</div>
+			<script type="text/javascript">
+				Kakao.init('');
+				//console.log(Kakao.isInitialized());
+
+				function loginWithKakao() {
+					Kakao.Auth.login({
+						success : function(authObj) {
+							//console.log(authObj);
+							Kakao.Auth.setAccessToken(authObj.access_token);
+							getInfo();
+						},
+						fail : function(err) {
+							//console.log(err);
+						},
+					})
+				}
+				function getInfo() {
+					Kakao.API.request({
+						url : '/v2/user/me',
+						success : function(res) {
+							//console.log(res);
+							//console.log(res.id);
+							//console.log(res.kakao_account.profile.nickname);
+							kakaoLoginCallback(res);
+						},
+						fail : function(error) {
+							alert('카카오 로그인에 실패했습니다.' + JSON.stringify(error));
+						}
+					});
+				}
+				function kakaoLoginCallback(res) {
+					id = res.id;
+					nickname = res.kakao_account.profile.nickname;
+
+					$
+							.ajax({
+								type : 'POST',
+								url : 'joinKakaoMem.do',
+								data : {
+									'userId' : id,
+									'userName' : nickname
+								},
+								success : function(result) {
+									if (result == "Y") {
+										alert('환영합니다. ' + nickname
+												+ '님!\n오브리에서 다양한 연주자들과 소통하세요.');
+										location.href = "home.do";
+									} else if (result == "N") {
+										alert('탈퇴한 계정입니다.\n소셜로그인으로 재가입을 원하실 경우 문의 메일을 남겨주세요.');
+										location.href = "home.do";
+									} else if (result == "X") {
+										alert('관리자에 의해 사용이 정지된 계정입니다.');
+										location.href = "home.do";
+									} else {
+										alert('카카오 로그인에 실패했습니다.\n가입 후 로그인을 시도해주세요.');
+										location.href = "login.do";
+									}
+								},
+								error : function(result) {
+									alert('카카오 로그인에 실패했습니다.\n가입 후 로그인을 시도해주세요.');
+									location.href = "login.do";
+								}
+							});
+				}
+				function kakaoLogout() {
+					if (!Kakao.Auth.getAccessToken()) {
+						alert('Not logged in.');
+						return;
+					}
+					Kakao.Auth.logout(function() {
+						alert('logout ok\naccess token -> '
+								+ Kakao.Auth.getAccessToken());
+					});
+				}
+			</script>
 
 			<p class="mt-4 mb-3 text-body-secondary" align="center"
 				style="font-size: 90%">
