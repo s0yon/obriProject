@@ -7,23 +7,10 @@
 <head>
 <title>공지사항</title>
 <meta charset="utf-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- 사용자 정의 스타일 -->
-<link rel="stylesheet" href="./css/nav.css">
 <link rel="stylesheet" href="./css/custom-styles.css">
-
-<script src="https://code.jquery.com/jquery-latest.js"></script>
-<script src="https://kit.fontawesome.com/8c929515d1.js"></script>
-<script>
-    $(function() {
-        $("#navbar_toggle_btn").click(function() {
-            $("#navbar_menu").toggle();
-            $("#navbar_icons").toggle();
-        });
-    });
-</script>
 
 </head>
 <body>

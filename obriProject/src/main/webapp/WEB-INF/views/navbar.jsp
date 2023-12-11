@@ -26,7 +26,7 @@
 </head>
 <body>
 	<!-- navbar start -->
-	<nav class="navbar">
+	<div id="navbar" class="navbar">
 		<div class="navbar_logo" id="navbar_logo">
 			<a href="<c:url value='/home.do'/>"><img src="./images/184.png"></a>
 		</div>
@@ -47,6 +47,6 @@
 		<a href="#" class="navbar_toggle_btn" id="navbar_toggle_btn"> <i
 			class="fa-solid fa-bars"></i>
 		</a>
-	</nav>
+	</div>
 	<!-- navbar end -->
 </html>
