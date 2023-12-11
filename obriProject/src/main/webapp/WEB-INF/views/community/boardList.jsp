@@ -107,7 +107,7 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>
 					<c:if test="${not empty list}">
 						<c:set var="no1" value="${no}"></c:set>
 						<c:forEach var="community" items="${list }">
-							<c:if test="${community.commDelyn != 'Y' }">
+							<c:if test="${community.commDelYn != 'Y' }">
 								<tr align="center">
 
 									<td>${no1}<c:set var="no1" value="${no1-1}" />
