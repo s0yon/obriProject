@@ -74,7 +74,7 @@
 		<ul class="navbar_menu" id="navbar_menu">
 			<li><a href="boardListShow.do">구인</a></li>
 			<li><a href="prCardList.do">홍보</a></li>
-			<li><a href="board_list.do">커뮤니티</a></li>
+			<li><a href="boardList.do">커뮤니티</a></li>
 			<li><a href="notice_list.do">공지</a></li>
 		</ul>
 		<ul class="navbar_icons" id="navbar_icons">

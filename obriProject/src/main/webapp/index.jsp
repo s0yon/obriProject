@@ -7,12 +7,12 @@
 </head>
 <body>
 	<script>
+	/* re developer brench */
+	/* re developer brench *//* 
 <<<<<<< HEAD
-	/* re developer brench */
-	/* re developer brench */
 	
 =======
->>>>>>> e048159cb6181fb3a8a43f30cadfb4603cee9945
+>>>>>>> e048159cb6181fb3a8a43f30cadfb4603cee9945 */
 	 location.href="home.do"
 	</script>
 </body>

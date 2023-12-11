@@ -21,10 +21,10 @@ public class commReplyDao {
 		
 	}
 
-	public List<communityVO> comReList(int commno) {
+	public List<communityVO> comReList(int commNo) {
 		// TODO Auto-generated method stub
 		System.out.println("댓글 목록 dao");
-		return replysession.selectList("commReplyns.replyList", commno);
+		return replysession.selectList("commReplyns.replyList", commNo);
 	}
 
 	public int getTotal(commReplyVO commReply) {

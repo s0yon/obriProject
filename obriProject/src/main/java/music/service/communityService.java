@@ -33,21 +33,21 @@ public class communityService {
 	}
 
 
-	public communityVO Content(int commno) {
+	public communityVO Content(int commNo) {
 		System.out.println("상세정보 서비스");
-		return dao.Content(commno) ;
+		return dao.Content(commNo) ;
 	}
 
 
-	public void updateCount(int commno) {
+	public void updateCount(int commNo) {
 		System.out.println("조회수 증가 서비스");
-		dao.updateCount(commno);
+		dao.updateCount(commNo);
 	}
 
 
-	public int boardDelete(int commno) {
+	public int boardDelete(int commNo) {
 		System.out.println("글삭제 서비스");
-		return dao.boardDelete(commno);
+		return dao.boardDelete(commNo);
 	}
 
 
@@ -58,9 +58,25 @@ public class communityService {
 	}
 
 
-	public int count(int commno) {
+	public int count(int commNo) {
 		// TODO Auto-generated method stub
-		return dao.count(commno);
+		return dao.count(commNo);
+	}
+
+
+	public void upLike(int commNo) {
+		// TODO Auto-generated method stub
+		System.out.println("최초 좋아요 수 증가");
+		dao.upLike(commNo);
+		
+	}
+
+
+	public void changeLike(commLikeVO commVO) {
+		// TODO Auto-generated method stub
+		System.out.println("상태값에 따른 좋아요수 변경");
+		dao.changeLike(commVO);
+		
 	}
 
 
@@ -72,17 +88,17 @@ public class communityService {
 
 
 	
-//	public void updateLike(int commno) {
+//	public void updateLike(int commNo) {
 //		System.out.println("커뮤니티 게시판 게시글 좋아요수 증가 서비스");
-//		dao.updateLike(commno);
+//		dao.updateLike(commNo);
 //		
 //	}
 //
 //
-//	public void deleteLike(int commno) {
+//	public void deleteLike(int commNo) {
 //		System.out.println("커뮤니티 게시판 게시글 좋아요수 감소");
 //		// TODO Auto-generated method stub
-//		dao.deleteLike(commno);
+//		dao.deleteLike(commNo);
 //		
 //	}
 

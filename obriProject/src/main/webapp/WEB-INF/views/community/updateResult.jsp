@@ -6,7 +6,7 @@
 <c:if test="${result == 1 }">
 	<script>
 		alert("수정 성공");
- 		location.href="boardContent.do?commno=${commno}&pageNum=${pageNum}";  
+ 		location.href="boardContent.do?commNo=${commNo}&pageNum=${pageNum}";  
   	</script>
 </c:if>
 
