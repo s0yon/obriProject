@@ -4,7 +4,7 @@
 
 <mapper namespace="commReplyns">
 
-
+ 
 	<!-- 댓글 입력 -->
 	<insert id="replyInsert" parameterType="commReply">
 		insert into comReply

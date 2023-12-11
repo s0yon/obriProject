@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="commlikens">
-
+ 
 
 	<!-- 좋아요 데이터 분석 -->
 	<select id="select"  parameterType="commlike"  resultType="commlike">

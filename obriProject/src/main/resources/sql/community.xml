@@ -4,7 +4,7 @@
 
 <mapper namespace="communityns">
  
-
+ 
 	<!-- 글작성 -->
 	<!-- <insert id="insertBoard" parameterType="community">
 		insert into com_board
