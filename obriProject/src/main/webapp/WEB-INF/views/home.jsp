@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,8 +46,8 @@
 </head>
 
 <body>
-<%@include file="navbar.jsp" %>
-
+	<c:import url="/WEB-INF/views/navbar.jsp" />
+	
 	<main style="padding-top: 80px; padding-bottom: 80px">
 
 		<!-- header start -->
@@ -123,6 +124,7 @@
 		</section>
 		<!-- intro end -->
 	</main>
-<%@include file="footer.jsp" %>
+	
+	<c:import url="/WEB-INF/views/footer.jsp" />
 </body>
 </html>
