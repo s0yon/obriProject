@@ -14,12 +14,6 @@
 
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 
-		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property> 
-<!--  		<property name="jdbcUrl" value="jdbc:oracle:thin:@43.202.67.70:1521:xe"></property>  -->
-		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe"></property>
-		<property name="username" value="music"></property>
-		<property name="password" value="music123"></property>
-
 		<property name="driverClassName" value="${hikariConfig.driverClassName}"></property>
 		<property name="jdbcUrl" value="${hikariConfig.jdbcUrl}"></property>
 		<property name="username" value="${hikariConfig.username}"></property>
@@ -51,9 +45,6 @@
 	<!-- SET default mail properties -->
 	<bean id="jMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="smtp.gmail.com" />
-		<property name="port" value="587" />
-		<property name="username" value="" />
-		<property name="password" value="" />
 		<property name="port" value="${jMailSender.port}" />
 		<property name="username" value="${jMailSender.username}" />
 		<property name="password" value="${jMailSender.password}" />
