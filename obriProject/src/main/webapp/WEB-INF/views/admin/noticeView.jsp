@@ -30,6 +30,41 @@ td {
 	margin-left: 5px;
 	float: right;
 }
+
+ #nottable {
+        width: 100%;
+        margin-bottom: 1rem;
+        background-color: transparent;
+    }
+
+    #nottable th, #nottable td {
+        padding: 0.75rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+    }
+
+    .btn {
+        display: inline-block;
+        font-weight: 400;
+        color: #212529;
+        text-align: center;
+        vertical-align: middle;
+        user-select: none;
+        background-color: #f8f9fa;
+        border: 1px solid #f8f9fa;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: 0.25rem;
+        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+    
+    .btn-outline-secondary {
+        color: #6c757d;
+        background-color: transparent;
+        background-image: none;
+        border-color: #6c757d;
+    }
 </style>
 <link rel="stylesheet" href="./css/nav.css">
 
