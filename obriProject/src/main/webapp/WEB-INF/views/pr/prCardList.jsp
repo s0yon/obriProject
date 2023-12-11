@@ -88,7 +88,7 @@ function sortOrderChange() {
 </style>
 
 <body> 
-
+	<c:import url="/WEB-INF/views/navbar.jsp" />
 <%-- 현재 페이지 : ${pp.currentPage}  --%>
 <div class="container mt-4 mx-auto ">
 	
@@ -211,7 +211,7 @@ function sortOrderChange() {
 		</c:if>
 	</ul>
 	</div>
-	
 </div>
+	<c:import url="/WEB-INF/views/footer.jsp" />
 </body>
 </html>
