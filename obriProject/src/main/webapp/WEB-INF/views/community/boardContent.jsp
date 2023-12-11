@@ -4,9 +4,20 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<c:set var="loginOutLink"
+	value="${sessionScope.userId==null ? 'login.do' : 'logout.do'}" />
+<c:set var="loginOut"
+	value="${sessionScope.userId==null ? '로그인' : '로그아웃'}" />
+<c:set var="myPageLink"
+	value="${sessionScope.userId==null ? 'join.do' : 'editCheck.do'}" />
+<c:set var="myPage"
+	value="${sessionScope.userId==null ? '회원가입' : '마이페이지'}" />
+
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-
+<script src="https://kit.fontawesome.com/8c929515d1.js"
+	crossorigin="anonymous"></script>
+	
 <style>
         /* 버튼 스타일링 */
         .imageButton {
@@ -47,7 +58,7 @@
 <script>
     function deleteCheck() {
         if (confirm("정말로 삭제하시겠습니까?") == true) {	// 확인
-            location.href = "boardDelete.do?commno=${community.commno}&page=${page}"
+            location.href = "boardDelete.do?commNo=${community.commNo}&page=${page}"
         } else {										// 취소
             alert("취소되었습니다.");
             return false;
@@ -76,7 +87,7 @@ console.log("userId:", '${community.userId}');
         	
 		        	var result = confirm("좋아요를 선택 하시겠습니까?");
 		        	if(result){
-		               location.href="comLike.do?commno=${community.commno}&pageNum=${pageNum}&state="+state;
+		               location.href="comLike.do?commNo=${community.commNo}&pageNum=${pageNum}&state="+state;
 		               
 		               return false;
 		        	}     	
@@ -90,7 +101,7 @@ console.log("userId:", '${community.userId}');
 
  			// 리스트 불러오기
         $(function () {	
-            $('#commReList').load('commReList.do?commno=${community.commno}')	
+            $('#commReList').load('commReList.do?commNo=${community.commNo}')	
 
             // 댓글창 유효성 검사
             $('#comReInsert').click(function () {
@@ -126,12 +137,64 @@ console.log("userId:", '${community.userId}');
  			
  </script>
 
-헤더
-<hr>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>커뮤니티 게시판</title>
+
+<link rel="stylesheet" href="./css/nav.css">
+<link rel="stylesheet" href="./css/header.css">
+<link rel="stylesheet" href="./css/animation.css">
+<link rel="stylesheet" href="./css/intro.css">
+
+</head>
+
+<body>
+ <!-- navbar start -->
+	<nav class="navbar">
+		<div class="navbar_logo" id="navbar_logo">
+			<a href="<c:url value='/home.do'/>"><img src="./images/184.png"></a>
+		</div>
+		<ul class="navbar_menu" id="navbar_menu">
+			<li><a href="boardListShow.do">구인</a></li>
+			<li><a href="prCardList.do">홍보</a></li>
+			<li><a href="boardList.do">커뮤니티</a></li>
+			<li><a href="notice_list.do">공지</a></li>
+		</ul>
+		<ul class="navbar_icons" id="navbar_icons">
+			<li><a href="<c:url value='${loginOutLink}'/>"> <i
+					class="fa-solid fa-user"></i>&nbsp;&nbsp;${loginOut}
+			</a></li>
+			<li><a href="<c:url value='${myPageLink}'/>"> <i
+					class="fa-solid fa-right-to-bracket"></i>&nbsp;&nbsp;${myPage}
+			</a></li>
+		</ul>
+		<a href="#" class="navbar_toggle_btn" id="navbar_toggle_btn"> <i
+			class="fa-solid fa-bars"></i>
+		</a>
+	</nav>
+	<!-- navbar end -->
+
+<main style="padding-top: 80px; padding-bottom: 80px">
+
+		<!-- header start -->
+		<section class="header">
+			<div class="title">
+				<h1>
+					연주자를 위한 커뮤니티,<br> 오브리
+				</h1>
+			</div>
+		</section>
+		<!-- header end -->
+ 
+
 <h2 align="center">상세페이지</h2>
 <form method=post action="boardDelete.do">
 	<div align="center">
-		<table border=1 width=600>
+		<table width=600>
 			<tr>
 				<th>작성자 </th>
 				<td>${community.userId}</td>
@@ -207,7 +270,7 @@ console.log("userId:", '${community.userId}');
 	<td>
 		&nbsp;
 		<input type="button" value="수정"
-			onClick="location.href='boardUpdateForm.do?commno=${community.commno}&pageNum=${pageNum}'">&nbsp;
+			onClick="location.href='boardUpdateForm.do?commNo=${community.commNo}&pageNum=${pageNum}'">&nbsp;
 			</td>
 			
 			<td>
@@ -235,7 +298,7 @@ console.log("userId:", '${community.userId}');
 		<input type="hidden"   name="commReId"  value="${sessionScope.userId }">
 		<br>
 		
-		<input type="hidden"   name="commno"  value="${community.commno} ">
+		<input type="hidden"   name="commNo"  value="${community.commNo} ">
 		<textarea rows="3" cols="50"   name="commReText"  placeholder="댓글을 작성하세요" ></textarea><br><br>
 		
 		<div id="commReSession">
@@ -253,7 +316,27 @@ console.log("userId:", '${community.userId}');
 <h2 align="center">댓글 목록</h2>
 <div id="commReList" align="center"></div>
 
+</main>
 
-<hr>
-푸터
+		<!-- footer start -->
+	<footer class="nav_foot">
+		<div class="nav_container">
+			<h2>오브리</h2>
+			<p>O&nbsp;B&nbsp;R&nbsp;I&nbsp;&nbsp;&copy;2023.1조</p>
+		</div>
+		<ul class="nav_menu">
+			<li><a href="notice_list.do">공지사항</a></li>
+			<li><a href="qna_form.do">문의하기</a></li>
+			<li><a href="">개인정보 처리방침</a></li>
+			<li><a href="">서비스 이용약관</a></li>
+		</ul>
+		<div class="btn_up" onclick="window.scrollTo(0,0)">
+			<span class="fa-solid fa-circle-up fa-2xl"></span>
+		</div>
+	</footer>
+	<!-- footer end -->
+		
+		
+</body>
+</html>
 

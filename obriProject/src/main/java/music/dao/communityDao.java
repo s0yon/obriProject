@@ -31,20 +31,20 @@ public class communityDao {
 		return session.selectOne("communityns.getListCount", community);
 	}
 
-	public communityVO Content(int commno) {
+	public communityVO Content(int commNo) {
 		System.out.println("상세정보 Dao");
-		return session.selectOne("communityns.Content", commno);
+		return session.selectOne("communityns.Content", commNo);
 	}
 
-	public void updateCount(int commno) {
+	public void updateCount(int commNo) {
 		System.out.println("조회수 증가 Dao");
-		session.update("communityns.updateCount",commno);
+		session.update("communityns.updateCount",commNo);
 		
 	}
 
-	public int boardDelete(int commno) {
+	public int boardDelete(int commNo) {
 		System.out.println("글삭제 Dao");
-		return session.delete("communityns.deleteBoard", commno);
+		return session.delete("communityns.deleteBoard", commNo);
 		
 	}
 
@@ -53,9 +53,22 @@ public class communityDao {
 		return session.update("communityns.updateBoard", community);
 	}
 
-	public int count(int commno) {
+	public int count(int commNo) {
 		// TODO Auto-generated method stub
-		return session.selectOne("communityns.likeCount", commno);
+		return session.selectOne("communityns.likeCount", commNo);
+	}
+
+	public void upLike(int commNo) {
+		// TODO Auto-generated method stub
+		System.out.println("최조 좋아요 증가 dao");
+		session.update("communityns.upLike", commNo);
+	}
+
+	public void changeLike(commLikeVO commVO) {
+		// TODO Auto-generated method stub
+		System.out.println("상태값에 따른 좋아요 수 dao");
+		session.update("communityns.changeLike",commVO);
+		
 	}
 
 //	public int count(commLikeVO commVO) {
@@ -67,15 +80,15 @@ public class communityDao {
 
 	
 	
-//	public void updateLike(int commno) {
+//	public void updateLike(int commNo) {
 //		System.out.println("커뮤니티 게시판 게시글 좋아요수 증가 Dao");
-//		session.update("communityns.updateLike", commno);
+//		session.update("communityns.updateLike", commNo);
 //	}
 //
-//	public void deleteLike(int commno) {
+//	public void deleteLike(int commNo) {
 //		// TODO Auto-generated method stub
 //		System.out.println("커뮤니티 게시판 게시글 좋아요수 감소 Dao");
-//		session.update("communityns.deleteLike", commno);
+//		session.update("communityns.deleteLike", commNo);
 //		
 //	}
 

@@ -65,14 +65,6 @@ a:hover {
 	color: #8246af;
 }
 
-
-  .pagination {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    padding: 0;
-  }
-
   .pagination li {
     margin: 0 5px;
   }
@@ -96,3 +88,58 @@ a:hover {
     color: #fff;
     border: 1px solid #007bff;
   }
+
+.search_bar {
+  	display: flex;
+  	justify-content: center;
+}
+
+.search_box{
+    width: 100px;
+    height: 42px;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 12px 13px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    background-color: #fff;
+}
+
+.search_box:focus {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.search_text {
+  width: 300px;
+  height: 40px;
+  font-size: 15px;
+  border: 1px solid #C4C4C4;
+  border-radius: 10px;
+  outline: none;
+  padding-left: 10px;
+  background-color: #fff;
+}
+
+.search_text:focus {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.search_button {
+    background-color:var(--accent-color);
+    width: 40px;
+    height: 32px;
+    color: #fff;
+    border:none;
+    border-radius:5px;
+    font-size: 15px;
+    margin: 5px;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.search_button:hover {
+	background-color: #8246af;
+}

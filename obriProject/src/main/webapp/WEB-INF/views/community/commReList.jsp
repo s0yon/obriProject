@@ -9,9 +9,9 @@
 <!-- 글 삭제 confirm 창 띄우기 -->
 <script>
 	
-	function del(commReNo, commno) {
+	function del(commReNo, commNo) {
 		alert("댓글이 삭제 되었습니다");
-			var formData = "commReNo=" + commReNo + "&commno=" + commno;
+			var formData = "commReNo=" + commReNo + "&commNo=" + commNo;
 				$.post("commReDelete.do", formData, function(data) {
 					$('#commReList').html(data);				
 		});
@@ -25,11 +25,12 @@
 <body>
 
 	<form>
-		<table>
-			<tr>
+		<table >
+			<tr align="center" >
 				<th>작성자</th>
 				<th>내용</th>
-				<th>댓글 작성일</th> 댓글 갯수 : ${reTotal }
+				<th></th>
+				<th colspan="2">댓글 작성일</th> 댓글 갯수 : ${reTotal }
 			</tr>
 			<c:forEach var="commReList" items="${commReList}">
 				<c:if test="${commReList.commReDelYn != 'N' }">
@@ -37,28 +38,28 @@
 					<tr>
 
 						<!-- 작성자 -->
-						<td>${commReList.commReId}</td>
+						<td>${commReList.commReId}&nbsp;&nbsp;</td>
 
 
 
 
 						<!-- 내용 -->
 						
-							<td id=" ${commReList.commReNo}">${commReList.commReText}</td>
+							<td id=" ${commReList.commReNo}">${commReList.commReText}&nbsp;&nbsp;</td>
 						
 						
 						
-						
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 						
 						<!-- 수정일 -->
 						<td><fmt:formatDate value="${commReList.commReDate}"
-								pattern="MM월 dd일 HH:mm EEE요일" /></td>
+								pattern="MM. dd. HH:mm " /></td>
 
 
 						<c:if test="${commReList.commReId == sessionScope.userId}">
 						<td>
 							<!-- 버튼 --> <input type="button" value="삭제"
-							onclick="del(${commReList.commReNo},${commReList.commno})">
+							onclick="del(${commReList.commReNo},${commReList.commNo})">
 						</td>
 						</c:if>
 				</c:if>

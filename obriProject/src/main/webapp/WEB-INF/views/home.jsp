@@ -46,6 +46,7 @@
 
 <body>
 <%@include file="navbar.jsp" %>
+
 	<main style="padding-top: 80px; padding-bottom: 80px">
 
 		<!-- header start -->

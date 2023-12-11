@@ -69,12 +69,15 @@ td {
 
 .button .ok_button {
     background-color:var(--accent-color);
+    width: 40px;
+    height: 32px;
     color: #fff;
     border:none;
     border-radius:5px;
-    font-size: 16px;
-    margin: 10px;
+    font-size: 15px;
+    margin: 5px;
     padding: 5px;
+	font-weight: bold;
 }
 
 .button .ok_button:hover {

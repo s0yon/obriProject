@@ -6,7 +6,7 @@
 	<script>
 		 
 		alert("좋아요가 선택 되었습니다.");	
-		location.href="boardContent.do?commno=${commno}&pageNum=${pageNum}";
+		location.href="boardContent.do?commNo=${commNo}&pageNum=${pageNum}";
 	</script>
 </c:if>
 

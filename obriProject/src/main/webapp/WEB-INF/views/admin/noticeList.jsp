@@ -89,17 +89,18 @@
 							</c:if>
 						</ul>
 					</nav>
-					<form action="admin_notice.do">
-						<input type="hidden" name="pageNum" value="1"> <select
-							name="search">
+					<form class="search_bar" action="admin_notice.do">
+						<input type="hidden" name="pageNum" value="1">
+						<select name="search" class="search_box">
 							<option value="notSub"
 								<c:if test="${search=='notSub'}">selected="selected" </c:if>>제목</option>
 							<option value="notText"
 								<c:if test="${search=='notText'}">selected="selected" </c:if>>내용</option>
 							<option value="subcon"
 								<c:if test="${search=='subcon'}">selected="selected" </c:if>>제목+내용</option>
-						</select> <input type="text" name="keyword"> <input type="submit"
-							value="확인">
+						</select>
+						<input class="search_text" type="text" name="keyword">
+						<input class="search_button" type="submit" value="찾기">
 					</form>
 				</div>
 			</main>

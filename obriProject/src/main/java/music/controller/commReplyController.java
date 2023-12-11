@@ -27,27 +27,27 @@ public class commReplyController {
 	public String comReInsert(commReplyVO  commReply, Model model) {
 		System.out.println("댓글 입력 컨트롤러");
 		System.out.println("commReId:" + commReply.getCommReId());
-		System.out.println("commno:" + commReply.getCommno());
+		System.out.println("commNo:" + commReply.getCommNo());
 		System.out.println("commReText:" + commReply.getCommReText());
 		
 		
 		
 		replyService.commReInsert(commReply);
-		return "redirect:commReList.do?commno=" + commReply.getCommno();
+		return "redirect:commReList.do?commNo=" + commReply.getCommNo();
 	}
 
 	// 댓글 목록
 	@RequestMapping("commReList.do")
-	public String reList(int commno, commReplyVO  commReply,Model model) {
+	public String reList(int commNo, commReplyVO  commReply,Model model) {
 		System.out.println("댓글 목록 컨트롤러");
-		System.out.println("commno:"+ commno);
+		System.out.println("commNo:"+ commNo);
 
 		// 부모 테이블 상세정보 
-		communityVO community = service.Content(commno);
+		communityVO community = service.Content(commNo);
 		System.out.println("community:" + community);
 
 		// 댓글목록 구해오기
-		List<communityVO> commReList = replyService.comReList(commno);
+		List<communityVO> commReList = replyService.comReList(commNo);
 		System.out.println("commReList:" + commReList);
 
 		// 댓글 갯수
@@ -65,7 +65,7 @@ public class commReplyController {
 			public String delete(commReplyVO  commReply, Model model) {
 				System.out.println("댓글 삭제 컨트롤러");
 				replyService.comReDelete(commReply.getCommReNo());
-				return "redirect:commReList.do?commno="+commReply.getCommno();
+				return "redirect:commReList.do?commNo="+commReply.getCommNo();
 			}
 	
 	
