@@ -30,7 +30,7 @@
 			<main>
 				<div
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<h1>공지사항</h1>
+					<h2>공지사항</h2>
 				</div>
 				<table>
 					<thead>
@@ -97,7 +97,6 @@
 						</c:if>
 					</c:if>
 				</ul>
-				</nav>
 				<form class="search_bar" action="admin_notice.do">
 					<input type="hidden" name="pageNum" value="1"> <select
 						name="search" class="search_box">
