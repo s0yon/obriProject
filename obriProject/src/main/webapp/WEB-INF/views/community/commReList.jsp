@@ -37,7 +37,7 @@
 				<th>작성자</th>
 				<th >내용</th>
 				<th ></th>
-				<th >댓글 작성일</th> 댓글 갯수 : ${reTotal }
+				<th >댓글 작성일</th> 댓글 갯수 : ${reTotal}
 			</tr>
 	
 			<c:forEach var="commReList" items="${commReList}">
@@ -78,8 +78,7 @@
 						</tr>
 					</c:if>
 					
-					
-					<!-- 4. 비밀글이 아닌경우 -->											
+					<!-- 4. 비밀글이 아닌경우 -->										
 					<c:if test="${commReList.commSecret != 'Y'}">
 					<tr>
 						<td>${commReList.commReId}&nbsp;&nbsp;</td><!-- 작성자 -->

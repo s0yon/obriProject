@@ -30,14 +30,17 @@
 	 }
  }
 </script>
-
-
+<style>
+.logo-image {
+    display: block;
+    margin: 0 auto;
+}
+</style>
 </head>
-<body class="d-flex align-items-center py-4 bg-body-tertiary">
-
-	<main class="form-signin w-100 m-auto">
+<body class="d-flex align-items-center justify-content-center min-vh-100 bg-body-tertiary">
+    <main class="form-signin text-center w-75">
+		<img src="./images/logo.png" width="100px" height="40px" class="logo-image">
 		<form method="post" action="admin_login_ok.do" onsubmit="return check()">
-			<img class="mb-3" src="images/184.png" alt="" width="70" height="70">
 			<h1 class="h2 mb-3 fw-bold" align="center">관리자 로그인</h1>
 
 			<div class="form-floating">

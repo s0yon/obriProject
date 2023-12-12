@@ -39,12 +39,12 @@
 </script>
 </head>
 
-<body class="d-flex align-items-center py-4 bg-body-tertiary">
-	<main class="form-signin w-500 m-auto">
+<body class="d-flex align-items-center justify-content-center min-vh-100 py-4 bg-body-tertiary">
+    <main class="form-signin w-500 m-auto">
 		<form method="post" action="checkLogin.do" onsubmit="return check()">
 			<input type="hidden" name="login_ok" value="1" />
 			<div id="logo">
-				<img src="images/184.png" alt="" width="100" height="100"
+				<img src="./images/logo.png" alt="Logo" width="100px" height="40px"
 					onclick="location.href='home.do'" style="cursor: pointer;">
 			</div>
 			<br>
@@ -173,7 +173,7 @@
 				아니신가요?&nbsp;<a href="join.do" style="color: gray">회원가입</a>
 			</p>
 
-			<p class="mt-5 mb-3 text-body-secondary" align="center"
+			<p class="mt-3 mb-3 text-body-secondary" align="center"
 				style="font-size: 80%">&copy; 2023. 1조</p>
 		</form>
 	</main>
