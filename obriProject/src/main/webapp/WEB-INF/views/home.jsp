@@ -48,7 +48,7 @@
 <body>
 	<c:import url="/WEB-INF/views/navbar.jsp" />
 	
-	<main style="padding-top: 80px; padding-bottom: 80px">
+	<main style="padding-top: 65px; padding-bottom: 65px">
 
 		<!-- header start -->
 		<section class="header">
@@ -59,7 +59,7 @@
 			</div>
 		</section>
 		<!-- header end -->
-
+<br><br>
 		<!-- animation start -->
 		<section class="animation">
 			<div class="num_container">
@@ -86,8 +86,8 @@
 		<!-- animation end -->
 
 		<!-- intro start -->
-		<section class="intro">
-			<div class="container">
+		<section class="intro justify-content-between ml-5 mr-5">
+			<div class="container ml-5 pl-5">
 				<div class="banner">
 					<div class="bann_icon">
 						<i class="fa-solid fa-magnifying-glass"></i>
@@ -97,14 +97,14 @@
 					</div>
 				</div>
 				<div class="item">
-					<iframe src="boardListShow.do" frameborder="0" scrolling="no" style="width: 480px; height: 300px"></iframe>
+					<iframe src="boardListShow.do" frameborder="0" scrolling="no" style="width: 500px; height: 300px"></iframe>
 				</div>
 				<div class="btn_plus" onclick="location.href='boardList.do'"
 					style="cursor: pointer;">
 					<span class="fa-solid fa-plus fa-2xl"></span>
 				</div>
 			</div>
-			<div class="container">
+			<div class="container mr-5 pr-5">
 				<div class="banner">
 					<div class="bann_icon">
 						<i class="fa-regular fa-comments"></i>
@@ -114,7 +114,7 @@
 					</div>
 				</div>
 				<div class="item">
-					<iframe src="boardListShow.do" frameborder="0" scrolling="no" style="width: 480px; height: 300px"></iframe>
+					<iframe src="boardListShow.do" frameborder="0" scrolling="no" style="width: 500px; height: 300px"></iframe>
 				</div>
 				<div class="btn_plus" onclick="location.href='boardList.do'"
 					style="cursor: pointer;">
