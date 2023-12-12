@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@page import="java.util.Date"%>
+<%@ page import="java.util.Date"%>
 
 <!DOCTYPE html>
 <html>
@@ -99,7 +99,7 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>
 										href="boardContent.do?commNo=${community.commNo}&pageNum=${pp.currentPage}">
 											${community.commSub} <!-- 조회수 30 이상이면  --> <c:if
 												test="${dbtoday == today }">
-												<img alt="" src="images/new.png" width="20" height="20">
+												<img alt="" src="images/new.png" width="20" height="10">
 											</c:if>
 									</a></td>
 									<td>${community.userId}</td>
