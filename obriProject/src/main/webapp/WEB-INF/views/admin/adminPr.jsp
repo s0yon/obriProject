@@ -59,7 +59,7 @@
 											name="selectedPrList" value="${p['PRNO']}"></td>
 										<td>${p['PRNO']}</td>
 										<td><a
-											href="pr_read.do?prNo=${p['PRNO']}&page=${page}&state=cont">
+											href="admin_pr_read.do?prNo=${p['PRNO']}&pageNum=${pageNum}&state=cont">
 												${p['PRSUB']}</a></td>
 										<td>${p['USERNAME']}&#40;${p['USERID']}&#41;</td>
 										<td><fmt:formatDate value="${p['PRDATE']}"
