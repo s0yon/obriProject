@@ -240,10 +240,6 @@ public class AdminController {
 		model.addAttribute("notNo", notNo);
 
 		if (state.equals("cont")) { // 내용보기
-			// String notText = noticeVO.getnotText().replace("\n","<br>");
-			// 글내용중 엔터키 친부분을 웹상에 보이게 할때 다음줄로 개행
-			// model.addAttribute("board_cont", board_cont);
-
 			return "admin/noticeView";
 		} 
 		return null;

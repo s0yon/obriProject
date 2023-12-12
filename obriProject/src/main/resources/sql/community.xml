@@ -11,10 +11,9 @@
 		values(com_no_seq.nextval,#{com_id},#{com_sub},#{com_text},
 		0,#{com_file, jdbcType=VARCHAR},sysdate,sysdate,'n')
 	</insert>  -->
-	<insert id="insertBoard"  parameterType="community">
-		insert into comBoard 
-		values(com_no_seq.nextval,#{userId},#{commSub},#{commText},
-		0,#{commFile, jdbcType=VARCHAR},sysdate,sysdate,'N',0)
+	<insert id="insertBoard" parameterType="community">
+		insert into comBoard(commNo, userId, commSub, commText, commCount, commFile, commDate, commUpdate, commDelYn, likeCnt)
+		 values(com_no_seq.nextval,#{userId},#{commSub},#{commText},0,#{commFile, jdbcType=VARCHAR},sysdate,sysdate,'N', 0)
 	</insert> 
 	
 	<!--  글목록  -->

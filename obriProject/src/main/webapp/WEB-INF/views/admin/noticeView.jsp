@@ -4,47 +4,48 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
-<meta charset="UTF-8">
 <title>공지사항</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- 사용자 정의 스타일 -->
 <link rel="stylesheet" href="./css/viewpage.css">
+
 </head>
 <body>
-	<!-- 헤더부분 부분 -->
 	<c:import url="/WEB-INF/views/navbar.jsp" />
-	<main>
-		<div class="container-sm">
-			<h1>공지사항</h1>
-			<table>
-				<tr>
-					<th class="text-left">
-						<c:out value="${map['NOTSUB']}" /><br>
-						<c:out value="${map['ADMINNAME']}" />
-					</th>
-					<th class="text-right">조회수 : 
-						<c:out value="${map['NOTRCOUNT']}" /><br>
-						<fmt:formatDate value="${map['NOTDATE']}" pattern="yyyy-MM-dd" />
-					</th>
-				</tr>
-				<tr>
-					<td colspan=2>
-						<pre>${map['NOTTEXT']}</pre>
-					</td>
-				</tr>
-			</table>
+	<div class="container-sm">
+		<div class="row">
+			<!-- 헤더부분 -->
+            <main>
+                <div>
+                    <h1>공지사항</h1>
+                </div>
+				<table id="nottable" class="table">
+					<tr class="table-active">
+						<th scope="col" style="width: 60%"><c:out
+								value="${map['NOTSUB']}" /><br> <c:out
+								value="${map['ADMINNAME']}" /></th>
+						<th scope="col" style="width: 40%" class="text-right">조회수 : <c:out
+								value="${map['NOTRCOUNT']}" /><br> <fmt:formatDate
+								value="${map['NOTDATE']}" pattern="yyyy-MM-dd" />
+						</th>
+					</tr>
+
+					<tr>
+						<td colspan=2><pre>${map['NOTTEXT']}</pre></td>
+					</tr>
+				</table>
+
+				<div class="button">
+					<input type="button" class="ok_button" value="목록"
+						onclick="location='notice_list.do?page=${page}'" />
+				</div>
+			</main>
 		</div>
-		
-		<div class="button">
-			<input type="button" class="ok_button" value="목록"
-				onclick="location='notice_list.do?page=${page}'"/>
-		</div>
-	</main>
 	</div>
-	</div>
-	<%@include file="../footer.jsp"%>
+	<!-- footer -->
+	<c:import url="/WEB-INF/views/footer.jsp" />
 </body>
 </html>

@@ -1,19 +1,71 @@
 package music.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import music.model.communityVO;
+import music.service.PagingPgm;
+import music.service.communityService;
+
 @Controller
 public class HomeController {
+	
+	// 커뮤니티 서비스 주입
+	@Autowired
+	private communityService service;	
 	
 	// 메인 페이지
 	@RequestMapping("home.do")
 	public String goHome() {
 		return "home";
 	}
+
+	// 메인 페이지 게시판 연동 - 커뮤니티 목록
+	@RequestMapping("boardListShow.do")
+	public String list(String pageNum, communityVO community,  Model model) {
+
+		// 정렬 값(sort)이 없는 경우(초기 실행)
+		if (community.getSort() == null) {
+			community.setSort("recent");
+		}
+		String sort = community.getSort();
+
+		final int rowPerPage = 7; // 화면에 출력할 데이터 갯수
+		if (pageNum == null || pageNum.equals("")) {
+			pageNum = "1";
+		}
+		int currentPage = Integer.parseInt(pageNum); // 현재 페이지 번호
+
+		int total = service.getTotal(community); // 검색 (데이터 갯수)
+
+		int startRow = (currentPage - 1) * rowPerPage + 1;
+		int endRow = startRow + rowPerPage - 1;
+
+		PagingPgm pp = new PagingPgm(total, rowPerPage, currentPage);
+		community.setStartRow(startRow);
+		community.setEndRow(endRow);
+
+		int no = total - startRow + 1; // 화면 출력 번호
+		List<communityVO> list = service.list(community);
+
+		// 좋아요 갯수
+		int likeCnt = service.count(community.getCommNo());
+
+		model.addAttribute("likeCnt", likeCnt);
+		model.addAttribute("sort", sort);
+		model.addAttribute("list", list);
+		model.addAttribute("no", no);
+		model.addAttribute("pp", pp);
+
+		return "boardListShow";
+	}	
 	
 	// 네이버 로그인
 	@RequestMapping("loginNaver.do")

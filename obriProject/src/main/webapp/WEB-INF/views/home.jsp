@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,8 +46,8 @@
 </head>
 
 <body>
-<%@include file="navbar.jsp" %>
-
+	<c:import url="/WEB-INF/views/navbar.jsp" />
+	
 	<main style="padding-top: 80px; padding-bottom: 80px">
 
 		<!-- header start -->
@@ -98,7 +99,7 @@
 				<div class="item">
 					<iframe src="boardListShow.do" frameborder="0" scrolling="no"></iframe>
 				</div>
-				<div class="btn_plus" onclick="location.href='board_list.do'"
+				<div class="btn_plus" onclick="location.href='boardList.do'"
 					style="cursor: pointer;">
 					<span class="fa-solid fa-plus fa-2xl"></span>
 				</div>
@@ -115,7 +116,7 @@
 				<div class="item">
 					<iframe src="boardListShow.do" frameborder="0" scrolling="no"></iframe>
 				</div>
-				<div class="btn_plus" onclick="location.href='board_list.do'"
+				<div class="btn_plus" onclick="location.href='boardList.do'"
 					style="cursor: pointer;">
 					<span class="fa-solid fa-plus fa-2xl"></span>
 				</div>
@@ -123,6 +124,7 @@
 		</section>
 		<!-- intro end -->
 	</main>
-<%@include file="footer.jsp" %>
+	
+	<c:import url="/WEB-INF/views/footer.jsp" />
 </body>
 </html>

@@ -62,11 +62,11 @@ td {
 
 				<div id="menu">
 					<input type="button" value="수정" class="btn btn-outline-secondary"
-						onclick="location='notice_read.do?notNo=${notNo}&page=${page}&state=edit'" />
+						onclick="location='admin_notice_read.do?notNo=${notNo}&pageNum=${pageNum}&state=edit'" />
 					<input type="button" value="삭제" class="btn btn-outline-secondary"
 						data-bs-toggle="modal" data-bs-target="#noticeDelete" /> <input
 						type="button" value="목록" class="btn btn-outline-secondary"
-						onclick="location='admin_notice.do?page=${page}'" />
+						onclick="location='admin_notice.do?pagNum=${pageNum}'" />
 				</div>
 			</main>
 		</div>
