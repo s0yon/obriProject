@@ -40,11 +40,6 @@
 	color: var(--text-color);
 }
 
-.item iframe{
-	min-width: 480px;
-	min-height: 270px;
-}
-
 @media screen and (max-width: 768px){
 	.banner {
 		position: relative;
@@ -78,10 +73,5 @@
 	.intro .container {
 		margin-top: 30px;
 		margin-bottom: 5px;
-	}
-	
-	.item iframe{
-		min-width: 380px;
-		min-height: 270px;
 	}
 }
