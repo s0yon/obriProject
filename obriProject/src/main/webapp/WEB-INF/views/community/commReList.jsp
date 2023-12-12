@@ -41,7 +41,7 @@
 			</tr>
 	
 			<c:forEach var="commReList" items="${commReList}">
-				<c:if test="${commReList.commReDelYn  != 'Y' }">
+				<c:if test="${commReList.commReDelYn  != 'Y'}">
 				
 				<!-- 1.비로그인 상태 -->
 				<!--  sessionScope.userId != commReList.commReId && sessionScope.userId !=sessionScope.adminId && -->
@@ -78,9 +78,7 @@
 						</tr>
 					</c:if>
 					
-					
-					<!-- 4. 비밀글이 아닌경우 -->
-				    <!-- 컨트롤에서 공유되는  -->												
+					<!-- 4. 비밀글이 아닌경우 -->										
 					<c:if test="${commReList.commSecret != 'Y'}">
 					<tr>
 						<td>${commReList.commReId}&nbsp;&nbsp;</td><!-- 작성자 -->
