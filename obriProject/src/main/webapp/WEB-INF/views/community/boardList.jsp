@@ -53,7 +53,6 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>;
 	<!-- header -->
 	<c:import url="/WEB-INF/views/navbar.jsp" />
 	<div class="container-sm">
-		<div class="row">
 			<main>
 				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 					<h2>커뮤니티</h2>
@@ -65,7 +64,6 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>;
 							<option value="recent"
 								<c:if test="${sort == 'recent'}">${'selected'}</c:if>>최신순
 							</option>
-
 							<option value="readcnt"
 								<c:if test="${sort == 'readcnt'}">${'selected'}</c:if>>조회순
 							</option>
@@ -81,7 +79,7 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>;
 						</c:if>
 					</div>
 				</div>
-				<table>
+				<table class="table-hover" align="center">
 					<thead>
 						<tr>
 							<th>번호</th>
@@ -89,7 +87,7 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>;
 							<th>작성자명</th>
 							<th>날짜</th>
 							<th>조회수</th>
-							<th>좋아요 수</th>
+							<th>좋아요</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -114,7 +112,7 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>;
 										 	 	<a href="boardContent.do?commNo=${community.commNo}&pageNum=${pp.currentPage}">
 														${community.commSub} <!-- 조회수 30 이상이면  -->
 											 		<c:if test="${dbtoday == today }">
-														<img alt="" src="images/new.png" width="20" height="20">
+														<img alt="" src="images/new.png" width="20" height="10">
 													</c:if>
 												</a>
 										</td>
@@ -131,7 +129,6 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>;
 					</tbody>
 				</table>
 				<br>
-
 
 				<div align="center">
 					<ul class="pagination">
@@ -186,11 +183,10 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>;
 							<option value="subcon"
 								<c:if test="${search=='subcon'}">selected="selected" </c:if>>제목+내용</option>
 						</select> <input class="search_text" type="text" name="keyword"> <input
-							class="search_button" type="submit" value="검색">
+							class="btn" type="submit" value="찾기">
 					</form>
 				</div>
 			</main>
 		</div>
-		
 </body>
 </html>

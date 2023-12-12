@@ -25,7 +25,7 @@
 	
 .banner .bann_icon{
 	font-size: 36px;
-	color: var(--accent-color);
+	color: var(--text-color);
 }
 	
 .banner .bann_text{
@@ -48,7 +48,7 @@
 	
 	.banner .bann_icon{
 		font-size: 36px;
-		color: var(--accent-color);
+		color: var(--text-color);
 	}
 	
 	.banner .bann_text{

@@ -26,13 +26,12 @@
 	<!-- header -->
 	<c:import url="/WEB-INF/views/navbar.jsp" />
 	<div class="container-sm">
-		<div class="row">
 			<main>
 				<div
 					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 					<h2>공지사항</h2>
 				</div>
-				<table>
+				<table class="table-hover" align="center">
 					<thead>
 						<tr>
 							<th scope="col">번호</th>
@@ -107,11 +106,10 @@
 						<option value="subcon"
 							<c:if test="${search=='subcon'}">selected="selected" </c:if>>제목+내용</option>
 					</select> <input class="search_text" type="text" name="keyword"> <input
-						class="search_button" type="submit" value="검색">
+						class="btn" type="submit" value="찾기">
 				</form>
 			</main>
 		</div>
-	</div>
 	<!-- footer -->
 	<c:import url="/WEB-INF/views/footer.jsp" />
 </body>
