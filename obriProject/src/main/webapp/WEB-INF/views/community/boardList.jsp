@@ -65,9 +65,8 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>
 					</select>
 				</div>
 				<div class="btn-container">
-					<input type="button" value="글작성"
-						class="btn"
-						onclick="location.href='boardForm.do'" id="commInsert">
+					<input type="button" class="btn" id="commInsert"
+						onclick="boardForm.do" value="글작성">
 				</div>
 			</div>
 			<table>
@@ -77,7 +76,7 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>
 					<th>작성자명</th>
 					<th>날짜</th>
 					<th>조회수</th>
-					<th>좋아요 수</th>
+					<th>좋아요</th>
 				</tr>
 				<tbody>
 					<c:if test="${empty list}">
@@ -138,11 +137,11 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>
 							href="boardList.do?pageNum=${pp.startPage - 1}&sort=${sort}">&laquo;</a></li>
 					</c:if>
 					<c:forEach var="i" begin="${pp.startPage}" end="${pp.endPage}">
-						<li <c:if test="${pp.currentPage==i}"></c:if>><a 
+						<li <c:if test="${pp.currentPage==i}"></c:if>><a
 							class="page-link" href="boardList.do?pageNum=${i}&sort=${sort}">${i}</a></li>
 					</c:forEach>
 					<c:if test="${pp.endPage < pp.totalPage}">
-						<li><a class="page-link" 
+						<li><a class="page-link"
 							href="boardList.do?pageNum=${pp.endPage + 1}&sort=${sort}">&raquo;</a></li>
 					</c:if>
 				</c:if>
@@ -160,7 +159,7 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>
 					<option value="subcon"
 						<c:if test="${search=='subcon'}">selected="selected" </c:if>>제목+내용</option>
 				</select> <input class="search_text" type="text" name="keyword"> <input
-					class="search_button" type="submit" value="찾기">
+					type="submit" class="btn" value="찾기">
 			</form>
 		</main>
 	</div>
