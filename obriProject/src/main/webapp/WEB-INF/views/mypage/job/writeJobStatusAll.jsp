@@ -61,7 +61,7 @@
 
 			<div class="asa_search">
 				<form name="searchAll" action="writeJobStatusAll.do">
-					<input id="keyword" placeholder="공고 제목 검색" type="text" name="keyword" value="${sessionScope.referer != null ? sessionScope.referer.keyword : ''}" />
+					<input id="keyword" placeholder="공고 제목/내용 검색" type="text" name="keyword" value="${sessionScope.referer != null ? sessionScope.referer.keyword : ''}" />
 					<%-- <input type="hidden" name="id" value="${jobstatusAllVO.userId}" /> --%>
 					<button class="btn_search" type="submit"></button>
 				</form>

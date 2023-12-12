@@ -14,6 +14,7 @@ import music.model.mypage.PagingMsgListVO;
 import music.model.mypage.PagingPrListVO;
 import music.model.mypage.PagingVO;
 import music.model.mypage.PrBoardVO;
+import music.model.mypage.QnAListsVO;
 import music.model.mypage.StatusAllVO;
 import music.model.mypage.StatusFinalVO;
 import music.model.mypage.StatusWaitingVO;
@@ -76,6 +77,9 @@ public interface mypageService {
 	public CommReplysVO viewCommReplyLists(String id, String keyword);
 
 	
+// 문의게시판 글 관리
+	public QnAListsVO viewQnALists(String id, String keyword);
+	
 	
 // 메시지 관련
 	// 받은 메시지함 리스트
@@ -95,6 +99,8 @@ public interface mypageService {
 	public int delCommNo(int commNo);
 	// 작성한 커뮤니티 댓글 삭제
 	public int delCommReNo(int commReNo);
+	// 선택한 문의게시판 글 삭제
+	public int delQnANo(int qnaNo);
 	
 	
 	

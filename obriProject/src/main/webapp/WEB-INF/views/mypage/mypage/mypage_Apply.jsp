@@ -57,7 +57,7 @@
 						</div>
 						<div class="mp_acc_setting">
 							<button>
-								<a href="edit.do">계정 설정하기</a>
+								<a href="editCheckOk.do">계정 설정하기</a>
 							</button>
 						</div>
 					</c:forEach>
@@ -100,7 +100,7 @@
 								</a>
 							</li>
 							<li>
-								<a href="#">
+								<a href="myQnALists.do">
 									<div class="mp_status_li4">문의 글 관리</div>
 									<div>${infoCountVOs.qnaCountAll}</div>
 								</a>
@@ -151,17 +151,25 @@
 				<div class="mp_pro_contents">
 					<c:forEach var="userInfoVOs" items="${infoAllDto.userInfoVOs}">
 						<c:choose>
-							<c:when test="${empty userInfoVOs.userPosition}">
+							<c:when test="${userInfoVOs.userPosition == none && userInfoVOs.prNo == -1}">
 								<p class="mp_profile_position">선호하는 <span>포지션</span>을 설정해주세요</p>
+								<button>
+									<a href="#">PR 글 작성하기</a>
+								</button>
+							</c:when>
+							<c:when test="${userInfoVOs.userPosition == none}">
+								<p class="mp_profile_position">선호하는 <span>포지션</span>을 설정해주세요</p>
+								<button>
+									<a href="#">PR 글 작성하기</a>
+								</button>
 							</c:when>
 							<c:otherwise>
 								<p class="mp_profile_position">현재 설정한 포지션은 <span><b>${userInfoVOs.userPosition}</b></span></p>
+								<button>
+									<a href="prUpdateForm.do?prNo=${userInfoVOs.prNo}">프로필 수정하기</a>
+								</button>
 							</c:otherwise>
 						</c:choose>
-						
-						<button>
-							<a href="prUpdateForm.do?prNo=${userInfoVOs.prNo}">프로필 수정하기</a>
-						</button>
 					</c:forEach>
 				</div>
 			</div>
@@ -171,7 +179,7 @@
 				<div class="mp_recos">
 					<c:forEach var="jobInfoVOs" items="${infoAllDto.jobInfoVOs}">
 						<div class="mp_reco${jobInfoVOs.no}">
-							<a href="#">
+							<a href="#?jobNo=${jobInfoVOs.jobNo}">
 								<div class="mp_reco${jobInfoVOs.no}_1">
 									<img src="https://picsum.photos/250/250" />
 								</div>

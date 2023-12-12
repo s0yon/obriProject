@@ -61,7 +61,7 @@
 
 			<div class="as_search">
 				<form name="search" action="applyStatus.do">
-					<input type="text" placeholder="공고 제목 검색" name="keyword"
+					<input type="text" placeholder="공고 제목/내용 검색" name="keyword"
 						 value="${sessionScope.referer != null ? sessionScope.referer.keyword : ''}" />
 					<%-- <input type="hidden" name="id" value="${StatusWaitingVO.userId}" /> --%>
 					<button class="btn_search" type="submit"></button>
