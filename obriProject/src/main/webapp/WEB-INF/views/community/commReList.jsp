@@ -39,66 +39,63 @@
 				<th ></th>
 				<th >댓글 작성일</th> 댓글 갯수 : ${reTotal }
 			</tr>
-
+	
 			<c:forEach var="commReList" items="${commReList}">
-				<c:if test="${commReList.commReDelYn  != 'Y' }">
+				<c:if test="${commReList.commReDelYn  != 'Y'}">
 				
-					<c:if test="${commReList.commSecret  == 'Y'}">
+				<!-- 1.비로그인 상태 -->
+				<!--  sessionScope.userId != commReList.commReId && sessionScope.userId !=sessionScope.adminId && -->
+					<c:if test="${commReList.commSecret  == 'Y' &&  empty sessionScope.userId}">
 						<tr>	
 							<td colspan="4">
-							<img src="images/secret.png"  width="25" height="25">비밀댓글입니다
+									<img src="images/secret.png"  width="25" height="25">비밀댓글입니다
 							</td>
 						</tr>
 					</c:if>
-<%-- 					<c:if test="${commReList.commSecret  == 'Y' && sessionScope.userId == commReList.commReId && sessionScope.userId == sessionScope.adminId }"> --%>
-<!-- 							<tr>	 -->
-<!-- 									작성자 -->
-<%-- 									<td>${commReList.commReId}&nbsp;&nbsp;</td> --%>
+					
+					<!--2. 로그인(작성자 or 관리자)  -->
+  					<c:if test="${commReList.commSecret  == 'Y' &&  sessionScope.userId == commReList.commReId  &&  !empty sessionScope.userId}"> 
+							<tr>	 
+									<td>${commReList.commReId}&nbsp;&nbsp;</td> 
+									<td id=" ${commReList.commReNo}">${commReList.commReText}&nbsp;&nbsp;</td>
+									<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+									<td><fmt:formatDate value="${commReList.commReDate}"  	pattern="MM. dd. HH:mm " /></td> 
 
-<!-- 									내용 -->
-<%-- 									<td id=" ${commReList.commReNo}">${commReList.commReText}&nbsp;&nbsp;</td> --%>
+									<c:if test="${commReList.commReId == sessionScope.userId}"> 
+										<td>
+											<input type="button" value="삭제"  onclick="del(${commReList.commReNo},${commReList.commNo})"> 
+										</td> 
+ 									</c:if> 
+							</tr> 
+ 					</c:if> 
 
-<!-- 									<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> -->
-
-<!-- 									수정일 -->
-<%-- 									<td><fmt:formatDate value="${commReList.commReDate}" --%>
-<%-- 												pattern="MM. dd. HH:mm " /></td> --%>
-
-
-<%-- 								<c:if test="${commReList.commReId == sessionScope.userId}"> --%>
-<!-- 									<td> -->
-<!-- 									버튼  -->
-<!-- 									<input type="button" value="삭제" -->
-<%-- 										onclick="del(${commReList.commReNo},${commReList.commNo})"> --%>
-<!-- 									</td> -->
-<%-- 								</c:if> --%>
-<!-- 							</tr> -->
-<%-- 					</c:if> --%>
-
-				    <!-- 컨트롤에서 공유되는  -->												
+					<!-- 3.로그인(작성자, 관리자가 아닌 경우) -->
+					<c:if test="${commReList.commSecret  == 'Y'  &&  sessionScope.userId  != commReList.commReId &&  !empty sessionScope.userId}">
+						<tr>	
+							<td colspan="4">
+									<img src="images/secret.png"  width="25" height="25">비밀댓글입니다
+							</td>
+						</tr>
+					</c:if>
+					
+					
+					<!-- 4. 비밀글이 아닌경우 -->											
 					<c:if test="${commReList.commSecret != 'Y'}">
 					<tr>
-						<!-- 작성자 -->
-						<td>${commReList.commReId}&nbsp;&nbsp;</td>
-
-						<!-- 내용 -->
-						<td id=" ${commReList.commReNo}">${commReList.commReText}&nbsp;&nbsp;</td>
-
+						<td>${commReList.commReId}&nbsp;&nbsp;</td><!-- 작성자 -->
+						<td id=" ${commReList.commReNo}">${commReList.commReText}&nbsp;&nbsp;</td><!-- 내용 -->
 						<td > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-
-						<!-- 수정일 -->
-						<td><fmt:formatDate value="${commReList.commReDate}"
-								pattern="MM. dd. HH:mm " /></td>
-
+						<td><fmt:formatDate value="${commReList.commReDate}"    pattern="MM. dd. HH:mm " /></td><!-- 수정일 -->
 
 						<c:if test="${commReList.commReId == sessionScope.userId}">
 							<td>
-								<!-- 버튼 --> <input type="button" value="삭제"
-								onclick="del(${commReList.commReNo},${commReList.commNo})">
+								<!-- 버튼 --> <input type="button" value="삭제" 	onclick="del(${commReList.commReNo},${commReList.commNo})">
 							</td>
 						</c:if>
+						
 					</tr>					
 				</c:if>
+				
  			</c:if> 
 			</c:forEach>
 		</table>

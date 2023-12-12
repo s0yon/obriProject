@@ -12,6 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>커뮤니티 게시판</title>
 
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 
 <!-- 로그인 확인 -->
 <script>
@@ -210,8 +211,10 @@ console.log("userId:", '${community.userId}');
 				<br> <br>		
 
 				<div id="commReSession">
-					<input type="button" value="댓글작성" id="comReInsert"> &nbsp;
-					&nbsp;<input type="checkbox" name="commSecret" id="commSecret">비밀댓글
+					<input type="button" value="댓글작성" id="comReInsert">
+					 &nbsp;
+					&nbsp;
+					<input type="checkbox" name="commSecret" id="commSecret">비밀댓글
 				</div>
 			</form>
 		</div>

@@ -75,9 +75,10 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>;
                </select>
             </div>
             <div class="btn-container">
-               <input type="button" value="글작성"
-                  class="btn"
-                  onclick="location.href='boardForm.do'" id="commInsert">
+            	<c:if test="${sessionScope.userId != null}">
+               		<input type="button" value="글작성"  class="btn"
+                  		onclick="location.href='boardForm.do'" id="commInsert">
+                  </c:if>
             </div>
          </div>
          <table>
@@ -101,7 +102,7 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>;
                   <c:if test="${not empty list}">
                      <c:set var="no1" value="${no}"></c:set>
                      <c:forEach var="community" items="${list }">
-                        <c:if test="${community.commDelyn != 'Y' }">
+                        <c:if test="${community.commDelYn != 'Y' }">
                            <tr align="center">
 
                               <td>${no1}<c:set var="no1" value="${no1-1}" />
@@ -129,16 +130,11 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>;
 
                               <td>${community.likeCnt }</td>
                         </c:if>
-
-
-
                      </c:forEach>
                   </c:if>
                </tbody>
             </table>
             <br>
-
-
             <div align="center">
                <ul class="pagination">
                   <!-- 검색 했을 경우의 페이징 처리 -->
