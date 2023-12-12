@@ -8,7 +8,7 @@
 	<!-- 댓글 입력 -->
 	<insert id="replyInsert" parameterType="commReply">
 		insert into comReply
-		values(comre_no_seq.nextval,#{commNo},#{commReId},#{commReText},0,0,sysdate,sysdate,'N','N')
+		values(comre_no_seq.nextval,#{commNo},#{commReId},#{commReText},sysdate,sysdate,'N','N')
 	</insert>
 
 	<!-- 댓글 목록 -->
@@ -31,7 +31,7 @@
 	<!-- 비밀댓글 -->
 	<insert id="replySecret" parameterType="commReply">
 		insert into comReply
-		values(comre_no_seq.nextval,#{commNo},#{commReId},#{commReText},0,0,sysdate,sysdate,'N','Y')
+		values(comre_no_seq.nextval,#{commNo},#{commReId},#{commReText},sysdate,sysdate,'N','Y')
 	</insert>
 
 </mapper>

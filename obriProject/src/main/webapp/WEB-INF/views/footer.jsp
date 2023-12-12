@@ -26,7 +26,7 @@
 	<!-- footer start -->
 	<div class="nav_foot">
 		<div class="nav_container">
-			<h2>오브리</h2>
+		<br>
 			<p>O&nbsp;B&nbsp;R&nbsp;I&nbsp;&nbsp;&copy;2023.1조</p>
 		</div>
 		<ul class="nav_menu">

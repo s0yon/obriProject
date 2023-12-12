@@ -26,17 +26,15 @@ table {
 }
 
 th, td {
-	padding: 12px;
+	padding: 10px;
 	text-align: left;
 	border-bottom: 1px solid #ddd;
-	line-height: 16px;
 }
 
 th {
 	background-color: #A490D5;
 	color: #fff;
 	font-weight: bold;
-	text-align: left;
 }
 
 td {
@@ -117,6 +115,23 @@ td a {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.search_button {
+    background-color:var(--accent-color);
+    width: 50px;
+    height: 32px;
+    color: #fff;
+    border:none;
+    border-radius:5px;
+    font-size: 15px;
+    margin: 5px;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.search_button:hover {
+	background-color: #8246af;
+}
+
 .sort_box {
     width: 100px;
     height: 42px;
@@ -143,25 +158,36 @@ td a {
     width: 80px;
     height: 40px;
     display: inline-block;
-    font-weight: bold;
-    font-size: 0.875rem; /* 14px */
-    color: #fff;
+    font-weight: 400;
+    color: #444;
     text-align: center;
-    background-color: #A490D5;
-    border-style: none;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    user-select: none;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.5;
+    border-radius: 0.2rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .btn:hover {
-	background-color: #9585ba;
+    background-color: #A490D5;
     color: #fff;
+    border-color: #A490D5;
 }
 
+.btn:not(:hover) {
+    background-color: transparent;
+    border: 1px solid #A490D5;
+    color: #A490D5;
+}
 .community-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     margin-bottom: 10px;
+}
+#commInsert {
+    display: inline-block;
+    margin-right: 10px;
 }
