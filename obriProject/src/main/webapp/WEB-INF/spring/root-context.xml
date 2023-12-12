@@ -17,6 +17,7 @@
 		<property name="jdbcUrl" value="${hikariConfig.jdbcUrl}"></property>
 		<property name="username" value="${hikariConfig.username}"></property>
 		<property name="password" value="${hikariConfig.password}"></property>
+
 	</bean>
 
 	<!-- HikariCP configuration -->

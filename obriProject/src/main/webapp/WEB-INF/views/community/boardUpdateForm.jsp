@@ -1,29 +1,33 @@
-<%@ page language="java" contentType="text/html;charset=UTF-8"
-         pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
-<style>
-        /* 버튼을 원하는 위치로 이동 */
-        #submitButton {
-            margin-top: 20px; /* 상단 여백 조정 */
-            margin-left: 10px; /* 왼쪽 여백 조정 */
-            background-color:purple;
-            color:white;
-        }
-        
-        #title{
-        color:purple;
-        } 
-    </style>
 
-헤더
 
-<hr>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>커뮤니티 게시판 글 수정</title>
 
+<link rel="stylesheet" href="./css/nav.css">
+<link rel="stylesheet" href="./css/header.css">
+
+
+<script src="https://kit.fontawesome.com/8c929515d1.js"
+	crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <%@include file="../navbar.jsp" %>
+
+<main style="padding-top: 80px; padding-bottom: 80px">
         <h2 id="title"  align=center>글수정</h2>
         <form method=post  action="boardUpdate.do"  enctype="multipart/form-data" >
-        <input type="hidden"  name="commno"  value="${community.commno}">
+        <input type="hidden"  name="commNo"  value="${community.commNo}">
 		<input type="hidden"  name="pageNum"  value="${pageNum}">
-            <table border=1  align=center >
+            <table border=1  align=center  width=800  height=400>
                 <tr>
                     <th>작성자</th>
                     <td><input type=text  name="userId"   value=" ${community.userId}"  readonly></td>
@@ -34,7 +38,7 @@
                 </tr>
                 <tr>
                     <th>내용</th>
-                    <td><textarea cols=40 rows=10  name="commText"   id="commText"  required>${community.commText} </textarea>
+                    <td><textarea cols=100 rows=20  name="commText"   id="commText"  required>${community.commText} </textarea>
                         <br><br>
                     </td>
 				</tr>
@@ -52,6 +56,10 @@
            		</tr>
            	</div>
         </form>
-  <hr>
-  푸터
+  
+</main>
+<%@include file="../footer.jsp" %>
+			
+</body>
+</html>
 

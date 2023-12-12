@@ -21,10 +21,10 @@ public class commReplyDao {
 		
 	}
 
-	public List<communityVO> comReList(int commno) {
+	public List<communityVO> comReList(int commNo) {
 		// TODO Auto-generated method stub
 		System.out.println("댓글 목록 dao");
-		return replysession.selectList("commReplyns.replyList", commno);
+		return replysession.selectList("commReplyns.replyList", commNo);
 	}
 
 	public int getTotal(commReplyVO commReply) {
@@ -37,6 +37,13 @@ public class commReplyDao {
 		// TODO Auto-generated method stub
 		System.out.println("댓글 삭제 dao");
 		replysession.delete("commReplyns.replyDelete", commReNo);
+		
+	}
+
+	public void replySecret(commReplyVO commReply) {
+		// TODO Auto-generated method stub
+		System.out.println("비밀댓글 dao");
+		replysession.update("commReplyns.replySecret",commReply);
 		
 	}
 }

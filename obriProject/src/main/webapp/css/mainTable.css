@@ -1,0 +1,33 @@
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	background-color: transparent;
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+	padding: 8px;
+	text-align: left;
+	font-size: 12px;
+	border-bottom: 1px solid #ddd;
+}
+
+th {
+	background-color: transparent;
+	color: #333;
+	font-weight: bold;
+	text-align: center;
+}
+
+td {
+	color: #333;
+}
+
+td a {
+	text-decoration: none;
+	color: #333;
+}

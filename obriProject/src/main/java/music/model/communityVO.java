@@ -3,151 +3,149 @@ package music.model;
 import java.util.Date;
 
 public class communityVO {
-	
-	private int commno;
+
+	private int commNo;
 	private String userId;
-	private String commSub;	
-	private String commText	;
+	private String commSub;
+	private String commText;
 	private int commCount;
 	private String commFile;
 	private Date commDate;
 	private Date commUpdate;
-	private String commDelyn;
-	
+	private String commDelYn;
+
 	// page
-		private int startRow;
-		private int endRow;
-		
-		// 검색
-		private String search;
-		private String keyword;
-		
-		// 좋아요 수
-		  private int likeCnt;
+	private int startRow;
+	private int endRow;
 
+	// 검색
+	private String search;
+	private String keyword;
 
-		// 최신순,조회순,좋아요순 정렬
-		  private String sort;
-		  
-		public String getSort() {
-			return sort;
-		}
+	// 좋아요 수
+	private int likeCnt;
 
-		public void setSort(String sort) {
-			this.sort = sort;
-		}
+	// 최신순,조회순,좋아요순 정렬
+	private String sort;
 
-		public int getCommno() {
-			return commno;
-		}
+	public String getSort() {
+		return sort;
+	}
 
-		public void setCommno(int commno) {
-			this.commno = commno;
-		}
+	public void setSort(String sort) {
+		this.sort = sort;
+	}
 
-		public String getUserId() {
-			return userId;
-		}
+	public int getCommNo() {
+		return commNo;
+	}
 
-		public void setUserId(String userId) {
-			this.userId = userId;
-		}
+	public void setCommNo(int commNo) {
+		this.commNo = commNo;
+	}
 
-		public String getCommSub() {
-			return commSub;
-		}
+	public String getUserId() {
+		return userId;
+	}
 
-		public void setCommSub(String commSub) {
-			this.commSub = commSub;
-		}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 
-		public String getCommText() {
-			return commText;
-		}
+	public String getCommSub() {
+		return commSub;
+	}
 
-		public void setCommText(String commText) {
-			this.commText = commText;
-		}
+	public void setCommSub(String commSub) {
+		this.commSub = commSub;
+	}
 
-		public int getCommCount() {
-			return commCount;
-		}
+	public String getCommText() {
+		return commText;
+	}
 
-		public void setCommCount(int commCount) {
-			this.commCount = commCount;
-		}
+	public void setCommText(String commText) {
+		this.commText = commText;
+	}
 
-		public String getCommFile() {
-			return commFile;
-		}
+	public int getCommCount() {
+		return commCount;
+	}
 
-		public void setCommFile(String commFile) {
-			this.commFile = commFile;
-		}
+	public void setCommCount(int commCount) {
+		this.commCount = commCount;
+	}
 
-		public Date getCommDate() {
-			return commDate;
-		}
+	public String getCommFile() {
+		return commFile;
+	}
 
-		public void setCommDate(Date commDate) {
-			this.commDate = commDate;
-		}
+	public void setCommFile(String commFile) {
+		this.commFile = commFile;
+	}
 
-		public Date getCommUpdate() {
-			return commUpdate;
-		}
+	public Date getCommDate() {
+		return commDate;
+	}
 
-		public void setCommUpdate(Date commUpdate) {
-			this.commUpdate = commUpdate;
-		}
+	public void setCommDate(Date commDate) {
+		this.commDate = commDate;
+	}
 
-		public String getCommDelyn() {
-			return commDelyn;
-		}
+	public Date getCommUpdate() {
+		return commUpdate;
+	}
 
-		public void setCommDelyn(String commDelyn) {
-			this.commDelyn = commDelyn;
-		}
+	public void setCommUpdate(Date commUpdate) {
+		this.commUpdate = commUpdate;
+	}
 
-		public int getStartRow() {
-			return startRow;
-		}
+	public String getCommDelYn() {
+		return commDelYn;
+	}
 
-		public void setStartRow(int startRow) {
-			this.startRow = startRow;
-		}
+	public void setCommDelYn(String commDelYn) {
+		this.commDelYn = commDelYn;
+	}
 
-		public int getEndRow() {
-			return endRow;
-		}
+	public int getStartRow() {
+		return startRow;
+	}
 
-		public void setEndRow(int endRow) {
-			this.endRow = endRow;
-		}
+	public void setStartRow(int startRow) {
+		this.startRow = startRow;
+	}
 
-		public String getSearch() {
-			return search;
-		}
+	public int getEndRow() {
+		return endRow;
+	}
 
-		public void setSearch(String search) {
-			this.search = search;
-		}
+	public void setEndRow(int endRow) {
+		this.endRow = endRow;
+	}
 
-		public String getKeyword() {
-			return keyword;
-		}
+	public String getSearch() {
+		return search;
+	}
 
-		public void setKeyword(String keyword) {
-			this.keyword = keyword;
-		}
+	public void setSearch(String search) {
+		this.search = search;
+	}
 
-	
-		public int getLikeCnt() {
-			return likeCnt;
-		}
-		
-		public void setLikeCnt(int likeCnt) {
-			this.likeCnt = likeCnt;
-		}
-		
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
+	public int getLikeCnt() {
+		return likeCnt;
+	}
+
+	public void setLikeCnt(int likeCnt) {
+		this.likeCnt = likeCnt;
+	}
+
 }

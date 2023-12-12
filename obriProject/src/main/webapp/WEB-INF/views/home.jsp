@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,8 +46,9 @@
 </head>
 
 <body>
-<%@include file="navbar.jsp" %>
-	<main style="padding-top: 80px; padding-bottom: 80px">
+	<c:import url="/WEB-INF/views/navbar.jsp" />
+	
+	<main style="padding-top: 65px; padding-bottom: 65px">
 
 		<!-- header start -->
 		<section class="header">
@@ -57,25 +59,25 @@
 			</div>
 		</section>
 		<!-- header end -->
-
+<br><br>
 		<!-- animation start -->
 		<section class="animation">
 			<div class="num_container">
 				<div class="num_item">
 					<h2 class="title">누적 회원 수</h2>
-					<lable class="numCount"
+					<lable class="numCount" 
 						style="font-size:24px; font-weight:bold; color:#444;">111</lable>
 					<span class="unit">명</span><br>
 				</div>
 				<div class="num_item">
 					<h2 class="title">누적 구인건 수</h2>
-					<lable class="numCount"
+					<lable class="numCount" 
 						style="font-size:24px; font-weight:bold; color:#444;">222</lable>
 					<span class="unit">건</span><br>
 				</div>
 				<div class="num_item">
 					<h2 class="title">누적 좋아요 수</h2>
-					<lable class="numCount"
+					<lable class="numCount" 
 						style="font-size:24px; font-weight:bold; color:#444;">333</lable>
 					<span class="unit">개</span><br>
 				</div>
@@ -84,8 +86,8 @@
 		<!-- animation end -->
 
 		<!-- intro start -->
-		<section class="intro">
-			<div class="container">
+		<section class="intro justify-content-between ml-5 mr-5">
+			<div class="container ml-5 pl-5">
 				<div class="banner">
 					<div class="bann_icon">
 						<i class="fa-solid fa-magnifying-glass"></i>
@@ -95,14 +97,14 @@
 					</div>
 				</div>
 				<div class="item">
-					<iframe src="boardListShow.do" frameborder="0" scrolling="no"></iframe>
+					<iframe src="boardListShow.do" frameborder="0" scrolling="no" style="width: 500px; height: 300px"></iframe>
 				</div>
-				<div class="btn_plus" onclick="location.href='board_list.do'"
+				<div class="btn_plus" onclick="location.href='boardList.do'"
 					style="cursor: pointer;">
 					<span class="fa-solid fa-plus fa-2xl"></span>
 				</div>
 			</div>
-			<div class="container">
+			<div class="container mr-5 pr-5">
 				<div class="banner">
 					<div class="bann_icon">
 						<i class="fa-regular fa-comments"></i>
@@ -112,16 +114,17 @@
 					</div>
 				</div>
 				<div class="item">
-					<iframe src="boardListShow.do" frameborder="0" scrolling="no"></iframe>
+					<iframe src="boardListShow.do" frameborder="0" scrolling="no" style="width: 500px; height: 300px"></iframe>
 				</div>
-				<div class="btn_plus" onclick="location.href='board_list.do'"
+				<div class="btn_plus" onclick="location.href='boardList.do'"
 					style="cursor: pointer;">
 					<span class="fa-solid fa-plus fa-2xl"></span>
 				</div>
 			</div>
 		</section>
+		<br><br>
 		<!-- intro end -->
 	</main>
-<%@include file="footer.jsp" %>
+	<c:import url="/WEB-INF/views/footer.jsp" />
 </body>
 </html>

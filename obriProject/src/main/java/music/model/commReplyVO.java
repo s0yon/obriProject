@@ -5,7 +5,7 @@ import java.util.Date;
 public class commReplyVO {
 
 	private int commReNo; /* 댓글번호 */
-	private int commno;/* 게시글번호 */
+	private int commNo;/* 게시글번호 */
 	private String commReId;/* ID */
 	private String commReText; /* 내용 */
 	private int commReRef;/* ref */
@@ -29,11 +29,11 @@ public class commReplyVO {
 	public void setCommReNo(int commReNo) {
 		this.commReNo = commReNo;
 	}
-	public int getCommno() {
-		return commno;
+	public int getCommNo() {
+		return commNo;
 	}
-	public void setCommno(int commno) {
-		this.commno = commno;
+	public void setCommNo(int commNo) {
+		this.commNo = commNo;
 	}
 	public String getCommReId() {
 		return commReId;
