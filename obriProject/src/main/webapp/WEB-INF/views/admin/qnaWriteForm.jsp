@@ -37,7 +37,7 @@ td {
 
 <body>
 	<%@include file="../navbar.jsp"%>
-	<div class="container-fluid">
+	<div class="container-sm">
 		<div class="row">
 			<main style="padding-top: 80px; padding-bottom: 80px">
 				<div
