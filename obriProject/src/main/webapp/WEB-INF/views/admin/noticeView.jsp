@@ -18,11 +18,10 @@
 	<div class="container-sm">
 		<div class="row">
 			<!-- 헤더부분 -->
-			<main>
-				<div
-					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<h1 class="h2">공지사항</h1>
-				</div>
+            <main>
+                <div>
+                    <h1>공지사항</h1>
+                </div>
 				<table id="nottable" class="table">
 					<tr class="table-active">
 						<th scope="col" style="width: 60%"><c:out

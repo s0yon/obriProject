@@ -1,33 +1,15 @@
-<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
-<c:set var="loginOutLink"
-	value="${sessionScope.userId==null ? 'login.do' : 'logout.do'}" />
-<c:set var="loginOut"
-	value="${sessionScope.userId==null ? '로그인' : '로그아웃'}" />
-<c:set var="myPageLink"
-	value="${sessionScope.userId==null ? 'join.do' : 'editCheck.do'}" />
-<c:set var="myPage"
-	value="${sessionScope.userId==null ? '회원가입' : '마이페이지'}" />
-
-
+<%@ page import="java.util.Date"%>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>커뮤니티</title>
-
-<!-- 부트스트랩 CSS -->
-<link
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- 사용자 정의 스타일 -->
 <link rel="stylesheet" href="./css/custom-styles.css">
@@ -47,19 +29,18 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-
 <!-- 게시판 정렬 -->
 <script>
         function comSort() {
             var sortValue = $("#sort").val();
             location.href = "boardList.do?sort=" + sortValue;
         }
+</script>
 
-        $(document).ready(function () {
-            var sessionId = '<%=(String) session.getAttribute("userId")%>
-	';
+<script>
+var sessionId = '<%=(String) session.getAttribute("userId")%>;
 		console.log("세션ID " + sessionId);
-
+		$(document).ready(function(){
 		if (sessionId === "null") {
 			console.log("여기들감?");
 			$("#commInsert").hide();
@@ -68,53 +49,48 @@
 		}
 	});
 </script>
-
 </head>
 <body>
-	<!-- 헤더부분 -->
+	<!-- header -->
 	<c:import url="/WEB-INF/views/navbar.jsp" />
 	<div class="container-sm">
-		<div class="row">
-			<main>
-				<div
-					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<h1>커뮤니티</h1>
+		<main>
+			<div>
+				<h1>커뮤니티</h1>
+			</div>
+			<div class="community-header">
+				<div class="sort-container">
+					<select name="sort" id="sort" onchange="comSort()" class="sort_box">
+						<option value="recent"
+							<c:if test="${sort == 'recent'}">${'selected'}</c:if>>최신순
+						</option>
+
+						<option value="readcnt"
+							<c:if test="${sort == 'readcnt'}">${'selected'}</c:if>>조회순
+						</option>
+
+						<option value="likecnt"
+							<c:if test="${sort == 'likecnt'}">${'selected'}</c:if>>좋아요순
+						</option>
+					</select>
 				</div>
-				<div class="community-header d-flex justify-content-between align-items-center mb-3">
-					<div class="sort-container">
-						<select name="sort" id="sort" onchange="comSort()"
-							class="sort_box">
-							<option value="recent"
-								<c:if test="${sort == 'recent'}">${'selected'}</c:if>>최신순
-							</option>
-
-							<option value="readcnt"
-								<c:if test="${sort == 'readcnt'}">${'selected'}</c:if>>조회순
-							</option>
-
-							<option value="likecnt"
-								<c:if test="${sort == 'likecnt'}">${'selected'}</c:if>>좋아요순
-							</option>
-						</select>
-					</div>
-					<div class="btn-container">
-						<input type="button" value="글작성"
-							class="btn btn-sm btn-outline-secondary"
-							onclick="location.href='boardForm.do ' " id="commInsert">
-					</div>
+				<div class="btn-container">
+					<input type="button" value="글작성"
+						class="btn"
+						onclick="location.href='boardForm.do'" id="commInsert">
 				</div>
-
-				<table>
-					<thead>
-						<tr>
-							<th>번호</th>
-							<th>제목</th>
-							<th>작성자명</th>
-							<th>날짜</th>
-							<th>조회수</th>
-							<th>좋아요 수</th>
-						</tr>
-					</thead>
+			</div>
+			<table>
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>제목</th>
+					<th>작성자명</th>
+					<th>날짜</th>
+					<th>조회수</th>
+					<th>좋아요 수</th>
+				</tr>
+			</thead>
 					<tbody>
 						<c:if test="${empty list}">
 							<tr>
@@ -219,10 +195,7 @@
 				</div>
 			</main>
 		</div>
-	</div>
 	<!-- footer -->
 	<c:import url="/WEB-INF/views/footer.jsp" />
-
-
 </body>
 </html>

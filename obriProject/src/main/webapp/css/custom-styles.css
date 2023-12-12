@@ -5,7 +5,6 @@ body {
 	color: #444;
 	padding-top: 80px;
 	padding-bottom: 80px;
-	margin: 0;
 }
 
 /* 작은 화면에서 좀 더 좁게 보이도록 */
@@ -54,7 +53,6 @@ td a {
     padding: 0;
 }
 
-
 .pagination li {
     margin: 0 5px;
 }
@@ -86,7 +84,7 @@ td a {
 
 .search_box{
     width: 100px;
-    height: 42px;
+    height: 44px;
     border: 1px solid #C4C4C4;
     box-sizing: border-box;
     border-radius: 10px;
@@ -135,7 +133,11 @@ td a {
 }
 
 .sort_box {
+<<<<<<< HEAD
     width: 100px;
+=======
+    width: 110px;
+>>>>>>> 9e7086894453f2bdd9901d3457223735e783ce6a
     height: 42px;
     border: 1px solid #C4C4C4;
     box-sizing: border-box;
@@ -156,6 +158,32 @@ td a {
     display: flex;
 }
 
+<<<<<<< HEAD
+=======
+.btn {
+    width: 80px;
+    height: 40px;
+    display: inline-block;
+    font-weight: 400;
+    color: #444;
+    text-align: center;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid #A490D5;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.5;
+    border-radius: 0.2rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn:hover {
+	background-color: #A490D5;
+    color: #fff;
+    border-color: #A490D5;
+}
+
+>>>>>>> 9e7086894453f2bdd9901d3457223735e783ce6a
 .community-header {
     display: flex;
     justify-content: space-between;
