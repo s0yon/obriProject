@@ -12,7 +12,7 @@ public class communityVO {
 	private String commFile;
 	private Date commDate;
 	private Date commUpdate;
-	private String commDelyn;
+	private String commDelYn;
 
 	// page
 	private int startRow;
@@ -100,12 +100,12 @@ public class communityVO {
 		this.commUpdate = commUpdate;
 	}
 
-	public String getCommDelyn() {
-		return commDelyn;
+	public String getCommDelYn() {
+		return commDelYn;
 	}
 
-	public void setCommDelyn(String commDelyn) {
-		this.commDelyn = commDelyn;
+	public void setCommDelYn(String commDelYn) {
+		this.commDelYn = commDelYn;
 	}
 
 	public int getStartRow() {

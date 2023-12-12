@@ -31,7 +31,7 @@
 				commSub like '%'||#{keyword}||'%' or
 				commText like '%'||#{keyword}||'%'
 			</if>
-			and  commDelyn = 'N'
+			and  commDelYn = 'N'
 		</where>			
 			 order by commNo desc ) community )
 			where rn between #{startRow} and #{endRow} 
@@ -49,7 +49,7 @@
             commSub like '%'||#{keyword}||'%' or
             commText like '%'||#{keyword}||'%'
          </if>
-         and  commDelyn = 'N'
+         and  commDelYn = 'N'
       </where>         
           order by commCount desc, commNo desc) community )
          where rn between #{startRow} and #{endRow} 
@@ -67,7 +67,7 @@
             commSub like '%'||#{keyword}||'%' or
             commText like '%'||#{keyword}||'%'
          </if>
-         and  commDelyn = 'N'
+         and  commDelYn = 'N'
       </where>         
           order by likeCnt desc, commNo desc) community )
          where rn between #{startRow} and #{endRow}  
@@ -87,7 +87,7 @@
 				commSub like '%'||#{keyword}||'%'  or
 				commText like '%'||#{keyword}||'%'
 			</if>	
-	        and  commDelyn = 'N'
+	        and  commDelYn = 'N'
 		</where>
 	</select>
 	

@@ -39,4 +39,11 @@ public class commReplyDao {
 		replysession.delete("commReplyns.replyDelete", commReNo);
 		
 	}
+
+	public void replySecret(commReplyVO commReply) {
+		// TODO Auto-generated method stub
+		System.out.println("비밀댓글 dao");
+		replysession.update("commReplyns.replySecret",commReply);
+		
+	}
 }

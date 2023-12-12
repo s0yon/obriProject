@@ -1,23 +1,14 @@
-<%@ page language="java" contentType="text/html;charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<c:set var="loginOutLink"
-	value="${sessionScope.userId==null ? 'login.do' : 'logout.do'}" />
-<c:set var="loginOut"
-	value="${sessionScope.userId==null ? '로그인' : '로그아웃'}" />
-<c:set var="myPageLink"
-	value="${sessionScope.userId==null ? 'join.do' : 'editCheck.do'}" />
-<c:set var="myPage"
-	value="${sessionScope.userId==null ? '회원가입' : '마이페이지'}" />
-
-
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="https://kit.fontawesome.com/8c929515d1.js"
-	crossorigin="anonymous"></script>
 	
+
+<link rel="stylesheet" href="./css/header.css">
+
 <style>
         /* 버튼 스타일링 */
         .imageButton {
@@ -34,6 +25,19 @@
         }
     </style>
  
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>커뮤니티 게시판</title>
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="https://kit.fontawesome.com/8c929515d1.js"
+	crossorigin="anonymous"></script>
+	
  <!-- 로그인 확인 -->
  <script>
  
@@ -102,9 +106,10 @@ console.log("userId:", '${community.userId}');
  			// 리스트 불러오기
         $(function () {	
             $('#commReList').load('commReList.do?commNo=${community.commNo}')	
-
+            
             // 댓글창 유효성 검사
             $('#comReInsert').click(function () {
+            	 
                 if (!comForm.commReText.value) {
                     alert('댓글 입력 후에 클릭하세요');
                     comForm.commReText.focus();
@@ -113,18 +118,7 @@ console.log("userId:", '${community.userId}');
                 	 alert("댓글 작성 완료");
                 }
                 
-             // 비밀 댓글
-//                 if($('#commSecret').is(":checked") == true ){
-// 						$('#commSecret').val('Y1');
-// 						alert("y");
-					
-// 				}else{
-// 					$('#commSecret').val('N1');
-// 						alert("null");
-					
-// 				}   				  		
-                
-                     // 댓글 입력, 입력후           
+                // 댓글 입력, 입력후           
                 var formData = $('#comForm').serialize();	    // serialize() : 아래의 form태그를 읽어옴
                 $.post('commReInsert.do', formData, function (data) {
                     $('#commReList').html(data);
@@ -132,52 +126,15 @@ console.log("userId:", '${community.userId}');
 
                 });
             });
-        });
- 			
- 			
+        });		
  </script>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>커뮤니티 게시판</title>
-
-<link rel="stylesheet" href="./css/nav.css">
-<link rel="stylesheet" href="./css/header.css">
-<link rel="stylesheet" href="./css/animation.css">
-<link rel="stylesheet" href="./css/intro.css">
 
 </head>
 
 <body>
- <!-- navbar start -->
-	<nav class="navbar">
-		<div class="navbar_logo" id="navbar_logo">
-			<a href="<c:url value='/home.do'/>"><img src="./images/184.png"></a>
-		</div>
-		<ul class="navbar_menu" id="navbar_menu">
-			<li><a href="boardListShow.do">구인</a></li>
-			<li><a href="prCardList.do">홍보</a></li>
-			<li><a href="boardList.do">커뮤니티</a></li>
-			<li><a href="notice_list.do">공지</a></li>
-		</ul>
-		<ul class="navbar_icons" id="navbar_icons">
-			<li><a href="<c:url value='${loginOutLink}'/>"> <i
-					class="fa-solid fa-user"></i>&nbsp;&nbsp;${loginOut}
-			</a></li>
-			<li><a href="<c:url value='${myPageLink}'/>"> <i
-					class="fa-solid fa-right-to-bracket"></i>&nbsp;&nbsp;${myPage}
-			</a></li>
-		</ul>
-		<a href="#" class="navbar_toggle_btn" id="navbar_toggle_btn"> <i
-			class="fa-solid fa-bars"></i>
-		</a>
-	</nav>
-	<!-- navbar end -->
-
+ 
+<%@include file="../navbar.jsp" %>
 <main style="padding-top: 80px; padding-bottom: 80px">
 
 		<!-- header start -->
@@ -318,24 +275,7 @@ console.log("userId:", '${community.userId}');
 
 </main>
 
-		<!-- footer start -->
-	<footer class="nav_foot">
-		<div class="nav_container">
-			<h2>오브리</h2>
-			<p>O&nbsp;B&nbsp;R&nbsp;I&nbsp;&nbsp;&copy;2023.1조</p>
-		</div>
-		<ul class="nav_menu">
-			<li><a href="notice_list.do">공지사항</a></li>
-			<li><a href="qna_form.do">문의하기</a></li>
-			<li><a href="">개인정보 처리방침</a></li>
-			<li><a href="">서비스 이용약관</a></li>
-		</ul>
-		<div class="btn_up" onclick="window.scrollTo(0,0)">
-			<span class="fa-solid fa-circle-up fa-2xl"></span>
-		</div>
-	</footer>
-	<!-- footer end -->
-		
+		<%@include file="../footer.jsp" %>
 		
 </body>
 </html>
