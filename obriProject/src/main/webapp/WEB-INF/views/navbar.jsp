@@ -9,44 +9,56 @@
 	value="${sessionScope.userId==null ? 'join.do' : 'mypage_Apply.do'}" />
 <c:set var="myPage"
 	value="${sessionScope.userId==null ? '회원가입' : '마이페이지'}" />
-
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OBRI</title>
-
-<link rel="stylesheet" href="./css/navbar.css">
-
-<script src="https://code.jquery.com/jquery-latest.js"></script>
-<script src="https://kit.fontawesome.com/8c929515d1.js"
-	crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OBRI</title>
+    <!-- 부트스트랩 CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 추가적인 사용자 정의 CSS -->
+    <link rel="stylesheet" href="./css/navbar.css">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/8c929515d1.js" crossorigin="anonymous"></script>
 </head>
 <body>
-	<!-- navbar start -->
-	<div id="navbar" class="navbar">
-		<div class="navbar_logo" id="navbar_logo">
-			<a href="<c:url value='/home.do'/>"><img src="./images/184.png"></a>
-		</div>
-		<ul class="navbar_menu" id="navbar_menu">
-			<li><a href="boardListShow.do">구인</a></li>
-			<li><a href="prCardList.do">홍보</a></li>
-			<li><a href="boardList.do">커뮤니티</a></li>
-			<li><a href="notice_list.do">공지</a></li>
-		</ul>
-		<ul class="navbar_icons" id="navbar_icons">
-			<li><a href="<c:url value='${myPageLink}'/>"> <i
-					class="fa-solid fa-user"></i>&nbsp;&nbsp;${myPage}
-			</a></li>
-			<li><a href="<c:url value='${loginOutLink}'/>"> <i
-					class="fa-solid fa-right-to-bracket"></i>&nbsp;&nbsp;${loginOut}
-			</a></li>
-		</ul>
-		<a href="#" class="navbar_toggle_btn" id="navbar_toggle_btn"> <i
-			class="fa-solid fa-bars"></i>
-		</a>
-	</div>
-	<!-- navbar end -->
+    <!-- navbar start -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="<c:url value='/home.do'/>"><img src="./images/184.png" alt="Logo" width="60px" height="60px"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="boardListShow.do">구인</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="prCardList.do">홍보</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="boardList.do">커뮤니티</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="notice_list.do">공지</a>
+                </li>
+                <li>&nbsp;</li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<c:url value='${myPageLink}'/>"><i class="fas fa-user"></i> ${myPage}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<c:url value='${loginOutLink}'/>"><i class="fas fa-right-to-bracket"></i> ${loginOut}</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- navbar end -->
+
+    <!-- 부트스트랩 JS 및 jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
 </html>

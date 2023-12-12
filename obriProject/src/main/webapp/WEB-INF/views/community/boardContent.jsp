@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html;charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -11,9 +12,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>커뮤니티 게시판</title>
 
+
 <!-- 로그인 확인 -->
 <script>
  var sessionId = '<%=(String) session.getAttribute("userId")%>';
+
  console.log("세션ID "+sessionId);
  
  $(document).ready(function() {
@@ -73,9 +76,10 @@ console.log("userId:", '${community.userId}');
  			// 리스트 불러오기
         $(function () {	
             $('#commReList').load('commReList.do?commNo=${community.commNo}')	
-
+            
             // 댓글창 유효성 검사
             $('#comReInsert').click(function () {
+            	 
                 if (!comForm.commReText.value) {
                     alert('댓글 입력 후에 클릭하세요');
                     comForm.commReText.focus();
@@ -84,18 +88,7 @@ console.log("userId:", '${community.userId}');
                 	 alert("댓글 작성 완료");
                 }
                 
-             // 비밀 댓글
-//                 if($('#commSecret').is(":checked") == true ){
-// 						$('#commSecret').val('Y1');
-// 						alert("y");
-					
-// 				}else{
-// 					$('#commSecret').val('N1');
-// 						alert("null");
-					
-// 				}   				  		
-                
-                     // 댓글 입력, 입력후           
+                // 댓글 입력, 입력후           
                 var formData = $('#comForm').serialize();	    // serialize() : 아래의 form태그를 읽어옴
                 $.post('commReInsert.do', formData, function (data) {
                     $('#commReList').html(data);
@@ -103,9 +96,11 @@ console.log("userId:", '${community.userId}');
 
                 });
             });
-        });
+
+        });		
  </script>
- <link rel="stylesheet" href="./css/viewpage.css">
+
+
 </head>
 
 <body>
@@ -212,7 +207,7 @@ console.log("userId:", '${community.userId}');
 					value="${community.commNo} ">
 				<textarea rows="3" cols="50" name="commReText"
 					placeholder="댓글을 작성하세요"></textarea>
-				<br> <br>
+				<br> <br>		
 
 				<div id="commReSession">
 					<input type="button" value="댓글작성" id="comReInsert"> &nbsp;

@@ -8,8 +8,7 @@
 	<!-- 댓글 입력 -->
 	<insert id="replyInsert" parameterType="commReply">
 		insert into comReply
-		values(comre_no_seq.nextval,#{commNo},#{commReId},#{commReText},0,0,sysdate,sysdate,'Y')
-
+		values(comre_no_seq.nextval,#{commNo},#{commReId},#{commReText},0,0,sysdate,sysdate,'N','N')
 	</insert>
 
 	<!-- 댓글 목록 -->
@@ -21,14 +20,18 @@
 
 	<!-- 댓글 갯수 -->
 	<select id="reCount" resultType="int">
-		select count(*) from comReply where commReDelYn = 'Y' and commNo=#{commNo}
+		select count(*) from comReply where commReDelYn = 'N' and commNo=#{commNo}
 	</select>
 
 	<!-- 댓글 삭제 -->
 	<update id="replyDelete" parameterType="int">
-		update comReply set commReDelYn = 'N' where commReNo=#{commReNo}
+		update comReply set commReDelYn = 'Y' where commReNo=#{commReNo}
 	</update>
 
-
+	<!-- 비밀댓글 -->
+	<insert id="replySecret" parameterType="commReply">
+		insert into comReply
+		values(comre_no_seq.nextval,#{commNo},#{commReId},#{commReText},0,0,sysdate,sysdate,'N','Y')
+	</insert>
 
 </mapper>

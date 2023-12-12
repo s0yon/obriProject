@@ -14,30 +14,40 @@
 <!-- 사용자 정의 스타일 -->
 <link rel="stylesheet" href="./css/custom-styles.css">
 
-<script src="http://code.jquery.com/jquery-latest.js"></script>
+<!-- Font Awesome -->
 <script src="https://kit.fontawesome.com/8c929515d1.js"></script>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+
+<!-- 부트스트랩 JS -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- 게시판 정렬 -->
 <script>
-	function comSort(){
-		var sortValue = $("#sort").val();
-		location.href="boardList.do?sort="+sortValue;
-	}
+        function comSort() {
+            var sortValue = $("#sort").val();
+            location.href = "boardList.do?sort=" + sortValue;
+        }
 </script>
 
 <script>
-var sessionId = '<%=(String) session.getAttribute("userId")%>
-	';
-	console.log("세션ID " + sessionId);
-	$(document).ready(function() {
-
-		if (sessionId === "null") {
-			console.log("여기들감?");
-			$("#commInsert").hide();
-		} else {
-			$("#commInsert").show();
-		}
-	});
+var sessionId = '<%=(String) session.getAttribute("userId")%>;
+      console.log("세션ID " + sessionId);
+      $(document).ready(function(){
+      if (sessionId === "null") {
+         console.log("여기들감?");
+         $("#commInsert").hide();
+      } else {
+         $("#commInsert").show();
+      }
+   });
 </script>
 </head>
 <body>
@@ -115,24 +125,26 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>
 			<ul class="pagination">
 				<!-- 검색 했을 경우의 페이징 처리 -->
 				<c:if test="${not empty keyword}">
-					<c:if test="${pp.startPage > pp.pagePerBlk}">
-						<li><a
+					<c:if test="${pp.startPage > pp.pagePerBlk }">
+						<li><a class="page-link"
 							href="boardList.do?pageNum=${pp.startPage - 1}&search=${search}&keyword=${keyword}&sort=${sort}">&laquo;</a></li>
 					</c:if>
+
 					<c:forEach var="i" begin="${pp.startPage}" end="${pp.endPage}">
 						<li <c:if test="${pp.currentPage==i}"></c:if>><a
+							class="page-link"
 							href="boardList.do?pageNum=${i}&search=${search}&keyword=${keyword}&sort=${sort}">${i}</a>
 						</li>
 					</c:forEach>
 					<c:if test="${pp.endPage < pp.totalPage}">
-						<li><a
+						<li><a class="page-link"
 							href="boardList.do?pageNum=${pp.endPage + 1}&search=${search}&keyword=${keyword}&sort=${sort}">&raquo;</a></li>
 					</c:if>
 				</c:if>
 
 				<!-- 전체 목록의 페이징 처리 -->
 				<c:if test="${empty keyword}">
-					<c:if test="${pp.startPage > pp.pagePerBlk}">
+					<c:if test="${pp.startPage > pp.pagePerBlk }">
 						<li><a class="page-link"
 							href="boardList.do?pageNum=${pp.startPage - 1}&sort=${sort}">&laquo;</a></li>
 					</c:if>
@@ -146,6 +158,7 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>
 					</c:if>
 				</c:if>
 			</ul>
+
 			<form class="search_bar" action="boardList.do">
 				<input type="hidden" name="pageNum" value="1"> <input
 					type="hidden" name="sort" id="sort" value="${sort}"> <select
@@ -163,7 +176,4 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>
 			</form>
 		</main>
 	</div>
-	<!-- footer -->
-	<c:import url="/WEB-INF/views/footer.jsp" />
 </body>
-</html>

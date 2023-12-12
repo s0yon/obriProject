@@ -38,4 +38,11 @@ public class commReplyService {
 		replydao.comReDelete(commReNo);
 		
 	}
+
+	public void replySecret(commReplyVO commReply) {
+		// TODO Auto-generated method stub
+		System.out.println("비밀댓글 서비스");
+		replydao.replySecret(commReply);
+		
+	}
 }
