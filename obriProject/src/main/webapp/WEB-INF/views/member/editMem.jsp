@@ -57,7 +57,8 @@
 
 		<form name="e" method="post" action="editMemOk.do"
 			onsubmit="return editCheck()">
-			<br> <img src="images/184.png" alt="" width="100" height="100" onclick="location.href='home.do'" style="cursor: pointer;"><br>
+			<br> <img src="./images/logo.png" alt="Logo" width="100px" height="40px"
+					onclick="location.href='home.do'" style="cursor: pointer;"><br>
 			<br>
 			<h1 class="h4 mb-3" align="center">
 				연주자를 위한 커뮤니티,<br> <b>오브리</b>에 오신 것을 환영합니다.
