@@ -62,6 +62,13 @@
             }
         });
 
+        if ('${map['PRVIDEO']}' !== '') {
+            $("#iframeExist").show();
+        } else {            
+            $("#iframeExist").hide();
+        }
+
+        
     });
 
     function prDelete(prNo) {
@@ -142,8 +149,15 @@
 
 				<div class="row">
 					<div class="col-6 col-12-small prDetailImage">
+					<c:if test="${empty map['PRFILE']}">				
+						<img src="<%=request.getContextPath() %>/images/pr/basicProfile.png"
+							class="imga" alt="사진들어갈곳" />
+					</c:if>
+					
+					<c:if test="${!empty map['PRFILE']}">				
 						<img src="<%=request.getContextPath() %>/upload/${map['PRFILE']}"
 							class="imga" alt="사진들어갈곳" />
+					</c:if>
 					</div>
 					<!-- 좋아요! -->
 					<div class="col-5 col-11-small prDetailSub">
@@ -182,6 +196,7 @@
 					</div>
 				</div>
 				<hr>
+				<div id="iframeExist">
 				<h3>동영상</h3>
 				<div class="box basic" style="text-align: center;">
 					<div style="width: 100%; max-width: 600px; margin: 0 auto;">
@@ -190,6 +205,7 @@
 							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 							allowfullscreen style="width: 100%; height: 340px;"></iframe>
 					</div>
+				</div>
 				</div>
 
 				<div class="row justify-content-end mb-3 mt-3" id="updelButton">
