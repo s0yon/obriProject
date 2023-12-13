@@ -9,8 +9,20 @@
 
 <div class="container">
 	<div class="photosetting">
-		<div class="liketitle">♥ 커뮤니티 좋아요한 글</div>
-
+		<div class="liketitle">💖 좋아요한 커뮤니티 글 💖</div>
+		<c:if test="${empty likesListComm}">
+			<div class="replay_box">
+				<div class="full_setting">
+				    <div class="notice">
+				    	<div class="text">
+				        	<h3>⚠️ 좋아요 설정한 글 없음</h3>
+				        </div>
+					</div>
+				</div>
+			</div>
+		</c:if>
+		
+		<c:if test="${!empty likesListComm}">
 		<c:forEach var="likesComm" items="${likesListComm}">
 			<div class="replay_box">
 				<div class="full_setting">
@@ -49,6 +61,7 @@
 				</div>
 			</div>
 		</c:forEach>
+		</c:if>
 	</div>
 </div>
 

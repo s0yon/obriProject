@@ -235,7 +235,7 @@
 								<c:if test="${search=='subcon'}">selected="selected" </c:if>>제목+내용</option>
 						</select>
 						<input type="text" name="keyword" class="search_text">
-						<input type="submit" class="search_button" value="확인" style="margin-left: 5px;">
+						<input type="submit" class="btn" value="찾기" style="margin-left: 5px;">
 					</form>
 				</div>
 			</main>

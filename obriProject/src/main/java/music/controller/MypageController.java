@@ -28,6 +28,7 @@ import music.model.mypage.PagingJobManageVO;
 import music.model.mypage.PagingMsgListVO;
 import music.model.mypage.PagingPrListVO;
 import music.model.mypage.PrBoardVO;
+import music.model.mypage.QnAListsVO;
 import music.model.mypage.StatusAllVO;
 import music.model.mypage.StatusFinalVO;
 import music.model.mypage.StatusWaitingVO;
@@ -50,6 +51,7 @@ public class MypageController {
 	public String mypageApply(@SessionAttribute("userId") String id, Model model) {	    
 		InfoAllVO infoAllDto = myService.viewMyPage(id);
 		model.addAttribute("infoAllDto", infoAllDto);
+
 		return "mypage/mypage/mypage_Apply";
 	}
 	
@@ -239,6 +241,22 @@ public class MypageController {
 	}
 	
 	
+// 문의게시판 관리
+	// 작성한 qna글
+	@RequestMapping("myQnALists.do")
+	public String QnALists(@SessionAttribute("userId") String id, Model model, @RequestParam(required = false) String keyword) {
+		QnAListsVO qnaListsVO = myService.viewQnALists(id, keyword);
+		model.addAttribute("qnaListsVO", qnaListsVO);
+		
+		// keyword를 세션에 저장 -> 다음 페이지에서 활용
+		Map<String, Object> referer = new HashMap<String, Object>();
+		referer.put("keyword", qnaListsVO.getKeyword());
+		session.setAttribute("referer", referer);
+		
+		return "mypage/mypage/myQnALists";
+	}	
+	
+	
 // 메시지 관리
 	// 받은 메시지 함
 	@RequestMapping("messagebox_rcv.do")
@@ -315,6 +333,19 @@ public class MypageController {
 		}
 	}
 	
+	// 작성한 문의게시판 글 삭제
+	@RequestMapping(value="deleteQnA.do", method=RequestMethod.DELETE)
+	public AjaxRespVO<Integer> delSelectQnA(@RequestParam int qnaNo) {
+		int result = myService.delQnANo(qnaNo);
+		
+		if(result==1) {
+			System.out.println("result :" + qnaNo + " 문의게시판 글을 삭제하였습니다.");
+			return new AjaxRespVO<Integer>(1, "success", result);
+		} else {
+			System.out.println("result :" + result);
+			return new AjaxRespVO<Integer>(-1, "failure", result);
+		}
+	}
 
 	
 //	// 작성한 커뮤니티 댓글 삭제

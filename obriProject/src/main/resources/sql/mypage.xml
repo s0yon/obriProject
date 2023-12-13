@@ -7,22 +7,46 @@
 	<!-- resultType 속성: 쿼리 결과를 매핑할 DTO 클래스의 경로 -->
 
 <!-- 회원 개인정보 -->
-	<!-- profile : 회원정보 게시판(member) + PR게시판 Join -->
+	<!-- 특정 사용자(#{id}) 개인정보 -->
 	<select id="findUser" resultType="UserInfo">
-		SELECT us.userId, us.userPw, us.userName, us.userPhone, us.userEmail,
-		pr.prNo AS prNo,pr.prFile,
-        CASE WHEN pr.prMajor != us.userMajor
-        THEN pr.prMajor || ', ' || us.userMajor
-        ELSE pr.prMajor END AS userPosition
-		<!-- 회원 테이블 기준 -->
+		SELECT us.userId AS userId, us.userPw AS userPw, us.userName AS userName,
+		us.userPhone AS userPhone, us.userEmail AS userEmail,
+		COALESCE(pr.prNo, -1) AS prNo, COALESCE(pr.prFile, 'https://via.placeholder.com/') AS prFile,
+
+        CASE 
+		WHEN pr.prMajor IS NOT NULL AND us.userMajor IS NOT NULL AND pr.prMajor != us.userMajor
+        	THEN pr.prMajor || ', ' || us.userMajor
+        ELSE COALESCE(us.userMajor, pr.prMajor, 'none')
+		END AS userPosition
+
 		FROM member us
-		LEFT OUTER JOIN prBoard pr
-		ON pr.userId = us.userId
-		<!-- 입력받은 id에 해당하는 user검색 -->
+		LEFT JOIN prBoard pr
+		ON pr.userId = us.userId AND pr.prDelYn != 'Y'
 		WHERE us.userId = #{id}
-		<!-- 삭제되지 않은 유저 검색 -->
-		AND pr.prDelYn != 'Y' AND us.userDelYn != 'Y'
+		AND us.userDelYn != 'Y'
 	</select>
+	
+<!-- 	<select id="findUser" resultType="UserInfo">
+		SELECT us.userId AS userId, us.userPw AS userPw, us.userName AS userName,
+		    us.userPhone AS userPhone, us.userEmail AS userEmail
+		FROM member us
+		WHERE us.userId = #{id}
+		    AND us.userDelYn != 'Y';
+	</select>
+	<select id="findUserPrData" resultType="UserInfo">
+		SELECT pr.prNo AS prNo, pr.prFile AS prFile, 
+		CASE 
+		WHEN pr.prMajor IS NOT NULL AND us.userMajor IS NOT NULL AND pr.prMajor != us.userMajor
+        	THEN pr.prMajor || ', ' || us.userMajor
+        ELSE COALESCE(us.userMajor, pr.prMajor)
+		END AS userPosition
+		
+		FROM prBoard pr
+		INNER JOIN member us
+		ON pr.userId = us.userId AND us.userDelYn != 'Y'
+		WHERE pr.userId = #{id} 
+		AND pr.prDelYn != 'Y'
+	</select> -->
 
 	<!-- 특정 사용자(#{id})에 대한 여러 정보 count를 조회 -->
 	<select id="findInfoCounts" resultType="InfoCount">
@@ -184,7 +208,10 @@
 			
 		WHERE apps.userId = #{id}
 		<if test="keyword != null">
-			AND jboard.jobSub LIKE '%' || #{keyword} || '%'
+	        AND (
+	            jboard.jobSub LIKE '%' || #{keyword} || '%'
+	            OR jboard.jobText LIKE '%' || #{keyword} || '%'
+	        )						
 		</if>
 		ORDER BY apps.jobNo DESC
 	</select>
@@ -200,7 +227,10 @@
 		WHERE apps.userId = #{id} 
 		AND apps.appDelYn != 'Y' AND apps.appCheck != 'Y' AND apps.appDone = 'Y'
 		<if test="keyword != null">
-			AND jboard.jobSub LIKE '%' || #{keyword} || '%'
+	        AND (
+	            jboard.jobSub LIKE '%' || #{keyword} || '%'
+	            OR jboard.jobText LIKE '%' || #{keyword} || '%'
+	        )			
 		</if>
 		ORDER BY apps.jobNo DESC
 	</select>
@@ -216,7 +246,10 @@
 		WHERE apps.userId = #{id} 
 		AND apps.appDelYn != 'Y' AND apps.appCheck = 'Y' AND apps.appDone = 'Y'
 		<if test="keyword != null">
-			AND jboard.jobSub LIKE '%' || #{keyword} || '%'
+	        AND (
+	            jboard.jobSub LIKE '%' || #{keyword} || '%'
+	            OR jboard.jobText LIKE '%' || #{keyword} || '%'
+	        )			
 		</if>
 		ORDER BY apps.jobNo DESC
 	</select>
@@ -361,7 +394,10 @@
 		FROM comBoard commB
 		WHERE commB.userId = #{id} AND commB.commDelYn != 'Y'
 		<if test="keyword != null">
-			AND commB.commSub LIKE '%' || #{keyword} || '%'
+	        AND (
+	        	commB.commSub LIKE '%' || #{keyword} || '%'
+	            OR commB.commText LIKE '%' || #{keyword} || '%'
+	        )			
 		</if>
 		ORDER BY commB.commNo DESC
 	</select>
@@ -382,7 +418,11 @@
 		ON comrply.commNo = commBo.commNo
 		WHERE comrply.commReId = #{id} AND comrply.commReDelYn != 'Y'
 		<if test="keyword != null">
-			AND commBo.commSub LIKE '%' || #{keyword} || '%'
+	        AND (
+	        	commBo.commSub LIKE '%' || #{keyword} || '%'
+	            OR comrply.commReText LIKE '%' || #{keyword} || '%'
+	        )		
+			AND 
 		</if>
 		ORDER BY comrply.commReUpdate DESC
 	</select>
@@ -464,6 +504,27 @@
 	</select>	
 	
 	
+	<!-- 문의게시판 관련 -->
+	<select id="findmyQnA" resultType="QnAListsInfoVO">
+		SELECT * FROM (
+		SELECT ROW_NUMBER() OVER (ORDER BY qa.qnaDate DESC) AS qNo,
+		qa.qnaNo AS qnaNo, qa.qnaSub AS qnaSub,
+		qa.qnaText AS qnaText, qa.qnaFile AS qnaFile,
+		qa.qnaDate AS qnaDate, qa.qnaUpdate AS qnaUpdate, 
+		qa.qnaDelYn AS qnaDelYn
+		
+		FROM qnaBoard qa
+			
+		WHERE qa.userId = #{id} AND qa.qnaDelYn != 'Y' 
+		<if test="keyword != null">
+	        AND (
+	            qa.qnaSub LIKE '%' || #{keyword} || '%'
+	            OR qa.qnaText LIKE '%' || #{keyword} || '%'
+	        )
+		</if>
+		)ORDER BY qNo ASC
+	</select>
+	
 
 <!-- 삭제 설정 관련 -->	
 <!-- 	<update id="deleteMsg" parameterType="java.util.Map">
@@ -491,7 +552,20 @@
 		UPDATE comReply SET commReDelYn = 'Y'
 		WHERE commReNo = #{commReNo}
 	</update>
+	
+	<!-- 문의게시판 글 삭제 -->
+	<update id="delQnANo">
+		UPDATE qnaBoard SET qnaDelYn = 'Y'
+		WHERE qnaNo = #{qnaNo}
+	</update>
 
+
+<!-- 쪽지 알림 -->
+	<!-- 읽지 않은 받은메시지 수 출력 -->
+	<select id="cntMgsAlert" resultType="String">
+		SELECT count(*) FROM msg
+		WHERE recvId = #{id} AND msgDelYn != 'Y' AND msgCheck = 0
+	</select>
 
 
 

@@ -43,7 +43,7 @@
 			</div>
 
 			<h1 class="logo">
-				<a href="#">Obri</a>
+				<a href="home.do">Obri</a>
 			</h1>
 
 			<ul class="gnb">
@@ -55,14 +55,10 @@
 
 			<ul class="login">
 				<li class="alert">
-					<a href="#">알림</a>
+					<a href="#">🔔알림</a>
 					<ul class="alert_item_list">
 						<li class="alert_item">
-							<div class="messages">
-								<p>
-									쪽지를 받았어요! <br /> 지금 쪽지함에서 확인해보세요!
-								</p>
-							</div>
+							<div class="messages"></div>
 						</li>
 					</ul>
 				</li>

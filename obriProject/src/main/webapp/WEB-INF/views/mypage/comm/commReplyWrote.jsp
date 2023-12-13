@@ -159,7 +159,7 @@
 			<p class="pp_sub_title">작성 댓글</p>
 			<div class="pp_search">
 				<form name="searchProposal" action="commReplyWrote.do">
-					<input id="keyword" type="text" placeholder="글 제목 검색" name="keyword"
+					<input id="keyword" type="text" placeholder="글 제목/내용 검색" name="keyword"
 					 value="${sessionScope.referer != null ? sessionScope.referer.keyword : ''}">
 					<%-- <input type="hidden" name="id" value="${commReplysVO.id}" /> --%>
 					<button class="btn_search" type="submit"></button>

@@ -43,6 +43,8 @@
 			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
+		<!-- 비동기 지원을 활성화 -->
+		<async-supported>true</async-supported>
 	</servlet>
 		
 	<servlet-mapping>

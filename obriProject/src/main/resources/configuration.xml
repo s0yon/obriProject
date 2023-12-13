@@ -39,6 +39,7 @@
 		<typeAlias alias="CommInfo" type="music.model.mypage.CommInfoVO" />
 		<typeAlias alias="CommReplyInfo" type="music.model.mypage.CommReplyInfoVO" />
 		<typeAlias alias="MessageInfo" type="music.model.mypage.MessageInfoVO" />
+		<typeAlias alias="QnAListsInfoVO" type="music.model.mypage.QnAListsInfoVO" />
 
 	</typeAliases>
 

@@ -2,7 +2,7 @@
 pageEncoding="UTF-8"%> <%@ include file="../layout/header.jsp"%>
 
 <head>
- <link href="${path}/css/mypage/application_status_all.css" rel="stylesheet" />
+<link href="${path}/css/mypage/application_status_all.css" rel="stylesheet" />
 
 <script src="${path}/js/mypage/applyStatus.js"></script>
   
@@ -68,7 +68,7 @@ pageEncoding="UTF-8"%> <%@ include file="../layout/header.jsp"%>
         <form name="searchAll" action="applyStatusAll.do">
           <input
             id="keyword"
-            placeholder="공고 제목 검색"
+            placeholder="공고 제목/내용 검색"
             type="text"
             name="keyword"
             value="${sessionScope.referer != null ? sessionScope.referer.keyword : ''}"
