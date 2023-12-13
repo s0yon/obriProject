@@ -7,7 +7,7 @@
 <c:if test="${result == 1 }">
 	<script>
 		alert("삭제성공!");
-		location.href = "boardList.do";
+		location.href = "boardList.do?pageNum=${pageNum}";
 	</script>
 </c:if>
 

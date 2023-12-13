@@ -111,9 +111,10 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>;
 										 	<fmt:formatDate var="dbtoday" value="${community.commDate}"  pattern="yy/MM/dd" />
 										 	
 										 	 	<a href="boardContent.do?commNo=${community.commNo}&pageNum=${pp.currentPage}">
-														${community.commSub} <!-- 조회수 30 이상이면  -->
+														${community.commSub} 
+														<!-- 오늘 작성된 글이면  -->
 											 		<c:if test="${dbtoday == today }">
-														<img alt="" src="images/new.png" width="20" height="10">
+														<img alt="" src="images/new.png" width="30" height="20">
 													</c:if>
 												</a>
 												
@@ -184,8 +185,9 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>;
 								<c:if test="${search=='userId'}">selected="selected" </c:if>>작성자</option>
 							<option value="subcon"
 								<c:if test="${search=='subcon'}">selected="selected" </c:if>>제목+내용</option>
-						</select> <input class="search_text" type="text" name="keyword"> <input
-							class="btn" type="submit" value="찾기">
+						</select> 
+						<input class="search_text" type="text" name="keyword"> 
+						<input class="btn" type="submit" value="찾기">
 					</form>
 				</div>
 			</main>
