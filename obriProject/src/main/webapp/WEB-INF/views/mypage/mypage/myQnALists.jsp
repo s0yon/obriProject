@@ -3,14 +3,13 @@
 
 <head>
 <link href="${path}/css/mypage/proposal.css?after" rel="stylesheet">
-
-<%-- <script src="${path}/js/mypage/commWroteList.js"></script> --%>
+<link href="${path}/css/mypage/application_status_all.css" rel="stylesheet" />
 
 <script type="text/javascript">
  	// 전체 선택
 	function toggleAllCheckboxes() {
 		var selectAllCheckbox = document.getElementById("selectAll");
-		var NoCheckboxes = document.getElementsByName("check_commNo");
+		var NoCheckboxes = document.getElementsByName("check_qnaNo");
 		
 		for (var i = 0; i < NoCheckboxes.length; i++) {
 			NoCheckboxes[i].checked = selectAllCheckbox.checked;
@@ -18,21 +17,21 @@
 	}
 	
  	// 삭제 버튼
- 	function selectOneDel(commNo) {
+ 	function selectOneDel(qnaNo) {
 		if(!confirm("정말 삭제하시겠습니까?")) {
 			return;
 		}
 		
-		// 선택한 commNo 저장해 둘 배열 선언
+		// 선택한 qnaNo 저장해 둘 배열 선언
 		var NoArray = new Array();
-		NoArray.push(commNo);
+		NoArray.push(qnaNo);
 		console.log("NoArray : " + NoArray);
 		
 		if(NoArray.length == 1) {
 			// 삭제 실행
 			$.ajax({
 				type: "DELETE",
-				url: "deleteSelectComm.do?commNo=" + NoArray[0],
+				url: "deleteQnA.do?qnaNo=" + NoArray[0],
 				success: function(result) {
 			     	if (result.code == 1) {
 			     		// 성공
@@ -55,7 +54,7 @@
 	
  	// 체크박스 다중 선택 삭제
 	function check_selectDel() {
-		if($("input[name='check_commNo']:checked").length == 0 ){
+		if($("input[name='check_qnaNo']:checked").length == 0 ){
 			alert("선택된 항목이 없습니다.");
 			return;
 		}
@@ -66,8 +65,8 @@
 				
 		// 선택한 commNo 저장해 둘 배열 선언
 		var NoArray = new Array();
- 		$("input[name='check_commNo']:checked").each(function() {
-		      // 선택된 체크박스 값(commNo)을 배열에 추가
+ 		$("input[name='check_qnaNo']:checked").each(function() {
+		      // 선택된 체크박스 값(qnaNo)을 배열에 추가
 		      NoArray.push($(this).val());
 		});
 		console.log("NoArray : " + NoArray);
@@ -89,7 +88,7 @@
 		for(var i = 0; i < NoArray.length; i++) {
 			$.ajax({
 				type: "DELETE",
-				url: "deleteSelectComm.do?commNo=" + NoArray[i],
+				url: "deleteQnA.do?qnaNo=" + NoArray[i],
 				success: function(result) {
 		            if (result.code == 1) {
 		                // 삭제 성공
@@ -146,20 +145,17 @@
 <div id="wrap">
 	<div id="pp_wrap">
 		<div class="pp_menu">
-			<p class="pp_title">커뮤니티 글 관리</p>
+			<p class="pp_title">문의 글 관리</p>
 			<ul>
-				<li class="pp_proposal"><a href="commWroteAll.do">작성 글</a></li>
-				<li class="pp_position"><a href="commReplyWrote.do">작성 댓글</a></li>
-				<li class="pp_position"><a href="likeListsComm.do">좋아요 한 글</a></li>
+				<li class="pp_proposal"><a href="myQnALists.do">작성 글</a></li>
 			</ul>
 		</div>
 
 		<div class="pp_contents">
-			<p class="pp_sub_title">작성 글</p>
+			<p class="pp_sub_title">1:1 문의</p>
 			<div class="pp_search">
-				<form name="searchProposal" action="commWroteAll.do">
+				<form name="searchProposal" action="myQnALists.do">
 					<input id="keyword" type="text" placeholder="글 제목/내용 검색" name="keyword" value="${sessionScope.referer != null ? sessionScope.referer.keyword : ''}">
-					<%-- <input type="hidden" name="id" value="${commsVO.id}" /> --%>
 					<button class="btn_search" type="submit"></button>
 				</form>
 			</div>
@@ -167,48 +163,59 @@
 			<!-- 삭제버튼 -->
 			<div class="pp_search">
 				<div class="cp_item_bot_Left">
-					<a href="#" class="cp_wanted_modify" id="deleteBtnComm" onclick="check_selectDel();">선택 삭제</a>
+					<a href="#" class="cp_wanted_modify" id="deleteBtnQnA" onclick="check_selectDel();">선택 삭제</a>
 				</div>			
 			</div>
 
 			<div>
-				<form action="deleteComm.do" name="deleteComm" id="deleteComm">
+				<form action="deleteQnA.do" name="deleteQnA" id="deleteQnA">
 					<table class="pp_table">
 						<thead>
 							<tr>
 								<th><input type="checkbox" id="selectAll" onclick="toggleAllCheckboxes()"></th>
-								<th>글 제목</th>
-								<th>글 내용</th>
-								<th>조회수</th>
-								<th>댓글수</th>
-								<th>좋아요 수</th>
-								<th>글 수정일</th>
+								<th>제목</th>
+								<th>문의 내용</th>						
+								<th>파일</th>						
+								<th>상태</th>
+								<th>작성일</th>
 								<th>수정</th>
 								<th>삭제</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="commInfoVOs" items="${commsVO.commInfoVOs}">
+							<c:forEach var="qnaListsInfoVOs" items="${qnaListsVO.qnaListsInfoVOs}">
 								<tr>
 									<td>
 										<label>
-											<input type="checkbox" name="check_commNo" value="${commInfoVOs.commNo}"> <span style="font-size: 12px"></span>
+											<input type="checkbox" name="check_qnaNo" value="${qnaListsInfoVOs.qnaNo}">
+											<span style="font-size: 12px"></span>
 										</label>
 									</td>
-									<td><a href="#?commNo=${commInfoVOs.commNo}">${commInfoVOs.commSub}</a></td>
-									<td>${commInfoVOs.commText}</td>
-									<td>${commInfoVOs.commCount}</td>
-									<td><p class="cnt_highlight">${commInfoVOs.replyCnt}</p></td>
-									<td><p class="cnt_highlight">${commInfoVOs.likeCnt}</p></td>
-									<td>${commInfoVOs.commUpdate}</td>
+									<td><a href="#?qnaNo=${qnaListsInfoVOs.qnaNo}">${qnaListsInfoVOs.qnaSub}</a></td>
+									<td>${qnaListsInfoVOs.qnaText}</td>
+									<td>${qnaListsInfoVOs.qnaFile}</td>
+									<td>
+										<c:choose>
+											<c:when test="${empty qnaListsInfoVOs.qnaCheckYn}">
+												<p class="waiting">답변대기</p>
+											</c:when>
+											<c:when test="${!empty qnaListsInfoVOs.qnaCheckYn}">
+												<p class="pass">답변완료</p>
+											</c:when>
+											<c:otherwise>
+												<p class="fail">미열람</p>
+											</c:otherwise>
+										</c:choose>
+									</td>
+									<td><p class="cnt_highlight">${qnaListsInfoVOs.qnaDate}</p></td>
 									<td>
 										<div class="cp_item_bot">
-											<a href="#" class="cp_wanted_modify">수정</a>
+											<a href="#?qnaNo=${qnaListsInfoVOs.qnaNo}" class="cp_wanted_modify">수정</a>
 										</div>
 									</td>
 									<td>
 										<div class="cp_item_bot">
-											<a href="#" class="cp_wanted_modify" onclick="selectOneDel('${commInfoVOs.commNo}');">삭제</a>
+											<a href="#" class="cp_wanted_modify" onclick="selectOneDel('${qnaListsInfoVOs.qnaNo}');">삭제</a>
 										</div>
 									</td>
 								</tr>

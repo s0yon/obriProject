@@ -1,8 +1,6 @@
 package music.service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +21,8 @@ import music.model.mypage.PagingMsgListVO;
 import music.model.mypage.PagingPrListVO;
 import music.model.mypage.PagingVO;
 import music.model.mypage.PrBoardVO;
+import music.model.mypage.QnAListsInfoVO;
+import music.model.mypage.QnAListsVO;
 import music.model.mypage.StatusAllVO;
 import music.model.mypage.StatusCountVO;
 import music.model.mypage.StatusFinalInfoVO;
@@ -52,8 +52,8 @@ public class mypageSerciveImpl implements mypageService {
 
 		// 해당 객체에 담아서 모든 정보 반환
 		InfoAllVO infoAllDto = new InfoAllVO();
-        infoAllDto.setUserInfoVOs(userInfos);
-        infoAllDto.setInfoCountVOs(infoCounts);
+		infoAllDto.setUserInfoVOs(userInfos);
+		infoAllDto.setInfoCountVOs(infoCounts);
         infoAllDto.setJobInfoVOs(recJobInfos);
         infoAllDto.setStatusCountVOs(statCounts);
 
@@ -272,6 +272,19 @@ public class mypageSerciveImpl implements mypageService {
 		return commReplysVO;
 	}
 	
+
+// 문의게시판 글 관리
+	@Override
+	public QnAListsVO viewQnALists(String id, String keyword) {
+		List<QnAListsInfoVO> qnaListsInfoVOs = myDao.findmyQnA(id, keyword);
+		QnAListsVO qnaListsVO = new QnAListsVO(qnaListsInfoVOs);
+		qnaListsVO.setKeyword(keyword);
+		qnaListsVO.setId(id);
+		
+		return qnaListsVO;
+	}
+		
+	
 	
 	
 // 메시지 관련
@@ -366,6 +379,13 @@ public class mypageSerciveImpl implements mypageService {
 		System.out.println("쪽지함에서 선택한 항목 삭제 : "+msgNo);
 		return myDao.delMsgNo(msgNo);
 	}	
+	
+	// 선택 문의사항 글 삭제
+	@Override
+	public int delQnANo(int qnaNo) {
+		System.out.println("문의글에서 선택한 항목 삭제 : "+qnaNo);
+		return myDao.delQnANo(qnaNo);		
+	}
 	
 	
 	

@@ -71,9 +71,11 @@
 				<!-- 네이버 로그인-->
 				<div id="naver_id_login"></div>
 				<script type="text/javascript">
-					var naver_id_login = new naver_id_login(
-							"",
+				
+				// .gitignore 
+					var naver_id_login = new naver_id_login("",
 							"http://localhost/obriProject/loginNaver.do");
+				
 					var state = naver_id_login.getUniqState();
 					naver_id_login.setButton("green", 1, 40);
 					naver_id_login
@@ -91,7 +93,10 @@
 				</div>
 			</div>
 			<script type="text/javascript">
+			
+			// .gitignore  
 				Kakao.init('');
+			
 				//console.log(Kakao.isInitialized());
 
 				function loginWithKakao() {

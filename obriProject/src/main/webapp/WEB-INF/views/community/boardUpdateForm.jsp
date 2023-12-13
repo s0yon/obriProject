@@ -17,22 +17,6 @@
 <script src="https://kit.fontawesome.com/8c929515d1.js"
 	crossorigin="anonymous"></script>
 
-
-
-<style>
-        /* 버튼을 원하는 위치로 이동 */
-        #submitButton {
-            margin-top: 20px; /* 상단 여백 조정 */
-            margin-left: 10px; /* 왼쪽 여백 조정 */
-            background-color:purple;
-            color:white;
-        }
-        
-        #title{
-        color:purple;
-        } 
-    </style>
-
 </head>
 
 <body>
@@ -75,8 +59,7 @@
   
 </main>
 <%@include file="../footer.jsp" %>
-		
-		
+			
 </body>
 </html>
 

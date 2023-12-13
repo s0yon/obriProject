@@ -18,6 +18,7 @@ import music.model.mypage.LikesListPRVO;
 import music.model.mypage.MessageInfoVO;
 import music.model.mypage.PagingVO;
 import music.model.mypage.PrBoardVO;
+import music.model.mypage.QnAListsInfoVO;
 import music.model.mypage.StatusCountVO;
 import music.model.mypage.StatusFinalInfoVO;
 import music.model.mypage.StatusInfoVO;
@@ -101,7 +102,12 @@ public interface mypageDao {
 	// 작성한 커뮤니티 댓글 리스트
 	public List<CommReplyInfoVO> findCommReplyList(@Param("id") String id, @Param("keyword") String keyword);	
 
-
+	
+// 문의게시판 글 관리
+	// 작성한 문의 글 리스트
+	public List<QnAListsInfoVO> findmyQnA(@Param("id") String id, @Param("keyword") String keyword);
+	
+	
 	
 // 쪽지함 관리
 	// 작성한 쪽지함 정보 리스트
@@ -119,9 +125,16 @@ public interface mypageDao {
 	public int delCommNo(@Param("commNo") int commNo); 
 	// 체크박스 여러개 선택 시, 커뮤니티 댓글 삭제
 	public int delCommReNo(@Param("commReNo") int commReNo); 
-
+	// 선택한 문의 글 삭제
+	public int delQnANo(@Param("qnaNo") int qnaNo);
 	
 	
 //	public int deleteMyComReplys(HashMap<String, Object> delCommReNoArr);
 //	public int deleteMsg(@Param("msgNoArray") Map<String, Object> msgNoArray);
+	
+	
+	
+// 쪽지 알림
+	// 읽지 않은 받은 메시지 수 
+	public String cntMgsAlert(@Param("id") String id);
 }

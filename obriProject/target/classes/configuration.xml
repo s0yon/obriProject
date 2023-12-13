@@ -4,7 +4,7 @@
 <configuration>
 
 	<typeAliases>
-		<typeAlias alias="mb" type="music.model.memberVO" />
+		<typeAlias alias="mb"  type="music.model.memberVO" />
 		<typeAlias alias="pr" type="music.model.prVO" />
 		<typeAlias alias="prLike" type="music.model.prLikeVO" />
 		<typeAlias alias="msg" type="music.model.msgVO" />
@@ -39,6 +39,7 @@
 		<typeAlias alias="CommInfo" type="music.model.mypage.CommInfoVO" />
 		<typeAlias alias="CommReplyInfo" type="music.model.mypage.CommReplyInfoVO" />
 		<typeAlias alias="MessageInfo" type="music.model.mypage.MessageInfoVO" />
+		<typeAlias alias="QnAListsInfoVO" type="music.model.mypage.QnAListsInfoVO" />
 
 	</typeAliases>
 

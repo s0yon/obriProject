@@ -85,8 +85,20 @@
 	<div class="overBox">
 		<div class="liked">
 			<div class="liked_wanted">
-				<div class="liked_title">♥ 내가 좋아요한 PR(홍보 글)</div>
+				<div class="liked_title">💖 좋아요한 PR(홍보 글) 💖</div>
 				<div class="wanteds">
+					<c:if test="${empty pagingPrListVO.likesListPRVOs}">
+						<div class="wanted">
+						    <div class="notice">
+						    	<div class="text">
+						        	<h3>⚠️ 좋아요 설정한 PR(홍보글)없음</h3>
+						        </div>
+							</div>
+						</div>
+					</c:if>
+				
+				
+					<c:if test="${!empty pagingPrListVO.likesListPRVOs}">
 					<c:forEach var="likesListPRVOs" items="${pagingPrListVO.likesListPRVOs}">
 						<div class="wanted">
 							<a href="prDetail.do?prNo=${likesListPRVOs.prNo}">
@@ -120,6 +132,7 @@
 							</a>
 						</div>
 					</c:forEach>
+					</c:if>
 				</div>
 			</div>
 		</div>

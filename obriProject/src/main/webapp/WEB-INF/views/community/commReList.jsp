@@ -32,8 +32,9 @@
 <body>
 
 	<form>
-		<table>
+		<table >
 			<tr align="center">
+				<td></td>
 				<th>작성자</th>
 				<th >내용</th>
 				<th ></th>
@@ -41,7 +42,7 @@
 			</tr>
 	
 			<c:forEach var="commReList" items="${commReList}">
-				<c:if test="${commReList.commReDelYn  != 'Y' }">
+				<c:if test="${commReList.commReDelYn  != 'Y'}">
 				
 				<!-- 1.비로그인 상태 -->
 				<!--  sessionScope.userId != commReList.commReId && sessionScope.userId !=sessionScope.adminId && -->
@@ -56,6 +57,7 @@
 					<!--2. 로그인(작성자 or 관리자)  -->
   					<c:if test="${commReList.commSecret  == 'Y' &&  sessionScope.userId == commReList.commReId  &&  !empty sessionScope.userId}"> 
 							<tr>	 
+									<td><img src="images/secret.png"  width="20" height="20"></td>
 									<td>${commReList.commReId}&nbsp;&nbsp;</td> 
 									<td id=" ${commReList.commReNo}">${commReList.commReText}&nbsp;&nbsp;</td>
 									<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -78,11 +80,10 @@
 						</tr>
 					</c:if>
 					
-					
-					<!-- 4. 비밀글이 아닌경우 -->
-				    <!-- 컨트롤에서 공유되는  -->												
+					<!-- 4. 비밀글이 아닌경우 -->										
 					<c:if test="${commReList.commSecret != 'Y'}">
 					<tr>
+						<td></td>
 						<td>${commReList.commReId}&nbsp;&nbsp;</td><!-- 작성자 -->
 						<td id=" ${commReList.commReNo}">${commReList.commReText}&nbsp;&nbsp;</td><!-- 내용 -->
 						<td > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
