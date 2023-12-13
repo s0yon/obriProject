@@ -5,8 +5,11 @@ table {
 	margin-bottom: 20px;
 	background-color: #fff;
 	border-radius: 8px;
+	white-space: no-wrap;
 	overflow: hidden;
+	text-overflow:ellipsis;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	table-layout: fixed;
 }
 
 th, td {
@@ -14,6 +17,9 @@ th, td {
 	text-align: left;
 	font-size: 12px;
 	border-bottom: 1px solid #ddd;
+	white-space: no-wrap;
+	overflow: hidden;
+	text-overflow:ellipsis;
 }
 
 th {

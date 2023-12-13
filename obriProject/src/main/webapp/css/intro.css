@@ -6,8 +6,8 @@
 
 .intro{
 	display: grid;
-   	grid-template-columns: 500px 500px;
-   	grid-gap: 10px;
+   	grid-template-columns: 50% 50%;
+   	grid-gap: 0;
 	justify-content: center;
 	justify-items: center;
 }
@@ -16,7 +16,7 @@
 	display: grid;
 	justify-content: center;
 	justify-items: center;
-	margin: 50px 50px 5px 50px;
+	margin: 30px 5px 30px 5px;
 }
 
 .banner {

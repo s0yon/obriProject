@@ -107,9 +107,9 @@
 						<p>최신 구인글</p>
 					</div>
 				</div>
-				<div class="item">
+				<div class="item mb-3">
 					<iframe src="boardListShow.do" frameborder="0" scrolling="no"
-						style="width: 450px; height: 300px"></iframe>
+						style="width: 500px; height: 300px"></iframe>
 				</div>
 				<div class="btn_plus" onclick="location.href='boardList.do'"
 					style="cursor: pointer;">
@@ -125,9 +125,9 @@
 						<p>최신 커뮤니티글</p>
 					</div>
 				</div>
-				<div class="item">
+				<div class="item mb-3">
 					<iframe src="boardListShow.do" frameborder="0" scrolling="no"
-						style="width: 450px; height: 300px"></iframe>
+						style="width: 500px; height: 300px"></iframe>
 				</div>
 				<div class="btn_plus" onclick="location.href='boardList.do'"
 					style="cursor: pointer;">

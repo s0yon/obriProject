@@ -32,8 +32,10 @@ table {
 	margin-bottom: 20px;
 	background-color: #fff;
 	border-radius: 8px;
-	overflow: hidden;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	white-space: no-wrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 th, td {
@@ -41,6 +43,9 @@ th, td {
 	text-align: left;
 	border-bottom: 1px solid #ddd;
     line-height: 16px;
+	white-space: no-wrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 th {

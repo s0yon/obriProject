@@ -21,17 +21,17 @@ function showlist(){
 <body>
 	<table>
 		<tr>
-			<th>제목</th>
-			<th>작성자</th>
-			<th>날짜</th>
-			<th><i class="fas fa-light fa-eye"></i></th>
-			<th><i class="fas fa-light fa-thumbs-up"></i></th>
+			<th width="50%">제목</th>
+			<th width="20%">작성자</th>
+			<th width="20%">날짜</th>
+			<th width="5%"><i class="fas fa-light fa-eye"></i></th>
+			<th width="5%"><i class="fas fa-light fa-thumbs-up"></i></th>
 		</tr>
 		<tbody>
 			<c:forEach var="community" items="${list}">
 				<c:if test="${community.commDelYn != 'Y'}">
 					<tr align="center">
-						<td align="center"><fmt:formatDate var="today"
+						<td align="center" width="50%"><fmt:formatDate var="today"
 								value="<%=new Date()%>" pattern="yy/MM/dd" /> <fmt:formatDate
 								var="dbtoday" value="${community.commDate}" pattern="yy/MM/dd" />
 							<a
@@ -41,11 +41,11 @@ function showlist(){
 									<img alt="" src="images/new.png" width="20" height="10">
 								</c:if>
 						</a></td>
-						<td>${community.userId}</td>
-						<td><fmt:formatDate value="${community.commDate}"
-								pattern="yyyy년 MM월 dd일" /></td>
-						<td>${community.commCount}</td>
-						<td>${community.likeCnt}</td>
+						<td width="20%">${community.userId}</td>
+						<td width="20%"><fmt:formatDate value="${community.commDate}"
+								pattern="yy/MM/dd" /></td>
+						<td width="5%">${community.commCount}</td>
+						<td width="5%">${community.likeCnt}</td>
 				</c:if>
 			</c:forEach>
 		</tbody>

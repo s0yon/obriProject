@@ -79,15 +79,15 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>;
 						</c:if>
 					</div>
 				</div>
-				<table class="table-hover" align="center">
+				<table class="table-hover" align="center" width="100%">
 					<thead>
 						<tr>
-							<th>번호</th>
-							<th>제목</th>
-							<th>작성자명</th>
-							<th>날짜</th>
-							<th>조회수</th>
-							<th>좋아요</th>
+							<th width="5%">번호</th>
+							<th width="40%">제목</th>
+							<th width="30%">작성자명</th>
+							<th width="15%">날짜</th>
+							<th width="5%">조회수</th>
+							<th width="5%">좋아요</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -102,9 +102,9 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>;
 							<c:forEach var="community" items="${list }">
 								<c:if test="${community.commDelYn != 'Y' }">
 									<tr align="center">
-										<td>${no1} <c:set var="no1" value="${no1-1}" />
+										<td width="5%">${no1} <c:set var="no1" value="${no1-1}" />
 										</td>
-										<td align="center"><fmt:formatDate var="today"
+										<td align="center" width="40%"><fmt:formatDate var="today"
 												value="<%=new Date()%>" pattern="yy/MM/dd" /> <fmt:formatDate
 												var="dbtoday" value="${community.commDate}"
 												pattern="yy/MM/dd" /> <a
@@ -114,11 +114,11 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>;
 													<img alt="" src="images/new.png" width="30" height="20">
 												</c:if>
 										</a></td>
-										<td>${community.userId}</td>
-										<td><fmt:formatDate value="${community.commDate}"
+										<td width="30%">${community.userId}</td>
+										<td width="15%"><fmt:formatDate value="${community.commDate}"
 												pattern="yyyy-MM-dd" /></td>
-										<td>${community.commCount}</td>
-										<td>${community.likeCnt }</td>
+										<td width="5%">${community.commCount}</td>
+										<td width="5%">${community.likeCnt }</td>
 									</tr>
 								</c:if>
 							</c:forEach>
