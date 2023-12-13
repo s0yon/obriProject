@@ -18,7 +18,7 @@ public class SessionCheckInter extends HandlerInterceptorAdapter {
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute("userId");
 		if (userId == null || userId.equals(""))  {		
-			response.sendRedirect("loginMember.do");	// 세션이 없으면 로그인 폼으로 이동
+			response.sendRedirect("login.do");	// 세션이 없으면 로그인 폼으로 이동
 			return false;
 		}
 		return true;

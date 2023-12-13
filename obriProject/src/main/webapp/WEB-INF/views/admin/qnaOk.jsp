@@ -7,7 +7,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>게시판 내용보기</title>
+<title>커뮤니티</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -40,8 +40,8 @@ td {
 			<c:import url="/WEB-INF/views/admin/adminsidenav.jsp" />
 			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 				<script type="text/javascript">
-					alert("처리 완료");
-					location.href = "admin_qna.do?pageNum="+${pageNum};
+					alert("문의가 등록되었습니다");
+					location.href = "qna_form.do";
 				</script>
 			</main>
 		</div>
