@@ -9,6 +9,7 @@
 	value="${sessionScope.userId==null ? 'join.do' : 'mypage_Apply.do'}" />
 <c:set var="myPage"
 	value="${sessionScope.userId==null ? '회원가입' : '마이페이지'}" />
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>

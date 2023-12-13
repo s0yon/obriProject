@@ -122,9 +122,9 @@
 
 
 <!-- 커뮤니티 게시판 게시글 최초 좋아요 갯수 증가 -->
-    <update id="upLike" parameterType="int">
-	update comBoard set likeCnt = likeCnt+1 where commNo=#{commNo}
-    </update> 
+<!--     <update id="upLike" parameterType="int"> -->
+<!-- 	update comBoard set likeCnt = likeCnt+1 where commNo=#{commNo} -->
+<!--     </update>  -->
     
  <!-- 커뮤니티 게시판 게시글 좋아요 갯수 변경 -->   
     <update id="changeLike"  parameterType="community">

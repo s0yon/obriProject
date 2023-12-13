@@ -58,11 +58,11 @@ public class communityDao {
 		return session.selectOne("communityns.likeCount", commNo);
 	}
 
-	public void upLike(int commNo) {
-		// TODO Auto-generated method stub
-		System.out.println("최조 좋아요 증가 dao");
-		session.update("communityns.upLike", commNo);
-	}
+//	public void upLike(int commNo) {
+//		// TODO Auto-generated method stub
+//		System.out.println("최조 좋아요 증가 dao");
+//		session.update("communityns.upLike", commNo);
+//	}
 
 	public void changeLike(commLikeVO commVO) {
 		// TODO Auto-generated method stub

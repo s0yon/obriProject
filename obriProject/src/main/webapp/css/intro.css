@@ -4,19 +4,19 @@
 	--accent-color: #A490D5;
 }
 
-.intro{
-	display: flex;
-	justify-content: center;
-	align-items: center;
+.intro {
+    display: flex;
+    justify-content: space-around; /* 또는 다른 적절한 값을 선택하세요. */
+    align-items: center; /* 원하는 정렬 방식에 따라 수정하세요. */
 }
 
 .intro .container {
-	margin-top: 50px;
-	margin-bottom: 5px;
-	display: grid;
-	align-items: stretch;
-	place-items: center;
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    margin: 10px; /* 수정할 마진 값 */
 }
+
 
 .banner {
 	position: relative;

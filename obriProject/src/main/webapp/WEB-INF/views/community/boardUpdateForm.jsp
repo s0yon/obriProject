@@ -13,6 +13,8 @@
 <link rel="stylesheet" href="./css/nav.css">
 <link rel="stylesheet" href="./css/header.css">
 
+<!-- 사용자 정의 스타일 -->
+<link rel="stylesheet" href="./css/custom-styles.css">
 
 <script src="https://kit.fontawesome.com/8c929515d1.js"
 	crossorigin="anonymous"></script>
@@ -50,8 +52,8 @@
             <div align="center">
             	<tr>
             		<td colspan=2  align=center>
-                		<input type=submit  value="글 수정"  id="submitButton">
-                		<input type="button"  value="목록으로"  onclick="location.href='boardList.do' ">
+                		<input type=submit  value="글 수정"  id="submitButton" class="btn" >
+                		<input type="button" class="btn"   value="목록으로"  onclick="location.href='boardList.do' ">
            			</td>
            		</tr>
            	</div>

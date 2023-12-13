@@ -64,12 +64,12 @@ public class communityService {
 	}
 
 
-	public void upLike(int commNo) {
-		// TODO Auto-generated method stub
-		System.out.println("최초 좋아요 수 증가");
-		dao.upLike(commNo);
-		
-	}
+//	public void upLike(int commNo) {
+//		// TODO Auto-generated method stub
+//		System.out.println("최초 좋아요 수 증가");
+//		dao.upLike(commNo);
+//		
+//	}
 
 
 	public void changeLike(commLikeVO commVO) {

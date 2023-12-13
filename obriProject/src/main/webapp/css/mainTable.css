@@ -1,20 +1,28 @@
 table {
-	width: 100%;
-	border-collapse: collapse;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	background-color: transparent;
-	border-radius: 8px;
-	overflow: hidden;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    table-layout: fixed; /* 수정: 추가된 부분 */
 }
 
+
 th, td {
-	padding: 8px;
-	text-align: left;
-	font-size: 12px;
-	border-bottom: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    font-size: 12px;
+    border-bottom: 1px solid #ddd;
+    white-space: nowrap; /* 수정: no-wrap 대신 nowrap 사용 */
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
+
 
 th {
 	background-color: transparent;

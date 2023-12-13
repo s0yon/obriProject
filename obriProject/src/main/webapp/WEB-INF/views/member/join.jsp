@@ -25,7 +25,11 @@
 	<main class="form-joinin w-1000 m-auto">
 		<form name="f" method="post" action="insertMem.do"
 			onsubmit="return check()">
-			<br> <img src="./images/logo.png" alt="Logo" width="100px" height="40px"><br><br>
+			<div id="logo">
+				<img src="./images/logo.png" alt="Logo" width="100px" height="40px"
+					onclick="location.href='home.do'" style="cursor: pointer;">
+			</div>
+			<br>
 			<h1 class="h4 mb-3" align="center">
 				연주자를 위한 커뮤니티,<br> <b>오브리</b>에 오신 것을 환영합니다.
 			</h1>
