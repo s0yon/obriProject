@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page import="java.util.Date"%>
 
 <c:set var="path" value="${pageContext.request.contextPath}"></c:set>
@@ -110,7 +111,12 @@ function sortOrderChange() {
 									<!-- 카드 텍스트 -->
 									<div class="col-md-8 mb-2">
 										<div class="card-body">
-											<h5 class="card-title">${pr.prSub}</h5>
+										<h5 class="card-title">
+										<c:set var="truncatedSub"
+												value="${fn:substring(pr.prSub, 0, 15)}" />
+											${truncatedSub} <c:if
+												test="${fn:length(community.commSub) > 15}">...</c:if>
+										</h5>
 										</div>
 										<div class="hashtag-container">
 											<c:if test="${!empty pr.prHash}">
