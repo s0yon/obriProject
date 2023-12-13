@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="memberns">
+
+ 	<!-- 아이디로 정보 확인 -->
+    <select id="checkId" parameterType="String" resultType="mb">
+     select * from member where userId=#{userId}
+    </select>
+ 	
+ 	<!-- 네이버 로그인 가입 -->
+ 	<insert id="insertScMem" parameterType="mb">
+ 	insert into member(userId,userPw,userName,userPhone,userEmail,userMajor,userGru,userDate,userUpdate,userDelYn,mailAuth,mailKey) 
+	values(#{userId},#{userPw},#{userName},#{userPhone,jdbcType=VARCHAR},#{userEmail,jdbcType=VARCHAR},'','N',sysdate,sysdate,'N','Y','')
+ 	</insert>
+ 	
+    <!-- 회원 가입(저장) -->
+    <insert id="insertMem" parameterType="mb">
+     insert into member(userId,userPw,userName,userPhone,userEmail,userMajor,userGru,userDate,userUpdate,userDelYn,mailAuth,mailKey) 
+     values(#{userId},#{userPw},#{userName},#{userPhone,jdbcType=VARCHAR},#{userEmail,jdbcType=VARCHAR},#{userMajor,jdbcType=VARCHAR},#{userGru},sysdate,sysdate,'N','N',#{mailKey,jdbcType=VARCHAR})
+    </insert>
+ 
+    <!-- 이메일 인증 키값 저장 -->
+    <update id="updateMailKey" parameterType="mb">
+     update member set mailKey=#{mailKey} where userId=#{userId} and userEmail=#{userEmail}
+    </update>
+    
+    <!-- 이메일 인증 시 권한 변경 -->
+    <update id="updateMailAuth" parameterType="mb">
+     update member set mailAuth='Y' where userEmail=#{userEmail} and mailKey=#{mailKey}
+    </update>
+    
+    <!-- 아이디 찾기 -->
+    <select id="findIdCheck" parameterType="mb" resultType="mb">
+     select * from member where userName=#{userName} and userEmail=#{userEmail}
+    </select>
+
+    <!-- 비밀번호 찾기 -->
+    <select id="findPwCheck" parameterType="mb" resultType="mb">
+     select * from member where userId=#{userId} and userEmail=#{userEmail}
+    </select>
+    
+    <!-- 비밀번호 초기화 -->
+    <update id="updatePw" parameterType="mb">
+     update member set userPw=#{userPw} where userId=#{userId} and userEmail=#{userEmail}
+    </update>
+    
+	<!-- 회원정보 수정 -->
+	<update id="updateMem" parameterType="mb">
+	 update member set userName=#{userName},userPhone=#{userPhone},
+	 userEmail=#{userEmail},userMajor=#{userMajor,jdbcType=VARCHAR},userGru=#{userGru},
+	 userUpdate=sysdate where userId=#{userId}
+	</update>
+	
+	<!-- 비밀번호 변경 -->
+	<update id="updateMemPw" parameterType="mb">
+	 update member set userPw=#{userPw} where userId=#{userId}
+	</update>
+	
+	<!-- 회원탈퇴 -->
+    <update id="deleteMem" parameterType="mb">
+      update member set userDelYn='Y',userUpdate=sysdate where userId=#{userId}
+    </update>
+
+</mapper>

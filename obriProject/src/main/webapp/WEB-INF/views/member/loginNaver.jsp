@@ -17,6 +17,8 @@
 
 
 <script type="text/javascript">
+
+// .gitignore 
   var naver_id_login = new naver_id_login("", "http://localhost/obriProject/loginNaver.do");
 //  alert(naver_id_login.oauthParams.access_token);
   naver_id_login.get_naver_userprofile("naverSignInCallback()");
