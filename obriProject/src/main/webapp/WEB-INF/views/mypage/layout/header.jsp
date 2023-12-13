@@ -49,13 +49,13 @@
 			<ul class="gnb">
 				<li><a href="boardListShow.do">구인</a></li>
 				<li><a href="prCardList.do">PR</a></li>
-				<li><a href="board_list.do">커뮤니티</a></li>
+				<li><a href="boardList.do">커뮤니티</a></li>
 				<li><a href="notice_list.do">공지사항</a></li>
 			</ul>
 
 			<ul class="login">
 				<li class="alert">
-					<a href="#">🔔알림</a>
+					<a href="messagebox_rcv.do">🔔알림</a>
 					<ul class="alert_item_list">
 						<li class="alert_item">
 							<div class="messages"></div>

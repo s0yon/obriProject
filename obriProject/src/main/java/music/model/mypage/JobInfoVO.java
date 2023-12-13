@@ -21,7 +21,7 @@ public class JobInfoVO {
     @DateTimeFormat(pattern="yyyy-mm-dd")
     private Date jobConcert;	// 공연일
     
-    private String jobPlace;	// 지역
+    private String jobAddress;	// 지역
     
     // member.userId = JobBoard.userId인 회원의 이름
     private String userName;	// 작성자 명

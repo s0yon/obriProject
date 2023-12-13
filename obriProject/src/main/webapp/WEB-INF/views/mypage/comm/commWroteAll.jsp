@@ -195,7 +195,7 @@
 											<input type="checkbox" name="check_commNo" value="${commInfoVOs.commNo}"> <span style="font-size: 12px"></span>
 										</label>
 									</td>
-									<td><a href="#?commNo=${commInfoVOs.commNo}">${commInfoVOs.commSub}</a></td>
+									<td><a href="boardContent.do?commNo=${commInfoVOs.commNo}&pageNum=1">${commInfoVOs.commSub}</a></td>
 									<td>${commInfoVOs.commText}</td>
 									<td>${commInfoVOs.commCount}</td>
 									<td><p class="cnt_highlight">${commInfoVOs.replyCnt}</p></td>
@@ -203,7 +203,7 @@
 									<td>${commInfoVOs.commUpdate}</td>
 									<td>
 										<div class="cp_item_bot">
-											<a href="#" class="cp_wanted_modify">수정</a>
+											<a href="boardUpdateForm.do?commNo=${commInfoVOs.commNo}" class="cp_wanted_modify">수정</a>
 										</div>
 									</td>
 									<td>
