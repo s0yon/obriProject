@@ -38,31 +38,28 @@
     </script>
 
 <script>
-     var sessionId = '<%=(String) session.getAttribute("userId")%>
-	';
+	var sessionId = '<%=(String) session.getAttribute("userId")%>';
 	console.log("세션ID " + sessionId);
-	$(document).ready(function() {
-		if (sessionId === "null") {
-			console.log("여기들감?");
-			$("#commInsert").hide();
-		} else {
-			$("#commInsert").show();
-		}
-	});
 
-	function prDetailPageMove(prNo) {
-		// 클릭한 div의 prNo 값을 사용하여 원하는 페이지로 이동
-		location.href = '${path}/prDetail.do?pageNum=${pp.currentPage}&prNo='
-				+ prNo;
-	}
-	// 이벤트를 처리할 함수
-	function sortOrderChange() {
+	 $(document).ready(function() {
+	        if (sessionId === "null") {
+	            console.log("여기들감?");
+	            $("#commInsert").hide();
+	        } else {
+	            $("#commInsert").show();
+	        }
+	    });
 
-		let sort = $("#sortOrder").val();
+	 function prDetailPageMove(prNo) {
+	        // 클릭한 div의 prNo 값을 사용하여 원하는 페이지로 이동
+	        location.href = '${path}/prDetail.do?pageNum=${pp.currentPage}&prNo=' + prNo;
+	    }
 
-		location.href = '${path}/prCardList.do?pageNum=${pp.currentPage}&sortOrder='
-				+ sort;
-	}
+	    // 이벤트를 처리할 함수
+	    function sortOrderChange() {
+	        let sort = $("#sortOrder").val();
+	        location.href = '${path}/prCardList.do?pageNum=${pp.currentPage}&sortOrder=' + sort;
+	    }
 </script>
 <body class="bg-body-tertiary">
 <!-- header -->

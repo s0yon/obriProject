@@ -98,7 +98,7 @@
 
 		<!-- intro start -->
 		<section class="intro p-2">
-			<div class="container">
+			<div class="container mb-3">
 				<div class="banner">
 					<div class="bann_icon">
 						<i class="fa-solid fa-magnifying-glass"></i>
@@ -107,16 +107,16 @@
 						<p>최신 구인글</p>
 					</div>
 				</div>
-				<div class="item mb-3">
+				<div class="item">
 					<iframe src="boardListShow.do" frameborder="0" scrolling="no"
-						style="width: 500px; height: 300px"></iframe>
+						style="width: 500px; height: 300px;" class="no-margin"></iframe>
 				</div>
 				<div class="btn_plus" onclick="location.href='boardList.do'"
 					style="cursor: pointer;">
 					<span class="fa-solid fa-plus fa-2xl"></span>
 				</div>
 			</div>
-			<div class="container">
+			<div class="container mb-3">
 				<div class="banner">
 					<div class="bann_icon">
 						<i class="fa-regular fa-comments"></i>
@@ -125,9 +125,9 @@
 						<p>최신 커뮤니티글</p>
 					</div>
 				</div>
-				<div class="item mb-3">
+				<div class="item">
 					<iframe src="boardListShow.do" frameborder="0" scrolling="no"
-						style="width: 500px; height: 300px"></iframe>
+						style="width: 500px; height: 300px;" class="no-margin"></iframe>
 				</div>
 				<div class="btn_plus" onclick="location.href='boardList.do'"
 					style="cursor: pointer;">
