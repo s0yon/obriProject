@@ -290,23 +290,27 @@
 	
 	<!-- prBoard에서 'prMajor'컬럼, 'prLoc'컬럼, 'prHash'컬럼 -->
 	<select id="findAllPrCareers" resultType="PrBoard">
-		SELECT DISTINCT prB.prCareer
-		FROM prBoard prB
+		SELECT DISTINCT (prCareer || '년') AS prCareer
+		FROM prBoard
+		WHERE prCareer IS NOT NULL;
 	</select>
 	
 	<select id="findAllPrMajors" resultType="PrBoard">
-		SELECT DISTINCT prB.prMajor
-		FROM prBoard prB
+		SELECT DISTINCT prMajor
+		FROM prBoard
+		WHERE prMajor IS NOT NULL;
 	</select>
 	
 	<select id="findAllPrLocs" resultType="PrBoard">
-		SELECT DISTINCT prB.prLoc
-		FROM prBoard prB
+		SELECT DISTINCT prLoc
+		FROM prBoard
+		WHERE prLoc IS NOT NULL;
 	</select>
 	
 	<select id="findAllPrHashes" resultType="PrBoard">
-		SELECT DISTINCT prB.prHash
-		FROM prBoard prB
+		SELECT DISTINCT prHash
+		FROM prBoard
+		WHERE prHash IS NOT NULL;
 	</select>
 	
 	<!-- PR 페이지 처리 -->
