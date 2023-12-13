@@ -49,14 +49,14 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>;
    });
 </script>
 </head>
-<body>
+<body class="bg-body-tertiary">
 	<!-- header -->
 	<c:import url="/WEB-INF/views/navbar.jsp" />
 	<div class="container-sm">
-			<main>
-				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<h2>커뮤니티</h2>
-				</div>
+		<main>
+			<div class="d-flex justify-content-between my-3 py-3 border-bottom">
+				<h3 class="font-weight-bold text-dark">커뮤니티</h3>
+			</div>
 				<div class="community-header">
 					<div class="sort-container">
 						<select name="sort" id="sort" onchange="comSort()"
@@ -102,30 +102,24 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>;
 							<c:forEach var="community" items="${list }">
 								<c:if test="${community.commDelYn != 'Y' }">
 									<tr align="center">
-										<td>
-											${no1}    <c:set var="no1" value="${no1-1}" />
+										<td>${no1} <c:set var="no1" value="${no1-1}" />
 										</td>
-										<td align="center">
-											<fmt:formatDate var="today"  
-												value="<%=new Date()%>" pattern="yy/MM/dd" />
-										 	<fmt:formatDate var="dbtoday" value="${community.commDate}"  pattern="yy/MM/dd" />
-										 	
-										 	 	<a href="boardContent.do?commNo=${community.commNo}&pageNum=${pp.currentPage}">
-														${community.commSub} 
-														<!-- 오늘 작성된 글이면  -->
-											 		<c:if test="${dbtoday == today }">
-														<img alt="" src="images/new.png" width="30" height="20">
-													</c:if>
-												</a>
-												
-										</td>
+										<td align="center"><fmt:formatDate var="today"
+												value="<%=new Date()%>" pattern="yy/MM/dd" /> <fmt:formatDate
+												var="dbtoday" value="${community.commDate}"
+												pattern="yy/MM/dd" /> <a
+											href="boardContent.do?commNo=${community.commNo}&pageNum=${pp.currentPage}">
+												${community.commSub} <!-- 오늘 작성된 글이면  --> <c:if
+													test="${dbtoday == today }">
+													<img alt="" src="images/new.png" width="30" height="20">
+												</c:if>
+										</a></td>
 										<td>${community.userId}</td>
-										<td>
-											<fmt:formatDate value="${community.commDate}"  pattern="yyyy-MM-dd" />
-										</td>
+										<td><fmt:formatDate value="${community.commDate}"
+												pattern="yyyy-MM-dd" /></td>
 										<td>${community.commCount}</td>
 										<td>${community.likeCnt }</td>
-									</tr>							
+									</tr>
 								</c:if>
 							</c:forEach>
 						</c:if>
@@ -185,12 +179,11 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>;
 								<c:if test="${search=='userId'}">selected="selected" </c:if>>작성자</option>
 							<option value="subcon"
 								<c:if test="${search=='subcon'}">selected="selected" </c:if>>제목+내용</option>
-						</select> 
-						<input class="search_text" type="text" name="keyword"> 
-						<input class="btn" type="submit" value="찾기">
+						</select> <input class="search_text" type="text" name="keyword"> <input
+							class="btn" type="submit" value="찾기">
 					</form>
 				</div>
-			</main>
-		</div>
+		</main>
+	</div>
 </body>
 </html>
