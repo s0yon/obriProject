@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="music.dao.jobAppDao">
+	<insert id="insertApply" parameterType="jobapp">
+		insert into jobApp (appNo,jobNo,userId,appCheck,appName,appDelYn,appDone)
+		values (app_no_seq.nextval,#{jobNo},#{userId},'N',#{appName, jdbcType=VARCHAR},'N','N')	
+	</insert>
+	
+	<select id="getAllTotal" parameterType="jobapp" resultType="int">
+		select count(*) from jobApp where userId=#{userId} and jobNo=#{jobNo}
+	</select>
+	
+	<select id="selectAppList" parameterType="jobapp" resultType="Map">
+		 select * from (select jobApp.*,rowNum rn from 
+		(select A.*, B.username, B.usermajor from jobApp A, member B
+		where A.userId = B.userId and appDelYn='N' and A.jobNo=#{jobNo}
+		order by A.appNo desc) jobApp)
+		where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<update id="updateApply" parameterType="jobapp">
+		update jobApp set appDelYn= 'N' where jobNo=#{jobNo} and userId=#{userId}
+	</update>
+	
+	<update id="updateApp" parameterType="jobApp">
+		update jobApp set APPCHECK = 'Y', APPDELYN = 'N' where JOBNO = #{jobNo} and userId = #{userId}
+	</update>
+	
+	<update id="updateCancelApp" parameterType="jobApp">
+		update jobApp set APPCHECK = 'N', APPDELYN = 'Y' where JOBNO = #{jobNo} and APPNO = #{appNo}
+	</update>
+	
+	<select id="getAppTotal" parameterType="jobapp" resultType="int">
+		select count(*) from jobApp where appDelYn = 'N'
+	</select>
+</mapper>
+
+
