@@ -6,9 +6,9 @@
         <ul class="gnb">
           <li class="logo">Obri</li>
           <li><a href="#">기업소개</a></li>
-          <li><a href="#">이용약관</a></li>
+          <li><a href="notice_list.do">공지사항</a></li>
           <li><a href="#">개인정보 처리방침</a></li>
-          <li><a href="#">고객센터</a></li>
+          <li><a href="qna_form.do">문의하기</a></li>
         </ul>
       </div>
       <div class="bottom">

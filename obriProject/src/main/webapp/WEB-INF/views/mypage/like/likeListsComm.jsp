@@ -29,10 +29,10 @@
 					<div class="photocompany">
 						<c:choose>
 							<c:when test="${empty likesComm.commFile}">
-								<a href="comDetail.do?commNo=${likesComm.commNo}"><img class="companyphoto" src='https://picsum.photos/250/250' alt="커뮤니티 첨부 이미지"></a>
+								<a href="boardContent.do?commNo=${likesComm.commNo}&pageNum=1"><img class="companyphoto" src='https://via.placeholder.com/250x250' alt="커뮤니티 첨부 이미지"></a>
 							</c:when>
 							<c:otherwise>
-								<a href="comDetail.do?commNo=${likesComm.commNo}"><img class="companyphoto" src="${path}/upload/${likesComm.commFile}" alt="커뮤니티 첨부 이미지"></a>
+								<a href="boardContent.do?commNo=${likesComm.commNo}&pageNum=1"><img class="companyphoto" src="${path}/upload/${likesComm.commFile}" width="250" height="250" alt="커뮤니티 첨부 이미지"></a>
 							</c:otherwise>
 						</c:choose>
 					</div>
@@ -46,11 +46,11 @@
 							<div class="test">
 								<c:choose>
 									<c:when test="${empty likesComm.prFile}">
-										<a href="comList.do?id=${likesComm.writerId}"><img class="conpany_min_iphoto" src='https://picsum.photos/250/250' alt="작성자 프로필 이미지"
+										<a href="#?id=${likesComm.writerId}"><img class="conpany_min_iphoto" src='https://picsum.photos/250/250' alt="작성자 프로필 이미지"
 											width="25" height="25"></a>
 									</c:when>
 									<c:otherwise>
-										<a href="comList.do?id=${likesComm.writerId}"><img class="conpany_min_iphoto" src="${path}/upload/${likesComm.prFile}" alt="작성자 프로필 이미지" width="25" height="25"></a>
+										<a href="#?id=${likesComm.writerId}"><img class="conpany_min_iphoto" src="${path}/upload/${likesComm.prFile}" alt="작성자 프로필 이미지" width="25" height="25"></a>
 									</c:otherwise>
 								</c:choose>
 								
