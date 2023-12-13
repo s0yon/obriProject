@@ -25,6 +25,14 @@ body {
 	}
 }
 
+.container-sm input[type="text"] {
+	border: none;
+}
+
+.container-sm textarea {
+	border: none;
+}
+
 /* 테이블 스타일 */
 table {
 	width: 100%;

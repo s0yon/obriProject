@@ -5,7 +5,7 @@
 
 obriProject/target/**
 */target/**
-
+target/**
 
 
 ## env 파일(application.properties)
