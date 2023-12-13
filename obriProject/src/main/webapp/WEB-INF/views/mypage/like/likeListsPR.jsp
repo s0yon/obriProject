@@ -39,7 +39,7 @@
 				</select>
 			</div>
 
-<%-- 			<div class="select_region">
+			<div class="select_region">
 				<select class="region" id="regionCode" name="prlocName"
 						onchange="ChangeValue('regionCode')">
 					<option value="all" ${empty param.prlocName ? 'selected' : ''}>지역 선택</option>
@@ -49,19 +49,19 @@
 						</c:forEach>
 					</c:if>
 				</select>
-			</div> --%>
+			</div>
 
-<%-- 			<div class="select_skill">
+			<div class="select_skill">
 				<select class="skill" id="skillsCode" name="prhashName"
 						onchange="ChangeValue('skillsCode')">
 					<option value="all" ${empty param.prhashName ? 'selected' : ''}>해시태그</option>
 					<c:if test="${!empty PrHashes}">
-						<c:forEach var="PrHashes" items="${PrHashes}">
-							<option value="${PrHashes.prHash}" ${param.prhashName eq PrHashes.prHash ? 'selected' : ''}>#${PrHashes.prHash}</option>
+						<c:forEach var="hashTags" items="${PrHashes}">
+							<option value="${hashTags.prHash}" ${param.prhashName eq hashTags.prHash ? 'selected' : ''}>#${hashTags.prHash}</option>
 						</c:forEach>
 					</c:if>
 				</select>
-			</div> --%>
+			</div>
 
 			<div class="selected_skills">
 				<ul>

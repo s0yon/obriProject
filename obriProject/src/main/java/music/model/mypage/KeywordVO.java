@@ -32,4 +32,7 @@ public class KeywordVO {
 	// 공통
 	private Integer page;
 	private Integer startNum;   
+	
+	// 정렬
+	private String sortBy;
 }
