@@ -54,6 +54,7 @@ console.log("userId:", '${community.userId}');
 	 
      if (${empty sessionScope.userId}) {
     	            alert("로그인이 필요한 서비스입니다!");
+    	            location.href="login.do";
     	            return false;   
     		
     }else if ($.trim('${sessionScope.userId}')  ==  $.trim('${community.userId}')) {
@@ -158,7 +159,14 @@ console.log("userId:", '${community.userId}');
 						<td><input type="button" value="목록으로"
 							onClick="location.href='boardList.do?page=${page}'">
 							&nbsp;</td>
-
+						<c:if
+							test="${fn:trim(sessionScope.userId) ==  fn:trim(community.userId) }">
+							<td>&nbsp; <input type="button" value="수정"
+								onClick="location.href='boardUpdateForm.do?commNo=${community.commNo}&pageNum=${pageNum}'">&nbsp;
+							</td>
+							<td><input type="button" value="삭제" onClick="deleteCheck()">
+								&nbsp;</td>
+						</c:if>
 						<td>
 							<!-- 로그인 구현 되면 테스트 해야댐 --> <c:if
 								test="${sessionScope.userId == null}">
@@ -180,15 +188,7 @@ console.log("userId:", '${community.userId}');
 							</c:if> &nbsp;
 						</td>
 
-						<c:if
-							test="${fn:trim(sessionScope.userId) ==  fn:trim(community.userId) }">
-							<td>&nbsp; <input type="button" value="수정"
-								onClick="location.href='boardUpdateForm.do?commNo=${community.commNo}&pageNum=${pageNum}'">&nbsp;
-							</td>
-
-							<td><input type="button" value="삭제" onClick="deleteCheck()">
-								&nbsp;</td>
-						</c:if>
+						
 
 					</tr>
 				</table>
@@ -218,7 +218,7 @@ console.log("userId:", '${community.userId}');
 				</div>
 			</form>
 		</div>
-
+<br>
 		<h2 align="center">댓글 목록</h2>
 		<div id="commReList" align="center"></div>
 	</div>

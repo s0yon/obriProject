@@ -32,8 +32,9 @@
 <body>
 
 	<form>
-		<table>
+		<table >
 			<tr align="center">
+				<td></td>
 				<th>작성자</th>
 				<th >내용</th>
 				<th ></th>
@@ -56,6 +57,7 @@
 					<!--2. 로그인(작성자 or 관리자)  -->
   					<c:if test="${commReList.commSecret  == 'Y' &&  sessionScope.userId == commReList.commReId  &&  !empty sessionScope.userId}"> 
 							<tr>	 
+									<td><img src="images/secret.png"  width="20" height="20"></td>
 									<td>${commReList.commReId}&nbsp;&nbsp;</td> 
 									<td id=" ${commReList.commReNo}">${commReList.commReText}&nbsp;&nbsp;</td>
 									<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -81,6 +83,7 @@
 					<!-- 4. 비밀글이 아닌경우 -->										
 					<c:if test="${commReList.commSecret != 'Y'}">
 					<tr>
+						<td></td>
 						<td>${commReList.commReId}&nbsp;&nbsp;</td><!-- 작성자 -->
 						<td id=" ${commReList.commReNo}">${commReList.commReText}&nbsp;&nbsp;</td><!-- 내용 -->
 						<td > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>

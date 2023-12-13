@@ -4,7 +4,7 @@
 <configuration>
 
 	<typeAliases>
-		<typeAlias alias="mb" type="music.model.memberVO" />
+		<typeAlias alias="mb"  type="music.model.memberVO" />
 		<typeAlias alias="pr" type="music.model.prVO" />
 		<typeAlias alias="prLike" type="music.model.prLikeVO" />
 		<typeAlias alias="msg" type="music.model.msgVO" />
