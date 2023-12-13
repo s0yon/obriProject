@@ -83,8 +83,8 @@
 		SELECT ROWNUM AS no, jobrec.*
 		FROM (SELECT subjobrec.* 
 		FROM (SELECT job.jobNo, job.userId, job.jobSub,
-		job.jobText, job.jobConcert, job.jobPlace, 
-		job.jobWriter, job.jobCd
+		job.jobText, job.jobConcert, job.jobAddress, 
+		job.jobCd
 		FROM jobBoard job
 		WHERE job.jobEndDate > SYSDATE AND job.jobDelYn != 'Y'
 		ORDER BY job.jobRcount DESC) subjobrec
@@ -131,7 +131,7 @@
 	<!-- jobBoard에 작성된 모든 데이터를 가져옴 -->
 	<select id="findAllJobDatas" resultType="jobBoard">
 		SELECT jobB.jobNo, jobB.userId, jobB.jobCd, 
-		jobB.jobPlace, jobB.jobSub, jobB.jobText, 
+		jobB.jobAddress, jobB.jobSub, jobB.jobText, 
 		CASE WHEN jobB.jobFin = 'Y' THEN '완료' ELSE '진행중' END AS jobFin
 		
 		FROM jobBoard jobB
@@ -139,7 +139,7 @@
 	
 	<!-- jobBoard에서 'jobPlace'컬럼과 'JobCD'컬럼 -->
 	<select id="findAllJobPlaces" resultType="jobBoard">
-		SELECT DISTINCT jobB.jobPlace		
+		SELECT DISTINCT jobB.jobAddress
 		FROM jobBoard jobB
 	</select>
 	
@@ -163,7 +163,7 @@
 		WHERE jB.userId = #{id}
 		<if test="keywordVO != null">
 			<if test="keywordVO.jobplaceName != null and keywordVO.jobplaceName != 'all'">
-				AND jB.jobPlace = #{keywordVO.jobplaceName}
+				AND jB.jobAddress = #{keywordVO.jobplaceName}
 			</if>
 			<if test="keywordVO.jobcdName != null and keywordVO.jobcdName != 'all'">
 				AND jB.jobCd = #{keywordVO.jobcdName}
@@ -177,14 +177,14 @@
 		SELECT * FROM (
 		SELECT ROW_NUMBER() OVER (ORDER BY jobB.jobDate DESC) AS rno,
 		jobB.jobNo, jobB.userId, jobB.jobCd, 
-		jobB.jobPlace, jobB.jobSub, jobB.jobText, 
+		jobB.jobAddress, jobB.jobSub, jobB.jobText, 
 		CASE WHEN jobB.jobFin = 'Y' THEN '완료' ELSE '진행중' END AS jobFin
 		
 		FROM jobBoard jobB
 		WHERE jobB.userId = #{id} AND jobB.jobDelYn != 'Y'
 		<if test="keywordVO != null">
 			<if test="keywordVO.jobplaceName != null and keywordVO.jobplaceName != 'all'">
-				AND jobB.jobPlace = #{keywordVO.jobplaceName}
+				AND jobB.jobAddress = #{keywordVO.jobplaceName}
 			</if>
 			<if test="keywordVO.jobcdName != null and keywordVO.jobcdName != 'all'">
 				AND jobB.jobCd = #{keywordVO.jobcdName}
@@ -515,7 +515,7 @@
 		
 		FROM qnaBoard qa
 			
-		WHERE qa.userId = #{id} AND qa.qnaDelYn != 'Y' 
+		WHERE qa.userId = #{id} 
 		<if test="keyword != null">
 	        AND (
 	            qa.qnaSub LIKE '%' || #{keyword} || '%'

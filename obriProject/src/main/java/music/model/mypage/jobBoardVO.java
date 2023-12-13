@@ -15,8 +15,8 @@ public class jobBoardVO {
     // 공고 분류에 해당하는 이미지 파일
 //    private String photo;
 
-    // jobBoard.jobPlace
-    private String jobplace;    // 지역
+    // jobBoard.jobAddress
+    private String jobAddress;    // 지역
 
     // 공고 제목
     private String jobsub;

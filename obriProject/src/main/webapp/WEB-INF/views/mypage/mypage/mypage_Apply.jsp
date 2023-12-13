@@ -57,7 +57,7 @@
 						</div>
 						<div class="mp_acc_setting">
 							<button>
-								<a href="editCheckOk.do">계정 설정하기</a>
+								<a href="editCheck.do">계정 설정하기</a>
 							</button>
 						</div>
 					</c:forEach>
@@ -151,24 +151,24 @@
 				<div class="mp_pro_contents">
 					<c:forEach var="userInfoVOs" items="${infoAllDto.userInfoVOs}">
 						<c:choose>
-							<c:when test="${userInfoVOs.userPosition == none && userInfoVOs.prNo == -1}">
+							<c:when test="${userInfoVOs.userPosition == 'none'}">
 								<p class="mp_profile_position">선호하는 <span>포지션</span>을 설정해주세요</p>
 								<button>
-									<a href="#">PR 글 작성하기</a>
+									<a href="prInsertForm.do">PR 글 작성하기</a>
 								</button>
 							</c:when>
-							<c:when test="${userInfoVOs.userPosition == none}">
+							<c:when test="${userInfoVOs.prNo == -1}">
 								<p class="mp_profile_position">선호하는 <span>포지션</span>을 설정해주세요</p>
 								<button>
-									<a href="#">PR 글 작성하기</a>
+									<a href="prInsertForm.do">PR 글 작성하기</a>
 								</button>
 							</c:when>
-							<c:otherwise>
+							<c:when test="${userInfoVOs.userPosition != none && userInfoVOs.prNo != -1}">
 								<p class="mp_profile_position">현재 설정한 포지션은 <span><b>${userInfoVOs.userPosition}</b></span></p>
 								<button>
 									<a href="prUpdateForm.do?prNo=${userInfoVOs.prNo}">프로필 수정하기</a>
 								</button>
-							</c:otherwise>
+							</c:when>
 						</c:choose>
 					</c:forEach>
 				</div>
@@ -181,14 +181,15 @@
 						<div class="mp_reco${jobInfoVOs.no}">
 							<a href="#?jobNo=${jobInfoVOs.jobNo}">
 								<div class="mp_reco${jobInfoVOs.no}_1">
-									<img src="https://picsum.photos/250/250" />
+									<img src="https://via.placeholder.com/250x250" />
+<!-- 									<img src="https://picsum.photos/250/250" /> -->
 								</div>
 	
 								<p class="mp_reco_com_title">${jobInfoVOs.jobSub}</p>
 								<p class="mp_reco_com_content">${jobInfoVOs.jobText}</p>
 	
 								<div class="mp_company">
-									<p class="mp_company_name">${jobInfoVOs.userName}(${jobInfoVOs.userId})</p>
+									<p class="mp_company_name">${jobInfoVOs.userId}</p>
 								</div>
 							</a>
 						</div>

@@ -14,9 +14,11 @@
 			<div class="select_all">
 				<select class="all" id="positionCode" name="prmajorName" onchange="ChangeValue('positionCode')">
 					<option value="all" ${empty param.prmajorName ? 'selected' : ''}>전체 포지션(전공)</option>
-					<c:forEach var="PrMajors" items="${PrMajors}">
-						<option value="${PrMajors.prMajor}" ${param.prmajorName eq PrMajors.prMajor ? 'selected' : ''}>${PrMajors.prMajor}</option>
-					</c:forEach>
+					<c:if test="${prMajor.length > 0}">
+						<c:forEach var="PrMajors" items="${PrMajors}">
+							<option value="${PrMajors.prMajor}" ${param.prmajorName eq PrMajors.prMajor ? 'selected' : ''}>${PrMajors.prMajor}</option>
+						</c:forEach>
+					</c:if>
 				</select>
 			</div>
 			<button class="select_position" type="submit" id="btnSearch">
@@ -29,9 +31,11 @@
 				<select class="career" id="careerCode" name="prcareerName"
 						onchange="ChangeValue('careerCode')">
 					<option value="all" ${empty param.prcareerName ? 'selected' : ''}>신입/경력</option>
-					<c:forEach var="PrCareers" items="${PrCareers}">
-						<option value="${PrCareers.prCareer}" ${param.prcareerName eq PrCareers.prCareer ? 'selected' : ''}>${PrCareers.prCareer}</option>
-					</c:forEach>
+					<c:if test="${!empty PrCareers}">
+						<c:forEach var="PrCareers" items="${PrCareers}">
+							<option value="${PrCareers.prCareer}" ${param.prcareerName eq PrCareers.prCareer ? 'selected' : ''}>${PrCareers.prCareer}</option>
+						</c:forEach>
+					</c:if>
 				</select>
 			</div>
 
@@ -39,9 +43,11 @@
 				<select class="region" id="regionCode" name="prlocName"
 						onchange="ChangeValue('regionCode')">
 					<option value="all" ${empty param.prlocName ? 'selected' : ''}>지역 선택</option>
-					<c:forEach var="PrLocs" items="${PrLocs}">
-						<option value="${PrLocs.prLoc}" ${param.prlocName eq PrLocs.prLoc ? 'selected' : ''}>${PrLocs.prLoc}</option>
-					</c:forEach>
+					<c:if test="${!empty PrLocs}">
+						<c:forEach var="PrLocs" items="${PrLocs}">
+							<option value="${PrLocs.prLoc}" ${param.prlocName eq PrLocs.prLoc ? 'selected' : ''}>${PrLocs.prLoc}</option>
+						</c:forEach>
+					</c:if>
 				</select>
 			</div>
 
@@ -49,9 +55,11 @@
 				<select class="skill" id="skillsCode" name="prhashName"
 						onchange="ChangeValue('skillsCode')">
 					<option value="all" ${empty param.prhashName ? 'selected' : ''}>해시태그</option>
-					<c:forEach var="PrHashes" items="${PrHashes}">
-						<option value="${PrHashes.prHash}" ${param.prhashName eq PrHashes.prHash ? 'selected' : ''}>#${PrHashes.prHash}</option>
-					</c:forEach>
+					<c:if test="${!empty PrHashes}">
+						<c:forEach var="PrHashes" items="${PrHashes}">
+							<option value="${PrHashes.prHash}" ${param.prhashName eq PrHashes.prHash ? 'selected' : ''}>#${PrHashes.prHash}</option>
+						</c:forEach>
+					</c:if>
 				</select>
 			</div>
 
@@ -73,10 +81,10 @@
 			</div>
 
 			<div class="select_sort">
-				<select class="sort">
-					<option selected>최신순</option>
-					<option>인기순</option>
-				</select>
+<!--				<select class="sort">
+ 					<option selected></option>
+					<option></option>
+				</select> -->
 			</div>
 		</div>
 		</form>
@@ -101,14 +109,14 @@
 					<c:if test="${!empty pagingPrListVO.likesListPRVOs}">
 					<c:forEach var="likesListPRVOs" items="${pagingPrListVO.likesListPRVOs}">
 						<div class="wanted">
-							<a href="prDetail.do?prNo=${likesListPRVOs.prNo}">
+							<a href="prDetail.do?prNo=${likesListPRVOs.prNo}&pageNum=1">
 								<div class="picture">
 									<c:choose>
 										<c:when test="${empty likesListPRVOs.prFile}">
-											<img src="https://picsum.photos/seed/picsum/200/300">
+											<img src="https://via.placeholder.com/200x300">
 										</c:when>
 										<c:otherwise>
-											<img src="${path}/upload/${likesListPRVOs.prFile}">
+											<img src="${path}/upload/${likesListPRVOs.prFile}" width="200" height="300">
 										</c:otherwise>
 									</c:choose>
 								</div>
