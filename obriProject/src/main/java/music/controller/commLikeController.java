@@ -50,19 +50,21 @@ public class commLikeController {
 				map.put("commNo", commNo);
 				map.put("commLike", state);				
 				
-				if(list.isEmpty() ) {      // 좋아요가 없는 경우 : insert SQL
+				 // 좋아요가 없는 경우 : insert SQL
+				if(list.isEmpty() ) {     
 					result = likeService.insert(commVO);
 					System.out.println("insert result:"+ result);
 					// 증가 sql
-					service.upLike(commNo);
+					//service.upLike(commNo);
 					
-				}else {							 // 좋아요가 있는 경우 : update SQL
+				// 좋아요가 있는 경우 : update SQL
+				}else {							 
 					result = likeService.update(map);
 					System.out.println("update result:"+ result);
 					
-					// 상태값에 따라서 증가 감소 sql
-					service.changeLike(commVO);
 				}
+				// 상태값에 따라서 증가 감소 sql
+				service.changeLike(commVO);
 				
 				
 				model.addAttribute("result", result);
