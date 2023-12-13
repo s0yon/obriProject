@@ -9,7 +9,7 @@
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Obri</title>
+<title>OBRI</title>
 
 <link rel="shortcut icon" href="${path}/favicon/mypage/music_icon.ico" type="image/x-icon" />
 
@@ -32,18 +32,19 @@
 	<header class="header">
 		<div class="header_inner">
 			<div class="menu">
-				<button class="btn_menu">포지션</button>
+<!-- 				<button class="btn_menu">포지션</button>
 				<ul class="dropdown_menu">
 					<li class="menu_top">포지션 목록</li>
 					<li><a class="dropdown_item" href="#">포지션1</a></li>
 					<li><a class="dropdown_item" href="#">포지션2</a></li>
 					<li><a class="dropdown_item" href="#">포지션3</a></li>
 					<li class="menu_bottom">음악인 구인공고 사이트</li>
-				</ul>
+				</ul> -->
 			</div>
 
 			<h1 class="logo">
-				<a href="home.do">Obri</a>
+				<a href="home.do"><img
+			src="${path}/images/logo.png" alt="Logo" width="90px" height="35px"></a>
 			</h1>
 
 			<ul class="gnb">
@@ -79,5 +80,8 @@
 					</ul>
 				</li>
 			</ul>
+            <ul class="companyservice">
+            	<li><a href="logout.do">로그아웃</a></li>
+            </ul>			
 		</div>
 	</header>

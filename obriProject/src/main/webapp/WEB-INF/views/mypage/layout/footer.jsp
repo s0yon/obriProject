@@ -4,7 +4,8 @@
     <div class="footer_inner">
       <div class="top">
         <ul class="gnb">
-          <li class="logo">Obri</li>
+          <li class="logo"><img
+			src="${path}/images/logo.png" alt="Logo" width="90px" height="35px"></li>
           <li><a href="#">기업소개</a></li>
           <li><a href="notice_list.do">공지사항</a></li>
           <li><a href="#">개인정보 처리방침</a></li>
