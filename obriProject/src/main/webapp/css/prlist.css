@@ -149,6 +149,18 @@ td a {
     display: flex;
 }
 
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.btn-container {
+    display: inline-block;
+    margin-right: 10px;
+}
+
 .btn {
     width: 80px;
     height: 44px;
@@ -215,16 +227,4 @@ td a {
 	color: #333; /* 글자색 설정 */
 	font-size: 12px; /* 글자 크기를 줄임 */
 	text-decoration: none; /* 밑줄 제거 */
-}
-
-.community-header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-bottom: 10px;
-}
-
-#commInsert {
-	display: inline-block;
-	margin-right: 10px;
 }

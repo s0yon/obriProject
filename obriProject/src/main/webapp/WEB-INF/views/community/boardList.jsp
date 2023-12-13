@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page import="java.util.Date"%>
 
 <!DOCTYPE html>
@@ -58,7 +58,7 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>;
 			<div class="d-flex justify-content-between my-3 py-3 border-bottom">
 				<h3 class="font-weight-bold text-dark">커뮤니티</h3>
 			</div>
-			<div class="community-header">
+			<div class="table-header">
 				<div class="sort-container">
 					<select name="sort" id="sort" onchange="comSort()" class="sort_box">
 						<option value="recent"
@@ -75,7 +75,7 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>;
 				<div class="btn-container">
 					<c:if test="${sessionScope.userId != null}">
 						<input type="button" value="글작성" class="btn"
-							onclick="location.href='boardForm.do'" id="commInsert">
+							onclick="location.href='boardForm.do'" id="board_write">
 					</c:if>
 				</div>
 			</div>
@@ -84,8 +84,8 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>;
 					<tr>
 						<th width="10%">번호</th>
 						<th width="30%">제목</th>
-						<th width="20%">작성자명</th>
-						<th width="20%">날짜</th>
+						<th width="20%">작성자</th>
+						<th width="20%">작성일</th>
 						<th width="10%">조회수</th>
 						<th width="10%">좋아요</th>
 					</tr>
@@ -112,8 +112,8 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>;
 											<c:set var="truncatedSub"
 												value="${fn:substring(community.commSub, 0, 15)}" />
 											${truncatedSub} <c:if
-												test="${fn:length(community.commSub) > 15}">...</c:if>
-											<!-- 오늘 작성된 글이면  --> <c:if test="${dbtoday == today }">
+												test="${fn:length(community.commSub) > 15}">...</c:if> <!-- 오늘 작성된 글이면  -->
+											<c:if test="${dbtoday == today }">
 												<img alt="" src="images/new.png" width="30" height="20">
 											</c:if>
 									</a></td>
@@ -188,5 +188,7 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>;
 			</div>
 		</main>
 	</div>
+	<!-- footer -->
+	<c:import url="/WEB-INF/views/footer.jsp" />
 </body>
 </html>

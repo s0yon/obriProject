@@ -70,8 +70,8 @@ function sortOrderChange() {
 			<div class="d-flex justify-content-between my-3 py-3 border-bottom">
 				<h3 class="font-weight-bold text-dark">홍보</h3>
 			</div>
-			<div class="row justify-content-between mb-3 pr-header">
-				<div class="col-2 sort-container">
+			<div class="table-header">
+				<div class="sort-container">
 					<select name="sort" id="sortOrder" onchange="sortOrderChange()"
 						class="sort_box">
 						<option value="">선택</option>
@@ -80,10 +80,9 @@ function sortOrderChange() {
 						<!-- <option value="like">좋아요순</option> -->
 					</select>
 				</div>
-				<div class="col-2 btn-container">
+				<div class="btn-container">
 					<input type="button" value="글작성" class="btn"
-						onclick="location.href='prInsertForm.do'" id="commInsert"
-						style="width: 100px;">
+						onclick="location.href='prInsertForm.do'" id="commInsert">
 				</div>
 			</div>
 

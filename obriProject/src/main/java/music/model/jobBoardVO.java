@@ -10,7 +10,7 @@ public class jobBoardVO {
 	private String userId;	
 	private String jobCd;	
 	private String jobFin;	
-	private int jobSpace;	
+	private int jobSpace;
 	private String jobAddress;
 	private Date jobEndDate;	
 	private Date jobConcert;		

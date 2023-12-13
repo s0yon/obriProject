@@ -4,8 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
-
 import music.dao.memberDaoImpl;
 import music.mail.mailHandler;
 import music.mail.tempKey;
@@ -58,7 +56,7 @@ public class memberServiceImpl implements memberService{
 				"<h1>오브리 메일 인증</h1>" +
 				"<br>오브리에 오신 것을 환영합니다." +
 				"<br>아래 [이메일 인증 확인]을 눌러주세요." +
-				"<br><a href='http://43.202.67.70/obriProject/registerMail.do?userEmail=" +
+				"<br><a href='http://localhost/obriProject/registerMail.do?userEmail=" +
 				mb.getUserEmail() + "&mailKey=" + mailKey +
 				"' target='_blank'>이메일 인증 확인</a>");
 		sendMail.setFrom("info0obri@gmail.com", "오브리");

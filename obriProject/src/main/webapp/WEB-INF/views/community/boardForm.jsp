@@ -34,28 +34,32 @@
 				<table>
 					<tr>
 						<th>작성자</th>
-						<td><input type="text" name="userId" id="userId"
-							value="${fn:trim(sessionScope.userId)}" readonly="readonly"></td>
+						<td><input type="text" class="form-control" name="userId"
+							id="userId" value="${fn:trim(sessionScope.userId)}"
+							readonly="readonly"></td>
 					</tr>
 					<tr>
 						<th>제목</th>
-						<td><input type="text" name="commSub" id="commSub" required></td>
+						<td><input type="text" class="form-control" name="commSub"
+							id="commSub" required></td>
 					</tr>
 					<tr>
 						<th>내용</th>
-						<td><textarea cols=40 rows=10 name="commText" id="commText"
-								required></textarea> <br> <br></td>
+						<td><textarea cols="70" rows="10" class="form-control"
+								name="commText" id="commText" required></textarea></td>
 					</tr>
 					<tr>
 						<th>첨부파일</th>
-						<td><input type="file" name="com_file1" id="com_file1"></td>
+						<td><input class="form-control" type="file" name="com_file1"
+							id="com_file1"></td>
 					</tr>
 				</table>
 				<div align="center">
 					<tr>
 						<td colspan=2 align=center><input type="submit" class="btn"
-							value="작성" id="submitButton">&nbsp;&nbsp;<input type="button"
-							value="목록" class="btn" onclick="location.href='boardList.do'"></td>
+							value="작성" id="submitButton">&nbsp;&nbsp;<input
+							type="button" value="목록" class="btn"
+							onclick="location.href='boardList.do'"></td>
 					</tr>
 				</div>
 			</form>

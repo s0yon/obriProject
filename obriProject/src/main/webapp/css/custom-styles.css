@@ -154,6 +154,18 @@ td a {
     display: flex;
 }
 
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.btn-container {
+    display: inline-block;
+    margin-right: 10px;
+}
+
 .btn {
     width: 80px;
     height: 44px;
@@ -179,14 +191,4 @@ td a {
     background-color: transparent;
     border: 1px solid #A490D5;
     color: #A490D5;
-}
-.community-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-#commInsert {
-    display: inline-block;
-    margin-right: 10px;
 }

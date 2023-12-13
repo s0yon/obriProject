@@ -92,23 +92,22 @@ public class JobBoardController {
 		jobboard.setJobEndDate(Date.valueOf(jobEndDate1));
 		jobboard.setJobConcert(Date.valueOf(jobConcert1));
 		HttpSession session = request.getSession();
-		session.setAttribute("userId", "skt1");
+//		session.setAttribute("userId", "skt1");
 		String userId = (String)session.getAttribute("userId");
-		System.out.println("섹션아이디받음"+ userId);
+//		System.out.println("섹션아이디받음"+ userId);
 		
 		Map<String, Object> map = (Map<String, Object>)jbs.selectJobMember(userId);
 		
-	   String userName = (String)map.get("USERNAME");
+//	   String userName = (String)map.get("userName");
 	    
 	    //jobBoardVO jobboard = new jobBoardVO(); 
-		System.out.println("map받음"+ map.get("USERNAME"));
-		
-		System.out.println("jobboard:"+jobboard.getJobEndDate());
-		System.out.println("jobboard:"+jobboard.getJobConcert());
-		System.out.println("jobboard:"+jobboard.toString());
+//		System.out.println("map받음"+ map.get("userName"));
+//		System.out.println("jobboard:"+jobboard.getJobEndDate());
+//		System.out.println("jobboard:"+jobboard.getJobConcert());
+//		System.out.println("jobboard:"+jobboard.toString());
 		jobboard.setUserId(userId); // 세션에 있는
-		System.out.println("넣은값 확인 " + jobboard.getUserId());
-		System.out.println("jobboard확인:"+jobboard);
+//		System.out.println("넣은값 확인 " + jobboard.getUserId());
+//		System.out.println("jobboard확인:"+jobboard);
 		int result = jbs.jobInsert(jobboard);
 		if (result == 1)
 			System.out.println("글작성 성공");
