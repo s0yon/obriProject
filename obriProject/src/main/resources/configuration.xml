@@ -9,6 +9,12 @@
 		<typeAlias alias="prLike" type="music.model.prLikeVO" />
 		<typeAlias alias="msg" type="music.model.msgVO" />
 
+		<!-- 구인 -->
+		<typeAlias alias="jb" type="music.model.jobBoardVO" />
+		<typeAlias alias="jobapp" type="music.model.jobAppVO" />
+		<typeAlias alias="jobreply" type="music.model.jobReplyVO" />
+		<typeAlias alias="msg" type="music.model.msgVO" />
+
 		<!-- 관리자관련 -->
 		<typeAlias alias="adminvo" type="music.model.adminVO" />
 		<typeAlias alias="adnotvo" type="music.model.noticeVO" />

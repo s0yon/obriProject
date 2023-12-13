@@ -37,7 +37,7 @@
 		<div class="collapse navbar-collapse justify-content-between font-weight-bold" id="navbarNav">
 			<ul class="navbar-nav ml-5">
 					<li class="nav-item pr-3"><a class="nav-link"
-						href="boardListShow.do">구인</a></li>
+						href="joblist.do">구인</a></li>
 					<li class="nav-item pr-3"><a class="nav-link" href="prCardList.do">홍보</a>
 					</li>
 					<li class="nav-item pr-3"><a class="nav-link" href="boardList.do">커뮤니티</a>
