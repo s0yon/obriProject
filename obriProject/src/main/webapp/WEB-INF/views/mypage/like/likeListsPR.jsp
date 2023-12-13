@@ -14,7 +14,7 @@
 			<div class="select_all">
 				<select class="all" id="positionCode" name="prmajorName" onchange="ChangeValue('positionCode')">
 					<option value="all" ${empty param.prmajorName ? 'selected' : ''}>전체 포지션(전공)</option>
-					<c:if test="${!empty PrMajors}">
+					<c:if test="${prMajor.length > 0}">
 						<c:forEach var="PrMajors" items="${PrMajors}">
 							<option value="${PrMajors.prMajor}" ${param.prmajorName eq PrMajors.prMajor ? 'selected' : ''}>${PrMajors.prMajor}</option>
 						</c:forEach>
@@ -81,10 +81,10 @@
 			</div>
 
 			<div class="select_sort">
-				<select class="sort">
-					<option selected>최신순</option>
-					<option>인기순</option>
-				</select>
+<!--				<select class="sort">
+ 					<option selected></option>
+					<option></option>
+				</select> -->
 			</div>
 		</div>
 		</form>
