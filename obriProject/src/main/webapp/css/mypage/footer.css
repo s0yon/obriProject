@@ -19,7 +19,8 @@
   font-family: "GmarketSansMedium";
   border-bottom: 1px solid #bbb;
   height: 250px;
-  background-color: #0d0d26;
+  background-color: #230d26;
+  /* background-color: #230d26; */
 }
 
 .footer_inner {
@@ -52,7 +53,7 @@
 
 .footer_inner .top li a {
   font-size: 12px;
-  color: #f4f4f4;
+  /* color: #f4f4f4; */
 }
 
 .footer_inner .bottom {
@@ -61,7 +62,7 @@
 
 .footer_inner .bottom p {
   font-size: 10px;
-  color: #f4f4f4;
+  /* color: #f4f4f4; */
   line-height: 14px;
 }
 

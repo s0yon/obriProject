@@ -13,7 +13,7 @@ function connectWs() {
 
   // 이벤트 리스너(커넥션이 연결되었을 경우에 서버 호출됨)
   sock.onopen = function () {
-    console.log("info: connection opened.");
+    console.log("웹소켓 연결 info: connection opened.");
   };
 
   // 메시지 보냈을 경우 호출
@@ -23,7 +23,7 @@ function connectWs() {
 
     // Ajax를 사용하여 서버에 알림 카운트 요청
     $.ajax({
-      url: "/mentor/member/countAlarm",
+      url: "countAlarm.do",
       type: "POST",
       dataType: "text",
       success: function (data) {
