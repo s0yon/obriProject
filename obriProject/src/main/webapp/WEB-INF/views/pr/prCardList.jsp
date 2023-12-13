@@ -38,7 +38,8 @@
     </script>
 
 <script>
-     var sessionId = '<%=(String) session.getAttribute("userId")%>';
+     var sessionId = '<%=(String) session.getAttribute("userId")%>
+	';
 	console.log("세션ID " + sessionId);
 	$(document).ready(function() {
 		if (sessionId === "null") {
@@ -48,17 +49,19 @@
 			$("#commInsert").show();
 		}
 	});
-	
+
 	function prDetailPageMove(prNo) {
-	    // 클릭한 div의 prNo 값을 사용하여 원하는 페이지로 이동
-	    location.href = '${path}/prDetail.do?pageNum=${pp.currentPage}&prNo='+prNo;
+		// 클릭한 div의 prNo 값을 사용하여 원하는 페이지로 이동
+		location.href = '${path}/prDetail.do?pageNum=${pp.currentPage}&prNo='
+				+ prNo;
 	}
 	// 이벤트를 처리할 함수
 	function sortOrderChange() {
-	    
-	   let sort = $("#sortOrder").val();
-	   
-	   location.href = '${path}/prCardList.do?pageNum=${pp.currentPage}&sortOrder='+sort;
+
+		let sort = $("#sortOrder").val();
+
+		location.href = '${path}/prCardList.do?pageNum=${pp.currentPage}&sortOrder='
+				+ sort;
 	}
 </script>
 
@@ -117,15 +120,14 @@
 	margin-right: 10px;
 }
 </style>
-<body>
+<body class="bg-body-tertiary">
 	<!-- header -->
 	<c:import url="/WEB-INF/views/navbar.jsp" />
 	<div class="container-sm">
 		<div class="row">
 			<main>
-				<div
-					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<h2>홍보</h2>
+				<div class="d-flex justify-content-between my-3 py-3 border-bottom">
+					<h3 class="font-weight-bold text-dark">홍보</h3>
 				</div>
 				<div class="community-header">
 					<div class="sort-container">
@@ -237,7 +239,8 @@
 							</c:if>
 						</c:if>
 					</ul>
-					<form class="search_bar" action="${path}/prCardList.do?pageNum=${currentPage}">
+					<form class="search_bar"
+						action="${path}/prCardList.do?pageNum=${currentPage}">
 						<select name="search" class="search_box">
 							<option value="prSub"
 								<c:if test="${search=='prSub'}">selected="selected" </c:if>>제목</option>
@@ -245,9 +248,8 @@
 								<c:if test="${search=='prText'}">selected="selected" </c:if>>내용</option>
 							<option value="subcon"
 								<c:if test="${search=='subcon'}">selected="selected" </c:if>>제목+내용</option>
-						</select>
-						<input type="text" name="keyword" class="search_text">
-						<input type="submit" class="btn" value="찾기" style="margin-left: 5px;">
+						</select> <input type="text" name="keyword" class="search_text"> <input
+							type="submit" class="btn" value="찾기" style="margin-left: 5px;">
 					</form>
 				</div>
 			</main>

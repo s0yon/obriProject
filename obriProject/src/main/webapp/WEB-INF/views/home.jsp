@@ -57,7 +57,7 @@
 </script>
 </head>
 
-<body>
+<body class="bg-body-tertiary">
 	<c:import url="/WEB-INF/views/navbar.jsp" />
 	<main class="mt-2 mb-2 pt-5 pb-5">
 
