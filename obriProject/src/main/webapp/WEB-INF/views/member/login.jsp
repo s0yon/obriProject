@@ -2,8 +2,11 @@
 	pageEncoding="UTF-8"%>
 	
 <!-- jsp파일에서 프로퍼티 설정 -->
-<%-- <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<spring:eval expression="@property('naverId.login.develApp.key')" var="client_Id"/> --%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<spring:eval expression="@property('naverId.login.develApp.key')" var="client_NId"/>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<spring:eval expression="@property('kakaoId.login.develApp.key')" var="client_KId"/>
+
 
 <!DOCTYPE html>
 <head>
@@ -78,7 +81,7 @@
 				<script type="text/javascript">
 				
 				// .gitignore 
-					var naver_id_login = new naver_id_login("",
+					var naver_id_login = new naver_id_login("${client_NId}",
 							"http://localhost/obriProject/loginNaver.do");
 				
 					var state = naver_id_login.getUniqState();
@@ -100,7 +103,7 @@
 			<script type="text/javascript">
 			
 			// .gitignore  
-				Kakao.init('');
+				Kakao.init('${client_KId}');
 			
 				//console.log(Kakao.isInitialized());
 
