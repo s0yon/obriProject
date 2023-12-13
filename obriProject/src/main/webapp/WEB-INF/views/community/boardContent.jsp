@@ -14,6 +14,10 @@
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 
+<!-- 사용자 정의 스타일 -->
+<link rel="stylesheet" href="./css/custom-styles.css">
+
+
 <!-- 로그인 확인 -->
 <script>
  var sessionId = '<%=(String) session.getAttribute("userId")%>';
@@ -76,7 +80,7 @@ console.log("userId:", '${community.userId}');
 <!--  댓글  -->
 <script>
  			// 리스트 불러오기
-        $(function () {	
+        jQuery(document).ready(function($) {	
             $('#commReList').load('commReList.do?commNo=${community.commNo}')	
             
             // 댓글창 유효성 검사
@@ -108,7 +112,7 @@ console.log("userId:", '${community.userId}');
 <body>
 	<c:import url="/WEB-INF/views/navbar.jsp" />
 	<div class="container-sm">
-		<h2 align="center">상세페이지</h2>
+		<h2 align="center">커뮤니티 게시판</h2>
 		<form method=post action="boardDelete.do">
 			<div align="center">
 				<table width=600>
@@ -157,14 +161,14 @@ console.log("userId:", '${community.userId}');
 				<table>
 					<tr>
 						<td><input type="button" value="목록으로"
-							onClick="location.href='boardList.do?page=${page}'">
+							onClick="location.href='boardList.do?pageNum=${pageNum}'" class="btn" >
 							&nbsp;</td>
 						<c:if
 							test="${fn:trim(sessionScope.userId) ==  fn:trim(community.userId) }">
-							<td>&nbsp; <input type="button" value="수정"
+							<td>&nbsp; <input type="button" value="수정"  class="btn" 
 								onClick="location.href='boardUpdateForm.do?commNo=${community.commNo}&pageNum=${pageNum}'">&nbsp;
 							</td>
-							<td><input type="button" value="삭제" onClick="deleteCheck()">
+							<td><input type="button"  class="btn"  value="삭제" onClick="deleteCheck()">
 								&nbsp;</td>
 						</c:if>
 						<td>
@@ -211,7 +215,7 @@ console.log("userId:", '${community.userId}');
 				<br> <br>		
 
 				<div id="commReSession">
-					<input type="button" value="댓글작성" id="comReInsert">
+					<input type="button" value="댓글작성" id="comReInsert" class="btn" >
 					 &nbsp;
 					&nbsp;
 					<input type="checkbox" name="commSecret" id="commSecret">비밀댓글

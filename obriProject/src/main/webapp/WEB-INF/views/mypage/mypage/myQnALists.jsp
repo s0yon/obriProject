@@ -5,6 +5,20 @@
 <link href="${path}/css/mypage/proposal.css?after" rel="stylesheet">
 <link href="${path}/css/mypage/application_status_all.css" rel="stylesheet" />
 
+<style type="text/css">
+	.pp_table td a:hover {
+	  color: #a490d5;
+	}
+	
+	.pp_table td .notYetCheck {
+	  color: #e7bcbc;
+	}
+	
+	.pp_table td .Checked {
+	  color: #cde661;
+	}
+</style>
+
 <script type="text/javascript">
  	// 전체 선택
 	function toggleAllCheckboxes() {
@@ -161,11 +175,11 @@
 			</div>
 			
 			<!-- 삭제버튼 -->
-			<div class="pp_search">
+<!-- 			<div class="pp_search">
 				<div class="cp_item_bot_Left">
 					<a href="#" class="cp_wanted_modify" id="deleteBtnQnA" onclick="check_selectDel();">선택 삭제</a>
 				</div>			
-			</div>
+			</div> -->
 
 			<div>
 				<form action="deleteQnA.do" name="deleteQnA" id="deleteQnA">
@@ -178,9 +192,9 @@
 								<th>파일</th>						
 								<th>상태</th>
 								<th>작성일</th>
-								<th>수정</th>
+<!-- 								<th>수정</th>
 								<th>삭제</th>
-							</tr>
+ -->							</tr>
 						</thead>
 						<tbody>
 							<c:forEach var="qnaListsInfoVOs" items="${qnaListsVO.qnaListsInfoVOs}">
@@ -191,24 +205,24 @@
 											<span style="font-size: 12px"></span>
 										</label>
 									</td>
-									<td><a href="#?qnaNo=${qnaListsInfoVOs.qnaNo}">${qnaListsInfoVOs.qnaSub}</a></td>
+									<td><a href="qna_read.do?qnaNo=${qnaListsInfoVOs.qnaNo}">${qnaListsInfoVOs.qnaSub}</a></td>
 									<td>${qnaListsInfoVOs.qnaText}</td>
 									<td>${qnaListsInfoVOs.qnaFile}</td>
 									<td>
-										<c:choose>
-											<c:when test="${empty qnaListsInfoVOs.qnaCheckYn}">
-												<p class="waiting">답변대기</p>
-											</c:when>
-											<c:when test="${!empty qnaListsInfoVOs.qnaCheckYn}">
-												<p class="pass">답변완료</p>
-											</c:when>
-											<c:otherwise>
+										<%-- <c:choose> --%>
+											<c:if test="${qnaListsInfoVOs.qnaDelYn == 'N'}">
+												<p class="notYetCheck">답변대기</p>
+											</c:if>
+											<c:if test="${qnaListsInfoVOs.qnaDelYn == 'Y'}">
+												<p class="Checked">답변완료</p>
+											</c:if>
+<%-- 											<c:otherwise>
 												<p class="fail">미열람</p>
-											</c:otherwise>
-										</c:choose>
+											</c:otherwise> --%>
+										<%-- </c:choose> --%>
 									</td>
 									<td><p class="cnt_highlight">${qnaListsInfoVOs.qnaDate}</p></td>
-									<td>
+<%-- 									<td>
 										<div class="cp_item_bot">
 											<a href="#?qnaNo=${qnaListsInfoVOs.qnaNo}" class="cp_wanted_modify">수정</a>
 										</div>
@@ -217,7 +231,7 @@
 										<div class="cp_item_bot">
 											<a href="#" class="cp_wanted_modify" onclick="selectOneDel('${qnaListsInfoVOs.qnaNo}');">삭제</a>
 										</div>
-									</td>
+									</td> --%>
 								</tr>
 							</c:forEach>
 						</tbody>

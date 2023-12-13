@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<!-- jsp파일에서 프로퍼티 설정 -->
+<%-- <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<spring:eval expression="@property('naverId.login.develApp.key')" var="client_Id"/> --%>
+
 <!DOCTYPE html>
 <head>
 <meta charset="utf-8">

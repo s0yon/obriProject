@@ -113,6 +113,7 @@ public class communityController {
 		String sort = community.getSort();
 
 		final int rowPerPage = 10; // 화면에 출력할 데이터 갯수
+		// 초기 페이지 값 1
 		if (pageNum == null || pageNum.equals("")) {
 			pageNum = "1";
 		}
@@ -219,7 +220,7 @@ public class communityController {
 
 	// 글삭제
 	@RequestMapping("boardDelete.do")
-	public String boardDelete(int commNo, String page, Model model) {
+	public String boardDelete(int commNo, String pageNum, Model model) {
 		System.out.println("글삭제 컨트롤러");
 
 		communityVO community = service.Content(commNo);
@@ -227,19 +228,19 @@ public class communityController {
 
 		model.addAttribute("result", result);
 		model.addAttribute("community", community);
-		model.addAttribute("page", page);
+		model.addAttribute("pageNum", pageNum);
 
 		return "community/deleteResult";
 	}
 
 	// 수정 폼
 	@RequestMapping("boardUpdateForm.do")
-	public String boardUpdateForm(int commNo, String page, Model model) {
+	public String boardUpdateForm(int commNo, String pageNum, Model model) {
 		System.out.println("글 수정폼 컨트롤러");
 		communityVO community = service.Content(commNo); // 상세 정보 구하기
 
 		model.addAttribute("community", community);
-		model.addAttribute("page", page);
+		model.addAttribute("pageNum", pageNum);
 
 		return "community/boardUpdateForm";
 	}

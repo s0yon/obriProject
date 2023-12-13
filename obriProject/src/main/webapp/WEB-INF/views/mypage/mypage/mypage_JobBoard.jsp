@@ -38,7 +38,7 @@
 						</div>
 						<div class="mp_acc_setting">
 							<button>
-								<a href="editCheckOk.do">계정 설정하기</a>
+								<a href="editCheck.do">계정 설정하기</a>
 							</button>
 						</div>
 					</c:forEach>

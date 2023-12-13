@@ -17,19 +17,9 @@
 <script src="https://kit.fontawesome.com/8c929515d1.js"
 	crossorigin="anonymous"></script>
 
-<style>
-/* 버튼을 원하는 위치로 이동 */
-#submitButton {
-	margin-top: 20px; /* 상단 여백 조정 */
-	margin-left: 10px; /* 왼쪽 여백 조정 */
-	background-color: purple;
-	color: white;
-}
+<!-- 사용자 정의 스타일 -->
+<link rel="stylesheet" href="./css/custom-styles.css">
 
-#title {
-	color: purple;
-}
-</style>
 <link rel="stylesheet" href="./css/viewpage.css">
 </head>
 <body>
@@ -62,8 +52,8 @@
 				</table>
 				<div align="center">
 					<tr>
-						<td colspan=2 align=center><input type=submit value="글올리기"
-							id="submitButton"> <input type="button" value="목록으로"
+						<td colspan=2 align=center><input type=submit  class="btn"  value="글올리기"  id="submitButton">
+						 <input type="button" value="목록으로"  class="btn" 
 							onclick="location.href='boardList.do' "></td>
 					</tr>
 				</div>
