@@ -1,8 +1,16 @@
+:root{
+	--text-color: #444;
+	--background-color: #F8F9FA;
+	--accent-color: #A490D5;
+}
+
 .nav_foot{
 	display: flex;
-	background-color: var(--background-color);
-	padding: 8px 10px;
+	justify-content: left;
+	align-items: center;
 	position: fixed;
+	background-color: var(--background-color);
+	padding: 0px 0px 10px 10px;
   	bottom: 0;
   	left: 0;
 	right: 0;
@@ -13,8 +21,7 @@
 	display: inline;
 	list-style: none;
 	margin: 0;
-	padding: 0px 50px;
-	line-height: 0.4;
+	padding-left: 50px;
 	color: var(--text-color);
 }
 
@@ -22,29 +29,33 @@
 	font-size: 14px;
 	font-weight: bold;
 	color: #c0c0c0;
+	margin-bottom: 10px;
+}
+
+.nav_foot .nav_menu{
+	margin: 0;
+	padding-top: 10px;
+	padding-left: 50px;
 }
 
 .nav_foot .nav_menu li{
 	display: inline;
 	list-style: none;
-	margin: 0;
-	paddding: 0;
+	margin-right: 30px;
 }
 
 .nav_foot .nav_menu a{
 	text-decoration: none;
 	font-weight: bold;
 	color: var(--text-color);
-	padding: 0px 30px 0px 0px;
-	margin: 0;
 }
 
-.nav_foot .btn_up{
+.btn_up{
 	position: fixed;
-	right: 32px;
+	right: 15px;
   	bottom: 80px;
   	cursor: pointer;
-  	color: var(--accent-color);
+  	color: var(--text-color);
 }
 
 @media screen and (max-width: 768px){
@@ -52,8 +63,7 @@
 	display: inline;
 	list-style: none;
 	margin: 0;
-	padding: 0px 50px;
-	line-height: 0.4;
+	padding: 0px 0px 0px 50px;
 	color: var(--text-color);
 	}
 	

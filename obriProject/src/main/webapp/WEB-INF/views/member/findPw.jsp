@@ -38,13 +38,14 @@
 	<main class="form-findid w-500 m-auto">
 		<c:if test="${empty findpw}">
 			<form method="post" action="findPwCheck.do" onsubmit="return check()">
-				<br> <img src="images/184.png" alt="" width="100" height="100"
-					onclick="location.href='home.do'" style="cursor: pointer;"> <br>
-				<br>
-				<h1 class="h4 mb-3">
-					<b>오브리</b>&nbsp; 비밀번호 찾기
-				</h1>
-				<br>
+			<div id="logo">
+				<img src="./images/logo.png" alt="Logo" width="100px" height="40px"
+					onclick="location.href='home.do'" style="cursor: pointer;">
+			</div>
+			<br>
+			<h1 class="h4 mb-3" align="center">
+				<br><b>오브리</b>&nbsp;비밀번호 찾기</h1>
+			<br>
 				<div class="form-floating">
 					<input type="text" class="form-control" id="userId" name="userId"
 						placeholder="id"> <label for="userId">아이디</label>

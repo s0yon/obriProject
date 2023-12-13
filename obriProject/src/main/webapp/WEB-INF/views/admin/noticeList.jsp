@@ -22,14 +22,13 @@
 <link rel="stylesheet" href="./css/custom-styles.css">
 
 </head>
-<body>
+<body class="bg-body-tertiary">
 	<!-- header -->
 	<c:import url="/WEB-INF/views/navbar.jsp" />
 	<div class="container-sm">
 			<main>
-				<div
-					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<h2>공지사항</h2>
+				<div class="d-flex justify-content-between my-3 py-3 border-bottom">
+					<h3 class="font-weight-bold text-dark">공지사항</h3>
 				</div>
 				<table class="table-hover" align="center">
 					<thead>

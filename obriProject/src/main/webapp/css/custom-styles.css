@@ -10,7 +10,7 @@ body {
 }
 
 .container-sm {
-	max-width: 	960px; /* 부트스트랩 container-sm의 max-width 값과 동일하게 설정 */
+	max-width: 840px; /* 부트스트랩 container-sm의 max-width 값과 동일하게 설정 */
 	margin-right: auto;
 	margin-left: auto;
 	padding-right: 15px;
@@ -21,6 +21,7 @@ body {
 @media ( max-width : 576px) {
 	.container-sm {
 		max-width: 100%; /* 화면 너비에 따라 최대 너비 100%로 조정 */
+		margin: 0 auto;
 	}
 }
 
@@ -157,7 +158,7 @@ td a {
     text-align: center;
     user-select: none;
     padding: 0.25rem 0.5rem;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     line-height: 1.5;
     border-radius: 10px;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;

@@ -5,17 +5,18 @@
 }
 
 .intro{
-	display: flex;
+	display: grid;
+   	grid-template-columns: 500px 500px;
+   	grid-gap: 10px;
 	justify-content: center;
-	align-items: center;
+	justify-items: center;
 }
 
 .intro .container {
-	margin-top: 50px;
-	margin-bottom: 5px;
 	display: grid;
-	align-items: stretch;
-	place-items: center;
+	justify-content: center;
+	justify-items: center;
+	margin: 50px 50px 5px 50px;
 }
 
 .banner {
