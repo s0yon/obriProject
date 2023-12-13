@@ -38,7 +38,7 @@
 						</div>
 						<div class="mp_acc_setting">
 							<button>
-								<a href="accountSetting.do">계정 설정하기</a>
+								<a href="editCheckOk.do">계정 설정하기</a>
 							</button>
 						</div>
 					</c:forEach>
@@ -74,7 +74,7 @@
 									<div class="mp_status_li4">커뮤니티 글 관리</div>
 									<div>${infoCountVOs.commCountAll}</div>
 							</a></li>
-							<li><a href="#">
+							<li><a href="myQnALists.do">
 									<div class="mp_status_li4">문의 글 관리</div>
 									<div>${infoCountVOs.qnaCountAll}</div>
 							</a></li>

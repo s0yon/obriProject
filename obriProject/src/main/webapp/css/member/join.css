@@ -22,3 +22,28 @@ body {
 .form-joinin button {
 	background-color: rgb(169, 142, 218);
 }
+
+.form-joinin .btn {
+    display: inline-block;
+    font-weight: 400;
+    color: #444;
+    text-align: center;
+    user-select: none;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.5;
+    border-radius: 0.2rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-joinin .btn:hover {
+    background-color: #A490D5;
+    color: #fff;
+    border-color: #A490D5;
+}
+
+.form-joinin .btn:not(:hover) {
+    background-color: transparent;
+    border: 1px solid #A490D5;
+    color: #A490D5;
+}

@@ -54,7 +54,8 @@ body {
 }
 
 .pp_position a:hover {
-  color: #33ffcc;
+  color: #a490d5;
+  /* color: #33ffcc; */
   font-weight: bold;
 }
 
@@ -66,7 +67,8 @@ body {
   font-size: 16px;
   font-weight: 900;
   color: #333333;
-  box-shadow: inset 0 -10px 1px #33ffcc;
+  box-shadow: inset 0 -10px 1px #a490d5;
+  /* box-shadow: inset 0 -10px 1px #33ffcc; */
   font-family: "GmarketSansMedium";
 }
 

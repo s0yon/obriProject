@@ -56,8 +56,10 @@ hr {
 }
 /* End IE5-Mac hack */
 #tabs a:hover span {
-  color: #33ffcc;
+  color: #a490d5;
+  /* color: #33ffcc; */
 }
+
 #tabs a:hover {
   background-position: 0% -42px;
 }

@@ -91,7 +91,8 @@
 
 .header_inner .gnb a:hover,
 .header_inner .gnb li a:hover {
-  color: #33ffcc;
+  color: #a490d5;
+  /* color: #33ffcc; */
 }
 
 .header_inner .logo {
@@ -146,7 +147,8 @@
 }
 
 .header_inner .companyservice a:hover {
-  color: #33ffcc;
+  color: #a490d5;
+  /* color: #33ffcc; */
   background-color: #0d0d26;
   border: 1px solid #0d0d26;
 }
@@ -204,7 +206,8 @@
   width: 22px;
   height: 20px;
   color: #0d0d26;
-  background-color: #33ffcc;
+  background-color: #a490d5;
+  /* background-color: #33ffcc; */
   border-radius: 5px;
   text-align: center;
   line-height: 20px;

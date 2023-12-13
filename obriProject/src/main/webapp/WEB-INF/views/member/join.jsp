@@ -47,7 +47,7 @@
 							maxlength="12" oninput="numberMaxLength(this);">
 					</div>
 					<div class="col mb-1">
-						<button type="button" class="btn fw-bold" onclick="checkId()"
+						<button type="button" class="btn btn-outline-dark" onclick="checkId()"
 							style="font-size: 14px;" >중복확인</button>
 					</div>
 				</div>
@@ -91,7 +91,7 @@
 			<div class="row mb-3">
 				<label for="userMajor" class="form-label" align="left">전공</label> <input
 					type="text" class="form-control" id="userMajor" name="userMajor"
-					placeholder="ex)첼로">
+					placeholder="ex)바이올린">
 			</div>
 
 			<div class="row mb-3">
@@ -104,14 +104,14 @@
 			</div>
 
 			<br>
-			<button class="btn w-100 pr-100 fw-bold" type="submit">회원가입</button>
+			<button class="btn btn-outline-dark w-100 pr-100 fw-bold" type="submit">회원가입</button>
 
 			<p class="mt-4 mb-3 text-body-secondary" align="center"
 				style="font-size: 90%">
 				이미 회원이신가요?&nbsp;<a href="login.do" style="color: gray">로그인</a>
 			</p>
 
-			<p class="mt-5 mb-3 text-body-secondary" align="center"
+			<p class="mt-5 mb-3 text-body-dark" align="center"
 				style="font-size: 80%">&copy; 2023. 1조</p>
 		</form>
 	</main>

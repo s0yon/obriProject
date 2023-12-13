@@ -49,7 +49,8 @@
 
 	<!-- 문의 첨부파일이름 가져오기 -->
 	<select id="qnaFile" parameterType="int" resultType="Map">
-		select qnaFile
+		select
+		qnaFile
 		from qnaBoard
 		where qnaNo = #{qnaNo}
 	</select>
@@ -61,7 +62,7 @@
 			(qnaNo, userId, qnaSub, qnaText, qnaFile, qnaDate,
 			qnaUpdate, qnaDelYn)
 			values
-			(qna_no_seq.nextval, 'test', #{qnaSub},
+			(qna_no_seq.nextval, #{userId, jdbcType=VARCHAR}, #{qnaSub},
 			#{qnaText}, #{qnaFile, jdbcType=VARCHAR},
 			SYSDATE, SYSDATE, 'N')
 		</if>
@@ -69,7 +70,7 @@
 			(qnaNo, userId, qnaSub, qnaText, qnaDate, qnaUpdate,
 			qnaDelYn)
 			values
-			(qna_no_seq.nextval, #{userId}, #{qnaSub}, #{qnaText},
+			(qna_no_seq.nextval, #{userId, jdbcType=VARCHAR}, #{qnaSub}, #{qnaText},
 			SYSDATE, SYSDATE, 'N')
 		</if>
 	</insert>

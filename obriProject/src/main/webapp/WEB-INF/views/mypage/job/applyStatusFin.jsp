@@ -71,7 +71,7 @@ pageEncoding="UTF-8"%> <%@ include file="../layout/header.jsp"%>
         >
           <input
             type="text"
-            placeholder="공고 제목 검색"
+            placeholder="공고 제목/내용 검색"
             name="keyword"
             value="${sessionScope.referer != null ? sessionScope.referer.keyword : ''}"
           />

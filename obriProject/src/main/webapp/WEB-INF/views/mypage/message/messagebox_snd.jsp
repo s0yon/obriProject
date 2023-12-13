@@ -147,20 +147,20 @@
 <div id="wrap">
 	<div id="pp_wrap">
 		<div class="pp_menu">
-			<p class="pp_title">쪽지함</p>
+			<p class="pp_title">✉️쪽지함</p>
 			<ul>
-				<li class="pp_position"><a href="messagebox_rcv.do">받은 쪽지</a></li>
-				<li class="pp_proposal"><a href="messagebox_snd.do">보낸 쪽지</a></li>
+				<li class="pp_position"><a href="messagebox_rcv.do">rcv</a></li>
+				<li class="pp_proposal"><a href="messagebox_snd.do">send</a></li>
 			</ul>
 		</div>
 
 
 		<div class="pp_contents">
-			<p class="pp_sub_title">보낸 쪽지함</p>
+			<p class="pp_sub_title">📤 📨보낸 쪽지함</p>
 			<!-- 내용 검색창 -->
 			<div class="pp_search">
 				<form name="searchProposal" action="messagebox_snd.do">
-					<input id="keyInTxt" type="text" placeholder="쪽지내용 검색"
+					<input id="keyInTxt" type="text" placeholder="내용/수신인 검색"
 						name="keyInTxt"
 						value="${sessionScope.referer != null ? sessionScope.referer.keyInTxt : ''}">
 					<button class="btn_search" type="submit"></button>

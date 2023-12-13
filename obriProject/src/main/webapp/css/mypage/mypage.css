@@ -61,7 +61,8 @@ body {
 .mp_account .mp_img {
   width: 80px;
   height: 80px;
-  background: #33ffcc;
+  background: #a490d5;
+  /* background: #33ffcc; */
   display: block;
   margin: 0 auto;
   border-radius: 80px;
@@ -111,7 +112,8 @@ body {
 }
 
 .mp_acc_setting button a:hover {
-  color: #33ffcc;
+  color: #a490d5;
+  /* color: #33ffcc; */
 }
 
 .mp_status {
@@ -139,7 +141,8 @@ body {
   width: 22px;
   height: 15px;
   color: #0d0d26;
-  background-color: #33ffcc;
+  background-color: #a490d5;
+  /* background-color: #33ffcc; */
   border-radius: 5px;
   text-align: center;
   vertical-align: middle;
@@ -188,7 +191,8 @@ body {
 }
 
 .mypage .btn_proposal button a:hover {
-  color: #33ffcc;
+  color: #a490d5;
+  /* color: #33ffcc; */
   background-color: #0d0d26;
   border: 1px solid #0d0d26;
 }
@@ -212,7 +216,8 @@ body {
 }
 
 .mypage .btn_application button a:hover {
-  color: #33ffcc;
+  color: #a490d5;
+  /* color: #33ffcc; */
   background-color: #0d0d26;
   border: 1px solid #0d0d26;
 }
@@ -221,7 +226,8 @@ body {
   width: 22px;
   height: 15px;
   color: #0d0d26;
-  background-color: #33ffcc;
+  background-color: #a490d5;
+  /* background-color: #33ffcc; */
   border-radius: 5px;
   text-align: center;
   vertical-align: middle;
@@ -253,7 +259,8 @@ body {
 }
 
 .mp_app_all:hover a p {
-  color: #33ffcc;
+  color: #a490d5;
+  /* color: #33ffcc; */
 }
 
 .mp_app_all .mp_all_count {
@@ -277,7 +284,8 @@ body {
 }
 
 .mp_app:hover a p {
-  color: #33ffcc;
+  color: #a490d5;
+  /* color: #33ffcc; */
 }
 
 .mp_app .mp_count {
@@ -301,7 +309,8 @@ body {
 }
 
 .mp_app_final:hover a p {
-  color: #33ffcc;
+  color: #a490d5;
+  /* color: #33ffcc; */
 }
 
 .mp_app_final .mp_final_count {
@@ -345,14 +354,16 @@ body {
   color: #333333;
   font-size: 16px;
   display: inline;
-  box-shadow: inset 0 -10px 1px #33ffcc;
+  box-shadow: inset 0 -10px 1px #a490d5;
+  /* box-shadow: inset 0 -10px 1px #33ffcc; */
 }
 
 .mp_position button {
   width: 197px;
   height: 38px;
   border-radius: 50px;
-  background: #33ffcc;
+  background: #a490d5;
+  /* background: #33ffcc; */
   border: none;
   text-align: center;
   line-height: 38px;
@@ -370,7 +381,8 @@ body {
 }
 
 .mp_position button a:hover {
-  color: #33ffcc;
+  color: #a490d5;
+  /* color: #33ffcc; */
 }
 
 .mp_recommend {
@@ -399,7 +411,8 @@ body {
 }
 
 .mp_reco1:hover a .mp_reco_com_title {
-  color: #33ffcc;
+  color: #a490d5;
+  /* color: #33ffcc; */
 }
 
 .mp_reco1:hover a .mp_reco_com_content {
@@ -420,7 +433,8 @@ body {
 }
 
 .mp_reco2:hover a .mp_reco_com_title {
-  color: #33ffcc;
+  color: #a490d5;
+  /* color: #33ffcc; */
 }
 
 .mp_reco2:hover a .mp_reco_com_content {
@@ -441,7 +455,8 @@ body {
 }
 
 .mp_reco3:hover a .mp_reco_com_title {
-  color: #33ffcc;
+  color: #a490d5;
+  /* color: #33ffcc; */
 }
 
 .mp_reco3:hover a .mp_reco_com_content {
@@ -462,7 +477,8 @@ body {
 }
 
 .mp_reco4:hover a .mp_reco_com_title {
-  color: #33ffcc;
+  color: #a490d5;
+  /* color: #33ffcc; */
 }
 
 .mp_reco4:hover a .mp_reco_com_content {

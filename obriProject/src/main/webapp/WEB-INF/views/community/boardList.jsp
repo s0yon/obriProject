@@ -109,12 +109,14 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>;
 											<fmt:formatDate var="today"  
 												value="<%=new Date()%>" pattern="yy/MM/dd" />
 										 	<fmt:formatDate var="dbtoday" value="${community.commDate}"  pattern="yy/MM/dd" />
+										 	
 										 	 	<a href="boardContent.do?commNo=${community.commNo}&pageNum=${pp.currentPage}">
 														${community.commSub} <!-- 조회수 30 이상이면  -->
 											 		<c:if test="${dbtoday == today }">
 														<img alt="" src="images/new.png" width="20" height="10">
 													</c:if>
 												</a>
+												
 										</td>
 										<td>${community.userId}</td>
 										<td>
