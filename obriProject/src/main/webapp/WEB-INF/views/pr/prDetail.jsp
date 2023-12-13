@@ -3,18 +3,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE HTML>
-<%
 
-%>
 <html>
 <head>
+	
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no">
 <title>홍보 상세 페이지</title>
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 
@@ -26,119 +24,107 @@
 <link rel="stylesheet" href="./css/prstyle.css">
 
 <script>
-	/* 콘트롤러에서 가져온 데이터들은 jquery 안에서 선언해주면 안된다. 다른되서 못쓴다. */
-	
-	var sessionId = '<%=(String) session.getAttribute("userId")%>';
-	console.log(sessionId);
-	let userId = '${map['USERID']}';
-	let PageNum = '${pageNum}';
-	const prLikeStatus = '${prLikeStatus}';
-	
-	/* 여기 부분이 좋아요! 최초에 페이지에 들어갈 때 이미지를 분류 하는 곳입니다. */
-	$(document).ready(function() {
-		if(sessionId == userId){ // 로그인 아이디와 상세페이지 등록자 아이디가 같으면
-			$("#updelButton").show();
-		} else {
-			console.log("들어왔나?1");
-			$("#updelButton").hide();
-		}
-		
-		console.log("라이크status"+ prLikeStatus);
-		console.log(${map['PRNO']});
-		console.log("세션IDID"+ sessionId);
-		
-		let likeImageEle = $("#likeImage");
-		
-		 if (prLikeStatus == 'Y') {
-			 	console.log("여기가 YY");
-			 	likeImageEle.attr("src", "${path}/images/pr/prLikeColor.png");
-		    } else {
-		    	console.log("여기가 NN");
-		    	likeImageEle.attr("src", "${path}/images/pr/prLikeBlack.png");
-		    	
-		    }
-		 
-		 // 팝업 버튼 클릭 시 미로그인은 쪽지 보내지 못하게 하기 
-		 $("#messageBtn").click(function(){
-			 if(sessionId === 'null'){
-				 alert("로그인 후 가능합니다.")
-				 return false;
-			 }
-		 });
-	
-	});
-	
-	function prDelete(prNo){
-		
-		console.log("번호"+ prNo);
-		
-		if(confirm("삭제 하시겠습니까??") == true){
-			location.href = '${path}/prDetailDelete.do?pageNum=${pageNum}&prNo='+prNo;
-		}else {
-			return false;
-		}
-	}
-	
- 	function message(){
- 
-   		let msgText = $("#msgText").val();
-//  		const recvId = ${map['USERID']};
-  		let jsonData = {
-  				userId : '<%=request.getAttribute("id")%>',
-  				recvId : userId,
-  				msgText : msgText
-  		};
- 		
-  		$.ajax({
- 			method: "POST",
- 			url: "msgInsert.do",
- 			contentType : "application/json; charset=utf-8",
- 			data : JSON.stringify(jsonData),
-			
- 		}).done(function(data) {
-			
- 			console.log(data);
- 				if(data == 1){
- 					alert("전송 성공하였습니다.");
- 					$('#myModal').modal('hide');
- 				}else {
- 					alert("전송 실패하였습니다.");
- 				}
- 		});
-  	}
-	
- 	/* 좋아요 ajax부분입니다. */
- 	function prLike(){
- 		
- 		if(sessionId === 'null'){
- 			alert("로그인 후 가능합니다.");
- 			return false;
- 		}
- 		
- 		//likeImage
- 		  let likePrNo = ${map['PRNO']};
- 	      let likeUserId = sessionId;
-  	  	  let jsonData = { prNo : likePrNo,
- 					       userId : likeUserId 
-	 				     };
- 		
-	  $.ajax({
-			method: "POST",
-			url: "prLike.do",
-			contentType : "application/json; charset=utf-8",
-			data : JSON.stringify(jsonData),
-			
-		}).done(function(data) {
-			 let likeImageElement = $("#likeImage");
-			
-			 if (data.prLike == 'Y') { // Y 이면 좋아요
-			      likeImageElement.attr("src", "${path}/images/pr/prLikeColor.png");
-			 } else { // N 이면 좋아요 취소
-			      likeImageElement.attr("src", "${path}/images/pr/prLikeBlack.png");
-			 }
-		});
-	}
-	</script>
+    var j = jQuery.noConflict();
+    
+    var sessionId = '<%=(String) session.getAttribute("userId")%>';
+    console.log(sessionId);
+    let userId = '${map['USERID']}';
+    let PageNum = '${pageNum}';
+    const prLikeStatus = '${prLikeStatus}';
+
+    j(document).ready(function() {
+        if(sessionId == userId){
+            j("#updelButton").show();
+        } else {
+            console.log("들어왔나?1");
+            j("#updelButton").hide();
+        }
+
+        console.log("라이크status"+ prLikeStatus);
+        console.log(${map['PRNO']});
+        console.log("세션IDID"+ sessionId);
+
+        let likeImageEle = j("#likeImage");
+
+        if (prLikeStatus == 'Y') {
+            console.log("여기가 YY");
+            likeImageEle.attr("src", "${path}/images/pr/prLikeColor.png");
+        } else {
+            console.log("여기가 NN");
+            likeImageEle.attr("src", "${path}/images/pr/prLikeBlack.png");
+
+        }
+
+        j("#messageBtn").click(function(){
+            if(sessionId === 'null'){
+                alert("로그인 후 가능합니다.")
+                return false;
+            }
+        });
+
+    });
+
+    function prDelete(prNo) {
+        console.log("번호"+ prNo);
+
+        if(confirm("삭제 하시겠습니까??") == true){
+            location.href = '${path}/prDetailDelete.do?pageNum=${pageNum}&prNo='+prNo;
+        } else {
+            return false;
+        }
+    }
+
+    function message() {
+        let msgText = j("#msgText").val();
+        let jsonData = {
+            userId : '<%=request.getAttribute("id")%>',
+            recvId : userId,
+            msgText : msgText
+        };
+
+        j.ajax({
+            method: "POST",
+            url: "msgInsert.do",
+            contentType : "application/json; charset=utf-8",
+            data : JSON.stringify(jsonData),
+        }).done(function(data) {
+            console.log(data);
+            if(data == 1){
+                alert("전송 성공하였습니다.");
+                j('#myModal').modal('hide');
+            } else {
+                alert("전송 실패하였습니다.");
+            }
+        });
+    }
+
+    function prLike() {
+        if (sessionId === 'null') {
+            alert("로그인 후 가능합니다.");
+            return false;
+        }
+
+        let likePrNo = ${map['PRNO']};
+        let likeUserId = sessionId;
+        let jsonData = { prNo: likePrNo, userId: likeUserId };
+
+        j.ajax({
+            method: "POST",
+            url: "prLike.do",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(jsonData),
+        }).done(function (data) {
+            let likeImageElement = j("#likeImage");
+
+            if (data.prLike == 'Y') {
+                likeImageElement.attr("src", "${path}/images/pr/prLikeColor.png");
+            } else {
+                likeImageElement.attr("src", "${path}/images/pr/prLikeBlack.png");
+            }
+        });
+    }
+</script>
+
 <body>
 	<!-- header -->
 	<c:import url="/WEB-INF/views/navbar.jsp" />
@@ -161,9 +147,10 @@
 					</div>
 					<!-- 좋아요! -->
 					<div class="col-5 col-11-small prDetailSub">
-						<h3>${map['USERNAME']}<span><img id="likeImage"
-								class="likeImage" src="${path}/images/pr/prLikeBlack.png"
-								onclick="prLike()"></span>
+						<h3>${map['USERNAME']}
+						<span><img id="likeImage"
+								class="likeImage" src="./images/pr/prLikeBlack.png"
+								onclick="prLike()" width="20px" height="20px"></span>
 						</h3>
 						<br>
 
