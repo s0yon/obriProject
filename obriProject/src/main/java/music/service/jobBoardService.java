@@ -54,4 +54,8 @@ public class jobBoardService {
 		System.out.println("서비스 쪽에서"+jobNo);
 		return jbd.updateAppDone(jobNo);
 	}
+	
+	public int AppCheckTotal(int jobNo) {
+		return jbd.AppCheckTotal(jobNo);
+	}
 }

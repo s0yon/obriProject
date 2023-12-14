@@ -160,6 +160,8 @@ public class JobBoardController {
         e.printStackTrace();
     }
 	
+	int appTotal = jbs.AppCheckTotal(jobNo);
+	model.addAttribute("appTotal", appTotal); 
 	model.addAttribute("jobboard", jobboard);
 	model.addAttribute("jobAddress", jobboard.getJobAddress());
 	model.addAttribute("lat", coordinates[0]);
