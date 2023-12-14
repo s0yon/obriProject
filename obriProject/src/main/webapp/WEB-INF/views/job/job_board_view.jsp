@@ -295,11 +295,11 @@ function jobAppModalPage(currentPage) {
 							<div class="row">
 								<div class="col-sm-10 pl-5 ml-1 align-self-center">모집인원 : ${jobboard.jobSpace} 명</div>
 								<div class="col-sm-1 apply-button">
-									<c:if test="${sessionScope.userId != jobboard.userId}">
+									<c:if test="${sessionScope.userId != jobboard.userId && !empty sessionScope.userId}' ">
 										<input type="button" class="btn" data-bs-toggle="modal"
 											data-bs-target="#jobApply" value="신청" style="font-size: 14px; font-weight: bold;">
 									</c:if>
-									<c:if test="${sessionScope.userId == jobboard.userId}">
+									<c:if test="${sessionScope.userId == jobboard.userId && !empty sessionScope.userId}' ">
 										<input type="button" class="btn" data-bs-toggle="modal"
 											data-bs-target="#jobAppModal" onclick="jobAppModalPage(1)"
 											value="신청자" style="font-size: 14px; font-weight: bold;">
@@ -324,8 +324,7 @@ function jobAppModalPage(currentPage) {
 						</td>
 					</tr>
 					<tr>
-						<td class="text-center"><c:if
-								test="${sessionScope.userId == jobboard.userId}">
+						<td class="text-center"><c:if test="${sessionScope.userId == jobboard.userId && !empty sessionScope.userId}' ">
 								<div id="jobboard_menu" class="menu-buttons mb-3">
 									<div class="menu-button-group=">
 										<input type="button" value="수정" class="btn"
