@@ -8,9 +8,9 @@
       values (app_no_seq.nextval,#{jobNo},#{userId},'N','N','N')   
    </insert>
    
-   <select id="getAllTotal" parameterType="jobapp" resultType="int">
+	<select id="getAllTotal" parameterType="jobapp" resultType="int">
       select count(*) from jobApp where userId=#{userId} and jobNo=#{jobNo}
-   </select>
+   </select>  
    
    <select id="selectAppList" parameterType="jobapp" resultType="Map">
        select * from (select jobApp.*,rowNum rn from 

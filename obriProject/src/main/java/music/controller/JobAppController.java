@@ -36,6 +36,8 @@ public class JobAppController {
 	      System.out.println("userId:"+jobapp.getUserId());
 	      
 	      int all = jas.getAllTotal(jobapp); // 신청자검색
+	      System.out.println("all:"+all);
+	      
 	      if (all == 0) { // 처음 구직신청을 한경우
 	         jas.insertApply(jobapp);
 	      } else { // 예전에 한번 신청하고 취소 한 경우
