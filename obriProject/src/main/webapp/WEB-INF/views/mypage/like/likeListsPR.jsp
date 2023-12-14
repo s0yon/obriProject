@@ -14,7 +14,7 @@
 			<div class="select_all">
 				<select class="all" id="positionCode" name="prmajorName" onchange="ChangeValue('positionCode')">
 					<option value="all" ${empty param.prmajorName ? 'selected' : ''}>전체 포지션(전공)</option>
-					<c:if test="${prMajor.length > 0}">
+					<c:if test="${!empty prMajor}">
 						<c:forEach var="PrMajors" items="${PrMajors}">
 							<option value="${PrMajors.prMajor}" ${param.prmajorName eq PrMajors.prMajor ? 'selected' : ''}>${PrMajors.prMajor}</option>
 						</c:forEach>
@@ -56,8 +56,8 @@
 						onchange="ChangeValue('skillsCode')">
 					<option value="all" ${empty param.prhashName ? 'selected' : ''}>해시태그</option>
 					<c:if test="${!empty PrHashes}">
-						<c:forEach var="PrHashes" items="${PrHashes}">
-							<option value="${PrHashes.prHash}" ${param.prhashName eq PrHashes.prHash ? 'selected' : ''}>#${PrHashes.prHash}</option>
+						<c:forEach var="hashTags" items="${PrHashes}">
+							<option value="${hashTags.prHash}" ${param.prhashName eq hashTags.prHash ? 'selected' : ''}>#${hashTags.prHash}</option>
 						</c:forEach>
 					</c:if>
 				</select>

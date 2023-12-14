@@ -108,8 +108,8 @@
 							<select name="jobplaceName" id="selectPlace">
 								<option value="all" ${empty param.jobplaceName ? 'selected' : ''}>지역</option>
 								<c:forEach var="JobPlaces" items="${JobPlaces}">
-									<option value="${JobPlaces.jobplace}" ${param.jobplaceName eq JobPlaces.jobplace ? 'selected' : ''}>
-										${JobPlaces.jobplace}</option>
+									<option value="${JobPlaces.jobAddress}" ${param.jobplaceName eq JobPlaces.jobAddress ? 'selected' : ''}>
+										${JobPlaces.jobAddress}</option>
 								</c:forEach>
 							</select>
 							<select name="jobcdName" class="select_position" id="selectCategory">

@@ -53,7 +53,7 @@
 
 .footer_inner .top li a {
   font-size: 12px;
-  /* color: #f4f4f4; */
+  color: #f4f4f4;
 }
 
 .footer_inner .bottom {
@@ -62,11 +62,11 @@
 
 .footer_inner .bottom p {
   font-size: 10px;
-  /* color: #f4f4f4; */
+  color: #f4f4f4;
   line-height: 14px;
 }
 
 .footer_inner .top a:hover {
   color: #a490d5;
-  /* color: #33ffcc; */
+  color: #33ffcc;
 }

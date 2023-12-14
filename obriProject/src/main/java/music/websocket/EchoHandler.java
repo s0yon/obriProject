@@ -46,16 +46,16 @@ public class EchoHandler extends TextWebSocketHandler{
 	}
 	
 	// 웹소켓 email 가져오기
-	private String getEmail(WebSocketSession session) {
-		Map<String, Object> httpSession = session.getAttributes();
-		memberVO loginUser = (memberVO)httpSession.get("memberVO");
-		
-		if(loginUser == null) {
-			return session.getId();
-		} else {
-			return loginUser.getUserEmail();
-		}
-	}
+//	private String getEmail(WebSocketSession session) {
+//		Map<String, Object> httpSession = session.getAttributes();
+//		memberVO loginUser = (memberVO)httpSession.get("memberVO");
+//		
+//		if(loginUser == null) {
+//			return session.getId();
+//		} else {
+//			return loginUser.getUserEmail();
+//		}
+//	}
 	
 	// 세션 로그인 사용자 Id 가져옴
 	private String getId (WebSocketSession session) {

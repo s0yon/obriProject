@@ -290,23 +290,38 @@
 	
 	<!-- prBoard에서 'prMajor'컬럼, 'prLoc'컬럼, 'prHash'컬럼 -->
 	<select id="findAllPrCareers" resultType="PrBoard">
-		SELECT DISTINCT prB.prCareer
-		FROM prBoard prB
+		SELECT DISTINCT 
+		CASE WHEN prCareer IS NULL OR prCareer = 0 THEN '경력없음'
+		ELSE prCareer || '년'
+		END AS prCareer
+		FROM prBoard
+		WHERE prCareer IS NOT NULL
+		ORDER BY prCareer ASC
 	</select>
 	
 	<select id="findAllPrMajors" resultType="PrBoard">
-		SELECT DISTINCT prB.prMajor
-		FROM prBoard prB
+		SELECT DISTINCT prMajor
+		FROM prBoard
+		WHERE prMajor IS NOT NULL
+		ORDER BY prMajor ASC
 	</select>
 	
 	<select id="findAllPrLocs" resultType="PrBoard">
-		SELECT DISTINCT prB.prLoc
-		FROM prBoard prB
+		SELECT DISTINCT prLoc
+		FROM prBoard
+		WHERE prLoc IS NOT NULL
+		ORDER BY prLoc ASC
 	</select>
 	
+	<!-- prHash 열의 값을 # 문자를 기준으로 분할 -->
 	<select id="findAllPrHashes" resultType="PrBoard">
-		SELECT DISTINCT prB.prHash
-		FROM prBoard prB
+		SELECT DISTINCT
+		  TRIM(REGEXP_SUBSTR(pr.prHash, '[^#]+', 1, LEVEL)) AS prHash
+		FROM prBoard pr
+		WHERE pr.prHash IS NOT NULL
+		AND TRIM(REGEXP_SUBSTR(pr.prHash, '[^#]+', 1, LEVEL)) IS NOT NULL
+		CONNECT BY LEVEL &lt;= LENGTH (REGEXP_REPLACE(pr.prHash, '[^#]+')) + 1
+		ORDER BY prHash ASC
 	</select>
 	
 	<!-- PR 페이지 처리 -->
