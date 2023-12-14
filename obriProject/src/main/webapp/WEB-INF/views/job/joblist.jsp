@@ -82,7 +82,7 @@
 						<th width="10%">번호</th>
 						<th width="30%">제목</th>
 						<th width="20%">작성자</th>
-						<th width="15%">모집마감일</th>
+						<th width="15%">구인마감일</th>
 						<th width="15%">공연일</th>
 						<th width="10%">조회수</th>
 					</tr>
