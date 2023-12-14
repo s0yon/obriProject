@@ -1,6 +1,8 @@
 package music.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,11 +13,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import music.model.communityVO;
+import music.model.jobBoardVO;
 import music.service.PagingPgm;
 import music.service.communityService;
+import music.service.jobBoardService;
 
 @Controller
 public class HomeController {
+	
+	// 구인 서비스 주입
+	@Autowired
+	private jobBoardService jbs;
 	
 	// 커뮤니티 서비스 주입
 	@Autowired
@@ -27,9 +35,42 @@ public class HomeController {
 		return "home";
 	}
 
+	// 메인 페이지 게시판 연동 - 구인 목록
+	@RequestMapping("jobboardListShow.do")
+	public String jobList(String pageNum, jobBoardVO job, Model model) {
+
+		final int rowPerPage = 7; // 화면에 출력할 데이터 갯수
+		if (pageNum == null || pageNum.equals("")) {
+			pageNum = "1";
+		}
+		int total = 0;
+
+		int currentPage = Integer.parseInt(pageNum); // 현재 페이지번호
+
+		total = jbs.getJobTotal(job); // 검색
+
+		int startRow = (currentPage - 1) * rowPerPage + 1;
+		int endRow = startRow + rowPerPage - 1;
+		PagingPgm pp = new PagingPgm(total, rowPerPage, currentPage);
+		job.setStartRow(startRow);
+		job.setEndRow(endRow);
+
+		int no = total - startRow + 1;
+		
+		List<Map<String, Object>> joblist = new ArrayList<Map<String,Object>>();
+		joblist = jbs.jobList(job);
+		
+		model.addAttribute("joblist", joblist);
+		model.addAttribute("no", no);
+		model.addAttribute("pp", pp);
+		model.addAttribute("pageNum", pageNum);		
+
+		return "jobboardListShow";
+	}
+	
 	// 메인 페이지 게시판 연동 - 커뮤니티 목록
-	@RequestMapping("boardListShow.do")
-	public String list(String pageNum, communityVO community,  Model model) {
+	@RequestMapping("commboardListShow.do")
+	public String commList(String pageNum, communityVO community,  Model model) {
 
 		// 정렬 값(sort)이 없는 경우(초기 실행)
 		if (community.getSort() == null) {
@@ -64,7 +105,7 @@ public class HomeController {
 		model.addAttribute("no", no);
 		model.addAttribute("pp", pp);
 
-		return "boardListShow";
+		return "commboardListShow";
 	}	
 	
 	// 네이버 로그인

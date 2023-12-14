@@ -109,10 +109,10 @@
 					</div>
 				</div>
 				<div class="item">
-					<iframe src="boardListShow.do" frameborder="0" scrolling="no"
+					<iframe src="jobboardListShow.do" frameborder="0" scrolling="no"
 						style="width: 500px; height: 300px;" class="no-margin"></iframe>
 				</div>
-				<div class="btn_plus" onclick="location.href='boardList.do'"
+				<div class="btn_plus" onclick="location.href='joblist.do'"
 					style="cursor: pointer;">
 					<span class="fa-solid fa-plus fa-2xl"></span>
 				</div>
@@ -127,7 +127,7 @@
 					</div>
 				</div>
 				<div class="item">
-					<iframe src="boardListShow.do" frameborder="0" scrolling="no"
+					<iframe src="commboardListShow.do" frameborder="0" scrolling="no"
 						style="width: 500px; height: 300px;" class="no-margin"></iframe>
 				</div>
 				<div class="btn_plus" onclick="location.href='boardList.do'"
