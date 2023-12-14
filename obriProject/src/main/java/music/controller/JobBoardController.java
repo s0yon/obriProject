@@ -97,11 +97,10 @@ public class JobBoardController {
 //		System.out.println("섹션아이디받음"+ userId);
 		
 		Map<String, Object> map = (Map<String, Object>)jbs.selectJobMember(userId);
-		
-//	   String userName = (String)map.get("userName");
+// 	    String userName = (String)map.get("userName");
+//		System.out.println("map받음"+ map.get("userName"));
 	    
 	    //jobBoardVO jobboard = new jobBoardVO(); 
-//		System.out.println("map받음"+ map.get("userName"));
 //		System.out.println("jobboard:"+jobboard.getJobEndDate());
 //		System.out.println("jobboard:"+jobboard.getJobConcert());
 //		System.out.println("jobboard:"+jobboard.toString());
@@ -121,7 +120,7 @@ public class JobBoardController {
 	@RequestMapping("job_board_view.do")
 	public String job_board_view(int jobNo, String pageNum, String state, Model model, HttpSession session) throws Exception {
 		
-		session.setAttribute("userId", "itkorea");
+//		session.setAttribute("userId", "itkorea");
 		String userId = (String) session.getAttribute("userId");
 		
 		if(state.equals("cont")) {
@@ -129,6 +128,7 @@ public class JobBoardController {
 		}
 		
 	jobBoardVO jobboard = jbs.getJobboard(jobNo);	// 상세정보 구하기
+	jobboard.setUserId(userId); // 세션에 있는
 	
 	System.out.println("상세정보구하기 성공");
 	model.addAttribute("jobboard", jobboard);

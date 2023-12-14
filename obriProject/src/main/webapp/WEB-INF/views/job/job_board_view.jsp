@@ -8,21 +8,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>구인</title>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-	crossorigin="anonymous">
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css"
+	rel="stylesheet">
 <script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-	crossorigin="anonymous"></script>
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- 사용자 정의 스타일 -->
+<link rel="stylesheet" href="./css/viewpage.css">
+
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="http://maps.googleapis.com/maps/api/js">
-	
-</script>
+<script src="http://maps.googleapis.com/maps/api/js"></script>
 <script
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEM3FEmY5ecJzAkXH9TDRAs1MaXpSWtME"
 	type="text/javascript"></script>
@@ -57,9 +60,9 @@
 
 	// 댓글
 	$(function() {
-		console.log("넘버"+${jb.jobNo});
+		console.log("넘버"+${jobboard.jobNo});
 // 		console.log("패스"+ ${path});
- 		$('#rlist').load('${path}/rlist/jobNo/${jb.jobNo}/let.do')
+ 		$('#rlist').load('${path}/rlist/jobNo/${jobboard.jobNo}/let.do')
 // 		$.get('${path}/rlist/jobNo/${jobBoard.jobNo}/let.do', function(data) {
 //      $('#rlist').html(data);
 //    	});
@@ -88,7 +91,7 @@ function jobAppModalPage(currentPage) {
       console.log("현재페이지 +"+currentPage);
       pageGingPage = currentPage;
 
-      $.get('${path}/jobAppList.do',{ pageNum: pageGingPage, jobNo: '${jb.jobNo}' }, function(data){
+      $.get('${path}/jobAppList.do',{ pageNum: pageGingPage, jobNo: '${jobboard.jobNo}' }, function(data){
     	    console.log(data);
     	    console.log(data.pp.currentPage);
     	    console.log(data.pp.rowPerPage);
@@ -97,7 +100,6 @@ function jobAppModalPage(currentPage) {
     	}).fail(function(error) {
     	    console.error('Ajax 요청 실패:', error);
     	});
-
         
          function makeApp(data){
         	 // 페이지 이동시 내용을 삭제 하기 위한 처리
@@ -145,7 +147,6 @@ function jobAppModalPage(currentPage) {
          }// end movePage
          
   } // end jobAppModalPage 
-
   
   // 구인 확정
   function confirmApp(jobNo,appNo , appUserId){
@@ -181,11 +182,7 @@ function jobAppModalPage(currentPage) {
    $("#receiver").val(userName);
    rowUserId = userId;
    console.log("줄의 아이디"+rowUserId);
-   
-	  }
-
-
-
+   }
 	  function message(){
 		  let msgText = $("#msgText").val();
 		  
@@ -195,7 +192,7 @@ function jobAppModalPage(currentPage) {
 			return false;
 		  }
 		  
-		  console.log(msgText);
+	console.log(msgText);
 //   		  rowUserId = userId; 
 	  console.log("정말되요?"+'<%=request.getAttribute("userId")%>');
 	  console.log(rowUserId);
@@ -230,199 +227,213 @@ function jobAppModalPage(currentPage) {
 	  }
 </script>
 <body>
-	<div id="table">
-		<table class="table">
-			<tr>
-				<td>제목</td>
-				<td colspan="8">${jb.jobSub}</td>
-			</tr>
-			<tr>
-				<td>작성자</td>
-				<td colspan="3">${jb.userId}</td>
-				<td>작성일</td>
-				<td colspan="2"><fmt:formatDate value="${jb.jobDate}"
-						pattern="yyyy-MM-dd" /></td>
-				<td>조회수</td>
-				<td>${jb.jobRcount}</td>
-			</tr>
-			<tr>
-				<td>모집 마감일</td>
-				<td colspan="8"><fmt:formatDate value="${jb.jobEndDate}"
-						pattern="yyyy-MM-dd" /></td>
-			</tr>
-			<tr>
-				<td>공연일</td>
-				<td colspan="8"><fmt:formatDate value="${jb.jobConcert}"
-						pattern="yyyy-MM-dd" /></td>
-			</tr>
-			<tr>
-				<td>분류</td>
-				<td colspan="8">${jb.jobCd}</td>
-			</tr>
-			<tr>
-				<td>내용</td>
-				<td colspan="8">${jb.jobText}</td>
-			</tr>
-			<tr>
-				<td>주소</td>
-				<td colspan="8">${jb.jobAddress}</td>
-			</tr>
-			<tr>
-				<td colspan="8">
-					<div id="googleMap" style="width: 400px; height: 250px;"></div>
-				</td>
-				<td><c:if test="${sessionScope.userId == jb.userId}">
-					<div id="jobboard_menu" class="menu-buttons">
-						<div class="menu-button-group">
-							<input type="button" value="수정"
-								class="btn btn-sm btn-outline-secondary"
-								onClick="location='job_board_view.do?jobNo=${jb.jobNo}&pageNum=${pageNum}&state=edit'">
-							<button type="button" class="btn btn-sm btn-outline-secondary"
-								data-bs-toggle="modal" data-bs-target="#jobDel">삭제</button>
-						</div></div>
-					</c:if>
-					 <c:if test="${sessionScope.userId != jb.userId}">
-						<div class="apply-button">
+<body class="bg-body-tertiary">
+	<c:import url="/WEB-INF/views/navbar.jsp" />
+	<div class="container-sm">
+		<main>
+			<div class="d-flex justify-content-between my-3 py-3 border-bottom">
+				<h3 class="font-weight-bold text-dark">구인</h3>
+			</div>
+			<table>
+				<thead class="container">
+					<tr>
+						<th colspan="2">${jobboard.jobSub}</th>
+						<th>작성자</th>
+						<th>${jobboard.userId}</th>
+						<th>조회수</th>
+						<th>${jobboard.jobRcount}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th>작성일</th>
+						<td colspan="5"><fmt:formatDate value="${jobboard.jobDate}"
+								pattern="yyyy-MM-dd" /></td>
+					<tr>
+						<th>모집마감일</th>
+						<td colspan="5"><fmt:formatDate value="${jobboard.jobEndDate}"
+								pattern="yyyy-MM-dd" /></td>
+					</tr>
+					<tr>
+						<th>공연일</th>
+						<td colspan="5"><fmt:formatDate value="${jobboard.jobConcert}"
+								pattern="yyyy-MM-dd" /></td>
+					</tr>
+					<tr>
+						<th>분류</th>
+						<td colspan="5">${jobboard.jobCd}</td>
+					</tr>
+					<tr>
+						<th>내용</th>
+						<td colspan="5">${jobboard.jobText}</td>
+					</tr>
+					<tr>
+						<th>주소</th>
+						<td colspan="5">${jobboard.jobAddress}</td>
+					</tr>
+					<tr>
+						<td colspan="6">
+							<div id="googleMap" style="width: 400px; height: 250px;"></div>
+						</td>
+					<tr>
+						<td colspan="6" align="center"><c:if
+								test="${sessionScope.userId == jobboard.userId}">
+								<div id="jobboard_menu" class="menu-buttons">
+									<div class="menu-button-group">
+										<input type="button" value="수정" class="btn"
+											onClick="location='job_board_view.do?jobNo=${jobboard.jobNo}&pageNum=${pageNum}&state=edit'">
+										<input type="button" class="btn" value="삭제"
+											data-bs-toggle="modal" data-bs-target="#jobDel">
+									</div>
+								</div>
+							</c:if> <c:if test="${sessionScope.userId != jobboard.userId}">
+								<div class="apply-button">
+									<input type="button" class="btn" data-bs-toggle="modal"
+										data-bs-target="#jobApply" value="신청">
+								</div>
+							</c:if> <c:if test="${sessionScope.userId == jobboard.userId}">
+								<div class="apply-view-button">
+									<input type="button" class="btn" data-bs-toggle="modal"
+										data-bs-target="#jobAppModal" style="font-size: 20px;"
+										onclick="jobAppModalPage(1)" value="신청자 보기">
+								</div>
+							</c:if></td>
+					</tr>
+				</tbody>
+			</table>
+			<div align="center">
+				<input type="button" value="목록" class="btn"
+					onClick="location='joblist.do?pageNum=${pageNum}'">
+			</div>
+
+			<!-- 쪽지 모달 -->
+			<div class="modal fade" id="appMsgModal" tabindex="-1"
+				aria-labelledby="exampleModalLabel" aria-hidden="true"
+				style="z-index: 1055;">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">New message</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<form>
+								<div class="mb-3">
+									<label for="recipient-name" class="col-form-label">수신자:</label>
+									<input type="text" class="form-control" id="receiver" readonly>
+								</div>
+								<div class="mb-3">
+									<label for="message-text" class="col-form-label">Message:</label>
+									<textarea class="form-control" id="msgText"></textarea>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-bs-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-primary" id="msgSend"
+								onclick="message()">쪽지 보내기</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 신청자 보기 모달 -->
+			<!-- Modal -->
+			<div class="modal fade" id="jobAppModal" tabindex="-1"
+				aria-labelledby="exampleModalLabel" aria-hidden="true"
+				style="z-index: 1050;">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">신청자 목록</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<div id="applist" align="center">
+								<table>
+									<tr>
+										<td>신청번호</td>
+										<td>신청자ID</td>
+										<td>신청자이름</td>
+										<td>전공</td>
+									</tr>
+								</table>
+							</div>
+
+							<!-- pagination -->
+							<div class="pageDiv my-custom-page">
+								<!-- Pagination -->
+								<nav aria-label="Page navigation example" id="modalPage"></nav>
+							</div>
+							<!-- pagination 끝 -->
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-bs-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 삭제 모달 -->
+			<!-- Modal -->
+			<div class="modal fade" id="jobDel" tabindex="-1"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">삭제 하시겠습니까?</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body">이 작업은 되돌릴 수 없습니다.</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger"
+								onclick="location.href='job_board_del.do?jobNo=${jobboard.jobNo}&pageNum=${pageNum}'">삭제</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 신청 모달 -->
+			<!-- Modal -->
+			<div class="modal fade" id="jobApply" tabindex="-1"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">해당 구인글에
+								신청하시겠습니까?</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal"
+								aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							신청후 취소할 수 없습니다. <br> 신청하시려면 아래 신청 버튼을 눌러주세요.
+						</div>
+						<div class="modal-footer">
 							<button type="button" class="btn btn-lg btn-primary"
-								data-bs-toggle="modal" data-bs-target="#jobApply">신청</button>
+								onclick="location.href='jobApplySend.do?jobNo=${jobboard.jobNo}&userId=${sessionScope.userId}&pageNum=${pageNum}'">신청</button>
 						</div>
-					 </c:if> 
-					
-					<c:if test="${sessionScope.userId == jb.userId}">
-					<div class="apply-view-button">
-						<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#jobAppModal" 
-							   style="font-size: 20px;" onclick="jobAppModalPage(1)">신청자 보기</button>
-					</div></c:if>
-					</td>
-			</tr>
-		</table>
-	</div>
-	<div class="menu-button">
-		<input type="button" value="목록" class="input_button"
-			onClick="location='joblist.do?pageNum=${pageNum}'">
-	</div>
-	
-	<!-- 쪽지 모달 -->	
-	<div class="modal fade" id="appMsgModal" tabindex="-1"
-		aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index: 1055;">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">New message</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<form>
-						<div class="mb-3">
-							<label for="recipient-name" class="col-form-label">수신자:</label>
-							<input type="text" class="form-control" id="receiver" readonly>
-						</div>
-						<div class="mb-3">
-							<label for="message-text" class="col-form-label">Message:</label>
-							<textarea class="form-control" id="msgText"></textarea>
-						</div>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary"
-						data-bs-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary" id="msgSend" onclick="message()">쪽지 보내기</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<!-- 신청자 보기 모달 -->
-	<!-- Modal -->
-	<div class="modal fade" id="jobAppModal" tabindex="-1"
-		aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index: 1050;">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">신청자 목록</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<div id="applist" align="center">
-						<table>
-							<tr>
-								<td>신청번호</td>
-								<td>신청자ID</td>
-								<td>신청자이름</td>
-								<td>전공</td>
-							</tr>
-						</table>
 					</div>
-
-					<!-- pagination -->
-					<div class="pageDiv my-custom-page">
-						<!-- Pagination -->
-						<nav aria-label="Page navigation example" id="modalPage"></nav>
-					</div>
-					<!-- pagination 끝 -->
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary"
-						data-bs-dismiss="modal">Close</button>
 				</div>
 			</div>
-		</div>
+			<p>
+			<form id="reform" name="reform">
+				<input type="hidden" name="userId" value="${sessionScope.userId}">
+				<input type="hidden" name="jobNo" value="${jobboard.jobNo}">
+				<textarea rows="4" cols="80" name="jobReText" id="jobReText"></textarea>
+				<p>
+					<c:if test="${!empty sessionScope.userId}">
+						<input type="button" value="댓글" class="btn" id="reInsert">
+					</c:if>
+			</form>
+			<div id="rlist" align="center"></div>
+		</main>
 	</div>
-	
-	<!-- 삭제 모달 -->
-	<!-- Modal -->
-	<div class="modal fade" id="jobDel" tabindex="-1"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">삭제 하시겠습니까?</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close"></button>
-				</div>
-				<div class="modal-body">이 작업은 되돌릴 수 없습니다.</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-danger"
-						onclick="location.href='job_board_del.do?jobNo=${jb.jobNo}&pageNum=${pageNum}'">삭제</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- 신청 모달 -->
-	<!-- Modal -->
-	<div class="modal fade" id="jobApply" tabindex="-1"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">해당 구인글에
-						신청하시겠습니까?</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					신청후 취소할 수 없습니다. <br> 신청하시려면 아래 신청 버튼을 눌러주세요.
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-lg btn-primary"
-						onclick="location.href='jobApplySend.do?jobNo=${jb.jobNo}&userId=${sessionScope.userId}&pageNum=${pageNum}'">신청</button>
-				</div>
-			</div>
-		</div>
-	</div><p>
-	<form id="reform" name="reform">
-		<input type="hidden" name="userId" value="${sessionScope.userId}">
-		<input type="hidden" name="jobNo" value="${jb.jobNo}">
-		<textarea rows="4" cols="80" name="jobReText" id="jobReText"></textarea>
-		<p>
-		<c:if test="${!empty sessionScope.userId}">
-			<input type="button" value="댓글" class="Retext_button" id="reInsert">
-		</c:if>
-	</form>
-	<br>
-	<div id="rlist" align="center"></div>
+	<!-- footer -->
+	<c:import url="/WEB-INF/views/footer.jsp" />
 </body>
 </html>
