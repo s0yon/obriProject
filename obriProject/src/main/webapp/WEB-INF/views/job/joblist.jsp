@@ -46,6 +46,23 @@
 		form.submit();
 	}
 </script>
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var contentElement = document.querySelector('#consub');
+            var contentText = contentElement.innerText || contentElement.textContent;
+          
+            var formattedContent = formatText(contentText, 70);
+            contentElement.innerHTML = formattedContent;
+
+            function formatText(text, length) {
+                var result = '';
+                for (var i = 0; i < text.length; i += length) {
+                    result += text.slice(i, i + length) + '<br>';
+                }
+                return result;
+            }
+        });
+    </script>
 </head>
 
 <body class="bg-body-tertiary">
@@ -93,7 +110,7 @@
 							<td width="10%">${job['JOBNO']}</td>
 							<td width="30%" id="subject"><a
 								href="job_board_view.do?jobNo=${job['JOBNO']}&pageNum=${pp.currentPage}&state=cont"
-								class="text">${job['JOBSUB']}</a></td>
+								class="text" id="consub">${job['JOBSUB']}</a></td>
 							<td width="20%">${job['USERNAME']}</td>
 							<td width="15%"><fmt:formatDate value="${job['JOBENDDATE']}"
 									pattern="yyyy-MM-dd" /></td>

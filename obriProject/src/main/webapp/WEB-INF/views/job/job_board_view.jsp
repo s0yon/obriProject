@@ -226,8 +226,8 @@ function jobAppModalPage(currentPage) {
 		});
 	  }
 </script>
-    <!-- 자동 줄바꿈 -->
-    <script>
+<!-- 자동 줄바꿈 -->
+<script>
         document.addEventListener('DOMContentLoaded', function() {
             var contentElement = document.querySelector('#consub');
             var contentText = contentElement.innerText || contentElement.textContent;
@@ -244,12 +244,12 @@ function jobAppModalPage(currentPage) {
             }
         });
     </script>
-        <script>
+<script>
         document.addEventListener('DOMContentLoaded', function() {
             var contentElement = document.querySelector('#content');
             var contentText = contentElement.innerText || contentElement.textContent;
           
-            var formattedContent = formatText(contentText, 90);
+            var formattedContent = formatText(contentText, 82);
             contentElement.innerHTML = formattedContent;
 
             function formatText(text, length) {
@@ -272,7 +272,7 @@ function jobAppModalPage(currentPage) {
 			<table>
 				<thead>
 					<tr class="row">
-						<th class="col-7 text-start pl-5" class="consub">${jobboard.jobSub}</th>
+						<th class="col-7 text-start pl-5" id="consub">${jobboard.jobSub}</th>
 						<th class="col-3">작성일 : <fmt:formatDate
 								value="${jobboard.jobDate}" pattern="yyyy-MM-dd" /></th>
 						<th class="col-2">조회수 : ${jobboard.jobRcount}</th>
@@ -293,17 +293,23 @@ function jobAppModalPage(currentPage) {
 					<tr>
 						<td>
 							<div class="row">
-								<div class="col-sm-10 pl-5 ml-1 align-self-center">모집인원 : ${jobboard.jobSpace} 명</div>
+								<div class="col-sm-10 pl-5 ml-1 align-self-center">
+								모집인원 : ${jobboard.jobSpace} 명 (${appTotal}/${jobboard.jobSpace})
+									</div>
 								<div class="col-sm-1 apply-button">
-									<c:if test="${sessionScope.userId != jobboard.userId && !empty sessionScope.userId}' ">
-										<input type="button" class="btn" data-bs-toggle="modal"
-											data-bs-target="#jobApply" value="신청" style="font-size: 14px; font-weight: bold;">
+									<c:if test="${!empty sessionScope.userId}">
+										<c:if test="${sessionScope.userId != jobboard.userId}">
+											<input type="button" class="btn" data-bs-toggle="modal"
+												data-bs-target="#jobApply" value="신청"
+												style="font-size: 14px; font-weight: bold;">
+										</c:if>
+										<c:if test="${sessionScope.userId == jobboard.userId}">
+											<input type="button" class="btn" data-bs-toggle="modal"
+												data-bs-target="#jobAppModal" onclick="jobAppModalPage(1)"
+												value="신청자" style="font-size: 14px; font-weight: bold;">
+										</c:if>
 									</c:if>
-									<c:if test="${sessionScope.userId == jobboard.userId && !empty sessionScope.userId}' ">
-										<input type="button" class="btn" data-bs-toggle="modal"
-											data-bs-target="#jobAppModal" onclick="jobAppModalPage(1)"
-											value="신청자" style="font-size: 14px; font-weight: bold;">
-									</c:if>
+
 								</div>
 							</div>
 						</td>
@@ -312,7 +318,7 @@ function jobAppModalPage(currentPage) {
 						<td class="text-start pl-5">분류 : ${jobboard.jobCd}</td>
 					</tr>
 					<tr>
-						<td class="text-start pl-5" height="200px" class="content">${jobboard.jobText}</td>
+						<td class="text-start pl-5" height="200px" id="content">${jobboard.jobText}</td>
 					</tr>
 					<tr>
 						<td class="col d-flex align-items-center flex-column mt-2">
@@ -324,7 +330,8 @@ function jobAppModalPage(currentPage) {
 						</td>
 					</tr>
 					<tr>
-						<td class="text-center"><c:if test="${sessionScope.userId == jobboard.userId && !empty sessionScope.userId}' ">
+						<td class="text-center"><c:if
+								test="${sessionScope.userId == jobboard.userId && !empty sessionScope.userId}' ">
 								<div id="jobboard_menu" class="menu-buttons mb-3">
 									<div class="menu-button-group=">
 										<input type="button" value="수정" class="btn"
@@ -441,8 +448,7 @@ function jobAppModalPage(currentPage) {
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">해당 구인글에
-								신청하시겠습니까?</h5>
+							<h5 class="modal-title" id="exampleModalLabel">해당 구인글에 신청하시겠습니까?</h5>
 							<button type="button" class="btn-close" data-bs-dismiss="modal"
 								aria-label="Close"></button>
 						</div>
@@ -456,17 +462,19 @@ function jobAppModalPage(currentPage) {
 					</div>
 				</div>
 			</div>
-			<br><br>
-			
+			<br>
+			<br>
+
 			<div id="rlist" align="center"></div>
 			<div align="center" id="commRe">
 				<form id="reform" name="reform">
-				<input type="hidden" name="userId" value="${sessionScope.userId}">
-				<input type="hidden" name="jobNo" value="${jobboard.jobNo}">
-				<textarea rows="4" cols="80" name="jobReText" id="jobReText" placeholder="댓글을 작성하세요"></textarea>
+					<input type="hidden" name="userId" value="${sessionScope.userId}">
+					<input type="hidden" name="jobNo" value="${jobboard.jobNo}">
+					<textarea rows="4" cols="80" name="jobReText" id="jobReText"
+						placeholder="댓글을 작성하세요"></textarea>
 					<div id="jobReSession">
 						<c:if test="${!empty sessionScope.userId}">
-						<input type="button" value="댓글" class="btn" id="reInsert">
+							<input type="button" value="댓글" class="btn" id="reInsert">
 						</c:if>
 					</div>
 				</form>

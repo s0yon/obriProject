@@ -31,17 +31,22 @@ public class JobAppController {
 
 	// 상세페이지에서 신청버튼 눌렀을때
 	@RequestMapping("jobApplySend.do")
-	public String jobApplySend(jobAppVO jobapp, String pageNum) {
-		int all = jas.getAllTotal(jobapp); // 전체신청자
-		if (all == 0) { // 처음 구직신청을 한경우
-			jas.insertApply(jobapp);
-		} else { // 예전에 한번 신청하고 취소 한 경우
-			jas.updateApp(jobapp);
-		}
-		System.out.println("상세페이지에서 신청완료");
-		
-		return "redirect:job_board_view.do?jobNo="+ jobapp.getJobNo()+"&pageNum" + pageNum +"&state=cont";
-	}
+	   public String jobApplySend(jobAppVO jobapp,String pageNum) {
+	      System.out.println("jobNo:"+jobapp.getJobNo());
+	      System.out.println("userId:"+jobapp.getUserId());
+	      
+	      int all = jas.getAllTotal(jobapp); // 신청자검색
+	      if (all == 0) { // 처음 구직신청을 한경우
+	         jas.insertApply(jobapp);
+	      } else { // 예전에 한번 신청하고 취소 한 경우
+	         jas.updateApp(jobapp);
+	      }
+	      System.out.println("상세페이지에서 신청완료");
+	      
+//	      jas.selectAppDone(jobapp);
+	      
+	      return "redirect:job_board_view.do?jobNo="+jobapp.getJobNo()+"&pageNum="+pageNum+"&state=cont";
+	   }
 
 	// 신청 리스트 목록
 

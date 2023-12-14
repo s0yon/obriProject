@@ -26,7 +26,7 @@
         var contentText = contentElement.innerText || contentElement.textContent;
 
         // c:out 태그에서 escapeXml 속성을 false로 설정하여 HTML 엔터티를 유지
-        var formattedContent = '<c:out value="' + addLineBreaks(contentText, 70) + '" escapeXml="false" />';
+        var formattedContent = '<c:out value="' + addLineBreaks(contentText, 82) + '" escapeXml="false" />';
         contentElement.innerHTML = formattedContent;
 
         function addLineBreaks(text, lineLength) {

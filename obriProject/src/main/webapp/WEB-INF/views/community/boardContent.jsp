@@ -121,7 +121,7 @@
             var contentElement = document.querySelector('#content');
             var contentText = contentElement.innerText || contentElement.textContent;
           
-            var formattedContent = formatText(contentText, 90);
+            var formattedContent = formatText(contentText, 82);
             contentElement.innerHTML = formattedContent;
 
             function formatText(text, length) {
