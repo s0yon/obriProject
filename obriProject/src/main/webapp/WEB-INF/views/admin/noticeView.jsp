@@ -20,6 +20,25 @@
 
 <!-- 사용자 정의 스타일 -->
 <link rel="stylesheet" href="./css/viewpage.css">
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var contentElement = document.querySelector('#content');
+        var contentText = contentElement.innerText || contentElement.textContent;
+
+        // c:out 태그에서 escapeXml 속성을 false로 설정하여 HTML 엔터티를 유지
+        var formattedContent = '<c:out value="' + addLineBreaks(contentText, 70) + '" escapeXml="false" />';
+        contentElement.innerHTML = formattedContent;
+
+        function addLineBreaks(text, lineLength) {
+            var result = '';
+            for (var i = 0; i < text.length; i += lineLength) {
+                result += text.slice(i, i + lineLength) + '<br>';
+            }
+            return result;
+        }
+    });
+</script>
+
 </head>
 <body class="bg-body-tertiary">
 	<!-- header -->
@@ -47,7 +66,7 @@
 								value="${map['NOTRCOUNT']}" /></td>
 					</tr>
 					<tr>
-						<td colspan="2" class="text-start pl-5" height="300px"><pre>${map['NOTTEXT']}</pre>
+						<td colspan="2" id ="content" class="text-start pl-5" height="300px">${map['NOTTEXT']}
 						</td>
 					</tr>
 				</tbody>

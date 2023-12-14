@@ -102,7 +102,8 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>;
 						<c:forEach var="community" items="${list }">
 							<c:if test="${community.commDelYn != 'Y' }">
 								<tr align="center">
-									<td width="10%">${no1}<c:set var="no1" value="${no1-1}" />
+									<td width="10%"> ${community.commNo}
+									<!-- ${no1}<c:set var="no1" value="${no1-1}" /> -->
 									</td>
 									<td class="truncate-text" align="center" width="30%"><fmt:formatDate
 											var="today" value="<%=new Date()%>" pattern="yy/MM/dd" /> <fmt:formatDate

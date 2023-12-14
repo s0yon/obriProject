@@ -29,8 +29,9 @@ body {
 	padding-top: 80px;
 	padding-bottom: 80px;
 }
-.btg{
-	text-align: right;
+.btn{
+	justify-content: right;
+	margin-right: 5px;
 }
 .tb{
 	padding = 20px;
@@ -54,16 +55,18 @@ body {
 					<table class="table table-sm">
 						<thead class="table-primary">
 							<tr>
-								<th scope="col">ID</th>
-								<th scope="col">이름</th>
-								<th scope="col">생성일</th>
-								<th scope="col">상태</th>
-								<th scope="col"></th>
+								<th scope="col" width="8%"></th>
+								<th scope="col" width="32%">ID</th>
+								<th scope="col" width="15%">이름</th>
+								<th scope="col" width="20%">생성일</th>
+								<th scope="col" width="10%">상태</th>
+								<th scope="col" width="15%"></th>
 							</tr>
 						</thead>
 						<tbody class="tb">
 							<c:forEach var="m" items="${memberlist}">
 								<tr>
+									<td></td>
 									<td>${m['USERID']}</td>
 									<td><a href="admin_user_view.do?userId=${m['USERID']}&pageNum=${pageNum}&state=cont">${m['USERNAME']}</a></td>
 									<td>${m['USERDATE']}</td>
