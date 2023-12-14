@@ -111,7 +111,7 @@ console.log("여기 들어왔나요???");
 					</td>					
 				</tr>
 				<tr>
-					<td calspan="2" id="retext">${jrb.jobReText}</td>
+					<td colspan="2" id="retext">${jrb.jobReText}</td>
 				</tr>
 			</c:forEach>
 		</table>

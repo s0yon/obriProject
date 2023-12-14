@@ -58,24 +58,24 @@ td {
             }
         });
     </script>
-    <!-- 자동 줄바꿈 -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var contentElement = document.querySelector('#content');
-            var contentText = contentElement.innerText || contentElement.textContent;
-          
-            var formattedContent = formatText(contentText, 90);
-            contentElement.innerHTML = formattedContent;
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var contentElement = document.querySelector('#content');
+        var contentText = contentElement.innerText || contentElement.textContent;
 
-            function formatText(text, length) {
-                var result = '';
-                for (var i = 0; i < text.length; i += length) {
-                    result += text.slice(i, i + length) + '<br>';
-                }
-                return result;
+        // c:out 태그에서 escapeXml 속성을 false로 설정하여 HTML 엔터티를 유지
+        var formattedContent = '<c:out value="' + addLineBreaks(contentText, 70) + '" escapeXml="false" />';
+        contentElement.innerHTML = formattedContent;
+
+        function addLineBreaks(text, lineLength) {
+            var result = '';
+            for (var i = 0; i < text.length; i += lineLength) {
+                result += text.slice(i, i + lineLength) + '<br>';
             }
-        });
-    </script>
+            return result;
+        }
+    });
+</script>
 </head>
 
 <body>
