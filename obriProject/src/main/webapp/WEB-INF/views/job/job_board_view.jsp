@@ -235,48 +235,43 @@ function jobAppModalPage(currentPage) {
 				<h3 class="font-weight-bold text-dark">구인</h3>
 			</div>
 			<table>
-				<thead class="container">
-					<tr>
-						<th colspan="2">${jobboard.jobSub}</th>
-						<th>작성자</th>
-						<th>${jobboard.userId}</th>
-						<th>조회수</th>
-						<th>${jobboard.jobRcount}</th>
+				<thead>
+					<tr class="row">
+						<th class="col-7 text-start pl-5">${jobboard.jobSub}</th>
+						<th class="col-3">작성일 : <fmt:formatDate
+								value="${jobboard.jobDate}" pattern="yyyy-MM-dd" /></th>
+						<th class="col-2">조회수 : ${jobboard.jobRcount}</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<th>작성일</th>
-						<td colspan="5"><fmt:formatDate value="${jobboard.jobDate}"
-								pattern="yyyy-MM-dd" /></td>
-					<tr>
-						<th>모집마감일</th>
-						<td colspan="5"><fmt:formatDate value="${jobboard.jobEndDate}"
-								pattern="yyyy-MM-dd" /></td>
+						<td class="text-start pl-5">작성자 : ${jobboard.userId}</td>
 					</tr>
 					<tr>
-						<th>공연일</th>
-						<td colspan="5"><fmt:formatDate value="${jobboard.jobConcert}"
-								pattern="yyyy-MM-dd" /></td>
+						<td class="text-start pl-5">모집마감일 : <fmt:formatDate
+								value="${jobboard.jobEndDate}" pattern="yyyy-MM-dd" /></td>
 					</tr>
 					<tr>
-						<th>분류</th>
-						<td colspan="5">${jobboard.jobCd}</td>
+						<td class="text-start pl-5">공연일 : <fmt:formatDate
+								value="${jobboard.jobConcert}" pattern="yyyy-MM-dd" /></td>
 					</tr>
 					<tr>
-						<th>내용</th>
-						<td colspan="5">${jobboard.jobText}</td>
+						<td class="text-start pl-5">분류 : ${jobboard.jobCd}</td>
 					</tr>
 					<tr>
-						<th>주소</th>
-						<td colspan="5">${jobboard.jobAddress}</td>
+						<td class="text-start pl-5" height="200px"><pre>${jobboard.jobText}</pre></td>
 					</tr>
 					<tr>
-						<td colspan="6">
-							<div id="googleMap" style="width: 400px; height: 250px;"></div>
+						<td class="col d-flex align-items-center flex-column mt-2">
+								<div class="row align-self-center">장소 :
+									${jobboard.jobAddress}</div>
+								<div class="row align-self-center" id="googleMap"
+									style="width: 400px; height: 250px; margin-top: 20px; margin-bottom: 20px;">
+								</div>
 						</td>
+					</tr>
 					<tr>
-						<td colspan="6" align="center"><c:if
+						<td class="text-center"><c:if
 								test="${sessionScope.userId == jobboard.userId}">
 								<div id="jobboard_menu" class="menu-buttons">
 									<div class="menu-button-group">

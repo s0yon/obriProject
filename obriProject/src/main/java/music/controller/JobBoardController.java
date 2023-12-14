@@ -128,7 +128,6 @@ public class JobBoardController {
 		}
 		
 	jobBoardVO jobboard = jbs.getJobboard(jobNo);	// 상세정보 구하기
-	jobboard.setUserId(userId); // 세션에 있는
 	
 	System.out.println("상세정보구하기 성공");
 	model.addAttribute("jobboard", jobboard);

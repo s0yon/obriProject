@@ -98,7 +98,8 @@
 
 		<!-- intro start -->
 		<section class="intro p-2">
-			<div class="container mb-3">
+		<div class="d-flex justify-content-center">
+			<div class="container mt-3 mb-3">
 				<div class="banner">
 					<div class="bann_icon">
 						<i class="fa-solid fa-magnifying-glass"></i>
@@ -116,7 +117,7 @@
 					<span class="fa-solid fa-plus fa-2xl"></span>
 				</div>
 			</div>
-			<div class="container mb-3">
+			<div class="container mt-3 mb-3">
 				<div class="banner">
 					<div class="bann_icon">
 						<i class="fa-regular fa-comments"></i>
@@ -133,6 +134,7 @@
 					style="cursor: pointer;">
 					<span class="fa-solid fa-plus fa-2xl"></span>
 				</div>
+			</div>
 			</div>
 		</section>
 		<br> <br>
