@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>커뮤니티 글작성</title>
+<title>구인</title>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -61,12 +61,12 @@
 					</tr>
 					<tr>
 						<th>모집마감일</th>
-						<td><input type="date" name="jobConcert1"
+						<td><input type="date" name="jobEndDate1"
 							class="form-control col-sm-8"></td>
 					</tr>
 					<tr>
-						<th>공연일</th>
-						<td><input type="date" name="jobEndDate1"
+						<th>행사일</th>
+						<td><input type="date" name="jobConcert1"
 							class="form-control col-sm-8"></td>
 					</tr>
 					<tr>

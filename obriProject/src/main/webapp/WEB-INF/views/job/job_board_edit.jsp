@@ -64,25 +64,6 @@
 		}).open();
 	}
 </script>
-<!-- <style>
-table tr td {
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	max-width: 140px;
-}
-
-table {
-	margin-left: auto;
-	margin-right: auto;
-}
-
-textarea {
-	width: 98%;
-	border: none;
-	resize: none;
-}
-</style>
- -->
 </head>
 <body class="bg-body-tertiary">
 	<c:import url="/WEB-INF/views/navbar.jsp" />
@@ -98,57 +79,77 @@ textarea {
 					type="hidden" id="fin" value="${jobboard.jobFin}">
 				<table>
 					<tr>
-						<td colspan="2"><input type="checkbox" id="jobFin"
-							name="jobFin1" value="N">공연후 체크</td>
-					</tr>
-					<tr>
-						<th width="40px">모집인원</th>
-						<td width="480px"><input type="text" id="jobSpace"
-							name="jobSpace" class="form-control" size="4"
-							value="${jobboard.jobSpace}">명</td>
-					</tr>
-					<tr>
-						<th width="40px">모집 마감일</th>
-						<td width="480px"><input type="date" id="jobEndDate2"
-							name="jobEndDate2"></td>
-					</tr>
-					<tr>
-						<th width="40px">행사일</th>
-						<td width="480px"><input type="date" id="jobConcert2"
-							name="jobConcert2"></td>
-					</tr>
-					<tr>
-						<th width="40px">장소</th>
-						<td width="480px"><input type="text" id="jobAddress"
-							name="jobAddress" value="${jobboard.jobAddress}"> <input
-							type="button" value="주소검색" onClick="openDaumPostcode()">
+						<th colspan="2"><input type="checkbox" id="jobFin"
+							name="jobFin1" value="N">&nbsp;행사완료&nbsp;
 						</td>
 					</tr>
 					<tr>
-						<th width="40px">분류</th>
-						<td width="480px"><input type="radio" name="jobCd" id="e1"
-							value="결혼식">결혼식<input type="radio" name="jobCd" id="e2"
-							value="종교행사">종교행사<input type="radio" name="jobCd"
-							id="e3" value="공연">공연<input type="radio"
-							name="jobCd" id="e4" value="기타">기타</td>
-					</tr>
-					<tr>
-						<th width="40px">제목</th>
-						<td width="480px"><textarea class="form-control" rows="3"
-								cols="500" width="140px" id="jobSub" name="jobSub">${jobboard.jobSub}</textarea></td>
-					</tr>
-					<tr>
-						<th width="40px">내용</th>
-						<td width="480px"><textarea class="form-control" rows="20"
-								cols="4000" width="140px" id="jobText" name="jobText">${jobboard.jobText}</textarea>
+						<th>모집인원</th>
+						<td>
+							<div class="row">
+								<div class="col-sm-7">
+									<input type="text" id="jobSpace" name="jobSpace"
+										class="form-control" value="${jobboard.jobSpace}">
+								</div>
+								<div class="col-sm-2">
+									<input type="text" readonly class="form-control-plaintext"
+										value="명">
+								</div>
+							</div>
 						</td>
+					</tr>
+					<tr>
+						<th>모집 마감일</th>
+						<td><input type="date" id="jobEndDate2" name="jobEndDate2"
+							class="form-control col-sm-8"></td>
+					</tr>
+					<tr>
+						<th>행사일</th>
+						<td><input type="date" id="jobConcert2" name="jobConcert2"
+							class="form-control col-sm-8"></td>
+					</tr>
+					<tr>
+						<th>장소</th>
+						<td>
+							<div class="row">
+								<div class="col-sm-8">
+									<input type="text" class="form-control" id="jobAddress"
+										name="jobAddress" value="${jobboard.jobAddress}">
+								</div>
+								<div class="col-sm-2">
+									<input type="button" class="btn" value="주소찾기"
+										style="font-size: 14px; font-weight: bold;"
+										onClick="openDaumPostcode()">
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th>분류</th>
+						<td><input type="radio" name="jobCd" id="e1" value="결혼식">&nbsp;결혼식&nbsp;&nbsp;
+							<input type="radio" name="jobCd" id="e2" value="종교행사">&nbsp;종교행사&nbsp;&nbsp;
+							<input type="radio" name="jobCd" id="e3" value="공연">&nbsp;공연&nbsp;&nbsp;
+							<input type="radio" name="jobCd" id="e4" value="기타">&nbsp;기타&nbsp;&nbsp;
+						</td>
+					</tr>
+					<tr>
+						<th>제목</th>
+						<td><div class="col-sm-10">
+								<input type="text" class="form-control" id="jobSub"
+									name="jobSub" value="${jobboard.jobSub}">
+							</div></td>
+					</tr>
+					<tr>
+						<th>내용</th>
+						<td><textarea cols="60" rows="10" class="form-control"
+								id="jobText" name="jobText">${jobboard.jobText}</textarea></td>
 					</tr>
 				</table>
 				<div align="center">
 					<tr>
 						<td colspan="2" align="center"><input type="submit"
-							class="btn" value="수정"> <input type="button" class="btn"
-							value="취소" onClick="history.go(-1);"></td>
+							class="btn" value="수정" id="submitButton">&nbsp;&nbsp;<input
+							type="button" value="취소" class="btn" onclick="history.go(-1);"></td>
 					</tr>
 				</div>
 			</form>
