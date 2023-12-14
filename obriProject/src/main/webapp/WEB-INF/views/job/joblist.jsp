@@ -148,16 +148,16 @@
 					<c:if test="${empty keyword}">
 						<c:if test="${pp.startPage > pp.pagePerBlk }">
 							<li><a href="joblist.do?pageNum=${pp.startPage - 1}"> <span
-									aria-hidden="true">&laquo;</span></a></li>
+									aria-hidden="true" class="page-link">&laquo;</span></a></li>
 						</c:if>
 
 						<c:forEach var="i" begin="${pp.startPage}" end="${pp.endPage}">
 							<li <c:if test="${pp.currentPage == i}"></c:if>><a
-								href="joblist.do?pageNum=${i}">${i}</a></li>
+								href="joblist.do?pageNum=${i}" class="page-link">${i}</a></li>
 						</c:forEach>
 
 						<c:if test="${pp.endPage < pp.totalPage}">
-							<li><a href="joblist.do?pageNum=${pp.endPage + 1}"><span
+							<li><a href="joblist.do?pageNum=${pp.endPage + 1}" class="page-link"><span
 									aria-hidden="true">&raquo;</span></a></li>
 						</c:if>
 					</c:if>

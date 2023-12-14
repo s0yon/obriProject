@@ -172,7 +172,7 @@
 							<br>
 
 							<div>활동지역 : ${map['PRLOC']}</div>
-							<div>좋아요수 : ${prlikeNumber}</div>
+							<div>좋아요 : ${prlikeNumber}</div>
 							<div>조회수 : ${map['PRRCOUNT']}</div>
 							<br>
 							<div>
