@@ -23,6 +23,24 @@
 			
 	}
 </script>
+    <!-- 자동 줄바꿈 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var contentElement = document.querySelector('#retext');
+            var contentText = contentElement.innerText || contentElement.textContent;
+          
+            var formattedContent = formatText(contentText, 70);
+            contentElement.innerHTML = formattedContent;
+
+            function formatText(text, length) {
+                var result = '';
+                for (var i = 0; i < text.length; i += length) {
+                    result += text.slice(i, i + length) + '<br>';
+                }
+                return result;
+            }
+        });
+    </script>
 <style>
 .link-style {
 	font-size: 13px;
@@ -65,7 +83,7 @@
  									</c:if> 
 									</td> 
 									<td class="text-right">
-									<fmt:formatDate value="${commReList.commReDate}"  pattern="MM. dd. HH:mm " />
+									<fmt:formatDate value="${commReList.commReDate}"  pattern="yyyy.MM.dd HH:mm" />
 									</td>
 							</tr>
 							<tr>
@@ -91,10 +109,10 @@
 						</c:if>
 						</td>
 						<td class="text-right">
-						<fmt:formatDate value="${commReList.commReDate}"    pattern="MM. dd. HH:mm " /></td><!-- 수정일 -->					
+						<fmt:formatDate value="${commReList.commReDate}"    pattern="yyyy.MM.dd HH:mm" /></td><!-- 수정일 -->					
 						</tr>
 						<tr>
-						<td colspan="2" id=" ${commReList.commReNo}">${commReList.commReText}&nbsp;&nbsp;</td><!-- 내용 -->
+						<td colspan="2" id=" retext">${commReList.commReText}&nbsp;&nbsp;</td><!-- 내용 -->
 					</tr>					
 				</c:if>
 				

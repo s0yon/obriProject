@@ -226,7 +226,42 @@ function jobAppModalPage(currentPage) {
 		});
 	  }
 </script>
-<body>
+    <!-- 자동 줄바꿈 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var contentElement = document.querySelector('#consub');
+            var contentText = contentElement.innerText || contentElement.textContent;
+          
+            var formattedContent = formatText(contentText, 70);
+            contentElement.innerHTML = formattedContent;
+
+            function formatText(text, length) {
+                var result = '';
+                for (var i = 0; i < text.length; i += length) {
+                    result += text.slice(i, i + length) + '<br>';
+                }
+                return result;
+            }
+        });
+    </script>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var contentElement = document.querySelector('#content');
+            var contentText = contentElement.innerText || contentElement.textContent;
+          
+            var formattedContent = formatText(contentText, 90);
+            contentElement.innerHTML = formattedContent;
+
+            function formatText(text, length) {
+                var result = '';
+                for (var i = 0; i < text.length; i += length) {
+                    result += text.slice(i, i + length) + '<br>';
+                }
+                return result;
+            }
+        });
+    </script>
+</head>
 <body class="bg-body-tertiary">
 	<c:import url="/WEB-INF/views/navbar.jsp" />
 	<div class="container-sm">
@@ -237,7 +272,7 @@ function jobAppModalPage(currentPage) {
 			<table>
 				<thead>
 					<tr class="row">
-						<th class="col-7 text-start pl-5">${jobboard.jobSub}</th>
+						<th class="col-7 text-start pl-5" class="consub">${jobboard.jobSub}</th>
 						<th class="col-3">작성일 : <fmt:formatDate
 								value="${jobboard.jobDate}" pattern="yyyy-MM-dd" /></th>
 						<th class="col-2">조회수 : ${jobboard.jobRcount}</th>
@@ -277,7 +312,7 @@ function jobAppModalPage(currentPage) {
 						<td class="text-start pl-5">분류 : ${jobboard.jobCd}</td>
 					</tr>
 					<tr>
-						<td class="text-start pl-5" height="200px"><pre>${jobboard.jobText}</pre></td>
+						<td class="text-start pl-5" height="200px" class="content">${jobboard.jobText}</td>
 					</tr>
 					<tr>
 						<td class="col d-flex align-items-center flex-column mt-2">
@@ -421,17 +456,21 @@ function jobAppModalPage(currentPage) {
 					</div>
 				</div>
 			</div>
-			<p>
-			<form id="reform" name="reform">
+			<br><br>
+			
+			<div id="rlist" align="center"></div>
+			<div align="center" id="commRe">
+				<form id="reform" name="reform">
 				<input type="hidden" name="userId" value="${sessionScope.userId}">
 				<input type="hidden" name="jobNo" value="${jobboard.jobNo}">
-				<textarea rows="4" cols="80" name="jobReText" id="jobReText"></textarea>
-				<p>
-					<c:if test="${!empty sessionScope.userId}">
+				<textarea rows="4" cols="80" name="jobReText" id="jobReText" placeholder="댓글을 작성하세요"></textarea>
+					<div id="jobReSession">
+						<c:if test="${!empty sessionScope.userId}">
 						<input type="button" value="댓글" class="btn" id="reInsert">
-					</c:if>
-			</form>
-			<div id="rlist" align="center"></div>
+						</c:if>
+					</div>
+				</form>
+			</div>
 		</main>
 	</div>
 	<!-- footer -->
