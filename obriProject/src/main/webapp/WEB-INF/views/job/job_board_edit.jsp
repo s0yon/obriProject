@@ -28,7 +28,7 @@
 <script>
 	var jobFin = '${jobboard.jobFin}'
 </script>
-<script src="./js/job_board.js"></script>
+<script src="./js/job_edit_board.js"></script>
 <script>
 	$(function() {
 		$("#jobFin").click(function() {
@@ -109,12 +109,12 @@ textarea {
 					</tr>
 					<tr>
 						<th width="40px">모집 마감일</th>
-						<td width="480px"><input type="date" id="jobEndDate"
+						<td width="480px"><input type="date" id="jobEndDate2"
 							name="jobEndDate2"></td>
 					</tr>
 					<tr>
 						<th width="40px">행사일</th>
-						<td width="480px"><input type="date" id="jobConcert"
+						<td width="480px"><input type="date" id="jobConcert2"
 							name="jobConcert2"></td>
 					</tr>
 					<tr>
@@ -127,10 +127,10 @@ textarea {
 					<tr>
 						<th width="40px">분류</th>
 						<td width="480px"><input type="radio" name="jobCd" id="e1"
-							value="결혼식">결혼식 <input type="radio" name="jobCd" id="e2"
-							value="종교행사">종교행사 <input type="radio" name="jobCd"
-							id="e3" value="사내행사">사내행사 <input type="radio"
-							name="jobCd" id="e4" value="기내행사">기내행사</td>
+							value="결혼식">결혼식<input type="radio" name="jobCd" id="e2"
+							value="종교행사">종교행사<input type="radio" name="jobCd"
+							id="e3" value="공연">공연<input type="radio"
+							name="jobCd" id="e4" value="기타">기타</td>
 					</tr>
 					<tr>
 						<th width="40px">제목</th>

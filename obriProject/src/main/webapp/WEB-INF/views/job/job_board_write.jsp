@@ -22,7 +22,7 @@
 <!-- 사용자 정의 스타일 -->
 <link rel="stylesheet" href="./css/viewpage.css">
 
-<script src="<%=request.getContextPath()%>/js/job_board.js"></script>
+<script src="./js/job_write_board.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
 	function openDaumPostcode() {
@@ -89,8 +89,8 @@
 						<th>분류</th>
 						<td><input type="radio" name="jobCd" id="e1" value="결혼식">&nbsp;결혼식&nbsp;&nbsp;
 							<input type="radio" name="jobCd" id="e2" value="종교행사">&nbsp;종교행사&nbsp;&nbsp;
-							<input type="radio" name="jobCd" id="e3" value="사내행사">&nbsp;사내행사&nbsp;&nbsp;
-							<input type="radio" name="jobCd" id="e4" value="기내행사">&nbsp;기내행사&nbsp;&nbsp;
+							<input type="radio" name="jobCd" id="e3" value="공연">&nbsp;공연&nbsp;&nbsp;
+							<input type="radio" name="jobCd" id="e4" value="기타">&nbsp;기타&nbsp;&nbsp;
 							</td>
 					</tr>
 					<tr>
