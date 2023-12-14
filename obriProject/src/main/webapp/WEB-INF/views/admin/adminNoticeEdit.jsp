@@ -31,6 +31,8 @@ td {
 	float: right;
 }
 </style>
+<!-- 사용자 정의 스타일 -->
+<link rel="stylesheet" href="./css/viewpage.css">
 <script src="<%=request.getContextPath()%>/js/notice.js"></script>
 </head>
 

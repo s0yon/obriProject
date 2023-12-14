@@ -22,6 +22,8 @@
 	type="text/css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/admin/adminForm.css"
 	type="text/css">
+	<!-- 사용자 정의 스타일 -->
+<link rel="stylesheet" href="./css/custom-styles.css">
 </head>
 <body>
 	<div class="container-fluid">

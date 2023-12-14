@@ -21,6 +21,15 @@
 	href="<%=request.getContextPath()%>/css/admin/adminNav.css"
 	type="text/css">
 <style>
+body {
+    display: flex;
+	justify-content: center;
+	font-family: Arial, sans-serif;
+	background-color: #F8F9FA;
+	color: #444;
+	padding-top: 80px;
+	padding-bottom: 80px;
+}
 td {
 	height: 400px;
 }
@@ -31,6 +40,42 @@ td {
 	float: right;
 }
 </style>
+    <!-- 자동 줄바꿈 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var contentElement = document.querySelector('#consub');
+            var contentText = contentElement.innerText || contentElement.textContent;
+          
+            var formattedContent = formatText(contentText, 60);
+            contentElement.innerHTML = formattedContent;
+
+            function formatText(text, length) {
+                var result = '';
+                for (var i = 0; i < text.length; i += length) {
+                    result += text.slice(i, i + length) + '<br>';
+                }
+                return result;
+            }
+        });
+    </script>
+    <!-- 자동 줄바꿈 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var contentElement = document.querySelector('#content');
+            var contentText = contentElement.innerText || contentElement.textContent;
+          
+            var formattedContent = formatText(contentText, 90);
+            contentElement.innerHTML = formattedContent;
+
+            function formatText(text, length) {
+                var result = '';
+                for (var i = 0; i < text.length; i += length) {
+                    result += text.slice(i, i + length) + '<br>';
+                }
+                return result;
+            }
+        });
+    </script>
 </head>
 
 <body>
@@ -40,16 +85,19 @@ td {
 			<c:import url="/WEB-INF/views/admin/adminsidenav.jsp" />
 
 			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+			<div class="container-sm">
 				<h2 class="qnatitle">구인</h2>
 				<br> <br>
 				<table id="qnatable" class="table">
 					<tr class="table-active">
-						<th scope="col" style="width: 60%"><c:out
-								value="${map['JOBSUB']}" /><br> <c:out
-								value="${map['USERNAME']}(${map['USERID']})" /></th>
-						<th scope="col" style="width: 40%" class="text-right">
-								조회수 : <c:out value="${map['JOBRCOUNT']}" /> <br>
-								<fmt:formatDate value="${map['JOBDATE']}" pattern="yyyy-MM-dd" />
+						<th scope="col" style="width: 60%" id="consub">
+						<c:out value="${map['JOBSUB']}" /></th>
+						<th scope="col" style="width: 40%" class="text-right" id="content">
+								조회수 : <c:out value="${map['JOBRCOUNT']}" /> </th>
+					</tr>
+					<tr class="table-active">
+						<th><c:out value="${map['USERNAME']}(${map['USERID']})" /></th>
+						<th><fmt:formatDate value="${map['JOBDATE']}" pattern="yyyy-MM-dd" />
 						</th>
 					</tr>
 					<tr>
@@ -66,6 +114,7 @@ td {
 						type="button" value="목록" class="btn btn-outline-secondary"
 						onclick="location='admin_job.do?pageNum=${pageNum}'" />
 				</div>
+			</div>
 			</main>
 		</div>
 	</div>

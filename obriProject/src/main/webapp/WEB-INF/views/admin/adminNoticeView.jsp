@@ -21,6 +21,15 @@
 	href="<%=request.getContextPath()%>/css/admin/adminNav.css"
 	type="text/css">
 <style>
+body {
+    display: flex;
+	justify-content: center;
+	font-family: Arial, sans-serif;
+	background-color: #F8F9FA;
+	color: #444;
+	padding-top: 80px;
+	padding-bottom: 80px;
+}
 td {
 	height: 400px;
 }
@@ -31,6 +40,42 @@ td {
 	float: right;
 }
 </style>
+    <!-- 자동 줄바꿈 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var contentElement = document.querySelector('#consub');
+            var contentText = contentElement.innerText || contentElement.textContent;
+          
+            var formattedContent = formatText(contentText, 60);
+            contentElement.innerHTML = formattedContent;
+
+            function formatText(text, length) {
+                var result = '';
+                for (var i = 0; i < text.length; i += length) {
+                    result += text.slice(i, i + length) + '<br>';
+                }
+                return result;
+            }
+        });
+    </script>
+    <!-- 자동 줄바꿈 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var contentElement = document.querySelector('#content');
+            var contentText = contentElement.innerText || contentElement.textContent;
+          
+            var formattedContent = formatText(contentText, 90);
+            contentElement.innerHTML = formattedContent;
+
+            function formatText(text, length) {
+                var result = '';
+                for (var i = 0; i < text.length; i += length) {
+                    result += text.slice(i, i + length) + '<br>';
+                }
+                return result;
+            }
+        });
+    </script>
 </head>
 
 <body>
@@ -46,7 +91,7 @@ td {
 					</div>
 				<table id="nottable" class="table">
 					<tr class="table-active">
-						<th scope="col" style="width: 60%"><c:out
+						<th scope="col" style="width: 60%" class="consub"><c:out
 								value="${map['NOTSUB']}" /><br> <c:out
 								value="${map['ADMINNAME']}" /></th>
 						<th scope="col" style="width: 40%" class="text-right">
@@ -56,7 +101,7 @@ td {
 					</tr>
 
 					<tr>
-						<td colspan=2><pre>${map['NOTTEXT']}</pre></td>
+						<td colspan=2 class="content">${map['NOTTEXT']}</td>
 					</tr>
 				</table>
 
