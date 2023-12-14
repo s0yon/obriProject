@@ -18,6 +18,15 @@
 	href="<%=request.getContextPath()%>/css/admin/adminNav.css"
 	type="text/css">
 <style>
+body {
+    display: flex;
+	justify-content: center;
+	font-family: Arial, sans-serif;
+	background-color: #F8F9FA;
+	color: #444;
+	padding-top: 80px;
+	padding-bottom: 80px;
+}
 .center {
 	text-align: center;
 }

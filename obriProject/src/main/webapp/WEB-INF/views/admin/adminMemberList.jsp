@@ -20,6 +20,15 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/admin/adminForm.css"
 	type="text/css">
 <style>
+body {
+    display: flex;
+	justify-content: center;
+	font-family: Arial, sans-serif;
+	background-color: #F8F9FA;
+	color: #444;
+	padding-top: 80px;
+	padding-bottom: 80px;
+}
 .btg{
 	text-align: right;
 }
