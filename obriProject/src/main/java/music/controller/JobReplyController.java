@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import music.model.jobBoardVO;
 import music.model.jobReplyVO;
@@ -47,13 +48,14 @@ public class JobReplyController {
 
 	// 댓글 저장
 	@RequestMapping("/rInsert.do")
-	public String rInsert(jobReplyVO rv, Model model) {
+	public String rInsert(@RequestParam int jobNo, jobReplyVO rv, Model model)	{
 		System.out.println("댓글저장 들어옴");
-		System.out.println(rv.getJobNo());
-		System.out.println(rv.getUserId());
-		jrs.insert(rv);
-		return "redirect:rlist/jobNo/" + rv.getJobNo()+"/let.do";
+	    System.out.println(jobNo);  // jobNo가 올바르게 수신되는지 확인
+	    System.out.println(rv.getUserId());
+	    jrs.insert(rv);
+	    return "redirect:rlist/jobNo/" + jobNo + "/let.do";
 	}
+
 
 	// 댓글 삭제
 	@RequestMapping("/reDelete.do")

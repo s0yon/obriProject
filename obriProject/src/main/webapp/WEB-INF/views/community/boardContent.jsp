@@ -218,8 +218,8 @@
 					<textarea rows="4" cols="80" name="commReText" placeholder="댓글을 작성하세요"></textarea>
 					<div id="commReSession">
 						<input type="button" value="댓글" id="comReInsert" class="btn">
-						&nbsp; <input type="checkbox" name="commSecret"
-							id="commSecret">비밀댓글
+						&nbsp; 
+						<input type="checkbox" name="commSecret" id="commSecret">비밀댓글
 					</div>
 				</form>
 			</div>

@@ -70,43 +70,48 @@ console.log("여기 들어왔나요???");
 }
 
 </style>
+    <!-- 자동 줄바꿈 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var contentElement = document.querySelector('#retext');
+            var contentText = contentElement.innerText || contentElement.textContent;
+          
+            var formattedContent = formatText(contentText, 70);
+            contentElement.innerHTML = formattedContent;
 
+            function formatText(text, length) {
+                var result = '';
+                for (var i = 0; i < text.length; i += length) {
+                    result += text.slice(i, i + length) + '<br>';
+                }
+                return result;
+            }
+        });
+    </script>
 </head>
 <body>
 	<div class="container" align="center">
 		<c:if test="${not empty rlist}">
-			<h4 class="text-primary" align="left">댓글 목록</h4>
 		</c:if>
+		
+		
 		<table width="650px" cellpadding="10">
-			<!-- <tr>
-				<td align="center">작성자</td>
-				<td align="center">내용</td>
-				<td align="center">수정일</td>
-				<td></td>
-			</tr> -->
 			<c:forEach var="jrb" items="${rlist}">
-				<tr colspan="3" id="date_tr1">
-					<td>${jrb.userId}</td>
-					<td id="btn_${jrb.jobReNo}" align="right" colspan="2">
+				<tr>
+					<td>${jrb.userId}&nbsp;
 					<c:if test="${jrb.userId == sessionScope.userId}">
 							<a href="#" class="redit link-style" id="${jrb.jobReNo}"
 								data-jobNo="${jrb.jobNo}">수정</a> | 
-
 							<a href="#" onclick="del(${jrb.jobReNo},${jrb.jobNo})"
 								class="link-style">삭제</a>
-
-							<%-- <input type="button" value="수정" class="redit button-style" id="${jrb.jobReNo}" data-jobNo="${jrb.jobNo}">
-							<input type="button" value="삭제" onclick="del(${jrb.jobReNo},${jrb.jobNo})" class="button-style"> --%>
-							<%-- <input type="button" value="수정" class="redit" id="${jrb.jobReNo}" data-jobNo="${jrb.jobNo}">
-							<input type="button" value="삭제" onclick="del(${jrb.jobReNo},${jrb.jobNo})"> --%>
-						</c:if></td>
+					</c:if>
+					</td>
+					<td class="text-right">
+						<fmt:formatDate value="${jrb.jobReUpdate}"    pattern="yyyy.MM.dd HH:mm" />
+					</td>					
 				</tr>
 				<tr>
-					<td id="td_${jrb.jobReNo}" colspan="3">${jrb.jobReText}</td>
-				</tr>
-				<tr id="date_tr2">
-					<td colspan="3" align="right" style="font-size: 12px;"><fmt:formatDate
-							value="${jrb.jobReUpdate}" pattern="yyyy.MM.dd HH:mm" /></td>
+					<td calspan="2" id="retext">${jrb.jobReText}</td>
 				</tr>
 			</c:forEach>
 		</table>
