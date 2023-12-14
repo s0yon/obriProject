@@ -29,4 +29,6 @@ public interface jobBoardDao {
 
 	public int updateAppDone(int jobNo);
 	
+	public int AppCheckTotal(int jobNo);
+	
 }

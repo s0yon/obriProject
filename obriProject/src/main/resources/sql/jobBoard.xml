@@ -91,5 +91,9 @@
 		update jobApp set appDone = 'Y'
 		where jobNo = #{jobNo} and appDelYn = 'N' and appCheck = 'Y'
 	</update>
+	
+	<select id="AppCheckTotal" parameterType="jobapp" resultType="int">
+     select count(*) from jobApp where jobNo=#{jobNo} and appCheck = 'Y' and appDelYn = 'N'
+</select>
 
 </mapper>
