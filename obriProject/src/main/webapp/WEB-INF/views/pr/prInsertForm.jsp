@@ -171,8 +171,7 @@ String userId = (String) session.getAttribute("userId");
 								<!--                 Please enter a valid email address for shipping updates. -->
 								<!--               </div> -->
 							</div>
-							<input type="button" class="btn mt-5 mx-auto" type="submit"
-								value="글작성">
+							<input type="submit" class="btn mt-5 mx-auto" value="글작성">
 						</div>
 					</form>
 				</div>

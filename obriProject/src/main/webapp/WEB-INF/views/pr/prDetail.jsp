@@ -170,15 +170,14 @@
 								width="20px" height="20px"></span>
 						</h3>
 						<br>
-							<div>활동지역 : ${map['PRLOC']}</div>
-							<div>좋아요 : ${prlikeNumber}</div>
-							<div>조회수 : ${map['PRRCOUNT']}</div>
-							<br>
-							<div>
-								<input type="button" class="btn" data-toggle="modal"
-									id="messageBtn" data-target="#myModal" value="쪽지보내기"
-									 style="width:100px; font-size:14px; font-weight:bold;">
-							</div>
+						<div>활동지역 : ${map['PRLOC']}</div>
+						<div>좋아요 : ${prlikeNumber}</div>
+						<div>조회수 : ${map['PRRCOUNT']}</div>
+						<br>
+						<div>
+							<input type="button" class="btn" data-toggle="modal"
+								id="messageBtn" data-target="#myModal" value="쪽지보내기"
+								style="width: 100px; font-size: 14px; font-weight: bold;">
 						</div>
 					</div>
 				</div>
@@ -220,17 +219,18 @@
 					</div>
 				</div>
 
+
 				<div class="row justify-content-end mb-3 mt-3" id="updelButton">
 					<button type="button" class="btn"
 						onclick="location.href='prUpdateForm.do?prNo=${map['PRNO']}'">수정</button>
 					<button type="button" class="btn ml-2 mr-3"
 						onclick="prDelete(${map['PRNO']})">삭제</button>
 				</div>
-				<div align="right" style="margin-right: 10px;">
+				<div align="right">
 					<input type="button" class="btn" value="목록"
 						onclick="location.href='prCardList.do?page=${page}'">
 				</div>
-			</section>
+		</section>
 		</div>
 	</main>
 	<!-- footer -->
