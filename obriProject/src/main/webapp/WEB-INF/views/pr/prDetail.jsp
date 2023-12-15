@@ -170,15 +170,15 @@
 								width="20px" height="20px"></span>
 						</h3>
 						<br>
-
-						<div>활동지역 : ${map['PRLOC']}</div>
-						<div>좋아요수 : ${prlikeNumber}</div>
-						<div>조회수 : ${map['PRRCOUNT']}</div>
-						<br>
-						<div>
-							<input type="button" class="btn" data-toggle="modal"
-								id="messageBtn" data-target="#myModal" value="쪽지보내기"
-								style="width: 100px; font-size: 14px; font-weight: bold;">
+							<div>활동지역 : ${map['PRLOC']}</div>
+							<div>좋아요 : ${prlikeNumber}</div>
+							<div>조회수 : ${map['PRRCOUNT']}</div>
+							<br>
+							<div>
+								<input type="button" class="btn" data-toggle="modal"
+									id="messageBtn" data-target="#myModal" value="쪽지보내기"
+									 style="width:100px; font-size:14px; font-weight:bold;">
+							</div>
 						</div>
 					</div>
 				</div>
