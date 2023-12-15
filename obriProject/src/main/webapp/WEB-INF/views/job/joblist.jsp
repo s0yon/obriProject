@@ -47,22 +47,23 @@
 	}
 </script>
 <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var contentElement = document.querySelector('#consub');
-            var contentText = contentElement.innerText || contentElement.textContent;
-          
-            var formattedContent = formatText(contentText, 70);
-            contentElement.innerHTML = formattedContent;
+	document.addEventListener('DOMContentLoaded', function() {
+		var contentElement = document.querySelector('#consub');
+		var contentText = contentElement.innerText
+				|| contentElement.textContent;
 
-            function formatText(text, length) {
-                var result = '';
-                for (var i = 0; i < text.length; i += length) {
-                    result += text.slice(i, i + length) + '<br>';
-                }
-                return result;
-            }
-        });
-    </script>
+		var formattedContent = formatText(contentText, 70);
+		contentElement.innerHTML = formattedContent;
+
+		function formatText(text, length) {
+			var result = '';
+			for (var i = 0; i < text.length; i += length) {
+				result += text.slice(i, i + length) + '<br>';
+			}
+			return result;
+		}
+	});
+</script>
 </head>
 
 <body class="bg-body-tertiary">
@@ -93,7 +94,7 @@
 				</div>
 			</div>
 
-			<table class="table-hover" align="center" width="100%">
+			<table class="table-hover" align="center">
 				<thead>
 					<tr>
 						<th width="10%">번호</th>
@@ -110,7 +111,15 @@
 							<td width="10%">${job['JOBNO']}</td>
 							<td width="30%" id="subject"><a
 								href="job_board_view.do?jobNo=${job['JOBNO']}&pageNum=${pp.currentPage}&state=cont"
-								class="text" id="consub">${job['JOBSUB']}</a></td>
+								class="truncate-text" id="consub">
+									<%-- ${job['JOBSUB']}  --%>
+									<c:set var="truncatedSub"
+										value="${fn:substring(job['JOBSUB'], 0, 15)}" />
+									${truncatedSub} <c:if test="${fn:length(job['JOBSUB']) > 15}">...</c:if>
+									<!-- 오늘 작성된 글이면  --> <c:if test="${dbtoday == today }">
+										<img alt="" src="images/new.png" width="30" height="20">
+									</c:if>
+							</a></td>
 							<td width="20%">${job['USERNAME']}</td>
 							<td width="15%"><fmt:formatDate value="${job['JOBENDDATE']}"
 									pattern="yyyy-MM-dd" /></td>
@@ -157,8 +166,8 @@
 						</c:forEach>
 
 						<c:if test="${pp.endPage < pp.totalPage}">
-							<li><a href="joblist.do?pageNum=${pp.endPage + 1}" class="page-link"><span
-									aria-hidden="true">&raquo;</span></a></li>
+							<li><a href="joblist.do?pageNum=${pp.endPage + 1}"
+								class="page-link"><span aria-hidden="true">&raquo;</span></a></li>
 						</c:if>
 					</c:if>
 				</ul>

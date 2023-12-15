@@ -10,7 +10,6 @@
 <head>
 <title>구인</title>
 <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link
@@ -283,7 +282,7 @@ function jobAppModalPage(currentPage) {
 						<td class="text-start pl-5">작성자 : ${jobboard.userId}</td>
 					</tr>
 					<tr>
-						<td class="text-start pl-5">구인마감일 : <fmt:formatDate
+						<td class="text-start pl-5">모집마감일 : <fmt:formatDate
 								value="${jobboard.jobEndDate}" pattern="yyyy-MM-dd" /></td>
 					</tr>
 					<tr>
@@ -318,7 +317,7 @@ function jobAppModalPage(currentPage) {
 						<td class="text-start pl-5">분류 : ${jobboard.jobCd}</td>
 					</tr>
 					<tr>
-						<td class="text-start pl-5" height="200px" id="content">${jobboard.jobText}</td>
+						<td class="text-start pl-5" height="200px" id="content"><pre><c:out value="${jobboard.jobText}"/></pre></td>
 					</tr>
 					<tr>
 						<td class="col d-flex align-items-center flex-column mt-2">

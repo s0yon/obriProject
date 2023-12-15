@@ -171,7 +171,7 @@
 						</tr>
 						</c:if>
 						<tr>
-							<td colspan="2" class="text-center"> 좋아요 수 : ${likeCnt} &nbsp;<!-- 로그인 구현 되면 테스트 해야댐 -->
+							<td colspan="2" class="text-center"> 좋아요 : ${likeCnt} &nbsp;<!-- 로그인 구현 되면 테스트 해야댐 -->
 								<c:if test="${sessionScope.userId == null}">
 									<span id="likeCheck" onClick="commLikeButton()"> <i
 										class="fa-regular fa-thumbs-up"></i>

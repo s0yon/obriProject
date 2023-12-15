@@ -91,14 +91,12 @@
 							<input type="radio" name="jobCd" id="e2" value="종교행사">&nbsp;종교행사&nbsp;&nbsp;
 							<input type="radio" name="jobCd" id="e3" value="공연">&nbsp;공연&nbsp;&nbsp;
 							<input type="radio" name="jobCd" id="e4" value="기타">&nbsp;기타&nbsp;&nbsp;
-							</td>
+						</td>
 					</tr>
 					<tr>
 						<th>제목</th>
-						<td><div class="col-sm-10">
-								<input type="text" class="form-control" id="jobSub"
-									name="jobSub">
-							</div></td>
+						<td><input type="text" class="form-control col-sm-10"
+							id="jobSub" name="jobSub"></td>
 					</tr>
 					<tr>
 						<th>내용</th>

@@ -240,7 +240,7 @@ public class PrController {
 	// 홍보 수정 완료
 	@RequestMapping(value = "pr_update_ok.do")
 	public String prUpdate(@ModelAttribute prVO pr, @RequestParam("pr_file1") MultipartFile mf, 
-									HttpServletRequest request, Model model) throws Exception{
+									HttpServletRequest request, String pageNum, Model model) throws Exception{
 
 		System.out.println("pr_update_ok");
 		
@@ -310,6 +310,8 @@ public class PrController {
 		
 		model.addAttribute("result", updateResult);
 		model.addAttribute("pr", pr);
+		model.addAttribute("prNo", pr.getPrNo());
+		model.addAttribute("pageNum", pageNum);
 		
 		return "pr/updateResult";
 	}

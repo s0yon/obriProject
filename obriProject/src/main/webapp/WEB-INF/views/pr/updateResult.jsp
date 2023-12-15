@@ -14,7 +14,7 @@
 	<script>
 		alert("수정 성공");
 // 		location.href="noticecontent.do?not_no=${board.not_no}&page=${page}"; //상세 페이지
-		location.href="prDetail.do?prNo=${pr.prNo}"; // 상세페이지 인데 페이징 추가 해야함 
+		location.href="prDetail.do?prNo=${prNo}&pageNum=${pageNum}"; // 상세페이지 인데 페이징 추가 해야함 
 	</script>
 </c:if>
 
