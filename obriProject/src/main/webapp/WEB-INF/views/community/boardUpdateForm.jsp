@@ -25,14 +25,15 @@
   <%@include file="../navbar.jsp" %>
 
 <main style="padding-top: 80px; padding-bottom: 80px">
-        <h2 id="title"  align=center>글수정</h2>
-        <form method=post  action="boardUpdate.do"  enctype="multipart/form-data" >
-        <input type="hidden"  name="commNo"  value="${community.commNo}">
-		<input type="hidden"  name="pageNum"  value="${pageNum}">
-            <table border=1  align=center  width=800  height=400>
+       <h2 id="title" align="center">글수정</h2>
+        <form method="post" action="boardUpdate.do" enctype="multipart/form-data">
+            <input type="hidden" name="commNo" value="${community.commNo}">
+            <input type="hidden" name="pageNum" value="${pageNum}">
+
+            <table border="1" align="center" width="800">
                 <tr>
                     <th>작성자</th>
-                    <td><input type=text  name="userId"   value=" ${community.userId}"  readonly></td>
+                    <td>${community.userId}</td>
                 </tr>
                 <tr>
                     <th>제목</th>
@@ -48,15 +49,13 @@
                     <th>첨부파일</th>
                     <td><input type=file   name="com_file1" ></td>
                 </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" value="글 수정" id="submitButton" class="btn">
+                        <input type="button" class="btn" value="목록으로" onclick="location.href='boardList.do'">
+                    </td>
+                </tr>
             </table>
-            <div align="center">
-            	<tr>
-            		<td colspan=2  align=center>
-                		<input type=submit  value="글 수정"  id="submitButton" class="btn" >
-                		<input type="button" class="btn"   value="목록으로"  onclick="location.href='boardList.do' ">
-           			</td>
-           		</tr>
-           	</div>
         </form>
   
 </main>

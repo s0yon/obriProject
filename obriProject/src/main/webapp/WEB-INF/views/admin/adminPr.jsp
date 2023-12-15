@@ -159,7 +159,7 @@
 		function submitDeleteForm() {
 			// 'notNoToDelete' 값을 가져와서 'deleteForm'에 추가
 			var prNoToDelete = document.getElementById('prNoToDelete').value;
-			document.getElementById('deleteForm').action = 'pr_delete_selected.do?prNo='
+			document.getElementById('deleteForm').action = 'admin_pr_delete_selected.do?prNo='
 					+ prNoToDelete;
 			document.getElementById('deleteForm').submit();
 		}
