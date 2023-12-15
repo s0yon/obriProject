@@ -34,9 +34,7 @@
 				<table>
 					<tr>
 						<th>작성자</th>
-						<td><input type="text" class="form-control" name="userId"
-							id="userId" value="${fn:trim(sessionScope.userId)}"
-							readonly="readonly"></td>
+						<td>${fn:trim(sessionScope.userId)}</td>
 					</tr>
 					<tr>
 						<th>제목</th>

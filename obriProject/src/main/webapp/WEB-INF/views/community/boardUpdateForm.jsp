@@ -29,7 +29,6 @@
         <form method="post" action="boardUpdate.do" enctype="multipart/form-data">
             <input type="hidden" name="commNo" value="${community.commNo}">
             <input type="hidden" name="pageNum" value="${pageNum}">
-
             <table border="1" align="center" width="800">
                 <tr>
                     <th>작성자</th>
