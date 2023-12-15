@@ -66,10 +66,10 @@ body {
 						<tbody class="tb">
 							<c:forEach var="m" items="${memberlist}">
 								<tr>
-									<td></td>
-									<td>${m['USERID']}</td>
-									<td><a href="admin_user_view.do?userId=${m['USERID']}&pageNum=${pageNum}&state=cont">${m['USERNAME']}</a></td>
-									<td>${m['USERDATE']}</td>
+									<td onclick="location.href='admin_user_view.do?userId=${m['USERID']}&pageNum=${pageNum}&state=cont'"></td>
+									<td onclick="location.href='admin_user_view.do?userId=${m['USERID']}&pageNum=${pageNum}&state=cont'">${m['USERID']}</td>
+									<td onclick="location.href='admin_user_view.do?userId=${m['USERID']}&pageNum=${pageNum}&state=cont'">${m['USERNAME']}</td>
+									<td onclick="location.href='admin_user_view.do?userId=${m['USERID']}&pageNum=${pageNum}&state=cont'">${m['USERDATE']}</td>
 									<td><c:if test="${m['USERDELYN'].trim() eq 'Y'}">탈퇴</c:if>
 										<c:if test="${m['USERDELYN'].trim() eq 'X'}">정지</c:if> <c:if
 											test="${m['USERDELYN'].trim() eq 'N'}">정상</c:if></td>
