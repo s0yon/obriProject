@@ -99,7 +99,9 @@
             console.log(data);
             if(data == 1){
                 alert("전송 성공하였습니다.");
-                j('#myModal').modal('hide');
+                document.getElementById('myModal').style.display = 'none';
+                document.body.classList.remove('modal-open'); // 배경 어두움 제거
+                document.querySelector('.modal-backdrop').remove(); // 배경 요소 제거
             } else {
                 alert("전송 실패하였습니다.");
             }
