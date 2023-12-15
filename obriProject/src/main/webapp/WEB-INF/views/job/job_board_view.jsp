@@ -244,21 +244,23 @@ function jobAppModalPage(currentPage) {
         });
     </script>
 <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var contentElement = document.querySelector('#content');
-            var contentText = contentElement.innerText || contentElement.textContent;
-          
-            var formattedContent = formatText(contentText, 82);
-            contentElement.innerHTML = formattedContent;
+document.addEventListener('DOMContentLoaded', function() {
+    var contentElement = document.querySelector('#content');
+    var contentText = contentElement.innerText || contentElement.textContent;
+  
+    var formattedContent = formatText(contentText, 82);
+    contentElement.innerHTML = formattedContent;
 
-            function formatText(text, length) {
-                var result = '';
-                for (var i = 0; i < text.length; i += length) {
-                    result += text.slice(i, i + length) + '<br>';
-                }
-                return result;
-            }
-        });
+    function formatText(text, length) {
+        // 기존 줄바꿈을 유지하도록 수정
+        var lines = text.split('\n');
+        var result = '';
+        for (var i = 0; i < lines.length; i++) {
+            result += lines[i].slice(0, length) + '<br>';
+        }
+        return result;
+    }
+});
     </script>
 </head>
 <body class="bg-body-tertiary">
@@ -292,9 +294,8 @@ function jobAppModalPage(currentPage) {
 					<tr>
 						<td>
 							<div class="row">
-								<div class="col-sm-10 pl-5 ml-1 align-self-center">
-								모집인원 : ${jobboard.jobSpace} 명 (${appTotal}/${jobboard.jobSpace})
-									</div>
+								<div class="col-sm-10 pl-5 ml-1 align-self-center">모집인원 :
+									${jobboard.jobSpace} 명 (${appTotal}/${jobboard.jobSpace})</div>
 								<div class="col-sm-1 apply-button">
 									<c:if test="${!empty sessionScope.userId}">
 										<c:if test="${sessionScope.userId != jobboard.userId}">
@@ -317,7 +318,8 @@ function jobAppModalPage(currentPage) {
 						<td class="text-start pl-5">분류 : ${jobboard.jobCd}</td>
 					</tr>
 					<tr>
-						<td class="text-start pl-5" height="200px" id="content"><pre><c:out value="${jobboard.jobText}"/></pre></td>
+						<td class="text-start pl-5" height="200px" id="content"><pre
+								style="white-space: pre-line;">${jobboard.jobText}</pre></td>
 					</tr>
 					<tr>
 						<td class="col d-flex align-items-center flex-column mt-2">
@@ -344,7 +346,8 @@ function jobAppModalPage(currentPage) {
 				</tbody>
 			</table>
 			<div align="right">
-				<input type="button" value="목록" class="btn" style="margin-right:10px;"
+				<input type="button" value="목록" class="btn"
+					style="margin-right: 10px;"
 					onClick="location='joblist.do?pageNum=${pageNum}'">
 			</div>
 
@@ -447,7 +450,8 @@ function jobAppModalPage(currentPage) {
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">해당 구인글에 신청하시겠습니까?</h5>
+							<h5 class="modal-title" id="exampleModalLabel">해당 구인글에
+								신청하시겠습니까?</h5>
 							<button type="button" class="btn-close" data-bs-dismiss="modal"
 								aria-label="Close"></button>
 						</div>
@@ -461,8 +465,7 @@ function jobAppModalPage(currentPage) {
 					</div>
 				</div>
 			</div>
-			<br>
-			<br>
+			<br> <br>
 
 			<div id="rlist" align="center"></div>
 			<div align="center" id="commRe">

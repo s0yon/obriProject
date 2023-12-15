@@ -125,9 +125,11 @@
             contentElement.innerHTML = formattedContent;
 
             function formatText(text, length) {
+                // 기존 줄바꿈을 유지하도록 수정
+                var lines = text.split('\n');
                 var result = '';
-                for (var i = 0; i < text.length; i += length) {
-                    result += text.slice(i, i + length) + '<br>';
+                for (var i = 0; i < lines.length; i++) {
+                    result += lines[i].slice(0, length) + '<br>';
                 }
                 return result;
             }
@@ -161,7 +163,9 @@
 								value="${community.commCount}" /></td>
 						</tr>
 						<tr>
-							<td colspan="2" class="text-start pl-5" height="300px" id="content">${Content}</td>
+							<td colspan="2" class="text-start pl-5" height="300px" id="content">
+							<pre style="white-space: pre-line;">${Content}</pre>
+							</td>
 						</tr>
 						<c:if test="${community.commFile != null}">
 						<tr>
@@ -171,7 +175,7 @@
 						</tr>
 						</c:if>
 						<tr>
-							<td colspan="2" class="text-center"> 좋아요 : ${likeCnt} &nbsp;<!-- 로그인 구현 되면 테스트 해야댐 -->
+							<td colspan="2" class="text-center"> 좋아요 : ${likeCnt} &nbsp;
 								<c:if test="${sessionScope.userId == null}">
 									<span id="likeCheck" onClick="commLikeButton()"> <i
 										class="fa-regular fa-thumbs-up"></i>

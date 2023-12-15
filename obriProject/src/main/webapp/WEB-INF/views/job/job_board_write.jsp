@@ -22,7 +22,7 @@
 <!-- 사용자 정의 스타일 -->
 <link rel="stylesheet" href="./css/viewpage.css">
 
-<script src="./js/job_write_board.js"></script>
+<script src="./js/board/job_write_board.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
 	function openDaumPostcode() {
