@@ -59,10 +59,10 @@
 			INNER JOIN jobBoard jboard
 			ON jboard.jobNo = japp.jobNo
 			WHERE jboard.userId = #{id}) AS jobstatusAll,
-			(SELECT COUNT(CASE WHEN prlik.prLike = 1 THEN 1 ELSE NULL END) AS prlikesCount
+			(SELECT COUNT(CASE WHEN prlik.prLike = 'Y' THEN 1 ELSE NULL END) AS prlikesCount
 			FROM prLike prlik
 			WHERE prlik.userId = #{id}) AS prlikesCount,
-			(SELECT COUNT(CASE WHEN commlik.commLike = 1 THEN 1 ELSE NULL END) AS commlikesCount
+			(SELECT COUNT(CASE WHEN commlik.commLike = 'Y' THEN 1 ELSE NULL END) AS commlikesCount
 			FROM comLike commlik
 			WHERE commlik.userId = #{id}) AS commlikesCount,
 			(SELECT COUNT(CASE WHEN commb.commDelYn != 'Y' THEN 1 ELSE NULL END) AS commCountAll

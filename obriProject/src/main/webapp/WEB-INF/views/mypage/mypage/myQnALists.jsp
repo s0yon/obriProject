@@ -186,7 +186,6 @@
 					<table class="pp_table">
 						<thead>
 							<tr>
-								<th><input type="checkbox" id="selectAll" onclick="toggleAllCheckboxes()"></th>
 								<th>제목</th>
 								<th>문의 내용</th>						
 								<th>파일</th>						
@@ -199,12 +198,6 @@
 						<tbody>
 							<c:forEach var="qnaListsInfoVOs" items="${qnaListsVO.qnaListsInfoVOs}">
 								<tr>
-									<td>
-										<label>
-											<input type="checkbox" name="check_qnaNo" value="${qnaListsInfoVOs.qnaNo}">
-											<span style="font-size: 12px"></span>
-										</label>
-									</td>
 									<td><a href="qna_read.do?qnaNo=${qnaListsInfoVOs.qnaNo}">${qnaListsInfoVOs.qnaSub}</a></td>
 									<td>${qnaListsInfoVOs.qnaText}</td>
 									<td>${qnaListsInfoVOs.qnaFile}</td>
