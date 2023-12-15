@@ -344,8 +344,8 @@ function jobAppModalPage(currentPage) {
 					</tr>
 				</tbody>
 			</table>
-			<div align="center">
-				<input type="button" value="목록" class="btn"
+			<div align="right">
+				<input type="button" value="목록" class="btn" style="margin-right:10px;"
 					onClick="location='joblist.do?pageNum=${pageNum}'">
 			</div>
 

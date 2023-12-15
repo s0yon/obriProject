@@ -72,7 +72,7 @@
 				</tbody>
 			</table>
 
-			<div align="center">
+			<div align="right" style="margin-right:10px;">
 				<input type="button" class="btn" value="목록"
 					onclick="location.href='notice_list.do?page=${page}'">
 			</div>

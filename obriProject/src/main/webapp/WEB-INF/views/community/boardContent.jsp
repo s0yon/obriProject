@@ -195,7 +195,7 @@
 					</table>
 				</div>
 
-				<div id="boardContent_menu" class="body-menu" align="right">
+				<div id="boardContent_menu" class="body-menu" align="right" style="margin-right:10px;">
 						<input type="button" value="목록"
 								onClick="location.href='boardList.do?pageNum=${pageNum}'"
 								class="btn">
