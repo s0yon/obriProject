@@ -23,6 +23,39 @@
 <!-- 사용자 정의 스타일 -->
 <link rel="stylesheet" href="./css/viewpage.css">
 
+<style>
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+.pagination li {
+    margin: 0 5px;
+}
+
+.pagination .page-link {
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: #333;
+    background-color: #eee;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+
+.pagination .page-link:hover {
+    background-color: #ddd;
+  }
+
+.pagination .active .page-link {
+    background-color: #007bff;
+    color: #fff;
+    border: 1px solid #007bff;
+  }
+</style>
+
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="http://maps.googleapis.com/maps/api/js"></script>
 <script
@@ -408,7 +441,7 @@ function jobAppModalPage(currentPage) {
 							<!-- pagination -->
 							<div class="pageDiv my-custom-page">
 								<!-- Pagination -->
-								<nav aria-label="Page navigation example" id="modalPage"></nav>
+								<nav aria-label="Page navigation example" class="pagination" id="modalPage"></nav>
 							</div>
 							<!-- pagination 끝 -->
 						</div>
