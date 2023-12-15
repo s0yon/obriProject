@@ -57,7 +57,7 @@ public class adminDao {
 
 	public void deletePr(Integer prNo) throws Exception {
 		System.out.println("홍보글삭제dao");
-		sst.update("admin.deletePr",prNo);
+		sst.update("admin.admindeletePr",prNo);
 	}
 	
 	public Map<String, Object> getPrView(int prNo) throws Exception {

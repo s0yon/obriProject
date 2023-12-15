@@ -661,7 +661,7 @@ public class AdminController {
 		System.out.println("현재경로:홍보삭제");
 		adService.deletePr(prNo);
 		model.addAttribute("pageNum", pageNum);
-		return "admin/prDel";
+		return "admin/adminPrDel";
 	}
 
 	@RequestMapping(value = "admin_pr_delete_selected.do")
@@ -673,7 +673,7 @@ public class AdminController {
 				adService.deletePr(prNo);
 			}
 		}
-		return "redirect:admin_job.do";
+		return "redirect:admin_pr.do";
 	}
 
 	// 홍보게시판 글읽기
@@ -753,10 +753,10 @@ public class AdminController {
 		if (selectedCommList != null && !selectedCommList.isEmpty()) {
 			for (Integer commNo : selectedCommList) {
 				// 여기에서 서비스를 호출하여 해당 공지사항을 삭제하는 로직을 구현
-				adService.deleteJob(commNo);
+				adService.deleteComm(commNo);
 			}
 		}
-		return "redirect:admin_job.do";
+		return "redirect:admin_comm.do";
 	}
 
 	// 커뮤니티 글읽기

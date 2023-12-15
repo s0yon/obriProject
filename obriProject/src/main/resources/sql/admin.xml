@@ -59,7 +59,7 @@
 	<select id="jobCount" parameterType="adjobvo" resultType="int">
 		select count(*)
 		from (select A.*, B.userName from jobBoard A, member B
-		where A.userId = B.userId)
+		where A.userId = B.userId and A.jobDelYn='N')
 		<if test="keyword != null and search !='user'">
 			where ${search} like '%'||#{keyword}||'%'
 		</if>
@@ -75,7 +75,7 @@
 		select * from ( select a.*, rowNum rn from (
 		select A.*, B.userName  
 		from jobBoard A, member B
-		where A.userId = B.userId
+		where A.userId = B.userId and A.jobDelYn='N'
 		<if test="keyword != null and search !='user'">
 			and ${search} like '%'||#{keyword}||'%'
 		</if>
@@ -99,14 +99,14 @@
 	<!-- 구인 삭제 -->
 	<update id="deleteJob" parameterType="int">
 		update jobBoard set 
-		qnaDelYn='Y' where jobNo=#{jobNo}
+		jobDelYn='Y' where jobNo=#{jobNo}
 	</update>
 
 	<!-- 홍보 게시판 글갯수 -->
 	<select id="prCount" parameterType="adprvo" resultType="int">
 		select count(*)
 		from (select A.*, B.userName from prBoard A, member B
-		where A.userId = B.userId)
+		where A.userId = B.userId and A.prDelYn='N')
 		<if test="keyword != null and search !='user'">
 			where ${search} like '%'||#{keyword}||'%'
 		</if>
@@ -122,7 +122,7 @@
 		select * from ( select a.*, rowNum rn from (
 		select A.*, B.userName  
 		from prBoard A, member B
-		where A.userId = B.userId
+		where A.userId = B.userId and A.prDelYn='N'
 		<if test="keyword != null and search !='user'">
 			and ${search} like '%'||#{keyword}||'%'
 		</if>
@@ -144,9 +144,9 @@
 	</select>
 	
 	<!-- 홍보 삭제 -->
-	<update id="deletePr" parameterType="int">
+	<update id="admindeletePr" parameterType="int">
 		update prBoard set 
-		qnaDelYn='Y' where prNo=#{prNo}
+		prDelYn='Y' where prNo=#{prNo}
 	</update>
 	
 	
@@ -154,7 +154,7 @@
 	<select id="commCount" parameterType="adcommvo" resultType="int">
 		select count(*)
 		from (select A.*, B.userName from comBoard A, member B
-		where A.userId = B.userId)
+		where A.userId = B.userId and A.commDelYn='N')
 		<if test="keyword != null and search !='user'">
 			where ${search} like '%'||#{keyword}||'%'
 		</if>
@@ -170,7 +170,7 @@
 		select * from ( select a.*, rowNum rn from (
 		select A.*, B.userName  
 		from comBoard A, member B
-		where A.userId = B.userId
+		where A.userId = B.userId and A.commDelYn='N'
 		<if test="keyword != null and search !='user'">
 			and ${search} like '%'||#{keyword}||'%'
 		</if>
@@ -194,7 +194,7 @@
 	<!-- 커뮤니티 삭제 -->
 	<update id="deleteComm" parameterType="int">
 		update comBoard set 
-		qnaDelYn='Y' where commNo=#{commNo}
+		commDelYn='Y' where commNo=#{commNo}
 	</update>
 	
 

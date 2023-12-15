@@ -31,6 +31,7 @@
 
 </head>
 
+<<<<<<< HEAD
 <body class="bg-body-tertiary">
 	<!-- header -->
 	<c:import url="/WEB-INF/views/navbar.jsp" />
@@ -80,5 +81,46 @@
 	</div>
 	<!-- footer -->
 	<c:import url="/WEB-INF/views/footer.jsp" />
+=======
+<body>
+  <%@include file="../navbar.jsp" %>
+
+<main style="padding-top: 80px; padding-bottom: 80px">
+       <h2 id="title" align="center">글수정</h2>
+        <form method="post" action="boardUpdate.do" enctype="multipart/form-data">
+            <input type="hidden" name="commNo" value="${community.commNo}">
+            <input type="hidden" name="pageNum" value="${pageNum}">
+            <table border="1" align="center" width="800">
+                <tr>
+                    <th>작성자</th>
+                    <td>${community.userId}</td>
+                </tr>
+                <tr>
+                    <th>제목</th>
+                    <td><input type=text  name="commSub"  required value=" ${community.commSub } "></td>
+                </tr>
+                <tr>
+                    <th>내용</th>
+                    <td><textarea cols=100 rows=20  name="commText"   id="commText"  required>${community.commText} </textarea>
+                        <br><br>
+                    </td>
+				</tr>
+				<tr>
+                    <th>첨부파일</th>
+                    <td><input type=file   name="com_file1" ></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" value="글 수정" id="submitButton" class="btn">
+                        <input type="button" class="btn" value="목록으로" onclick="location.href='boardList.do'">
+                    </td>
+                </tr>
+            </table>
+        </form>
+  
+</main>
+<%@include file="../footer.jsp" %>
+			
+>>>>>>> de556a22394fe43050a7129147a71382ba24cbda
 </body>
 </html>
