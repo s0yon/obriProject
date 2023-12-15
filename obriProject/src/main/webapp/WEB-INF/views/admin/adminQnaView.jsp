@@ -100,6 +100,9 @@ td {
 								test="${map['QNADELYN'].trim() eq 'N'}">미완료</c:if> <br> <fmt:formatDate
 								value="${map['QNADATE']}" pattern="yyyy-MM-dd" /></th>
 					</tr>
+					<tr class="table-active">
+						<th colspan=2 scope="col" class="content">email : ${map['USEREMAIL']}</th>
+					</tr>
 					<tr>
 						<td colspan=2 scope="col" class="content">${map['QNATEXT']}</td>
 					</tr>

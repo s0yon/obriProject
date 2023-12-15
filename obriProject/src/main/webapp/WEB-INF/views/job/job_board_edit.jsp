@@ -28,7 +28,7 @@
 <script>
 	var jobFin = '${jobboard.jobFin}'
 </script>
-<script src="./js/job_edit_board.js"></script>
+<script src="./js/board/job_edit_board.js"></script>
 <script>
 	$(function() {
 		$("#jobFin").click(function() {

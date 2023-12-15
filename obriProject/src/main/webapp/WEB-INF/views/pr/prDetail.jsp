@@ -99,7 +99,9 @@
             console.log(data);
             if(data == 1){
                 alert("전송 성공하였습니다.");
-                j('#myModal').modal('hide');
+                document.getElementById('myModal').style.display = 'none';
+                document.body.classList.remove('modal-open'); // 배경 어두움 제거
+                document.querySelector('.modal-backdrop').remove(); // 배경 요소 제거
             } else {
                 alert("전송 실패하였습니다.");
             }
@@ -131,6 +133,25 @@
             }
         });
     }
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var contentElement = document.querySelector('#content');
+    var contentText = contentElement.innerText || contentElement.textContent;
+  
+    var formattedContent = formatText(contentText, 82);
+    contentElement.innerHTML = formattedContent;
+
+    function formatText(text, length) {
+        // 기존 줄바꿈을 유지하도록 수정
+        var lines = text.split('\n');
+        var result = '';
+        for (var i = 0; i < lines.length; i++) {
+            result += lines[i].slice(0, length) + '<br>';
+        }
+        return result;
+    }
+});
 </script>
 </head>
 <body>
@@ -199,8 +220,8 @@
 					<h5 class="col-3">
 						<b>자기소개</b>
 					</h5>
-					<div class="col-9">
-						<pre>${map['PRTEXT']}</pre>
+					<div class="col-9" id="content">
+						<pre style="white-space: pre-line;">${map['PRTEXT']}</pre>
 					</div>
 				</div>
 

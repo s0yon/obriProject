@@ -40,7 +40,7 @@
 	<!-- 문의 상세읽기 -->
 	<select id="qnaView" parameterType="int" resultType="Map">
 		select A.*,
-		B.userName
+		B.userName, B.userEmail
 		from qnaBoard A, member B
 		where A.userId = B.userId
 		and
