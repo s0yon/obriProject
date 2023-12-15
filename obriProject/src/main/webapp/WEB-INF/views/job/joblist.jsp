@@ -98,8 +98,9 @@
 				<thead>
 					<tr>
 						<th width="10%">번호</th>
-						<th width="30%">제목</th>
-						<th width="20%">작성자</th>
+						<th width="20%">제목</th>
+						<th width="15%">작성자</th>
+						<th width="15%">작성일</th>
 						<th width="15%">구인마감일</th>
 						<th width="15%">공연일</th>
 						<th width="10%">조회수</th>
@@ -108,24 +109,23 @@
 				<tbody>
 					<c:forEach var="job" items="${list}">
 						<tr>
-							<td width="10%">${job['JOBNO']}</td>
-							<td width="30%" id="subject"><a
+							<td>${job['JOBNO']}</td>
+							<td id="subject"><a
 								href="job_board_view.do?jobNo=${job['JOBNO']}&pageNum=${pp.currentPage}&state=cont"
 								class="truncate-text" id="consub">
 									<%-- ${job['JOBSUB']}  --%>
 									<c:set var="truncatedSub"
 										value="${fn:substring(job['JOBSUB'], 0, 15)}" />
 									${truncatedSub} <c:if test="${fn:length(job['JOBSUB']) > 15}">...</c:if>
-									<!-- 오늘 작성된 글이면  --> <c:if test="${dbtoday == today }">
-										<img alt="" src="images/new.png" width="30" height="20">
-									</c:if>
 							</a></td>
-							<td width="20%">${job['USERNAME']}</td>
-							<td width="15%"><fmt:formatDate value="${job['JOBENDDATE']}"
+							<td>${job['USERNAME']}</td>
+							<td><fmt:formatDate value="${job['JOBDATE']}"
 									pattern="yyyy-MM-dd" /></td>
-							<td width="15%"><fmt:formatDate value="${job['JOBCONCERT']}"
+							<td><fmt:formatDate value="${job['JOBENDDATE']}"
 									pattern="yyyy-MM-dd" /></td>
-							<td width="10%">${job['JOBRCOUNT']}</td>
+							<td><fmt:formatDate value="${job['JOBCONCERT']}"
+									pattern="yyyy-MM-dd" /></td>
+							<td>${job['JOBRCOUNT']}</td>
 						</tr>
 					</c:forEach>
 				</tbody>

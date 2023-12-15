@@ -113,10 +113,7 @@ var sessionId = '<%=(String) session.getAttribute("userId")%>;
 											<c:set var="truncatedSub"
 												value="${fn:substring(community.commSub, 0, 15)}" />
 											${truncatedSub} <c:if
-												test="${fn:length(community.commSub) > 15}">...</c:if> <!-- 오늘 작성된 글이면  -->
-											<c:if test="${dbtoday == today }">
-												<img alt="" src="images/new.png" width="30" height="20">
-											</c:if>
+												test="${fn:length(community.commSub) > 15}">...</c:if> 
 									</a></td>
 									<td width="20%">${community.userId}</td>
 									<td width="20%"><fmt:formatDate
